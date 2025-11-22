@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HarvestConnect Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style type="text/tailwindcss">
+    @layer base {
+      :root {
+        --background-light: 247 248 247;
+        --background-dark: 22 33 17;
+        --text-light-primary: 38 50 42;
+        --text-dark-primary: 240 245 238;
+        --text-light-secondary: 95 115 100;
+        --text-dark-secondary: 160 178 165;
+        --accent-primary: 116 193 11;
+        --accent-secondary: 242 165 65;
+        --accent-tertiary: 66 153 225;
+      }
+    }
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    .soft-gradient-background {
+      background-image: radial-gradient(at 20% 20%, hsla(88, 70%, 70%, 0.2) 0px, transparent 50%), 
+                        radial-gradient(at 80% 10%, hsla(38, 80%, 70%, 0.15) 0px, transparent 50%), 
+                        radial-gradient(at 80% 80%, hsla(208, 70%, 70%, 0.2) 0px, transparent 50%);
+    }
+    .dark .soft-gradient-background {
+       background-image: radial-gradient(at 20% 20%, hsla(88, 70%, 40%, 0.1) 0px, transparent 50%), 
+                         radial-gradient(at 80% 10%, hsla(38, 80%, 40%, 0.1) 0px, transparent 50%), 
+                         radial-gradient(at 80% 80%, hsla(208, 70%, 40%, 0.15) 0px, transparent 50%);
+    }
+    </style>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "hsl(var(--accent-primary) / <alpha-value>)",
+            "secondary": "hsl(var(--accent-secondary) / <alpha-value>)",
+            "tertiary": "hsl(var(--accent-tertiary) / <alpha-value>)",
+            "background-light": "hsl(var(--background-light) / <alpha-value>)",
+            "background-dark": "hsl(var(--background-dark) / <alpha-value>)",
+            "text-light-primary": "hsl(var(--text-light-primary) / <alpha-value>)",
+            "text-dark-primary": "hsl(var(--text-dark-primary) / <alpha-value>)",
+            "text-light-secondary": "hsl(var(--text-light-secondary) / <alpha-value>)",
+            "text-dark-secondary": "hsl(var(--text-dark-secondary) / <alpha-value>)",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+          boxShadow: {
+             'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light-primary dark:text-text-dark-primary soft-gradient-background">
+<div class="relative min-h-screen w-full">
+<div class="relative z-10 flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/20 dark:border-white/10 bg-white/60 dark:bg-black/20 backdrop-blur-xl px-6 md:px-10 py-3 sticky top-0 z-50 shadow-glass">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-text-light-primary dark:text-text-dark-primary">
+<div class="size-8 text-primary">
+<svg class="text-primary" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.41 6.33l-3.32-3.32a3.5 3.5 0 00-4.95 0L3.33 12.82a3.5 3.5 0 000 4.95l3.32 3.32a3.5 3.5 0 004.95 0l9.81-9.81a3.5 3.5 0 000-4.95zM8.28 19.41a1.5 1.5 0 01-2.12 0l-3.32-3.32a1.5 1.5 0 010-2.12l4.24-4.24 5.44 5.44-4.24 4.24zm6.8-6.8l-5.44-5.44 3.18-3.18a1.5 1.5 0 012.12 0l3.32 3.32a1.5 1.5 0 010 2.12l-3.18 3.18z"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">HarvestConnect</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium text-text-light-secondary dark:text-text-dark-secondary hover:text-text-light-primary dark:hover:text-text-dark-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-bold text-primary dark:text-primary" href="#">Marketplace</a>
+<a class="text-sm font-medium text-text-light-secondary dark:text-text-dark-secondary hover:text-text-light-primary dark:hover:text-text-dark-primary transition-colors" href="#">Community</a>
+<a class="text-sm font-medium text-text-light-secondary dark:text-text-dark-secondary hover:text-text-light-primary dark:hover:text-text-dark-primary transition-colors" href="#">About</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-text-light-secondary dark:text-text-dark-secondary flex border-none bg-white/70 dark:bg-black/30 items-center justify-center pl-3 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light-primary dark:text-text-dark-primary focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-white/70 dark:bg-black/30 h-full placeholder:text-text-light-secondary dark:placeholder:text-text-dark-secondary px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal" placeholder="Search products..." value=""/>
+</div>
+</label>
+<button class="flex items-center justify-center rounded-lg h-10 px-3 transition-colors text-text-light-secondary dark:text-text-dark-secondary hover:bg-black/5 dark:hover:bg-white/10">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-white/50" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCbaa2ucfJntvW4omLH_8hNSxHUQisE6-Lf35IV362hPk4iz405AvgSpVgWMfkPuWjQKEg3fTBVD8KgqDwBMbTI9bVjVD5dlvBeM4NeMJhg7qpCRrEIY-FGWpaV6xG8CR-PsLVXMNkJmmx6lC_W9uaXGSQKyGn6NNbb9xDCOnSyuMLaL0sB1T0S1zb2BLGItddS0PBIJhWmlZpUiX2lngfyM6NZVMPlJ-O03od_eJjd8d7RIB1k8qulQ3DP8ae-Tv-ORuuf-HmO5o5");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8 max-w-screen-xl mx-auto">
+<aside class="lg:col-span-1 space-y-6">
+<div class="p-6 rounded-xl bg-white/60 dark:bg-black/20 backdrop-blur-xl border border-solid border-white/30 dark:border-white/10 shadow-glass">
+<h3 class="text-lg font-bold mb-4">Filters</h3>
+<div class="flex flex-col gap-3">
+<details class="flex flex-col rounded-lg bg-black/5 dark:bg-white/5 group" open="">
+<summary class="flex cursor-pointer items-center justify-between gap-6 p-3">
+<p class="text-sm font-medium">Category</p>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-3 pb-3">
+<label class="flex gap-x-3 py-2 flex-row items-center cursor-pointer">
+<input checked="" class="h-5 w-5 rounded border-text-light-secondary/50 dark:border-text-dark-secondary/50 border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-primary/50" style="--checkbox-tick-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(38,50,42)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');" type="checkbox"/>
+<p class="text-sm font-normal">Farm Produce</p>
+</label>
+<label class="flex gap-x-3 py-2 flex-row items-center cursor-pointer">
+<input class="h-5 w-5 rounded border-text-light-secondary/50 dark:border-text-dark-secondary/50 border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-primary/50" style="--checkbox-tick-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(38,50,42)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');" type="checkbox"/>
+<p class="text-sm font-normal">Artisan Goods</p>
+</label>
+<label class="flex gap-x-3 py-2 flex-row items-center cursor-pointer">
+<input class="h-5 w-5 rounded border-text-light-secondary/50 dark:border-text-dark-secondary/50 border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-primary/50" style="--checkbox-tick-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(38,50,42)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');" type="checkbox"/>
+<p class="text-sm font-normal">Trades &amp; Services</p>
+</label>
+</div>
+</details>
+<details class="flex flex-col rounded-lg bg-black/5 dark:bg-white/5 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 p-3">
+<p class="text-sm font-medium">Location</p>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-3 pb-3 space-y-2">
+<input class="form-input flex w-full min-w-0 resize-none overflow-hidden rounded-md text-text-light-primary dark:text-text-dark-primary focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-text-light-secondary/50 dark:border-text-dark-secondary/50 bg-transparent h-10 placeholder:text-text-light-secondary dark:placeholder:text-text-dark-secondary px-3 text-sm" placeholder="Enter Zip Code" value=""/>
+</div>
+</details>
+<details class="flex flex-col rounded-lg bg-black/5 dark:bg-white/5 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 p-3">
+<p class="text-sm font-medium">Availability</p>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-3 pb-3">
+<label class="flex gap-x-3 py-2 flex-row items-center cursor-pointer">
+<input class="h-5 w-5 rounded border-text-light-secondary/50 dark:border-text-dark-secondary/50 border-2 bg-transparent text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-primary/50" style="--checkbox-tick-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(38,50,42)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');" type="checkbox"/>
+<p class="text-sm font-normal">Available Now</p>
+</label>
+</div>
+</details>
+<details class="flex flex-col rounded-lg bg-black/5 dark:bg-white/5 group">
+<summary class="flex cursor-pointer items-center justify-between gap-6 p-3">
+<p class="text-sm font-medium">Price Range</p>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-3 pb-3 pt-2">
+<input class="w-full h-2 bg-text-light-secondary/30 dark:bg-text-dark-secondary/30 rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+<div class="flex justify-between text-xs mt-1"><span>$0</span><span>$500+</span></div>
+</div>
+</details>
+</div>
+<div class="mt-6 flex flex-col gap-2">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light-primary text-sm font-bold hover:opacity-90 transition-opacity">
+<span class="truncate">Apply Filters</span>
+</button>
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent border border-text-light-secondary/50 dark:border-text-dark-secondary/50 text-text-light-primary dark:text-text-dark-primary text-sm font-bold hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="truncate">Reset</span>
+</button>
+</div>
+</div>
+</aside>
+<div class="lg:col-span-3">
+<div class="mb-6 p-6 rounded-xl bg-white/60 dark:bg-black/20 backdrop-blur-xl border border-solid border-white/30 dark:border-white/10 shadow-glass">
+<h1 class="text-4xl font-black tracking-tighter">Community Marketplace</h1>
+<p class="text-base font-normal text-text-light-secondary dark:text-text-dark-secondary mt-1">Browse goods and services from our trusted community members.</p>
+</div>
+<div class="flex flex-wrap justify-between items-center gap-4 mb-6 p-4 rounded-xl bg-white/60 dark:bg-black/20 backdrop-blur-xl border border-solid border-white/30 dark:border-white/10 shadow-glass">
+<p class="text-sm font-medium">Showing 12 results</p>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<label class="text-sm font-medium whitespace-nowrap" for="sort-by">Sort by:</label>
+<select class="form-select block w-full pl-3 pr-8 py-2 text-sm rounded-lg border-none bg-black/5 dark:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50 text-text-light-primary dark:text-text-dark-primary" id="sort-by">
+<option>Newest</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="p-2 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-black/5 dark:hover:bg-white/10">
+<span class="material-symbols-outlined">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="group flex flex-col rounded-xl overflow-hidden bg-white/60 dark:bg-black/20 backdrop-blur-xl border border-solid border-white/30 dark:border-white/10 shadow-glass hover:shadow-2xl transition-shadow duration-300">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover" data-alt="Organic heirloom tomatoes in a basket" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCl-zXdqBcHy6K-sABLLKoEcC_EqQfTstzjLdhpHE7X3na9x9KCEAUHeFCPlJCDG-rSSMVvb0U3hkflkjas59jOjUpg3G_XbjX3hs-Gpqu7IZ46IlJhEhkBmclJNcKGnZOubI-HWu0wbxQ2gcCYyJsxnkL_DVYCN5z1iLLYlXyx5wVYmI-ZGHoenxu_tzUGPINKS_XdO72jFFJ6P-B2vQNmeoyxd4FYXDOeLrpo5kXthTUxqbF0mWyLcPVA3OoVRI-mcIM9tZFz-Cqz");'></div>
+<div class="absolute top-0 right-0 m-2 px-2 py-1 bg-primary/80 text-text-light-primary text-xs font-bold rounded-full backdrop-blur-sm">Farm Produce</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-lg font-bold leading-tight truncate">Organic Heirloom Tomatoes</h4>
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary mt-1">Smith Family Farm</p>
+<div class="mt-4 flex-1 flex flex-col justify-end">
+<div class="text-right">
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary">Non-Member: <span class="line-through">$5.99/lb</span></p>
+<p class="text-lg font-bold text-primary">Member: $4.99/lb</p>
+</div>
+<button class="mt-3 w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light-primary text-sm font-bold tracking-[0.015em] hover:opacity-90 transition-opacity">
+<span class="truncate">Add to Cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col rounded-xl overflow-hidden bg-white/60 dark:bg-black/20 backdrop-blur-xl border border-solid border-white/30 dark:border-white/10 shadow-glass hover:shadow-2xl transition-shadow duration-300">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover" data-alt="Handcrafted ceramic pottery bowls" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAlf70ETWqUf6bck_U3aZ-i81NP4vlImzo942arChhHOJtflPVakPRasC6XBJbcru_TKxKjilSGBRLHPAWfuErOU5rDOJ1gWg2BSuugb_xRj6Rwi0VVY9TTJKhw4BBkLQIMulaXoVzKN9L4C_zqJ7qPu5TXAHlVtO9pTbpHjss2hiKmlzANy0C4Tg7JuQHJPcxpPV6mDHFQNeqtAl1HxW_UWI5NimJbe_nPSgPuYoYeuiOYIWlz0LM43ld4b4f4YVaqTvxS-Xb836Ke");'></div>
+<div class="absolute top-0 right-0 m-2 px-2 py-1 bg-secondary/80 text-white text-xs font-bold rounded-full backdrop-blur-sm">Artisan Goods</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-lg font-bold leading-tight truncate">Handcrafted Pottery Bowl</h4>
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary mt-1">Jane's Creations</p>
+<div class="mt-4 flex-1 flex flex-col justify-end">
+<div class="text-right">
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary">Non-Member: <span class="line-through">$45.00</span></p>
+<p class="text-lg font-bold text-primary">Member: $38.00</p>
+</div>
+<button class="mt-3 w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light-primary text-sm font-bold tracking-[0.015em] hover:opacity-90 transition-opacity">
+<span class="truncate">Add to Cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col rounded-xl overflow-hidden bg-white/60 dark:bg-black/20 backdrop-blur-xl border border-solid border-white/30 dark:border-white/10 shadow-glass hover:shadow-2xl transition-shadow duration-300">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover" data-alt="Professional landscaping service at work" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCWj6bg6-9iC0peE286bDQ1T_eZXYlU4e28LTejzYND-VMgrJhp67FbezfCyfJom6ZEsANtN2xXNCPH0c8yg-JKxjr006aI-46BK2lgmIZFN5jAkBsW20m4SPnzOvCKmh5B2W5-B5_CVAEctPtUiybWUVCiLl1rewFygE8PkVo5S4n4axE9Msk_MJlbqVymdERlchD0aS46CNONuBbP7UOBia9EgVRWPVqaZR_wAx4bp2LNrvgsx4VH2j0ePFxDJ1rQGKsgDBQgCTW");'></div>
+<div class="absolute top-0 right-0 m-2 px-2 py-1 bg-tertiary/80 text-white text-xs font-bold rounded-full backdrop-blur-sm">Trades &amp; Services</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-lg font-bold leading-tight truncate">Landscaping Services</h4>
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary mt-1">Green Thumb Bros.</p>
+<div class="mt-4 flex-1 flex flex-col justify-end">
+<div class="text-right">
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary">Starts at</p>
+<p class="text-lg font-bold text-primary">Member Discount</p>
+</div>
+<button class="mt-3 w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 border border-primary text-primary text-sm font-bold hover:bg-primary/10 transition-colors">
+<span class="truncate">Get a Quote</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col rounded-xl overflow-hidden bg-white/60 dark:bg-black/20 backdrop-blur-xl border border-solid border-white/30 dark:border-white/10 shadow-glass hover:shadow-2xl transition-shadow duration-300">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover" data-alt="A jar of golden honey with a dipper" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsXCmfXo07w2kb-S9JFtMCtZeifx0snGgFhbtGwSP_VjaDODsTG_OLkOijERxikMXjqxtHn5uYTSgx1T5_ih_aWQhGd3J2ZxjEVlzCDSx0MDCuewKUlm1hVDzQxlO1JbDe1_pfykjw76y3taGrnuTeGpLctlTlWbHVywAUM72-dpBOqf7FkdO3m7DwohNmKin5WvlvVofwkCGSk3zu-MK0YwSgn2pYTDjtJMe1hE6itgtTPic6T5QRQ3h-QROAQWpTFHDoZRzJE201");'></div>
+<div class="absolute top-0 right-0 m-2 px-2 py-1 bg-primary/80 text-text-light-primary text-xs font-bold rounded-full backdrop-blur-sm">Farm Produce</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-lg font-bold leading-tight truncate">Raw Wildflower Honey</h4>
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary mt-1">Buzzing Acres</p>
+<div class="mt-4 flex-1 flex flex-col justify-end">
+<div class="text-right">
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary">Non-Member: <span class="line-through">$12.00</span></p>
+<p class="text-lg font-bold text-primary">Member: $10.00</p>
+</div>
+<button class="mt-3 w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light-primary text-sm font-bold tracking-[0.015em] hover:opacity-90 transition-opacity">
+<span class="truncate">Add to Cart</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col rounded-xl overflow-hidden bg-white/60 dark:bg-black/20 backdrop-blur-xl border border-solid border-white/30 dark:border-white/10 shadow-glass hover:shadow-2xl transition-shadow duration-300">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover" data-alt="A person doing plumbing work under a sink" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAaAyq59PZuWr_buYNfB7dGiO-A6oTUyg-GCWvuQiQsErdC6LXN5jmBqR2-jnhAhs_h9KPrLGxnLrfvzXBuS6tAMbO1V2Os5-HNAPeUq25ZHDlN6FtjEqBGSP5qdvcWEcOCxR_OSLL_GagoBIiN9R1Ijt4Ln8twK3q0dwP53QBOzxaDyg9DS-3uS_WM5Gw0--OZEqzMfeunPgtWn3E7rMhPAgzlafWLYpp6mdQT_0PDd75VvlH1UzGtc2sF26348p2LZVSqvxuuhgiX");'></div>
+<div class="absolute top-0 right-0 m-2 px-2 py-1 bg-tertiary/80 text-white text-xs font-bold rounded-full backdrop-blur-sm">Trades &amp; Services</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-lg font-bold leading-tight truncate">Plumbing Repair</h4>
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary mt-1">Right Flow Plumbing</p>
+<div class="mt-4 flex-1 flex flex-col justify-end">
+<div class="text-right">
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary">Starts at</p>
+<p class="text-lg font-bold text-primary">Member Discount</p>
+</div>
+<button class="mt-3 w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 border border-primary text-primary text-sm font-bold hover:bg-primary/10 transition-colors">
+<span class="truncate">Get a Quote</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col rounded-xl overflow-hidden bg-white/60 dark:bg-black/20 backdrop-blur-xl border border-solid border-white/30 dark:border-white/10 shadow-glass hover:shadow-2xl transition-shadow duration-300">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover" data-alt="A loaf of freshly baked sourdough bread" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDB6clE_EIpuSQjUM6gHYKr6lrQIV29SdCqrUt1r6-f3duTmPiXMiD7gq_iIqouIiJnoX5m2RZqYgTRJmnTbzJlfgJsilIR0FAvf5ZueWJxeXoHISdQsnGpLAt4-LN6PtHuA73J0UCivbeWhmwhylAT1DIV0LhDDdxX1M5fsdFB-UfWffBBC1mcfb10onKkz27AZioJrCZpRaCzwX8oWZhBzf3Zx5M9mYorjS4yhts1upsuZG0kRcGuwNI4Or7vxouqc3DfEG91_bz2");'></div>
+<div class="absolute top-0 right-0 m-2 px-2 py-1 bg-secondary/80 text-white text-xs font-bold rounded-full backdrop-blur-sm">Artisan Goods</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<h4 class="text-lg font-bold leading-tight truncate">Sourdough Bread</h4>
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary mt-1">The Daily Rise</p>
+<div class="mt-4 flex-1 flex flex-col justify-end">
+<div class="text-right">
+<p class="text-sm text-text-light-secondary dark:text-text-dark-secondary">Non-Member: <span class="line-through">$8.00</span></p>
+<p class="text-lg font-bold text-primary">Member: $6.50</p>
+</div>
+<button class="mt-3 w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light-primary text-sm font-bold tracking-[0.015em] hover:opacity-90 transition-opacity">
+<span class="truncate">Add to Cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

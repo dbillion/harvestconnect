@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HarvestConnect - For Sellers</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+      body {
+        background-color: #F8F7F4;
+      }
+      .glassmorphism {
+        background: rgba(255, 255, 255, 0.5);-webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .dark .glassmorphism {background: rgba(40, 50, 40, 0.5); 
+          -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .gradient-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 100vh;
+          background-image: 
+              radial-gradient(at 15% 85%, hsla(140, 50%, 80%, 0.3) 0px, transparent 50%),
+              radial-gradient(at 85% 20%, hsla(35, 100%, 85%, 0.3) 0px, transparent 50%),
+              radial-gradient(at 50% 50%, hsla(90, 50%, 90%, 0.2) 0px, transparent 50%);
+          z-index: -1;
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": {
+                DEFAULT: "#4A7D52",
+                "light": "#D8E6D9"
+              },
+              "secondary": "#A88D68",
+              "accent": "#F2E8DA",
+              "background": "#F8F7F4",
+              "text-main": "#3D2B1F",
+              "text-muted": "#6B5A4C",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background font-display text-text-main">
+<div class="relative w-full overflow-x-hidden">
+<div class="gradient-background"></div>
+<header class="sticky top-0 z-50 w-full px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between whitespace-nowrap px-6 py-2 rounded-xl glassmorphism">
+<div class="flex items-center gap-3 text-text-main">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C10.8954 2 10 2.89543 10 4V6H5C3.89543 6 3 6.89543 3 8V11C3 11.5523 3.44772 12 4 12C4.55228 12 5 11.5523 5 11V8H10V10C10 11.1046 10.8954 12 12 12C13.1046 12 14 11.1046 14 10V8H19V11C19 11.5523 19.4477 12 20 12C20.5523 12 21 11.5523 21 11V8C21 6.89543 20.1046 6 19 6H14V4C14 2.89543 13.1046 2 12 2ZM8.02678 14C6.05978 14.4447 4.44474 16.0598 4.00002 18.0268L4 18.1633V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V18.1633C19.5553 16.0598 17.9402 14.4447 15.9732 14H8.02678Z"></path></svg>
+</div>
+<h2 class="text-text-main text-lg font-bold leading-tight tracking-[-0.015em]">HarvestConnect</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-text-main text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-text-main text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">About</a>
+<a class="text-text-muted text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">For Sellers</a>
+<a class="text-text-muted text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Community</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Join Now</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<section class="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-center p-4">
+<div class="absolute inset-0 bg-black/10 z-0"></div>
+<img alt="A warmly lit farmer's market stall with fresh produce." class="absolute inset-0 w-full h-full object-cover -z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIBvp4J-A9CO_lJZ6YbG_jKcw081ucYjeUSRbYJ7QfoZuBUNjoeZMYh4uOd4OVqW1D1UNesACbkhITRbWpNJRFwx57m_libWKorBYl7an1JmjfG_tunZw9JKXZQkx2vIKlb5khHWNR5G2u0nL3wC9wh8iFijMA-h1LNoNOZSIAOTkQZZpjjaFjcGDqpGPscRUqQg-lmMtv3XITjkcbn6g-6lynLYL5rEOdYB9aih-35ymcT3fplDVyvGvWJMuzJp3qweOBLFqZAdbg"/>
+<div class="relative max-w-4xl mx-auto flex flex-col items-center gap-6 z-10">
+<div class="flex flex-col gap-4 text-center p-8 md:p-12 rounded-xl glassmorphism">
+<h1 class="text-text-main text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-[-0.033em]">
+                            Grow Your Craft, Serve Your Community
+                        </h1>
+<h2 class="text-text-muted text-base md:text-lg font-normal leading-normal max-w-2xl mx-auto">
+                            Join our cooperative platform connecting local farmers, artisans, and tradesmen with an engaged community that values purpose and quality.
+                        </h2>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30">
+<span class="truncate">Become a Seller</span>
+</button>
+</div>
+</section>
+<div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 py-16 lg:py-24">
+<div class="max-w-7xl mx-auto flex flex-col gap-16 lg:gap-24">
+<section>
+<div class="text-center mb-12">
+<h2 class="text-text-main text-3xl md:text-4xl font-bold leading-tight tracking-[-0.015em]">Why Partner With Us?</h2>
+<p class="text-text-muted mt-2 max-w-2xl mx-auto">Discover the unique advantages of joining a community-focused marketplace.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+<div class="flex flex-col gap-3 rounded-xl p-6 text-center items-center glassmorphism">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">group</span>
+<h3 class="text-text-main text-xl font-bold leading-tight">Engaged Community</h3>
+<p class="text-text-muted text-sm font-normal leading-normal">Connect with local church members who value quality, natural products, and skilled services.</p>
+</div>
+<div class="flex flex-col gap-3 rounded-xl p-6 text-center items-center glassmorphism">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">campaign</span>
+<h3 class="text-text-main text-xl font-bold leading-tight">Marketing Support</h3>
+<p class="text-text-muted text-sm font-normal leading-normal">We help you reach a wider audience through our platform's built-in promotional tools and features.</p>
+</div>
+<div class="flex flex-col gap-3 rounded-xl p-6 text-center items-center glassmorphism">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">volunteer_activism</span>
+<h3 class="text-text-main text-xl font-bold leading-tight">Charitable Impact</h3>
+<p class="text-text-muted text-sm font-normal leading-normal">A portion of every transaction supports local charities and community initiatives you care about.</p>
+</div>
+</div>
+</section>
+<section>
+<div class="text-center mb-12">
+<h2 class="text-text-main text-3xl md:text-4xl font-bold leading-tight tracking-[-0.015em]">Your Platform, Your Passion</h2>
+<p class="text-text-muted mt-2 max-w-2xl mx-auto">Tools and features tailored to your unique craft.</p>
+</div>
+<div class="w-full">
+<div class="flex justify-center border-b border-black/10 mb-8 gap-4 sm:gap-8">
+<button class="flex flex-col items-center justify-center border-b-2 border-primary text-text-main pb-3 pt-2 px-2">
+<p class="text-sm sm:text-base font-bold leading-normal tracking-[0.015em]">For Farmers</p>
+</button>
+<button class="flex flex-col items-center justify-center border-b-2 border-transparent text-text-muted hover:text-text-main pb-3 pt-2 px-2 transition-colors">
+<p class="text-sm sm:text-base font-bold leading-normal tracking-[0.015em]">For Tradesmen</p>
+</button>
+<button class="flex flex-col items-center justify-center border-b-2 border-transparent text-text-muted hover:text-text-main pb-3 pt-2 px-2 transition-colors">
+<p class="text-sm sm:text-base font-bold leading-normal tracking-[0.015em]">For Artists</p>
+</button>
+</div>
+<div class="p-4 sm:p-8 rounded-xl glassmorphism">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<div class="w-full md:w-1/2">
+<img alt="A farmer holding a basket of fresh, colorful vegetables in a sunlit field." class="rounded-lg object-cover w-full h-64 md:h-80" data-alt="A farmer holding a basket of fresh, colorful vegetables in a sunlit field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCts0Db5NS8-Bxv2ktegZhZVZ-Bz-gkCM1Jgcbq478XkBTBTvE-Ydi_uI1OOF-a1XlYPFnywO5aWoSeTpcOGDAiFMEHWyuYJFyqcdujuokFdYogAoRIiFt_tAaQwTQif1qYkt2LGepIk6gyfVcuNpTvuZSC0Djw2a-G5RpLHHcx0MJIE2-pd-1b_EvO1j_BWBpEqOhGmwerK8MjACBu1sQLbgeCA_vtvTv7Kllf50sCpNkHRc8yomMMjIxCirY1-qjlChGzYRdrsWJ7"/>
+</div>
+<div class="w-full md:w-1/2 flex flex-col gap-4">
+<h3 class="text-text-main text-2xl font-bold">Nourish the Community</h3>
+<p class="text-text-muted">Share the bounty of your harvest. Our platform makes it easy to list fresh produce, manage seasonal offerings, and connect with customers who appreciate farm-to-table quality.</p>
+<ul class="space-y-2 mt-2">
+<li class="flex items-start gap-3 text-text-muted"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span>Easily list and manage seasonal produce.</span></li>
+<li class="flex items-start gap-3 text-text-muted"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span>Create a beautiful farm profile to tell your story.</span></li>
+<li class="flex items-start gap-3 text-text-muted"><span class="material-symbols-outlined text-primary text-xl mt-0.5">check_circle</span><span>Engage with customers through CSA program tools.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="text-center mb-12">
+<h2 class="text-text-main text-3xl md:text-4xl font-bold leading-tight tracking-[-0.015em]">Getting Started Is Simple</h2>
+</div>
+<div class="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-4 px-4">
+<div class="absolute top-10 md:top-1/2 left-10 md:left-0 w-0.5 h-[calc(100%-80px)] md:w-full md:h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent -translate-y-1/2 -z-10"></div>
+<div class="flex items-center text-left md:text-center md:flex-col gap-4 max-w-sm md:max-w-[250px] bg-background px-2">
+<div class="flex-shrink-0 flex items-center justify-center size-20 rounded-full glassmorphism border-2 border-primary text-primary text-3xl font-bold">1</div>
+<div>
+<h3 class="text-text-main font-bold text-xl mt-2">Create Your Profile</h3>
+<p class="text-text-muted text-sm">Sign up in minutes and tell your story. Showcase your farm, workshop, or studio.</p>
+</div>
+</div>
+<div class="flex items-center text-left md:text-center md:flex-col gap-4 max-w-sm md:max-w-[250px] bg-background px-2">
+<div class="flex-shrink-0 flex items-center justify-center size-20 rounded-full glassmorphism border-2 border-primary text-primary text-3xl font-bold">2</div>
+<div>
+<h3 class="text-text-main font-bold text-xl mt-2">List Your Offerings</h3>
+<p class="text-text-muted text-sm">Add your products, services, or artwork with photos, descriptions, and pricing.</p>
+</div>
+</div>
+<div class="flex items-center text-left md:text-center md:flex-col gap-4 max-w-sm md:max-w-[250px] bg-background px-2">
+<div class="flex-shrink-0 flex items-center justify-center size-20 rounded-full glassmorphism border-2 border-primary text-primary text-3xl font-bold">3</div>
+<div>
+<h3 class="text-text-main font-bold text-xl mt-2">Connect &amp; Serve</h3>
+<p class="text-text-muted text-sm">Engage with community members, fulfill orders, and grow your local presence.</p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="text-center mb-12">
+<h2 class="text-text-main text-3xl md:text-4xl font-bold leading-tight tracking-[-0.015em]">Voices of Our Community</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+<div class="flex flex-col gap-4 p-8 rounded-xl glassmorphism">
+<p class="text-text-muted italic">"This platform has been a blessing. It connected me with so many wonderful families who truly appreciate the hard work that goes into growing food. It's more than a market; it's a ministry."</p>
+<div class="flex items-center gap-4 mt-2">
+<img class="size-12 rounded-full object-cover" data-alt="Portrait of Sarah J." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC96PioeUclFzLK-QkR9akEGiKyE8uNv59sYw4w4fm3eqgIu2FKLUSzOdySe1W-XY_XUJsAaTA6Urxj4oK2BV5IImfk3K6chBPv3-oisoij9yw4GXzvj4P60zeHlVeiRIlQdTDKda2DZLgHj-7Tbp3Hi49CY9i5Qdevmvcv8RrpIcjNeI3O8Zfz9_7R0UJxiPR-ITBTJgUCQXe5xtCRP3ZBbUVKNlUHreYDvOmr8Y17KDtz_eK0uRI60iiuZXf4_mlJh9a0T5DKI-9Z"/>
+<div>
+<h4 class="text-text-main font-bold">Sarah J.</h4>
+<p class="text-primary text-sm font-medium">Local Farmer</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-8 rounded-xl glassmorphism">
+<p class="text-text-muted italic">"As a woodworker, finding the right audience is key. Here, I've found customers who value craftsmanship and faith. The support from the community has been incredible."</p>
+<div class="flex items-center gap-4 mt-2">
+<img class="size-12 rounded-full object-cover" data-alt="Portrait of David M." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnb-FpeHWd6leIWO-9Wtr06Kui7X-ynlF2lYgDFx_7H_FEIilTGfcZBu_DhqP_mUqX6uk2AQsz408S13Q3UXdxpKxOx6QHWUGA1IRc3OmhsDqURUkvEFztpdT5mu_lC9doLmbplYYyQtkVxGg35UhXOTZFq73wIH4Fdwp87Mtl4mglWulO6eSvLYPgml-mK0oMxcVD1ahjOG8wLZ2OKkK1tbntLIfBsy-2j2tay9xxFwg64dgSEhHffAdXyDVLBDnpXQnbX69QtNFI"/>
+<div>
+<h4 class="text-text-main font-bold">David M.</h4>
+<p class="text-primary text-sm font-medium">Tradesman</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="p-8 md:p-12 rounded-xl text-center glassmorphism relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-light/50 to-accent/50 opacity-50"></div>
+<div class="relative">
+<h2 class="text-text-main text-3xl md:text-4xl font-bold leading-tight tracking-[-0.015em]">Ready to Share Your Gifts?</h2>
+<p class="text-text-muted mt-4 mb-8 max-w-2xl mx-auto">Join a marketplace where your work is valued and your faith is celebrated. Create your free profile today and start connecting with your community.</p>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] mx-auto hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30">
+<span class="truncate">Start Selling Today</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

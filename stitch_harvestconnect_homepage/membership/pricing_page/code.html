@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HarvestConnect Membership</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style type="text/tailwindcss">
+      @layer base {
+        :root {
+          --brand-brown: 151 72% 33%;
+          --brand-beige: 42 53% 93%;
+          --brand-green: 122 39% 49%;
+        }
+      }
+      .glassmorphic-card {
+        background-color: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+      }
+      body {
+        background: linear-gradient(135deg, #F9F5EC 0%, #D8C7A3 100%);
+        background-attachment: fixed;
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "brand": {
+                "brown": "hsl(var(--brand-brown) / <alpha-value>)",
+                "beige": "hsl(var(--brand-beige) / <alpha-value>)",
+                "green": "hsl(var(--brand-green) / <alpha-value>)"
+              },
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display text-brand-brown">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center py-5 px-4 sm:px-8 md:px-20 lg:px-40">
+<div class="layout-content-container flex flex-col w-full max-w-7xl flex-1">
+<header class="flex items-center justify-between whitespace-nowrap px-4 sm:px-10 py-5">
+<div class="flex items-center gap-3">
+<div class="size-8 text-brand-green">
+<svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.79 12.83l-5.3-1.54-.76-3.38c-.33-1.48-1.76-2.4-3.23-2.07L4.9 8.16c-1.48.33-2.4 1.76-2.07 3.23l.76 3.38 5.3 1.54.76 3.38c.33 1.48 1.76 2.4 3.23 2.07l7.6-2.32c1.48-.33 2.4-1.76 2.07-3.23l-.76-3.38zM9.43 14.57L4.5 13.11l-.57-2.52 4.93 1.46.57 2.52zm.63-3.94L5.13 9.17l-.58-2.52 4.93 1.46.58 2.51zm3.93.63l4.93-1.46.57 2.52-4.93 1.46-.57-2.52zm.58 3.94l.57 2.52-4.93 1.46-.57-2.52 4.93-1.46z"></path></svg>
+</div>
+<h2 class="text-brand-brown text-xl font-bold leading-tight tracking-[-0.015em]">HarvestConnect</h2>
+</div>
+<div class="hidden md:flex flex-1 items-center justify-end gap-2">
+<div class="flex items-center gap-8">
+<a class="text-brand-brown/70 hover:text-brand-brown text-sm font-medium leading-normal transition-colors" href="#">Marketplace</a>
+<a class="text-brand-brown/70 hover:text-brand-brown text-sm font-medium leading-normal transition-colors" href="#">Community</a>
+<a class="text-brand-brown/70 hover:text-brand-brown text-sm font-medium leading-normal transition-colors" href="#">Our Mission</a>
+<a class="text-brand-brown text-sm font-semibold leading-normal" href="#">Membership</a>
+</div>
+<div class="flex items-center gap-2 ml-6">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-brand-brown text-sm font-semibold leading-normal tracking-[0.015em] hover:bg-black/5 transition-colors">
+<span class="truncate">Log In</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-brand-green text-white text-sm font-semibold leading-normal tracking-[0.015em] hover:bg-brand-green/90 transition-colors shadow-sm">
+<span class="truncate">Join Now</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex flex-col items-center gap-12 py-16 px-4">
+<div class="flex flex-col gap-4 text-center max-w-3xl">
+<h1 class="text-brand-brown text-5xl md:text-6xl font-extrabold leading-tight tracking-[-0.033em]">Become a Part of Our Community</h1>
+<p class="text-brand-brown/80 text-lg font-normal leading-relaxed">Choose a plan that fits your journey and helps our community flourish. By joining, you support local farmers, artisans, and our shared faith-based mission.</p>
+</div>
+<div class="flex justify-center px-4 py-3 w-full max-w-sm">
+<div class="flex h-12 flex-1 items-center justify-center rounded-xl glassmorphic-card p-1.5">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white/50 text-brand-brown/70 has-[:checked]:text-brand-brown has-[:checked]:font-semibold text-sm font-medium leading-normal transition-all">
+<span class="truncate">Monthly</span>
+<input class="invisible w-0" name="billing-cycle" type="radio" value="Monthly"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white/50 text-brand-brown/70 has-[:checked]:text-brand-brown has-[:checked]:font-semibold text-sm font-medium leading-normal transition-all">
+<span class="truncate">Annually (Save 20%)</span>
+<input checked="" class="invisible w-0" name="billing-cycle" type="radio" value="Annually (Save 20%)"/>
+</label>
+</div>
+</div>
+<div class="grid w-full grid-cols-1 gap-8 @3xl:grid-cols-3">
+<div class="flex flex-1 flex-col gap-8 rounded-xl glassmorphic-card p-8">
+<div class="flex flex-col gap-4">
+<h3 class="text-brand-brown text-xl font-bold leading-tight">Free Account</h3>
+<p class="flex items-baseline gap-1.5 text-brand-brown">
+<span class="text-brand-brown text-5xl font-extrabold leading-tight tracking-[-0.033em]">$0</span>
+<span class="text-brand-brown/80 text-base font-medium leading-tight">always</span>
+</p>
+<p class="text-brand-brown/80 text-sm">For browsing the marketplace and connecting with creators.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-brand-brown/10 text-brand-brown text-sm font-bold leading-normal tracking-[0.015em] hover:bg-brand-brown/20 transition-colors">
+<span class="truncate">Create Free Account</span>
+</button>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        Full marketplace access
+                                    </div>
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        Connect with creators
+                                    </div>
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        Standard newsletters
+                                    </div>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-8 rounded-xl glassmorphic-card p-8 border-2 border-brand-green/50 shadow-2xl shadow-brand-green/20 scale-105 bg-white/30">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-brand-brown text-xl font-bold leading-tight">Community Supporter</h3>
+<p class="text-white text-xs font-bold leading-normal tracking-[0.015em] rounded-full bg-brand-green px-3 py-1 text-center">Most Popular</p>
+</div>
+<p class="flex items-baseline gap-1.5 text-brand-brown">
+<span class="text-brand-brown text-5xl font-extrabold leading-tight tracking-[-0.033em]">$16</span>
+<span class="text-brand-brown/80 text-base font-medium leading-tight">per month</span>
+</p>
+<p class="text-brand-brown/80 text-sm">Maximize your support for local artisans and our church's mission.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-brand-green text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-brand-green/90 transition-colors shadow-md">
+<span class="truncate">Become a Supporter</span>
+</button>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        All Member benefits
+                                    </div>
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        Deeper discounts &amp; offers
+                                    </div>
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        Feature in community newsletter
+                                    </div>
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        Exclusive content &amp; events
+                                    </div>
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+<strong class="font-semibold">5%</strong> goes to the Community Fund
+                                    </div>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-8 rounded-xl glassmorphic-card p-8">
+<div class="flex flex-col gap-4">
+<h3 class="text-brand-brown text-xl font-bold leading-tight">Church Member</h3>
+<p class="flex items-baseline gap-1.5 text-brand-brown">
+<span class="text-brand-brown text-5xl font-extrabold leading-tight tracking-[-0.033em]">$8</span>
+<span class="text-brand-brown/80 text-base font-medium leading-tight">per month</span>
+</p>
+<p class="text-brand-brown/80 text-sm">For active members looking for deeper engagement and value.</p>
+</div>
+<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-brand-brown/10 text-brand-brown text-sm font-bold leading-normal tracking-[0.015em] hover:bg-brand-brown/20 transition-colors">
+<span class="truncate">Become a Member</span>
+</button>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        All Free benefits
+                                    </div>
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        Member-exclusive discounts
+                                    </div>
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        Early access to new products
+                                    </div>
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+                                        Priority booking for services
+                                    </div>
+<div class="flex items-center gap-3 text-sm font-normal leading-normal text-brand-brown/90">
+<span class="material-symbols-outlined text-brand-green text-xl">check_circle</span>
+<strong class="font-semibold">2%</strong> goes to the Community Fund
+                                    </div>
+</div>
+</div>
+</div>
+<p class="text-brand-brown/80 text-sm font-medium leading-normal pt-4 px-4 text-center underline cursor-pointer hover:text-brand-brown transition-colors">Compare all features</p>
+</main>
+<footer class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-solid border-black/10 px-10 py-8 mt-16">
+<p class="text-brand-brown/60 text-sm">© 2024 HarvestConnect. All rights reserved.</p>
+<div class="flex items-center gap-6 text-sm font-medium text-brand-brown/80">
+<a class="hover:text-brand-brown transition-colors" href="#">FAQs</a>
+<a class="hover:text-brand-brown transition-colors" href="#">Contact</a>
+<a class="hover:text-brand-brown transition-colors" href="#">Terms of Service</a>
+</div>
+</footer>
+</div>
+</div>
+</div>
+</div>
+</body></html>

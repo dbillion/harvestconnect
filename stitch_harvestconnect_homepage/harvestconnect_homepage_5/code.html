@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About HarvestConnect - Our Story, Mission, and Team</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#52d411",
+              "background-light": "#f6f8f6",
+              "background-dark": "#162210",
+              "text-light": "#131811",
+              "text-dark": "#f6f8f6",
+              "card-light": "rgba(255, 255, 255, 0.6)",
+              "card-dark": "rgba(34, 51, 27, 0.5)",
+              "border-light": "rgba(255, 255, 255, 0.8)",
+              "border-dark": "rgba(68, 85, 60, 0.7)",
+              "accent-light": "#ffc700",
+              "accent-dark": "#ffd640",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            backdropBlur: {
+              'xl': '24px',
+            },
+            boxShadow: {
+                'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        .accordion-item.open .accordion-content {
+            max-height: 500px;}
+        .accordion-item.open .accordion-toggle .rotate-icon {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative w-full overflow-x-hidden">
+<div class="absolute inset-0 z-[-1]">
+<img class="w-full h-full object-cover object-center opacity-40 dark:opacity-20" data-alt="A birds-eye view of a lush green farm landscape with rolling hills and a winding road at sunrise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsc8tbv0f-EwOzvL-1-AHjlY_eFDlN0ZASFeOWKyO4e5vRlQTT5IwCy0fIlazQxzoOmbJaXicxfRvK8d0OHqjIE2Ut26bzAHkgkh6gjiH7lg1u_pHiE3L0l12rhLWRz3bhZfbWwOTOjmaiD850uxet-knoLdVOfiZYUaKsmnCw3ubxwMiZuPFEheoPg8qHCNmIkxtlqj07KCVBeGKab94r6tDbH3P6jwkdukbVRhaWLl60RcJ_dgQlnoulKepWiG6vIPqrGHrY3aUF"/>
+<div class="absolute inset-0 bg-gradient-to-b from-background-light/30 via-background-light to-background-light dark:from-background-dark/30 dark:via-background-dark dark:to-background-dark"></div>
+</div>
+<div class="relative z-10">
+<header class="sticky top-0 z-50">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="my-4 flex items-center justify-between whitespace-nowrap rounded-xl border border-border-light bg-card-light p-3 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark">
+<div class="flex items-center gap-4 text-text-light dark:text-text-dark">
+<div class="size-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">HarvestConnect</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-sm font-medium leading-normal transition-colors hover:text-primary dark:hover:text-primary" href="#">Features</a>
+<a class="text-sm font-medium leading-normal transition-colors hover:text-primary dark:hover:text-primary" href="#">Membership</a>
+<a class="text-sm font-medium leading-normal transition-colors hover:text-primary dark:hover:text-primary" href="#">About</a>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
+<span class="truncate">Log In</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-20 text-center">
+<div class="w-full max-w-4xl mx-auto rounded-xl border border-border-light bg-card-light p-8 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark sm:p-12 md:p-16">
+<h1 class="text-4xl font-black leading-tight tracking-tighter sm:text-5xl md:text-6xl text-text-light dark:text-text-dark">
+                    Our Story: Sowing Seeds of Community
+                </h1>
+<p class="mt-4 text-base font-normal leading-normal text-text-light/80 dark:text-text-dark/80 sm:text-lg">
+                    Discover the heart behind HarvestConnect—our mission, our people, and our unwavering commitment to fostering a faith-based cooperative economy.
+                </p>
+</div>
+</section>
+<section class="py-16 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+<div class="lg:col-span-3">
+<div class="rounded-xl border border-border-light bg-card-light p-8 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark">
+<h2 class="text-3xl font-bold leading-tight tracking-tighter">Our Founding Vision</h2>
+<p class="mt-4 text-text-light/80 dark:text-text-dark/80">
+                        HarvestConnect was born from a simple yet profound idea: to create a marketplace that not only provides natural, high-quality goods but also strengthens the bonds of our church community. We envisioned a platform where faith, commerce, and fellowship could intertwine, empowering local farmers, artisans, and tradesmen while providing members with products and services they can trust. Our foundation is built on the principles of stewardship, integrity, and mutual support, aiming to cultivate a thriving ecosystem that glorifies God and serves His people.
+                    </p>
+</div>
+</div>
+<div class="lg:col-span-2">
+<div class="rounded-xl border border-border-light bg-card-light p-8 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark">
+<h2 class="text-3xl font-bold leading-tight tracking-tighter">Meet Our Team</h2>
+<div class="mt-6 space-y-6">
+<div class="flex items-center gap-4">
+<img class="h-16 w-16 rounded-full object-cover" data-alt="Portrait of Sarah Jenkins, a smiling woman with blonde hair." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtzUak3z8Hp-oXZq9qTldpblieeANfu30v5THunXnoHDtVlE1zC3Z2r_yjSCHPKfnm655KASXd-MJ7aRhQ7GH9aeszX0kCpg5xA8GSx6UgWahkSvfXZozdLBW0CQLD2S-cRNQCLcVot-YlOyAKiwx6_3sLd_bybI9FJ00UkDp1tZFMZSB05sTb_hzGUhb5OflHoKkSclkzBaCTCbVMxTnaolON_pntUoiNnXK2f1jMgIs0w1EQcOuwW9jnj6lqKqL2yTUgzqnaJ8H3"/>
+<div>
+<h3 class="font-bold">Sarah Jenkins</h3>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">Co-Founder &amp; Community Director</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img class="h-16 w-16 rounded-full object-cover" data-alt="Portrait of David Chen, a smiling man with a beard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1isFq4YcjXQ1oilANNK7iYSrMGkBjyPNNd6QMAvg1gKDGybfo62GdDdNRU6yUcCVapZowctMQgOhEvxRbHS_UX04o77u8n2BeH__Pl-QRp1iRJnTqRnIdC7G0ME9Qqm7O7DUweTFTEIo91W5cfvoKOxFBY2T7xw9IrGMqbQBZHSP41Uh4Ih_VjFRbnlCl8gLXtTAxubh4VZ--O4wQUzZs0x6HnZJ_Crbt93jXaTixETLpAQPvs0PYhaD2vBbzIK8wZ8h4LrVgW0KZ"/>
+<div>
+<h3 class="font-bold">David Chen</h3>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">Co-Founder &amp; Farmer Relations</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img class="h-16 w-16 rounded-full object-cover" data-alt="Portrait of Maria Rodriguez, a smiling woman with glasses." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYkt85LQpfobTfY9cnTgQxY9onv1yqjzmyXOSxTp6-KtQeN1d0OmWVGJhcLjNVptrEMeGll2rfZo5T8Y7A-OJ8GR6hHoZxHOU8pUCBx_dsU8fGEO4TNW2fnJ_zDYcpJSwWkVtP4rbJgAav4ooEf00cw0-e8URk4cvUEbkDnIyPpmKmDT_z6Q7aHj-KBJ7KYFol5iFOxE1jJcKIuswEV6SY_Csc2x2SrVHCB3y66Qd3AOt1BCedHxuMbyxgmUqEai2vurlw2iKKswXW"/>
+<div>
+<h3 class="font-bold">Maria Rodriguez</h3>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">Artisan &amp; Tradesmen Liason</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16">
+<div class="text-center">
+<h2 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">Join Our Growing Community</h2>
+<p class="mt-4 mx-auto max-w-3xl text-base font-normal leading-normal text-text-light/80 dark:text-text-dark/80">
+                    Whether you're looking to sell, buy, or partner with us, there's a place for you at HarvestConnect.
+                </p>
+</div>
+<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="rounded-xl border border-border-light bg-card-light p-8 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark flex flex-col items-start">
+<span class="material-symbols-outlined text-primary text-4xl">volunteer_activism</span>
+<h3 class="mt-4 text-2xl font-bold">Get Involved</h3>
+<p class="mt-2 text-text-light/80 dark:text-text-dark/80">Become a member to support local producers, volunteer at our market events, or join our prayer team. Every contribution strengthens our cooperative.</p>
+<button class="mt-6 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em] transition-colors hover:bg-primary hover:text-background-dark">
+<span class="truncate">Learn More</span>
+</button>
+</div>
+<div class="rounded-xl border border-border-light bg-card-light p-8 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark flex flex-col items-start">
+<span class="material-symbols-outlined text-primary text-4xl">handshake</span>
+<h3 class="mt-4 text-2xl font-bold">Partnership Opportunities</h3>
+<p class="mt-2 text-text-light/80 dark:text-text-dark/80">We collaborate with local churches, businesses, and organizations that share our values. Let's work together to build a stronger community.</p>
+<button class="mt-6 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em] transition-colors hover:bg-primary hover:text-background-dark">
+<span class="truncate">Partner With Us</span>
+</button>
+</div>
+</div>
+</section>
+<section class="py-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div>
+<h2 class="text-3xl font-bold leading-tight tracking-tighter">Frequently Asked Questions</h2>
+<div class="mt-8 space-y-4">
+<div class="accordion-item rounded-xl border border-border-light bg-card-light/80 p-4 backdrop-blur-xl dark:border-border-dark dark:bg-card-dark/80">
+<button class="accordion-toggle w-full flex justify-between items-center text-left font-semibold">
+<span>How do I become a member?</span>
+<span class="material-symbols-outlined rotate-icon transition-transform">add</span>
+</button>
+<div class="accordion-content pt-2 text-text-light/80 dark:text-text-dark/80">
+<p>You can sign up on our Membership page! We have tiers for community members, artisans, and farmers, each with unique benefits tailored to your needs.</p>
+</div>
+</div>
+<div class="accordion-item rounded-xl border border-border-light bg-card-light/80 p-4 backdrop-blur-xl dark:border-border-dark dark:bg-card-dark/80">
+<button class="accordion-toggle w-full flex justify-between items-center text-left font-semibold">
+<span>What are the requirements for selling on the platform?</span>
+<span class="material-symbols-outlined rotate-icon transition-transform">add</span>
+</button>
+<div class="accordion-content pt-2 text-text-light/80 dark:text-text-dark/80">
+<p>We welcome faith-based farmers, artisans, and tradesmen who align with our community values. You'll need an Artisan Partner or Farmstead Patron membership to create a storefront.</p>
+</div>
+</div>
+<div class="accordion-item rounded-xl border border-border-light bg-card-light/80 p-4 backdrop-blur-xl dark:border-border-dark dark:bg-card-dark/80">
+<button class="accordion-toggle w-full flex justify-between items-center text-left font-semibold">
+<span>How does the charitable giving program work?</span>
+<span class="material-symbols-outlined rotate-icon transition-transform">add</span>
+</button>
+<div class="accordion-content pt-2 text-text-light/80 dark:text-text-dark/80">
+<p>A portion of every transaction fee is allocated to our charitable giving fund. The community helps nominate and vote on local charities and causes to support each quarter.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-xl border border-border-light bg-card-light p-8 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark">
+<h2 class="text-3xl font-bold leading-tight tracking-tighter">Contact Us</h2>
+<p class="mt-2 text-text-light/80 dark:text-text-dark/80">Have questions? We'd love to hear from you.</p>
+<form class="mt-6 space-y-4">
+<input class="w-full rounded-lg border-border-light bg-background-light/50 px-4 py-2 placeholder-text-light/50 focus:border-primary focus:ring-primary dark:border-border-dark dark:bg-background-dark/50 dark:placeholder-text-dark/50" placeholder="Your Name" type="text"/>
+<input class="w-full rounded-lg border-border-light bg-background-light/50 px-4 py-2 placeholder-text-light/50 focus:border-primary focus:ring-primary dark:border-border-dark dark:bg-background-dark/50 dark:placeholder-text-dark/50" placeholder="Your Email" type="email"/>
+<textarea class="w-full rounded-lg border-border-light bg-background-light/50 px-4 py-2 placeholder-text-light/50 focus:border-primary focus:ring-primary dark:border-border-dark dark:bg-background-dark/50 dark:placeholder-text-dark/50" placeholder="Your Message" rows="4"></textarea>
+<button class="w-full flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-background-dark text-base font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105" type="submit">
+<span class="truncate">Send Message</span>
+</button>
+</form>
+</div>
+</section>
+<section class="py-16 text-center">
+<div class="rounded-xl border border-border-light bg-card-light p-8 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark">
+<h2 class="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">Visit Us</h2>
+<p class="mt-4 mx-auto max-w-3xl text-base font-normal leading-normal text-text-light/80 dark:text-text-dark/80">
+                Connect with us in person at our community office and seasonal markets.
+            </p>
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1 text-3xl">location_on</span>
+<div>
+<h3 class="text-xl font-bold">Office &amp; Pickup Location</h3>
+<p class="text-text-light/80 dark:text-text-dark/80">123 Community Way, Faithville, USA</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1 text-3xl">schedule</span>
+<div>
+<h3 class="text-xl font-bold">Hours of Operation</h3>
+<ul class="text-text-light/80 dark:text-text-dark/80">
+<li><strong>Office:</strong> Mon-Fri, 9am - 4pm</li>
+<li><strong>Seasonal Market:</strong> Sat, 8am - 1pm (May-Oct)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<footer class="bg-background-dark/80 text-background-light/80 dark:bg-background-dark/90">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-3">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path><path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path></svg>
+</div>
+<h2 class="text-lg font-bold text-white">HarvestConnect</h2>
+</div>
+<p class="mt-4 text-sm">Nourishing community, one connection at a time.</p>
+</div>
+<div>
+<h3 class="font-bold text-white">Platform</h3>
+<ul class="mt-4 space-y-2 text-sm">
+<li><a class="hover:text-primary" href="#">Features</a></li>
+<li><a class="hover:text-primary" href="#">Membership</a></li>
+<li><a class="hover:text-primary" href="#">Marketplace</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-white">Company</h3>
+<ul class="mt-4 space-y-2 text-sm">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">Our Mission</a></li>
+<li><a class="hover:text-primary" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-white">Legal</h3>
+<ul class="mt-4 space-y-2 text-sm">
+<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-8 border-t border-background-light/20 pt-8 text-center text-sm">
+<p>© 2024 HarvestConnect. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</div>
+<script>
+    document.querySelectorAll('.accordion-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const accordionItem = button.parentElement;
+            accordionItem.classList.toggle('open');
+        });
+    });
+</script>
+
+</body></html>

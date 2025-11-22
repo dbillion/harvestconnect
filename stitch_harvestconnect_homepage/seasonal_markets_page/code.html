@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Faith Cooperative - Upcoming Markets</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#D2A272", // Earthy gold/wheat
+            "background-light": "#F9F6F1", // Warm off-white
+            "background-dark": "#251E17", // Deep brown
+            "accent": "#8C6A50", // Muted brown
+            "charcoal": "#4C4037", // Dark brown text
+            "base-light": "#FDFBF7", // Lighter warm off-white
+            "base-dark": "#30261E",
+            "glass-border-light": "rgba(255, 255, 255, 0.5)",
+            "glass-border-dark": "rgba(210, 162, 114, 0.2)",
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+        background-color: #F9F6F1;
+    }
+    .dark body {
+        background-color: #251E17;
+    }
+    .gradient-background {
+        background-image: radial-gradient(at 27% 37%, hsla(27, 49%, 76%, 0.3) 0px, transparent 50%),
+                          radial-gradient(at 97% 21%, hsla(38, 70%, 75%, 0.2) 0px, transparent 50%),
+                          radial-gradient(at 52% 99%, hsla(35, 38%, 68%, 0.3) 0px, transparent 50%),
+                          radial-gradient(at 10% 29%, hsla(21, 56%, 66%, 0.2) 0px, transparent 50%),
+                          radial-gradient(at 97% 96%, hsla(38, 60%, 73%, 0.25) 0px, transparent 50%),
+                          radial-gradient(at 33% 50%, hsla(22, 63%, 67%, 0.2) 0px, transparent 50%),
+                          radial-gradient(at 79% 53%, hsla(28, 63%, 72%, 0.3) 0px, transparent 50%);
+    }
+    .dark .gradient-background {
+        background-image: radial-gradient(at 27% 37%, hsla(27, 49%, 26%, 0.2) 0px, transparent 50%),
+                          radial-gradient(at 97% 21%, hsla(38, 70%, 25%, 0.15) 0px, transparent 50%),
+                          radial-gradient(at 52% 99%, hsla(35, 38%, 18%, 0.2) 0px, transparent 50%),
+                          radial-gradient(at 10% 29%, hsla(21, 56%, 16%, 0.15) 0px, transparent 50%),
+                          radial-gradient(at 97% 96%, hsla(38, 60%, 23%, 0.2) 0px, transparent 50%),
+                          radial-gradient(at 33% 50%, hsla(22, 63%, 17%, 0.15) 0px, transparent 50%),
+                          radial-gradient(at 79% 53%, hsla(28, 63%, 22%, 0.2) 0px, transparent 50%);
+    }
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.4);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .dark .glassmorphism {
+      background: rgba(48, 38, 30, 0.4);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(210, 162, 114, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-charcoal dark:text-gray-200 font-display">
+<div class="relative w-full overflow-x-hidden gradient-background">
+<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-7xl px-4">
+<nav class="flex items-center justify-between whitespace-nowrap rounded-xl p-3 shadow-lg glassmorphism">
+<div class="flex items-center gap-4 text-charcoal dark:text-white">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.64,6.36,12,1.71,2.36,6.36a2.12,2.12,0,0,0-1.2,1.88V15.76a2.12,2.12,0,0,0,1.2,1.88l9.64,4.65,9.64-4.65a2.12,2.12,0,0,0,1.2-1.88V8.24A2.12,2.12,0,0,0,21.64,6.36ZM12,3.3l7.91,3.8L12,11,4.09,7.1ZM3.16,15.17V8.83l8,3.85v6.34Zm17.68,0-8,3.85V12.68l8-3.85Z"></path></svg>
+</div>
+<h2 class="text-xl font-bold">HarvestConnect</h2>
+</div>
+<div class="hidden lg:flex flex-1 justify-center gap-8">
+<div class="flex items-center gap-9 text-base font-medium text-charcoal/80 dark:text-gray-300">
+<a class="hover:text-accent dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-charcoal dark:text-primary font-bold" href="#">Markets</a>
+<a class="hover:text-accent dark:hover:text-primary transition-colors" href="#">Vendors</a>
+<a class="hover:text-accent dark:hover:text-primary transition-colors" href="#">About</a>
+<a class="hover:text-accent dark:hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+<div class="hidden lg:flex gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 hover:bg-primary/30 text-charcoal dark:text-white text-sm font-bold transition-colors">
+<span class="truncate">Login</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold transition-transform hover:scale-105">
+<span class="truncate">Sign Up</span>
+</button>
+</div>
+<div class="lg:hidden">
+<button class="p-2 rounded-lg hover:bg-black/10 dark:hover:bg-white/10">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="flex flex-col items-center">
+<section class="w-full h-[60vh] min-h-[500px] flex items-center justify-center relative pt-24">
+<div class="absolute inset-0 bg-cover bg-center opacity-30 dark:opacity-20" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBIBvp4J-A9CO_lJZ6YbG_jKcw081ucYjeUSRbYJ7QfoZuBUNjoeZMYh4uOd4OVqW1D1UNesACbkhITRbWpNJRFwx57m_libWKorBYl7an1JmjfG_tunZw9JKXZQkx2vIKlb5khHWNR5G2u0nL3wC9wh8iFijMA-h1LNoNOZSIAOTkQZZpjjaFjcGDqpGPscRUqQg-lmMtv3XITjkcbn6g-6lynLYL5rEOdYB9aih-35ymcT3fplDVyvGvWJMuzJp3qweOBLFqZAdbg');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-light via-background-light/80 to-transparent dark:from-background-dark dark:via-background-dark/80 dark:to-transparent"></div>
+<div class="relative text-center px-4">
+<h1 class="text-5xl md:text-7xl font-black tracking-tighter text-charcoal dark:text-white">Seasonal Markets</h1>
+<p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl font-light text-charcoal/80 dark:text-gray-300">Gather in community to celebrate the seasons. Discover local, natural, and handmade goods from our trusted family of creators.</p>
+</div>
+</section>
+<section class="w-full max-w-7xl pb-20 px-4 -mt-16" id="markets">
+<div class="w-full rounded-xl glassmorphism p-4 md:p-8 shadow-lg">
+<div class="text-center mb-8">
+<h2 class="text-4xl font-bold tracking-tight mb-2 text-charcoal dark:text-white">Upcoming Markets</h2>
+<p class="text-charcoal/70 dark:text-gray-300">Mark your calendars for fellowship and fine goods.</p>
+</div>
+<div class="pb-3">
+<div class="flex justify-center border-b border-glass-border-light dark:border-glass-border-dark px-4 gap-8">
+<a class="flex items-center gap-2 border-b-2 border-b-primary pb-3 pt-4" href="#">
+<span class="material-symbols-outlined text-primary text-xl">park</span>
+<p class="text-sm font-bold tracking-[0.015em] text-charcoal dark:text-white">Spring Market</p>
+</a>
+<a class="flex items-center gap-2 border-b-2 border-b-transparent text-charcoal/60 dark:text-gray-400 hover:text-primary pb-3 pt-4 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">bakery_dining</span>
+<p class="text-sm font-bold tracking-[0.015em]">Thanksgiving Market</p>
+</a>
+<a class="flex items-center gap-2 border-b-2 border-b-transparent text-charcoal/60 dark:text-gray-400 hover:text-primary pb-3 pt-4 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">celebration</span>
+<p class="text-sm font-bold tracking-[0.015em]">Christmas Market</p>
+</a>
+</div>
+</div>
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-center">
+<div class="w-full @xl:w-1/2 bg-center bg-no-repeat aspect-[4/3] @xl:aspect-video bg-cover rounded-xl" data-alt="Vibrant display of fresh spring vegetables and flowers at an outdoor market stall." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7HK4omthctYYq-bP9xlJ9_Zk1zSznxvw6rM4zUXWabHzIGpLd0SalC1lbf6Xqb46BPRie-k3-izWzwjWhELHGpKBvrDEkZ6FT91Ahfe4pamigVu6XxQjklkvBlwzGFhK5scXUyBnPtjY3xznXNxbrUZAtyic9r91auITEBt-h8kd1iZp8dvOYxO-fGnY-cGt17ZYRweHz365ugJwYMdNorAAqAkPiQ5IU7ghk5rs89aCWjbYs6a2lpQ_1MyqwPv0GvFEk6Pol7kEW");'></div>
+<div class="flex w-full @xl:w-1/2 min-w-72 grow flex-col items-start justify-center gap-2 py-4 @xl:px-8">
+<p class="text-primary text-sm font-bold bg-primary/10 px-3 py-1 rounded-full">NOW ACTIVE</p>
+<p class="text-3xl font-bold tracking-[-0.015em] text-charcoal dark:text-white">Spring Market: A Fresh Start</p>
+<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-2 mt-2">
+<div class="flex items-center gap-3 text-charcoal/90 dark:text-gray-300"><span class="material-symbols-outlined text-xl text-primary">calendar_month</span><p class="font-medium">April 27th, 2024 | 9:00 AM - 3:00 PM</p></div>
+<div class="flex items-center gap-3 text-charcoal/90 dark:text-gray-300"><span class="material-symbols-outlined text-xl text-primary">location_on</span><p class="font-medium">Grace Church Meadow</p></div>
+<p class="text-charcoal/70 dark:text-gray-300 text-base mt-2">
+                      Celebrate the new season with fresh produce, handmade crafts, and blooming flowers. A perfect day for the whole family, filled with the promise of renewal and community connection.
+                    </p>
+</div>
+<button class="flex mt-4 w-fit items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-white text-base font-bold transition-transform hover:scale-105 shadow-md">
+<span class="truncate">Get Directions</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full max-w-7xl py-10 px-4">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold tracking-tight text-charcoal dark:text-white">Meet Our Vendors</h2>
+<p class="text-charcoal/70 dark:text-gray-300 max-w-2xl mx-auto mt-2">The heart and soul of our markets. Get to know the talented, faith-driven members of our community.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="rounded-xl p-4 glassmorphism group transition-all duration-300 hover:shadow-xl hover:bg-white/60 dark:hover:bg-base-dark/60">
+<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-4 overflow-hidden" data-alt="Portrait of a smiling female baker holding a loaf of fresh bread." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBuNgISDDbDUBKbADjUv7sZTxHpjgWDuUY-HNxh6PF1YAeDEnl49q_Tx2_OIqj-hc7VW_NZPu_4lFd-KuI_kUSbxrnc0-hxyOlFepqLtNtFd_7HEKxt5jsmDgj1naLuErq_QsmUOLxergFjrHpOzL6kpxEIjKQCp3o4preWkJU27JR951RBQBzRFRpANh8xuqP_yvhWiTQZB20vXNQcR2N1x4UDHdjf5BkvpTK3iOQjoy8Qg3YYUfpUoV_ZLsinbdcHhL9Klna7xbSS');"></div>
+<h3 class="font-bold text-lg text-charcoal dark:text-white">Sarah's Sourdough</h3>
+<p class="text-sm text-charcoal/70 dark:text-gray-300">Artisan Breads &amp; Pastries</p>
+<a class="text-sm font-bold text-primary mt-2 inline-block opacity-0 group-hover:opacity-100 transition-opacity" href="#">View Profile →</a>
+</div>
+<div class="rounded-xl p-4 glassmorphism group transition-all duration-300 hover:shadow-xl hover:bg-white/60 dark:hover:bg-base-dark/60">
+<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-4" data-alt="A potter's hands shaping clay on a wheel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBH86Jhq-pefLjW0-De4SlsxGEhNBViz5X-5nawIA1Q3IPhRC-nGvQg0C3gjvkb2Z6Z_2FljSFeQdhenIzNNikhJ1uVQG3j1_ebm51OnxHhsbdg-ZE9qSsydiIJPH23ROZ96MzrqSjXIFHXseJSyb8Fl6r0jG4zY6zQqkeF2teeT1vXPTWqjqid0DB21V8dnhX5nYF5qgvrMlcDPQTATrGfsXudJ0BItm-CGEquSf4bfYO-xqKw1AvmsDM5y5r2gfpZFZpp95uVjw77');"></div>
+<h3 class="font-bold text-lg text-charcoal dark:text-white">Earthen Vessels</h3>
+<p class="text-sm text-charcoal/70 dark:text-gray-300">Handcrafted Pottery</p>
+<a class="text-sm font-bold text-primary mt-2 inline-block opacity-0 group-hover:opacity-100 transition-opacity" href="#">View Profile →</a>
+</div>
+<div class="rounded-xl p-4 glassmorphism group transition-all duration-300 hover:shadow-xl hover:bg-white/60 dark:hover:bg-base-dark/60">
+<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-4" data-alt="A beekeeper inspecting a honeycomb frame." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDoeLqApR_YF7vWAhNnKWst1ejNeVIkGgnmY-t-6T5bobDvz68sRQgp02wN45Oo58NRO2V53tMhmVxwhlPCr-5UlIj3-rbynvjimdsvUo6ubebiVlZ1AwcZxtmqgNqH2Gg2idPwOJSQdh7P7xV28IqoLCaCJCnXpIb142k3uv2pFRSH0wWEXeE6UJ7-k-52f5GCEAy-IQKWi4sl36sw9v5CU9jM33IL7sj1VP2cXfs-shehWYyPUQd9lxynee80GaXBkDFYAzJVp2vy');"></div>
+<h3 class="font-bold text-lg text-charcoal dark:text-white">Honey From the Rock</h3>
+<p class="text-sm text-charcoal/70 dark:text-gray-300">Local Raw Honey</p>
+<a class="text-sm font-bold text-primary mt-2 inline-block opacity-0 group-hover:opacity-100 transition-opacity" href="#">View Profile →</a>
+</div>
+<div class="rounded-xl p-4 glassmorphism group transition-all duration-300 hover:shadow-xl hover:bg-white/60 dark:hover:bg-base-dark/60">
+<div class="w-full aspect-square rounded-lg bg-cover bg-center mb-4" data-alt="A woodworker carving a detailed design into a piece of wood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9rqc2jEaFoSpAtYbbU6GEu37cOolVgHUcfR8TvmvAMMXEUe9R0D_1o1Ky_iexmEnHeg9JeWVflu3junL3GN0mzjM6oNYsoYwY1Lv7pyT6d7hBzyypuqa0sfgTZa5NkIMy6aMtNRnHRYfE0x-Q1As446GhiGNius2NersPWEUFoQXYLFLHBMp13r-WimIUAVDUsNS68lbhP541dXjrB6Nc_pbLzXj8Z69tnLR1cODA4bDbnnvmZN7PQbUe5hfFBpc6RqXhr-gZ6D9N');"></div>
+<h3 class="font-bold text-lg text-charcoal dark:text-white">Good Woodworking</h3>
+<p class="text-sm text-charcoal/70 dark:text-gray-300">Custom Furniture &amp; Decor</p>
+<a class="text-sm font-bold text-primary mt-2 inline-block opacity-0 group-hover:opacity-100 transition-opacity" href="#">View Profile →</a>
+</div>
+</div>
+</section>
+<section class="w-full max-w-7xl py-20 px-4">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div>
+<h2 class="text-4xl font-bold tracking-tight mb-6 text-charcoal dark:text-white">What to Expect</h2>
+<div class="space-y-4">
+<details class="group rounded-xl p-4 glassmorphism cursor-pointer" open="">
+<summary class="flex justify-between items-center font-bold text-lg list-none text-charcoal dark:text-white">
+                  Workshops &amp; Demos
+                  <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-charcoal/80 dark:text-gray-300 space-y-3">
+<p><strong>10:00 AM:</strong> Sourdough Starter Basics with Sarah</p>
+<p><strong>11:30 AM:</strong> Pottery Wheel Demo with Earthen Vessels</p>
+<p><strong>1:00 PM:</strong> Woodworking Joints with Good Woodworking</p>
+</div>
+</details>
+<details class="group rounded-xl p-4 glassmorphism cursor-pointer">
+<summary class="flex justify-between items-center font-bold text-lg list-none text-charcoal dark:text-white">
+                  Children's Activities
+                  <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-charcoal/80 dark:text-gray-300 space-y-3">
+<p><strong>All Day:</strong> Face Painting &amp; Petting Zoo</p>
+<p><strong>10:30 AM:</strong> Seed Planting Station</p>
+<p><strong>2:00 PM:</strong> Story Time in the Meadow</p>
+</div>
+</details>
+</div>
+</div>
+<div>
+<h2 class="text-4xl font-bold tracking-tight mb-6 text-charcoal dark:text-white">Market Layout</h2>
+<div class="w-full aspect-video rounded-xl glassmorphism p-2 shadow-lg">
+<img class="w-full h-full object-cover rounded-lg" data-alt="A stylized map of the market grounds showing vendor stalls, activity areas, and food trucks." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeDPe0Br6u97XPpwflctCTmKNzAd005wHOrnRt-Id8K0nMLmOI7EO-4ufDWIxkSFRVk8PftFLrFS7HkQiYfDNjZnxiRLpEJcTwVwkDunP22SQk9cDpoByqV7K9ysFZzbx3b661-49eDAQNamaHe-DYVhCxAHw9vOxIkTeM6oTC0OXgUJeH9UVCQqMdYlcHvpzEHUQZ8_1BHeZOxFmQOp0ArGfShilQpdZaRyz_ow42K4oFCRIwsdrSpd5zGub75oeCHxzHzggtdhlh"/>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full max-w-7xl py-10 pb-20 px-4">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold tracking-tight text-charcoal dark:text-white">Moments From Past Markets</h2>
+<p class="text-charcoal/70 dark:text-gray-300 max-w-2xl mx-auto mt-2">Cherished memories from our vibrant community gatherings.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="grid gap-4">
+<div>
+<img class="h-auto max-w-full rounded-lg hover:opacity-90 transition-opacity" data-alt="Close-up of fresh strawberries in a basket at a farmer's market." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbchNXOiAQh3DiK9GxDQihiE7z3gyAyfmlz9Y0OMnatyo-aLgvUurZNgbNQSb58MIiZUMbxCogZBtr-ThBoBn-T5okJ3S6pKoyP3UwO6rKeeIZof14f0fbrB0m7wYD71HrwTGqhIeQcQI7fQ0PXA9UEYF9wCRbdnPA0-SKn34S_TMLlbti_8VFHLmHGvKGkWwAvWpl17UX8b00ceN6JOsxVMfYAG-SQI-1Cb5j9fDsEo0K7NRTKQriOXIxdsiTAtxgK8j28Pw36SWU"/>
+</div>
+<div>
+<img class="h-auto max-w-full rounded-lg hover:opacity-90 transition-opacity" data-alt="A child laughing while petting a small goat at a petting zoo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV63E2s7rTsFURuH7MDtsSVh38QuY3sj73L-K22cdojua4e38nnpNsNGzImVqnqoTB5_ttLuNMTftrbQC6ai50t4tKIVdJnh1Q6BHDAjd80M_YY_aMTJ8V4ey4IjBpq9qXKyHOKDubOaS3JW9xtp2ASm65W9gD7cR8th-lgYify7_M14NFhZh-b1q8OXmLstNQTk7GnBTjWJtJ7TL3cJj_V8ou-QfpqLRtutW2DfWUp6Im0fFK-DpI1xuyLL-TQV2RrQwTB5Tas6VQ"/>
+</div>
+</div>
+<div class="grid gap-4">
+<div>
+<img class="h-auto max-w-full rounded-lg hover:opacity-90 transition-opacity" data-alt="A group of people enjoying food and conversation at long wooden tables outdoors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD9byliIVzY3r5oEPL7csePCGbz6TRLxkSPWPQh0iXxfMPruRCvF4Nt-70eKR6DcjJqNwbkfnwSQ8rFWigFwwuHGN12rtpe7GyU_Rtlbc02hmQCBTM3aVm0aSWsEmGJccsuA7-qnjSv_jHZX0GwF7ckIr0PfA5krkqfgjFC9s0iyF5BKF6_j-T7hBZYBWP5YwCeYphU1jU0GekdFZg3cxaCCiv71SvBuIe2-WbYG-_7GOZwHyGfNkNIesgKG4xvWvjoarONW05vhjR"/>
+</div>
+<div>
+<img class="h-auto max-w-full rounded-lg hover:opacity-90 transition-opacity" data-alt="Handcrafted soaps and candles neatly arranged on a market stall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0_DdEeTdgxm0--ru3XpRAbF9uH6r9ucHKPALnqXxzMdaEZCAXIzqCR5zENrDkasDUlHtS4kGANczwvHqlYCjkAWW_yimkokP8acap42K-6Sg4QpQLknYzvY3EYIJU9-5HEYycvHruOcjtT7FQzxb7GWybKPkzmLuwQ1GsCBPWtsqFQEzsQtmx7VRsJ9hqv4YaHSWyzepNjW_HWnhQfvV0zwSFnMFxe7Orx7sDQBWZfQcVp7fB3zRgrnQLQYC-Vb-EfSRqaEUu8DsO"/>
+</div>
+</div>
+<div class="grid gap-4">
+<div>
+<img class="h-auto max-w-full rounded-lg hover:opacity-90 transition-opacity" data-alt="A musician playing an acoustic guitar for a small crowd at the market." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIYEhXcg8oUIiHZnX3LGWfUqu1E9E0L0gP5fkX_zcuVVU7Vccw0t4CHu4q-vWP6k42VfSbNKpVEZHuCGauHHjApTBwGrN7cl2pEU3_k_BS54021zabKRG8KQXoq3wG3pzr_wN1s-KCIffSnBBgMZTS1R3l-s5-82lSB7xHFSpKs9t6uIg9v0kjydiI-qGf-6mKuEzUNr0bG73Hf2GLu-mcMohUY5jDEpBBXXL2nCM1hMeJlE8I5KQpExYk2TbPdcF4AllUsK5aI0tM"/>
+</div>
+<div>
+<img class="h-auto max-w-full rounded-lg hover:opacity-90 transition-opacity" data-alt="Colorful jars of homemade jam and pickles on display." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw_NvjI_VsdZkEIjB9m3Q4cGgrm85LoiTOFt3Of_Ttyjgi68Zx2jinpvFeZdJoVhVwC7MkplDCLnT6cAfRKILwO9J4GQDSFVtLs6lqpfhPMHfLiWLJE9Eh9hELXW1s2GvoITPqOk1ZtV94IH3z13jkgE5ag9lewHLohQ-r_46Vro0rVEhEjWjJ583UkVM4iT4afrcFD-lYm6G3lqufAMI0ol3qVx9wxPlqQtad3jtCZs7zx_uzjEWN0ktYvfiMsK0U8uMSdMAjsysM"/>
+</div>
+</div>
+<div class="grid gap-4">
+<div>
+<img class="h-auto max-w-full rounded-lg hover:opacity-90 transition-opacity" data-alt="An overhead view of a bustling market with many stalls and people." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGE4wWhbrFm-x1xNDRixF3HYfXsgtjl1nsJ2JoUIY1VhSSIOX70ln9H9uyoexQrmXFJogZoZ3eeM4WxQJvNUSB_iWEC5kgCPYKWQpG8PV3P5JpNLo3f3mu0_xfKKOAy1q_y6piO6SVgNSCIc2nsy_eOFu2OUw4vAxWDaBXb2z2Qy8SAhYV3eLkx-IIS9ScZWdYwrgEVVhnsHoJcxz-pQDXVh4VPkFaIiOSCaix8dt3LekJJRO6WlKzfJf9cWFquaZarX3f0Fm30gDj"/>
+</div>
+<div>
+<img class="h-auto max-w-full rounded-lg hover:opacity-90 transition-opacity" data-alt="A vendor smiling and handing a product to a customer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJOuki605AKdlK300uCXuGfeshpoEwr8eawHDAa2lJ2JT2ewlce50XeBAhn6qtJomfQal1UvRUPmm9hd3AvAtWD9GRtBcdKE-jCC8wfwjY3HbtI7BnqT6Azc-ds7sLlHBzFWcKdkzjmeHWxcIUqtxU_5rS2XRnBuSdwl5DC1Wf_5PD3GxTyV8tf-mvvVE5uUewkjj4d__ta2qpoYl9tsFdpy_K8hKPEcPAj--IGeDJlXXwswJ7Mx7veoqh9cn5Zm6aBlV5aDC-fOxw"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+
+</body></html>

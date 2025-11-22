@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skilled Tradesmen Directory - HarvestConnect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#52d411",
+              "background-light": "#f6f8f6",
+              "background-dark": "#162210",
+              "text-light": "#131811",
+              "text-dark": "#f6f8f6",
+              "card-light": "rgba(255, 255, 255, 0.6)",
+              "card-dark": "rgba(34, 51, 27, 0.5)",
+              "border-light": "rgba(255, 255, 255, 0.8)",
+              "border-dark": "rgba(68, 85, 60, 0.7)",
+              "accent-light": "#ffc700",
+              "accent-dark": "#ffd640",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            backdropBlur: {
+              'xl': '24px',
+            },
+            boxShadow: {
+                'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative w-full overflow-x-hidden">
+<div class="absolute inset-0 z-[-1]">
+<img class="w-full h-full object-cover object-center opacity-40 dark:opacity-20" data-alt="A birds-eye view of a lush green farm landscape with rolling hills and a winding road at sunrise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsc8tbv0f-EwOzvL-1-AHjlY_eFDlN0ZASFeOWKyO4e5vRlQTT5IwCy0fIlazQxzoOmbJaXicxfRvK8d0OHqjIE2Ut26bzAHkgkh6gjiH7lg1u_pHiE3L0l12rhLWRz3bhZfbWwOTOjmaiD850uxet-knoLdVOfiZYUaKsmnCw3ubxwMiZuPFEheoPg8qHCNmIkxtlqj07KCVBeGKab94r6tDbH3P6jwkdukbVRhaWLl60RcJ_dgQlnoulKepWiG6vIPqrGHrY3aUF"/>
+<div class="absolute inset-0 bg-gradient-to-b from-background-light/30 via-background-light to-background-light dark:from-background-dark/30 dark:via-background-dark dark:to-background-dark"></div>
+</div>
+<div class="relative z-10">
+<header class="sticky top-0 z-50">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="my-4 flex items-center justify-between whitespace-nowrap rounded-xl border border-border-light bg-card-light p-3 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark">
+<div class="flex items-center gap-4 text-text-light dark:text-text-dark">
+<div class="size-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">HarvestConnect</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-sm font-medium leading-normal transition-colors hover:text-primary dark:hover:text-primary" href="#">Marketplace</a>
+<a class="text-sm font-medium leading-normal text-primary dark:text-primary" href="#">Tradesmen</a>
+<a class="text-sm font-medium leading-normal transition-colors hover:text-primary dark:hover:text-primary" href="#">About</a>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
+<span class="truncate">My Account</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="flex flex-col gap-12">
+<div class="flex flex-col gap-6 text-center">
+<h1 class="text-4xl font-black leading-tight tracking-tighter sm:text-5xl text-text-light dark:text-text-dark">
+                        Find Skilled Tradesmen in Our Community
+                    </h1>
+<p class="mx-auto max-w-3xl text-lg font-normal leading-normal text-text-light/80 dark:text-text-dark/80">
+                        Connect with trusted, faith-driven professionals for your home, farm, and business needs.
+                    </p>
+<div class="mt-4 mx-auto w-full max-w-2xl">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-light/50 dark:text-text-dark/50">search</span>
+<input class="w-full rounded-xl border border-border-light bg-card-light/80 py-3 pl-12 pr-4 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark/80 focus:ring-2 focus:ring-primary focus:border-primary placeholder:text-text-light/60 dark:placeholder:text-text-dark/60" placeholder="Search by name, skill, or service..." type="text"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-12 lg:grid-cols-4">
+<aside class="lg:col-span-1">
+<div class="sticky top-28 rounded-xl border border-border-light bg-card-light p-6 shadow-glass backdrop-blur-xl dark:border-border-dark dark:bg-card-dark">
+<h3 class="text-lg font-bold">Filter by Trade</h3>
+<div class="mt-4 space-y-3">
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="h-5 w-5 rounded border-primary/50 bg-transparent text-primary focus:ring-primary/50" type="checkbox"/>
+<span>Carpentry (5)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="h-5 w-5 rounded border-primary/50 bg-transparent text-primary focus:ring-primary/50" type="checkbox"/>
+<span>Plumbing (3)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="h-5 w-5 rounded border-primary/50 bg-transparent text-primary focus:ring-primary/50" type="checkbox"/>
+<span>Electrical (4)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="h-5 w-5 rounded border-primary/50 bg-transparent text-primary focus:ring-primary/50" type="checkbox"/>
+<span>Landscaping (6)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="h-5 w-5 rounded border-primary/50 bg-transparent text-primary focus:ring-primary/50" type="checkbox"/>
+<span>Painting (2)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="h-5 w-5 rounded border-primary/50 bg-transparent text-primary focus:ring-primary/50" type="checkbox"/>
+<span>Welding (1)</span>
+</label>
+</div>
+<button class="mt-6 text-sm font-medium text-primary hover:underline">Show all</button>
+</div>
+</aside>
+<section class="lg:col-span-3">
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+<div class="flex flex-col gap-6 rounded-xl border border-border-light bg-card-light p-6 shadow-glass backdrop-blur-xl transition-all hover:-translate-y-1 dark:border-border-dark dark:bg-card-dark">
+<div class="flex items-start gap-4">
+<img class="h-20 w-20 rounded-full object-cover" data-alt="Portrait of John Miller, a plumber." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1isFq4YcjXQ1oilANNK7iYSrMGkBjyPNNd6QMAvg1gKDGybfo62GdDdNRU6yUcCVapZowctMQgOhEvxRbHS_UX04o77u8n2BeH__Pl-QRp1iRJnTqRnIdC7G0ME9Qqm7O7DUweTFTEIo91W5cfvoKOxFBY2T7xw9IrGMqbQBZHSP41Uh4Ih_VjFRbnlCl8gLXtTAxubh4VZ--O4wQUzZs0x6HnZJ_Crbt93jXaTixETLpAQPvs0PYhaD2vBbzIK8wZ8h4LrVgW0KZ"/>
+<div class="flex-1">
+<h3 class="text-xl font-bold">John Miller</h3>
+<p class="text-primary font-medium">Master Plumber</p>
+<div class="mt-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base">star</span>
+<span class="ml-1 text-sm text-text-light/70 dark:text-text-dark/70">(28 reviews)</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-semibold">Services Offered:</h4>
+<p class="mt-1 text-sm text-text-light/80 dark:text-text-dark/80">Emergency Repairs, Pipe Installation, Drain Cleaning, Water Heater Service.</p>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-primary/10 dark:bg-primary/20 p-3">
+<div>
+<p class="text-sm font-medium text-text-light/70 dark:text-text-dark/70">Starts at</p>
+<p class="font-bold text-lg text-text-light dark:text-text-dark">$75/hr</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-medium text-primary">Member Rate</p>
+<p class="font-bold text-lg text-primary">$65/hr</p>
+</div>
+</div>
+<div class="mt-auto flex flex-col gap-3 sm:flex-row">
+<button class="flex-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
+<span class="truncate">Request Quote</span>
+</button>
+<button class="flex-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-background-light/50 text-text-light ring-1 ring-inset ring-primary/50 transition-colors hover:bg-primary/20 dark:bg-background-dark/50 dark:text-text-dark dark:hover:bg-primary/20">
+<span class="truncate">View Profile</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-6 rounded-xl border border-border-light bg-card-light p-6 shadow-glass backdrop-blur-xl transition-all hover:-translate-y-1 dark:border-border-dark dark:bg-card-dark">
+<div class="flex items-start gap-4">
+<img class="h-20 w-20 rounded-full object-cover" data-alt="Portrait of Sarah Jenkins, a landscaper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYkt85LQpfobTfY9cnTgQxY9onv1yqjzmyXOSxTp6-KtQeN1d0OmWVGJhcLjNVptrEMeGll2rfZo5T8Y7A-OJ8GR6hHoZxHOU8pUCBx_dsU8fGEO4TNW2fnJ_zDYcpJSwWkVtP4rbJgAav4ooEf00cw0-e8URk4cvUEbkDnIyPpmKmDT_z6Q7aHj-KBJ7KYFol5iFOxE1jJcKIuswEV6SY_Csc2x2SrVHCB3y66Qd3AOt1BCedHxuMbyxgmUqEai2vurlw2iKKswXW"/>
+<div class="flex-1">
+<h3 class="text-xl font-bold">Sarah Jenkins</h3>
+<p class="text-primary font-medium">Landscape Designer</p>
+<div class="mt-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1 text-sm text-text-light/70 dark:text-text-dark/70">(42 reviews)</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-semibold">Services Offered:</h4>
+<p class="mt-1 text-sm text-text-light/80 dark:text-text-dark/80">Garden Design, Lawn Maintenance, Tree Trimming, Irrigation Systems.</p>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-primary/10 dark:bg-primary/20 p-3">
+<div>
+<p class="text-sm font-medium text-text-light/70 dark:text-text-dark/70">Starts at</p>
+<p class="font-bold text-lg text-text-light dark:text-text-dark">$50/hr</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-medium text-primary">Member Rate</p>
+<p class="font-bold text-lg text-primary">$45/hr</p>
+</div>
+</div>
+<div class="mt-auto flex flex-col gap-3 sm:flex-row">
+<button class="flex-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
+<span class="truncate">Request Quote</span>
+</button>
+<button class="flex-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-background-light/50 text-text-light ring-1 ring-inset ring-primary/50 transition-colors hover:bg-primary/20 dark:bg-background-dark/50 dark:text-text-dark dark:hover:bg-primary/20">
+<span class="truncate">View Profile</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-6 rounded-xl border border-border-light bg-card-light p-6 shadow-glass backdrop-blur-xl transition-all hover:-translate-y-1 dark:border-border-dark dark:bg-card-dark">
+<div class="flex items-start gap-4">
+<img class="h-20 w-20 rounded-full object-cover" data-alt="Portrait of Emily Carter, an electrician." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtzUak3z8Hp-oXZq9qTldpblieeANfu30v5THunXnoHDtVlE1zC3Z2r_yjSCHPKfnm655KASXd-MJ7aRhQ7GH9aeszX0kCpg5xA8GSx6UgWahkSvfXZozdLBW0CQLD2S-cRNQCLcVot-YlOyAKiwx6_3sLd_bybI9FJ00UkDp1tZFMZSB05sTb_hzGUhb5OflHoKkSclkzBaCTCbVMxTnaolON_pntUoiNnXK2f1jMgIs0w1EQcOuwW9jnj6lqKqL2yTUgzqnaJ8H3"/>
+<div class="flex-1">
+<h3 class="text-xl font-bold">Emily Carter</h3>
+<p class="text-primary font-medium">Licensed Electrician</p>
+<div class="mt-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1 text-sm text-text-light/70 dark:text-text-dark/70">(35 reviews)</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-semibold">Services Offered:</h4>
+<p class="mt-1 text-sm text-text-light/80 dark:text-text-dark/80">Wiring, Panel Upgrades, Lighting Installation, Safety Inspections.</p>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-primary/10 dark:bg-primary/20 p-3">
+<div>
+<p class="text-sm font-medium text-text-light/70 dark:text-text-dark/70">Starts at</p>
+<p class="font-bold text-lg text-text-light dark:text-text-dark">$80/hr</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-medium text-primary">Member Rate</p>
+<p class="font-bold text-lg text-primary">$70/hr</p>
+</div>
+</div>
+<div class="mt-auto flex flex-col gap-3 sm:flex-row">
+<button class="flex-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
+<span class="truncate">Request Quote</span>
+</button>
+<button class="flex-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-background-light/50 text-text-light ring-1 ring-inset ring-primary/50 transition-colors hover:bg-primary/20 dark:bg-background-dark/50 dark:text-text-dark dark:hover:bg-primary/20">
+<span class="truncate">View Profile</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-6 rounded-xl border border-border-light bg-card-light p-6 shadow-glass backdrop-blur-xl transition-all hover:-translate-y-1 dark:border-border-dark dark:bg-card-dark">
+<div class="flex items-start gap-4">
+<img class="h-20 w-20 rounded-full object-cover" data-alt="Portrait of Mike Anderson, a carpenter." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIYmOzCmucDcqZediWYEYOdDh7OXSqYWsaaq7RBL5aPMz1uDw8_szB27HTEt_RdF1lK1PWje0BcjeU4XdzLdKeMYCHn7JxsgY96OVEb1FZ1tUsTBd6JCFsXqe19h3NWlTJz0hca6uQBZRLMNO2DgqculH9cOUyh4x7Pyxr1oCmSwEWz9s8l8TXBxpgTlY9hIn0--YqlI1ZzrhDSIv8It4VDfkt6n4DYupmFbT6gWQqhshPdOrb9WG5cAADblS9uzvKMbpqNa4FR4mz"/>
+<div class="flex-1">
+<h3 class="text-xl font-bold">Mike Anderson</h3>
+<p class="text-primary font-medium">Custom Carpentry</p>
+<div class="mt-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent-light text-base" style="font-variation-settings: 'FILL' 1;">star_half</span>
+<span class="ml-1 text-sm text-text-light/70 dark:text-text-dark/70">(51 reviews)</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-semibold">Services Offered:</h4>
+<p class="mt-1 text-sm text-text-light/80 dark:text-text-dark/80">Custom Furniture, Cabinetry, Decking, Framing and Repairs.</p>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-primary/10 dark:bg-primary/20 p-3">
+<div>
+<p class="text-sm font-medium text-text-light/70 dark:text-text-dark/70">Project-based</p>
+<p class="font-bold text-lg text-text-light dark:text-text-dark">Free Est.</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-medium text-primary">Member Discount</p>
+<p class="font-bold text-lg text-primary">15% Off</p>
+</div>
+</div>
+<div class="mt-auto flex flex-col gap-3 sm:flex-row">
+<button class="flex-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
+<span class="truncate">Request Quote</span>
+</button>
+<button class="flex-1 flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-background-light/50 text-text-light ring-1 ring-inset ring-primary/50 transition-colors hover:bg-primary/20 dark:bg-background-dark/50 dark:text-text-dark dark:hover:bg-primary/20">
+<span class="truncate">View Profile</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<footer class="mt-20 bg-background-dark/80 text-background-light/80 dark:bg-background-dark/90">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-3">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path><path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path></svg>
+</div>
+<h2 class="text-lg font-bold text-white">HarvestConnect</h2>
+</div>
+<p class="mt-4 text-sm">Nourishing community, one connection at a time.</p>
+</div>
+<div>
+<h3 class="font-bold text-white">Platform</h3>
+<ul class="mt-4 space-y-2 text-sm">
+<li><a class="hover:text-primary" href="#">Features</a></li>
+<li><a class="hover:text-primary" href="#">Membership</a></li>
+<li><a class="hover:text-primary" href="#">Marketplace</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-white">Company</h3>
+<ul class="mt-4 space-y-2 text-sm">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">Our Mission</a></li>
+<li><a class="hover:text-primary" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-white">Legal</h3>
+<ul class="mt-4 space-y-2 text-sm">
+<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-8 border-t border-background-light/20 pt-8 text-center text-sm">
+<p>© 2024 HarvestConnect. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</div>
+</div>
+
+</body></html>

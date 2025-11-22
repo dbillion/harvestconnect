@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cooperative Platform - Content Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style type="text/tailwindcss">
+    body {
+        font-family: "Work Sans", sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    .glass-card {
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .glass-input {
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .glass-button {
+        background-color: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-[#F4F1ED]">
+<div class="relative flex min-h-screen w-full flex-col font-display group/design-root overflow-x-hidden" style='font-family: "Work Sans", "Noto Sans", sans-serif;'>
+<div class="absolute inset-0 z-[-1]">
+<div class="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(205,172,135,0.4),rgba(255,255,255,0))]"></div>
+<div class="absolute bottom-[-10%] right-[-20%] top-auto h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(179,212,171,0.4),rgba(255,255,255,0))]"></div>
+</div>
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap px-4 sm:px-6 md:px-10 py-3 glass-card rounded-2xl shadow-lg">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#5D4037]">
+<div class="size-6 text-[#8D6E63]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_330)">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clipPath id="clip0_6_330">
+<rect fill="white" height="48" width="48"></rect>
+</clipPath>
+</defs>
+</svg>
+</div>
+<h2 class="text-[#5D4037] text-lg font-bold leading-tight tracking-[-0.015em]">HarvestConnect</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-9">
+<a class="text-[#6D4C41] text-sm font-medium leading-normal hover:text-[#4E342E] transition-colors" href="#">Home</a>
+<a class="text-[#6D4C41] text-sm font-medium leading-normal hover:text-[#4E342E] transition-colors" href="#">Marketplace</a>
+<a class="text-[#4E342E] text-sm font-bold leading-normal" href="#">Content Hub</a>
+<a class="text-[#6D4C41] text-sm font-medium leading-normal hover:text-[#4E342E] transition-colors" href="#">Community</a>
+<a class="text-[#6D4C41] text-sm font-medium leading-normal hover:text-[#4E342E] transition-colors" href="#">About</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8 items-center">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#6D4C41] flex items-center justify-center pl-4 rounded-l-xl glass-input border-r-0">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#5D4037] focus:outline-0 focus:ring-2 focus:ring-[#8D6E63] border-none glass-input h-full placeholder:text-[#8D6E63] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search articles..." value=""/>
+</div>
+</label>
+<div class="hidden sm:flex gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#8D6E63] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#795548] transition-colors">
+<span class="truncate">Sign Up</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 text-[#5D4037] text-sm font-bold leading-normal tracking-[0.015em] glass-button hover:bg-white/30 transition-colors">
+<span class="truncate">Log In</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLkWz-cu7cPV8f1vij07S0bjG5ZfrI2Q7M4kw8LmURbfOBrn54O1mAetxBPibU-NomiOgAhSimJD8fF21OXbjNpB1dVWydiZ1vVWDgT-tgLYlTYKUv0bKRqbUVj8JIz0dpTWOzJ7GLotkCnCYSozxMUoXqkDy65MOumYWpUfhto5DwOJ_U80megyncXotZKLlTpLz2ddOOjMzisiP2g3Yop0I2cNo0vwtJDEIvyUQGYyUHYwPMVzQU6S53GvHt-gjTjxuo2kEYtgw5");'></div>
+</div>
+</header>
+<main class="flex-1">
+<h2 class="text-[#4E342E] text-[28px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-12 text-center">Featured Stories</h2>
+<div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+<div class="flex w-full items-stretch p-4 gap-6">
+<div class="flex h-full flex-1 flex-col gap-4 rounded-2xl glass-card min-w-60 shadow-lg">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-2xl flex flex-col" data-alt="People gathered at an outdoor harvest festival, smiling and interacting." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCq5XvVOGq9o1USbN6OGHF6qq4wsNEyjWNvJfs_n6Leit_irLRmIoYjo1beR4sfzCBIgq3BlWMkQQyTxQguQqBiiHHDo_WLNI5zfgKk_E6Pg6zqw0JrtD7i8sJEvzveWe_4CoR4UmMUt3Uw3uRRHf9ueJ89g_giD2rYU4so2apAvLNwXWNPpDKZaXFrrh7ZcPw-h2Xo7CR3MDOtgcCXpl-F0MB_Gvhm2wBOCjjAk4XCVBo-6VD07xFCmlv-WcbyL4wV_fM3T6RGlPvK");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-[#4E342E] text-base font-semibold leading-normal">Community Chronicles: Our Annual Harvest Festival</p>
+<p class="text-[#6D4C41] text-sm font-normal leading-normal mt-1">Relive the moments from our recent gathering.</p>
+</div>
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#8D6E63] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#795548] transition-colors">
+<span class="truncate">Read More</span>
+</button>
+</div>
+</div>
+<div class="hidden sm:flex h-full flex-1 flex-col gap-4 rounded-2xl glass-card min-w-60 shadow-lg">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-2xl flex flex-col" data-alt="Close-up of a farmer's hands holding fresh soil." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDhCbJTvraxiB2qLbP0z1GTWnPbXfgIAfIz6cenvTha4SGkEpQxCpFyh0LxTI9maHLsTFdRsspQfFxRXC5cd3GvlkQyJ80NKthoY8qV_LxN4Cxy4ocBgO3OIE3x0P6VLOAteG1n0xVgoHA-Ccn7pL0g5CFI4Gvs8ShrWTovPyR5Jo5o7cVMTdZQ2uJurH5zwklisaTRclKqJfrV82PL9r3BCTDfkMGGIIDaEGLnXR2PKE878Nm_PEAK2KFdCXsJcmdv8d_mdFT8ErBz");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-[#4E342E] text-base font-semibold leading-normal">From the Ground Up: The Miller Family Farm Story</p>
+<p class="text-[#6D4C41] text-sm font-normal leading-normal mt-1">Learn how faith and hard work brought success.</p>
+</div>
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#8D6E63] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#795548] transition-colors">
+<span class="truncate">Read More</span>
+</button>
+</div>
+</div>
+<div class="hidden md:flex h-full flex-1 flex-col gap-4 rounded-2xl glass-card min-w-60 shadow-lg">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-2xl flex flex-col" data-alt="Jars of preserved vegetables and fruits on a wooden shelf." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZx70QYBAxEX-83ylBBc2FVMM9IOF1SgYvTRCLs5zN4VfZGjRieLVyyAN84DPVvro9CMTcBrlD2Ef1j5pK6Jp_S2CtdverDRJkaxV9DYn_scneePBDfIRwWMWHeoV6xJ7JflyaRDaPSWJZ7BGmoUDNNycvwwLHrBtk8SAq9a9b0QR_dxHSuDGVxpNX0DlVS5Xeg9YYSppk5ZNPGod6lHlqJNVKlA7_5_EXRAsILV9RRJ7tcBzvCiIvhgAKtSxgMAE3nUrnCCZhKSid");'></div>
+<div class="flex flex-col flex-1 justify-between p-4 pt-0 gap-4">
+<div>
+<p class="text-[#4E342E] text-base font-semibold leading-normal">Homesteading Tips for a Bountiful Autumn</p>
+<p class="text-[#6D4C41] text-sm font-normal leading-normal mt-1">Your guide to preserving and preparing for the season.</p>
+</div>
+<button class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#8D6E63] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#795548] transition-colors">
+<span class="truncate">Read More</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<h2 class="text-[#4E342E] text-[28px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-12 text-center">All Stories</h2>
+<div class="flex gap-3 px-4 pb-4 overflow-x-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden justify-center">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#8D6E63] px-4">
+<p class="text-white text-sm font-bold leading-normal">All</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl glass-button px-4 hover:bg-white/30 transition-colors">
+<p class="text-[#5D4037] text-sm font-medium leading-normal">Faith &amp; Vocation</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl glass-button px-4 hover:bg-white/30 transition-colors">
+<p class="text-[#5D4037] text-sm font-medium leading-normal">From the Farm</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl glass-button px-4 hover:bg-white/30 transition-colors">
+<p class="text-[#5D4037] text-sm font-medium leading-normal">Artisan Spotlight</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl glass-button px-4 hover:bg-white/30 transition-colors">
+<p class="text-[#5D4037] text-sm font-medium leading-normal">Community Chronicles</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-xl glass-button px-4 hover:bg-white/30 transition-colors">
+<p class="text-[#5D4037] text-sm font-medium leading-normal">Practical Skills</p>
+</button>
+</div>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 p-4">
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-2xl overflow-hidden shadow-lg">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-300" data-alt="A potter's hands shaping clay on a wheel." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzGHk_FqmDaM0h989zO5KR6E32SmtPNDXUgd9T3BLOhN2v3t_OSdGvsiJy2rbiYRobW98SQPCw2vw2d-KwtlMrlpb7AOcIf3dsV3CV3mupzSYkJJqcnYUbVbPsYjyS9hiIDvZDRSBomZVsenMA_GkNyd7S9R0m-cGWzNr33kPfgrp90hk8CgIFqJmlPgrmF-LbXVvsKbWQDJJguQ6ZEjukN6YCjEEeMKEzEGcWAAMRCrlPhm4fzblGrl3pS2XE64rf8hZb5F-870F0");'></div>
+</div>
+<div class="px-1">
+<p class="text-[#4E342E] text-base font-bold leading-normal">Connecting Faith with the Work of Artisans</p>
+<p class="text-[#6D4C41] text-sm font-normal leading-normal mt-1">By Sarah Johnson - Oct 26, 2023</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-2xl overflow-hidden shadow-lg">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-300" data-alt="A wooden bowl filled with colorful, freshly picked vegetables." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuByxMiNsftQfKdnbl9BwTLs97FCFWDFwcYFMFGZwVJtxvc_q95BNsmFnJcUcCpmkT16pdSK4-8G81HDlrvq-HPLWqWz9iE7g3hmAN2CynMx8CzeSYNIz_q1GHYnPHLU583qlqy9vaJVJ6qsc33qBzzgubS47zIsSfx6Z0W5GI-lkZji1Ilc6N6xcfoqbL_vdw33vs4-lCKn-t6O8rTD6FLEcxYvbMqRMi-OZvT75S-aaHztiFPsYukR7wxnX1ZaqrzdeOptcENs2Uh5");'></div>
+</div>
+<div class="px-1">
+<p class="text-[#4E342E] text-base font-bold leading-normal">Seasonal Recipes from the Farm</p>
+<p class="text-[#6D4C41] text-sm font-normal leading-normal mt-1">By David Chen - Oct 24, 2023</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-2xl overflow-hidden shadow-lg">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-300" data-alt="A carpenter carefully sanding a piece of wood in a workshop." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOaY-oDJHovFi5rqcmCPKFUyk7537_XZNvE9T6u_Ax2Fs97F-0IuXAwit5lvZOli_vSew4lmmwjbKslkaYlnM2HKrsA3gAtm1BV4wCe4ohjwxb5pHDXzH74DLJ7blXhxArmlwy6B0R5EOgUtt101IBnt0rPYf3UCh8hw5btEjFXOhFeu8EF47ep_6ClWGr7DzMUrs1Pdjo3wZSiHFd6bEhXylHkVqaCmABd0T8mswfkU1T2ZI4MDpxEUyDKAHBKUDrU8_80nhp8efS");'></div>
+</div>
+<div class="px-1">
+<p class="text-[#4E342E] text-base font-bold leading-normal">Spotlight: The Carpenter's Hands</p>
+<p class="text-[#6D4C41] text-sm font-normal leading-normal mt-1">By Maria Rodriguez - Oct 22, 2023</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-2xl overflow-hidden shadow-lg">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-300" data-alt="A sunny field with people enjoying a community fair." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxdDyZRxrqloODhwWmC2UU3tYk8k3lHPZkAYw5a2UMJGQCHD3LaXQRewkHnmUReFFbSB6IaLn8SZbdkDhbf7UkprzERqE7ExELwRYqobt5-r35cP1prN2oqOvuweT1ZOpFgUkgDcS9XubnMl4_aimdtb5Go1kGNzxUUQpxmDAaZH055H2r2V_jYo8hB1Y-SHzzf0U00jdBiFqNTDSPOdUIexRFq_jC52nQhBonpX6AvfImUfel9tcEYgI_ZWrB7hczuTqrAzAzy94b");'></div>
+</div>
+<div class="px-1">
+<p class="text-[#4E342E] text-base font-bold leading-normal">Recap: Our Spring Community Fair</p>
+<p class="text-[#6D4C41] text-sm font-normal leading-normal mt-1">By Cooperative Staff - Oct 20, 2023</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-2xl overflow-hidden shadow-lg">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-300" data-alt="A person weaving on a traditional loom." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3AnXc7RtvOH4Xdi22KPXtgJkOFrTuL5GKhKkrbMn6l-vHsKxFuz7RTHEEAOYhMAlvQrUnhhRPr9Hu8VjrE60xxXe6UhTnhivXwFDaOXorj_vbxNYE7cWPdZI-XCIVK8WYG2H-KqeNyECed8PwOx3Z6YC1E70g3ll4inepqsevWQ6wJrx8_GMLzRCVLR_KFDr_H4DHvKkvBTHvEzoo1nTxW69b4kgFOdBCORlAJRA2oOJBnPjpsHTAMHGgHBJOoa80_3WVnHBcMpoM");'></div>
+</div>
+<div class="px-1">
+<p class="text-[#4E342E] text-base font-bold leading-normal">A Guide to Natural Fabric Dyeing</p>
+<p class="text-[#6D4C41] text-sm font-normal leading-normal mt-1">By Mark Peterson - Oct 18, 2023</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-2xl overflow-hidden shadow-lg">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover group-hover:scale-105 transition-transform duration-300" data-alt="A lush herb garden with various plants." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvQ8ndI7K91vDJjzpkAI1u1mN1HDp9bIcpFlHI1iWtlr1KNNwGuudNkRJTvUCbNAwhLNlrlonu_f8KoeJA9j7G1J9aC06eEZOAtiBG9Cb1bpMIVAzN5bM9UCtdUDR2q9CrAdhR6Shwe9XGvxX0ciZXs-BP-XmYMlYVdirTgCTNiL3oEZ2kSfdY8SR9mog7tLPhHeh_BWGoHrdv9qChb09ocoHGiEMJgoKV3Wj07CMEjRLc7dM7tdunuq5tXKXW0wfqLtBZydyBvRgk");'></div>
+</div>
+<div class="px-1">
+<p class="text-[#4E342E] text-base font-bold leading-normal">Growing a Thriving Herb Garden</p>
+<p class="text-[#6D4C41] text-sm font-normal leading-normal mt-1">By Emily White - Oct 16, 2023</p>
+</div>
+</div>
+</div>
+<div class="m-4 p-8 md:p-12 rounded-2xl glass-card flex flex-col items-center text-center shadow-lg">
+<h3 class="text-[#4E342E] text-2xl font-bold leading-tight tracking-[-0.015em]">Join Our Community</h3>
+<p class="text-[#6D4C41] text-base font-normal leading-normal max-w-lg mt-2">Receive weekly inspiration, news, and product updates directly in your inbox from our cooperative.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6 w-full max-w-md">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#5D4037] focus:outline-0 focus:ring-2 focus:ring-[#8D6E63] border-none glass-input h-12 placeholder:text-[#8D6E63] px-4 text-base font-normal leading-normal" placeholder="Enter your email" type="email"/>
+<button class="flex w-full sm:w-auto min-w-[120px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-[#8D6E63] text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-[#795548] transition-colors">
+<span class="truncate">Subscribe</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
