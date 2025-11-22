@@ -11,20 +11,258 @@
 ## Table of Contents
 
 1. [API Overview](#api-overview)
-2. [Client Initialization](#client-initialization)
-3. [Authentication Routes](#authentication-routes)
-4. [Shopping API Routes](#shopping-api-routes)
-5. [Booking API Routes](#booking-api-routes)
-6. [Reference Data Routes](#reference-data-routes)
-7. [Analytics Routes](#analytics-routes)
-8. [Travel Predictions Routes](#travel-predictions-routes)
-9. [Python Client Consumer Examples](#python-client-consumer-examples)
-10. [Error Handling](#error-handling)
-11. [Pagination & Filtering](#pagination--filtering)
+2. [Apify Tools for API Services](#apify-tools-for-api-services)
+3. [Client Initialization](#client-initialization)
+4. [Authentication Routes](#authentication-routes)
+5. [Shopping API Routes](#shopping-api-routes)
+6. [Booking API Routes](#booking-api-routes)
+7. [Reference Data Routes](#reference-data-routes)
+8. [Analytics Routes](#analytics-routes)
+9. [Travel Predictions Routes](#travel-predictions-routes)
+10. [Python Client Consumer Examples](#python-client-consumer-examples)
+11. [Error Handling](#error-handling)
+12. [Pagination & Filtering](#pagination--filtering)
 
 ---
 
-## API Overview
+## Apify Tools for API Services
+
+### Overview
+
+Apify provides powerful tools for automating API interactions, web scraping, and converting API specifications into Machine Context Protocol (MCP) servers for AI assistant integration. For the Amadeus API integration in HarvestConnect, we recommend using:
+
+### 1. OpenAPI to MCP Converter
+
+**Actor:** `theguide/openapi-to-mcp-converter`  
+**Purpose:** Convert the Amadeus OpenAPI specification into an MCP server  
+**Use Case:** Enable AI assistants to directly interact with Amadeus API endpoints  
+**Pricing:** $0.5 per OpenAPI URL processed
+
+#### Quick Start
+
+```json
+{
+  "openapiSource": "https://api.amadeus.com/openapi.json",
+  "serverName": "amadeus-api-mcp",
+  "serverDescription": "MCP server for Amadeus travel API",
+  "authentication": {
+    "type": "bearer",
+    "token": "YOUR_AMADEUS_TOKEN"
+  },
+  "maxEndpoints": 150
+}
+```
+
+#### Features
+
+- ✅ Universal OpenAPI v3.0/v3.1 support
+- ✅ Smart endpoint filtering with regex patterns
+- ✅ Bearer token, API key, and basic auth support
+- ✅ Multiple output formats (MCP package, JSON manifest, or both)
+- ✅ Production-ready error handling
+- ✅ Auto-generates MCP server package (Node.js)
+
+#### Generated Output
+
+The actor produces:
+
+1. **manifest.json** - Complete MCP tool definitions
+2. **mcp-server.zip** - Ready-to-deploy Node.js server
+3. **Dataset records** - Individual endpoint metadata
+
+#### Integration with HarvestConnect
+
+```bash
+# 1. Download generated mcp-server.zip from Apify
+# 2. Extract to your project
+unzip mcp-server.zip -d ./amadeus-mcp
+
+# 3. Install dependencies
+cd amadeus-mcp
+npm install
+
+# 4. Configure Claude Desktop (cline.instructions.md or .claude-config.json)
+{
+  "mcpServers": {
+    "amadeus-api": {
+      "command": "node",
+      "args": ["./amadeus-mcp/index.js"]
+    }
+  }
+}
+
+# 5. Now AI assistants can call Amadeus API endpoints directly!
+```
+
+#### Example: Filtering Specific Amadeus Endpoints
+
+```json
+{
+  "openapiSource": "https://api.amadeus.com/openapi.json",
+  "serverName": "amadeus-flight-mcp",
+  "serverDescription": "MCP for flight booking endpoints only",
+  "includeEndpoints": [
+    "GET /shopping/flight-offers",
+    "POST /shopping/flight-offers/pricing",
+    "POST /booking/flight-orders",
+    "GET /booking/flight-orders"
+  ],
+  "excludeEndpoints": ["DELETE .*", "PATCH .*"]
+}
+```
+
+### 2. RAG Web Browser (apify/rag-web-browser)
+
+**Actor:** `apify/rag-web-browser`  
+**Purpose:** Scrape and extract API documentation dynamically  
+**Use Case:** Keep documentation synchronized with Amadeus API updates  
+**Pricing:** Platform usage only (3 URLs per run = good value)
+
+#### Query Amadeus Documentation
+
+```javascript
+{
+  "query": "flight offers search endpoint oauth2 authentication site:amadeus4dev.github.io",
+  "maxResults": 5,
+  "outputFormats": ["markdown"]
+}
+```
+
+### 3. Flight Tracker Actor (syntellect_ai/flight-tracker-actor)
+
+**Actor:** `syntellect_ai/flight-tracker-actor`  
+**Purpose:** Real-time flight tracking with AviationStack API  
+**Use Case:** Track flights booked through Amadeus API  
+**Pricing:** $0.019 per Actor start + $0.009 per result
+
+#### Track Booked Flights
+
+```javascript
+{
+  "flightNumber": "SQ006",
+  "date": "2024-11-25",
+  "airline": "SQ",
+  "apiEndpoint": "https://api.aviationstack.com/v1/flights"
+}
+```
+
+### 4. API Services Architecture Pattern
+
+#### Recommended Architecture
+
+```
+HarvestConnect/
+├── backend/
+│   ├── integrations/
+│   │   ├── amadeus_service.py        # Core Amadeus client
+│   │   ├── travel_booking_service.py # Business logic
+│   │   └── apify_orchestrator.py     # Apify automation
+│   ├── tasks/
+│   │   ├── update_flight_data.py     # Celery task
+│   │   └── sync_api_docs.py          # RAG sync task
+│   └── mcp/
+│       └── amadeus_mcp/              # Generated MCP server
+├── .env                              # Apify API token + credentials
+└── requirements.txt
+```
+
+#### Implementation Example: Apify Orchestrator
+
+```python
+# backend/integrations/apify_orchestrator.py
+import asyncio
+from apify_client import ApifyClient
+
+class AmadeusAPIOrchestrator:
+    """Orchestrates Apify actors for Amadeus API services"""
+    
+    def __init__(self, api_token: str, amadeus_token: str):
+        self.client = ApifyClient(api_token)
+        self.amadeus_token = amadeus_token
+    
+    async def convert_openapi_to_mcp(self) -> dict:
+        """
+        Convert Amadeus OpenAPI spec to MCP server
+        Returns: MCP server package metadata
+        """
+        actor = self.client.actor("theguide/openapi-to-mcp-converter")
+        run = await actor.call({
+            "openapiSource": "https://api.amadeus.com/openapi.json",
+            "serverName": "amadeus-api-mcp",
+            "authentication": {
+                "type": "bearer",
+                "token": self.amadeus_token
+            },
+            "maxEndpoints": 150,
+            "outputFormat": "both"
+        })
+        
+        return {
+            "status": "success",
+            "defaultDatasetId": run.get("defaultDatasetId"),
+            "defaultKeyValueStoreId": run.get("defaultKeyValueStoreId")
+        }
+    
+    async def extract_flight_documentation(self, query: str) -> list:
+        """
+        Extract flight booking documentation dynamically
+        """
+        actor = self.client.actor("apify/rag-web-browser")
+        run = await actor.call({
+            "query": query,
+            "maxResults": 5,
+            "outputFormats": ["markdown"]
+        })
+        
+        dataset_items = await self.client.dataset(
+            run.get("defaultDatasetId")
+        ).list_items()
+        
+        return dataset_items.get("items", [])
+    
+    async def track_flight_live(self, flight_number: str, date: str) -> dict:
+        """
+        Real-time flight tracking using AviationStack
+        """
+        actor = self.client.actor("syntellect_ai/flight-tracker-actor")
+        run = await actor.call({
+            "flightNumber": flight_number,
+            "date": date,
+            "outputFormat": "json"
+        })
+        
+        return {
+            "status": "tracking",
+            "dataset_id": run.get("defaultDatasetId")
+        }
+
+# Usage in Django view
+@api_view(['GET'])
+def generate_amadeus_mcp(request):
+    """API endpoint to generate Amadeus MCP server"""
+    orchestrator = AmadeusAPIOrchestrator(
+        api_token=settings.APIFY_API_TOKEN,
+        amadeus_token=settings.AMADEUS_TOKEN
+    )
+    
+    result = asyncio.run(orchestrator.convert_openapi_to_mcp())
+    return Response(result)
+```
+
+### Benefits of Using Apify for HarvestConnect
+
+| Benefit | Tool | Impact |
+|---------|------|--------|
+| **Dynamic API Integration** | OpenAPI to MCP | Direct AI assistant ↔ Amadeus API communication |
+| **Documentation Sync** | RAG Web Browser | Auto-updates when Amadeus docs change |
+| **Live Flight Tracking** | Flight Tracker | Real-time status for booked flights |
+| **Scalability** | Apify Platform | Handles API rate limits & retries |
+| **Cost Efficiency** | Pay-per-result | Only pay for actual API calls |
+| **Workflow Automation** | Actor Orchestration | Chain multiple Apify actors together |
+
+---
+
+
 
 ### Supported Travel Services
 
