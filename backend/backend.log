@@ -1,0 +1,1656 @@
+nohup: ignoring input
+Watching for file changes with StatReloader
+INFO 2026-01-30 17:03:26,294 autoreload 59125 140374459836224 Watching for file changes with StatReloader
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:225: UserWarning: app_settings.USERNAME_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['username']['required']
+  required=allauth_account_settings.USERNAME_REQUIRED,
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:227: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:285: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+System check identified 3 issues (0 silenced).
+INFO 2026-01-30 17:03:26,724 server 59125 140374362461888 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2026-01-30 17:03:26,724 server 59125 140374362461888 Configuring endpoint tcp:port=8000:interface=0.0.0.0
+INFO 2026-01-30 17:03:26,725 server 59125 140374362461888 Listening on TCP address 0.0.0.0:8000
+/home/deeone/Documents/HarvestConnect/backend/api/serializers.py changed, reloading.
+INFO 2026-01-30 17:03:53,651 autoreload 59125 140374459836224 /home/deeone/Documents/HarvestConnect/backend/api/serializers.py changed, reloading.
+Performing system checks...
+
+January 30, 2026 - 17:03:26
+Django version 4.2.27, using settings 'harvestconnect.settings'
+Starting ASGI/Daphne version 4.2.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+INFO 2026-01-30 17:03:55,653 autoreload 59256 140304838108992 Watching for file changes with StatReloader
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:225: UserWarning: app_settings.USERNAME_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['username']['required']
+  required=allauth_account_settings.USERNAME_REQUIRED,
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:227: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:285: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/home/deeone/.local/share/uv/python/cpython-3.12.11-linux-x86_64-gnu/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/home/deeone/.local/share/uv/python/cpython-3.12.11-linux-x86_64-gnu/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/daphne/management/commands/runserver.py", line 109, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/management/base.py", line 485, in check
+    all_issues = checks.run_checks(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/checks/registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/checks/urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/checks/urls.py", line 24, in check_resolver
+    return check_method()
+           ^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/.local/share/uv/python/cpython-3.12.11-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/deeone/Documents/HarvestConnect/backend/harvestconnect/urls.py", line 25, in <module>
+    from api.views import (
+  File "/home/deeone/Documents/HarvestConnect/backend/api/views.py", line 4, in <module>
+    from dj_rest_auth.registration.views import SocialLoginView
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/views.py", line 34, in <module>
+    class RegisterView(CreateAPIView):
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/views.py", line 40, in RegisterView
+    serializer_class = api_settings.REGISTER_SERIALIZER
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/settings.py", line 227, in __getattr__
+    val = perform_import(val, attr)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/settings.py", line 168, in perform_import
+    return import_from_string(val, setting_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/settings.py", line 179, in import_from_string
+    return import_string(val)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/utils/module_loading.py", line 30, in import_string
+    return cached_import(module_path, class_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/utils/module_loading.py", line 15, in cached_import
+    module = import_module(module_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/.local/share/uv/python/cpython-3.12.11-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/api/serializers.py", line 5
+    UserProfile, Category, BlogPost, Product, Review, Order, Artist, SavedItem, Project,
+IndentationError: unexpected indent
+/home/deeone/Documents/HarvestConnect/backend/api/serializers.py changed, reloading.
+INFO 2026-01-30 17:04:07,880 autoreload 59256 140304838108992 /home/deeone/Documents/HarvestConnect/backend/api/serializers.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+INFO 2026-01-30 17:04:09,330 autoreload 59279 140138676627264 Watching for file changes with StatReloader
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:225: UserWarning: app_settings.USERNAME_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['username']['required']
+  required=allauth_account_settings.USERNAME_REQUIRED,
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:227: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:285: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+System check identified 3 issues (0 silenced).
+INFO 2026-01-30 17:04:09,699 server 59279 140138578613952 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2026-01-30 17:04:09,700 server 59279 140138578613952 Configuring endpoint tcp:port=8000:interface=0.0.0.0
+INFO 2026-01-30 17:04:09,700 server 59279 140138578613952 Listening on TCP address 0.0.0.0:8000
+HTTP GET /api/blog-posts/?page_size=10 200 [0.15, 127.0.0.1:53252]
+INFO 2026-01-30 17:04:27,212 runserver 59279 140138578613952 HTTP GET /api/blog-posts/?page_size=10 200 [0.15, 127.0.0.1:53252]
+HTTP GET /api/blog-posts/?page_size=10 200 [0.08, 127.0.0.1:53264]
+INFO 2026-01-30 17:04:27,309 runserver 59279 140138578613952 HTTP GET /api/blog-posts/?page_size=10 200 [0.08, 127.0.0.1:53264]
+Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=597
+WARNING 2026-01-30 17:04:28,561 log 59279 140137853867712 Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=597
+Not Found: /media/https:/loremflickr.com/1200/800/ecology,nature?random=629
+WARNING 2026-01-30 17:04:28,561 log 59279 140137870653120 Not Found: /media/https:/loremflickr.com/1200/800/ecology,nature?random=629
+Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=381
+WARNING 2026-01-30 17:04:28,562 log 59279 140138424276672 Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=381
+Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=883
+WARNING 2026-01-30 17:04:28,562 log 59279 140138432669376 Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=883
+Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=465
+WARNING 2026-01-30 17:04:28,564 log 59279 140137862260416 Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=465
+HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D597 404 [0.57, 127.0.0.1:53286]
+WARNING 2026-01-30 17:04:28,565 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D597 404 [0.57, 127.0.0.1:53286]
+HTTP GET /media/https%3A/loremflickr.com/1200/800/ecology%2Cnature%3Frandom%3D629 404 [0.59, 127.0.0.1:53280]
+WARNING 2026-01-30 17:04:28,568 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/1200/800/ecology%2Cnature%3Frandom%3D629 404 [0.59, 127.0.0.1:53280]
+HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D381 404 [0.58, 127.0.0.1:53298]
+WARNING 2026-01-30 17:04:28,572 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D381 404 [0.58, 127.0.0.1:53298]
+HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D883 404 [0.57, 127.0.0.1:53300]
+WARNING 2026-01-30 17:04:28,582 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D883 404 [0.57, 127.0.0.1:53300]
+HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D465 404 [0.59, 127.0.0.1:53292]
+WARNING 2026-01-30 17:04:28,584 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D465 404 [0.59, 127.0.0.1:53292]
+Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=348
+WARNING 2026-01-30 17:04:28,590 log 59279 140137853867712 Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=348
+HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D348 404 [0.58, 127.0.0.1:53310]
+WARNING 2026-01-30 17:04:28,593 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D348 404 [0.58, 127.0.0.1:53310]
+Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=30
+WARNING 2026-01-30 17:04:28,796 log 59279 140137853867712 Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=30
+HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D30 404 [0.14, 127.0.0.1:53326]
+WARNING 2026-01-30 17:04:28,802 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D30 404 [0.14, 127.0.0.1:53326]
+Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=278
+WARNING 2026-01-30 17:04:28,805 log 59279 140137870653120 Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=278
+HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D278 404 [0.14, 127.0.0.1:53314]
+WARNING 2026-01-30 17:04:28,807 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D278 404 [0.14, 127.0.0.1:53314]
+HTTP OPTIONS /api/products/?page_size=6&status=active 200 [0.01, 127.0.0.1:53264]
+INFO 2026-01-30 17:04:32,651 runserver 59279 140138578613952 HTTP OPTIONS /api/products/?page_size=6&status=active 200 [0.01, 127.0.0.1:53264]
+HTTP OPTIONS /api/products/?page_size=6&status=active 200 [0.01, 127.0.0.1:53252]
+INFO 2026-01-30 17:04:32,656 runserver 59279 140138578613952 HTTP OPTIONS /api/products/?page_size=6&status=active 200 [0.01, 127.0.0.1:53252]
+HTTP GET /api/products/?page_size=6&status=active 200 [0.07, 127.0.0.1:53252]
+INFO 2026-01-30 17:04:32,873 runserver 59279 140138578613952 HTTP GET /api/products/?page_size=6&status=active 200 [0.07, 127.0.0.1:53252]
+HTTP OPTIONS /api/blog-posts/?page_size=3 200 [0.02, 127.0.0.1:53252]
+INFO 2026-01-30 17:04:32,923 runserver 59279 140138578613952 HTTP OPTIONS /api/blog-posts/?page_size=3 200 [0.02, 127.0.0.1:53252]
+HTTP GET /api/blog-posts/?page_size=3 200 [0.07, 127.0.0.1:53252]
+INFO 2026-01-30 17:04:33,025 runserver 59279 140138578613952 HTTP GET /api/blog-posts/?page_size=3 200 [0.07, 127.0.0.1:53252]
+HTTP GET /api/products/?page_size=6&status=active 200 [0.16, 127.0.0.1:53264]
+INFO 2026-01-30 17:04:33,032 runserver 59279 140138578613952 HTTP GET /api/products/?page_size=6&status=active 200 [0.16, 127.0.0.1:53264]
+HTTP GET /api/blog-posts/?page_size=3 200 [0.08, 127.0.0.1:53264]
+INFO 2026-01-30 17:04:33,186 runserver 59279 140138578613952 HTTP GET /api/blog-posts/?page_size=3 200 [0.08, 127.0.0.1:53264]
+HTTP GET /media/products/profile.png 304 [0.46, 127.0.0.1:53334]
+INFO 2026-01-30 17:04:33,770 runserver 59279 140138578613952 HTTP GET /media/products/profile.png 304 [0.46, 127.0.0.1:53334]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=560
+WARNING 2026-01-30 17:04:33,813 log 59279 140138432669376 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=560
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=103
+WARNING 2026-01-30 17:04:33,813 log 59279 140138432669376 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=103
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=117
+WARNING 2026-01-30 17:04:33,813 log 59279 140138432669376 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=117
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D560 404 [0.19, 127.0.0.1:53364]
+WARNING 2026-01-30 17:04:33,814 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D560 404 [0.19, 127.0.0.1:53364]
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D103 404 [0.19, 127.0.0.1:53362]
+WARNING 2026-01-30 17:04:33,817 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D103 404 [0.19, 127.0.0.1:53362]
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D117 404 [0.20, 127.0.0.1:53336]
+WARNING 2026-01-30 17:04:33,819 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D117 404 [0.20, 127.0.0.1:53336]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=296
+WARNING 2026-01-30 17:04:33,837 log 59279 140137853867712 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=296
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D296 404 [0.22, 127.0.0.1:53352]
+WARNING 2026-01-30 17:04:33,847 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D296 404 [0.22, 127.0.0.1:53352]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=204
+WARNING 2026-01-30 17:04:33,848 log 59279 140137862260416 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=204
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D204 404 [0.22, 127.0.0.1:53356]
+WARNING 2026-01-30 17:04:33,852 runserver 59279 140138578613952 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D204 404 [0.22, 127.0.0.1:53356]
+/home/deeone/Documents/HarvestConnect/backend/api/views.py changed, reloading.
+INFO 2026-01-30 17:04:44,334 autoreload 59279 140138676627264 /home/deeone/Documents/HarvestConnect/backend/api/views.py changed, reloading.
+Performing system checks...
+
+January 30, 2026 - 17:04:09
+Django version 4.2.27, using settings 'harvestconnect.settings'
+Starting ASGI/Daphne version 4.2.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+INFO 2026-01-30 17:04:46,634 autoreload 59514 139637625956160 Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/home/deeone/.local/share/uv/python/cpython-3.12.11-linux-x86_64-gnu/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/home/deeone/.local/share/uv/python/cpython-3.12.11-linux-x86_64-gnu/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/daphne/management/commands/runserver.py", line 109, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/management/base.py", line 485, in check
+    all_issues = checks.run_checks(
+                 ^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/checks/registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/checks/urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/checks/urls.py", line 24, in check_resolver
+    return check_method()
+           ^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/.local/share/uv/python/cpython-3.12.11-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/deeone/Documents/HarvestConnect/backend/harvestconnect/urls.py", line 25, in <module>
+    from api.views import (
+  File "/home/deeone/Documents/HarvestConnect/backend/api/views.py", line 15
+    UserProfile, Category, BlogPost, Product, Review, Order, Artist, SavedItem, Project,
+IndentationError: unexpected indent
+/home/deeone/Documents/HarvestConnect/backend/api/views.py changed, reloading.
+INFO 2026-01-30 17:05:22,015 autoreload 59514 139637625956160 /home/deeone/Documents/HarvestConnect/backend/api/views.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+INFO 2026-01-30 17:05:23,814 autoreload 59672 139645783373632 Watching for file changes with StatReloader
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:225: UserWarning: app_settings.USERNAME_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['username']['required']
+  required=allauth_account_settings.USERNAME_REQUIRED,
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:227: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:285: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+System check identified 3 issues (0 silenced).
+INFO 2026-01-30 17:05:24,264 server 59672 139645686027968 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2026-01-30 17:05:24,264 server 59672 139645686027968 Configuring endpoint tcp:port=8000:interface=0.0.0.0
+INFO 2026-01-30 17:05:24,265 server 59672 139645686027968 Listening on TCP address 0.0.0.0:8000
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:59234]
+INFO 2026-01-30 17:15:27,985 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:59234]
+HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:59218]
+INFO 2026-01-30 17:15:27,990 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:59218]
+HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:59248]
+INFO 2026-01-30 17:15:28,010 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:59248]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:59264]
+INFO 2026-01-30 17:15:28,046 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:59264]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:59274]
+INFO 2026-01-30 17:15:30,773 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:59274]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:59274]
+INFO 2026-01-30 17:15:30,807 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:59274]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:59278]
+INFO 2026-01-30 17:15:30,828 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:59278]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:59278]
+INFO 2026-01-30 17:15:30,859 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:59278]
+HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:59264]
+INFO 2026-01-30 17:15:30,873 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:59264]
+HTTP GET /api/orders/? 200 [0.12, 127.0.0.1:59248]
+INFO 2026-01-30 17:15:30,902 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.12, 127.0.0.1:59248]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:59274]
+INFO 2026-01-30 17:15:31,032 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:59274]
+HTTP GET /api/users/stats/ 200 [0.19, 127.0.0.1:59218]
+INFO 2026-01-30 17:15:31,072 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.19, 127.0.0.1:59218]
+HTTP GET /api/reviews/? 200 [0.31, 127.0.0.1:59234]
+INFO 2026-01-30 17:15:31,106 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.31, 127.0.0.1:59234]
+HTTP GET /api/orders/? 200 [0.21, 127.0.0.1:59264]
+INFO 2026-01-30 17:15:31,120 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.21, 127.0.0.1:59264]
+HTTP GET /api/reviews/? 200 [0.16, 127.0.0.1:59218]
+INFO 2026-01-30 17:15:31,272 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.16, 127.0.0.1:59218]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:15:31,336 log 59672 139645291591360 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.13, 127.0.0.1:59234]
+WARNING 2026-01-30 17:15:31,337 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.13, 127.0.0.1:59234]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:15:31,431 log 59672 139645291591360 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:59234]
+WARNING 2026-01-30 17:15:31,432 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:59234]
+HTTP GET /api/users/me/ 200 [0.06, 127.0.0.1:59234]
+INFO 2026-01-30 17:15:55,834 runserver 59672 139645686027968 HTTP GET /api/users/me/ 200 [0.06, 127.0.0.1:59234]
+HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:59234]
+INFO 2026-01-30 17:15:56,159 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:59234]
+HTTP GET /api/saved-items/ 200 [0.07, 127.0.0.1:59218]
+INFO 2026-01-30 17:15:56,163 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.07, 127.0.0.1:59218]
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:59248]
+INFO 2026-01-30 17:15:56,217 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:59248]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:59264]
+INFO 2026-01-30 17:15:56,218 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:59264]
+HTTP POST /api/auth/google/ 200 [0.46, 127.0.0.1:59264]
+INFO 2026-01-30 17:16:25,301 runserver 59672 139645686027968 HTTP POST /api/auth/google/ 200 [0.46, 127.0.0.1:59264]
+HTTP GET /api/users/me/ 200 [0.09, 127.0.0.1:59248]
+INFO 2026-01-30 17:16:50,289 runserver 59672 139645686027968 HTTP GET /api/users/me/ 200 [0.09, 127.0.0.1:59248]
+HTTP POST /api/auth/google/ 200 [0.45, 127.0.0.1:59264]
+INFO 2026-01-30 17:16:50,648 runserver 59672 139645686027968 HTTP POST /api/auth/google/ 200 [0.45, 127.0.0.1:59264]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:59264]
+INFO 2026-01-30 17:16:51,385 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:59264]
+HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:59248]
+INFO 2026-01-30 17:16:51,390 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:59248]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:59218]
+INFO 2026-01-30 17:16:51,409 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:59218]
+HTTP GET /api/saved-items/ 200 [0.01, 127.0.0.1:59234]
+INFO 2026-01-30 17:16:51,430 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.01, 127.0.0.1:59234]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:58174]
+INFO 2026-01-30 17:16:56,306 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:58174]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:58174]
+INFO 2026-01-30 17:16:56,319 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:58174]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:58182]
+INFO 2026-01-30 17:16:56,338 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:58182]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:58174]
+INFO 2026-01-30 17:16:56,374 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:58174]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:58182]
+INFO 2026-01-30 17:16:56,375 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:58182]
+HTTP GET /api/users/stats/ 200 [0.08, 127.0.0.1:59234]
+INFO 2026-01-30 17:16:56,392 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.08, 127.0.0.1:59234]
+HTTP GET /api/orders/? 200 [0.09, 127.0.0.1:59218]
+INFO 2026-01-30 17:16:56,403 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.09, 127.0.0.1:59218]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:59248]
+INFO 2026-01-30 17:16:56,443 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:59248]
+HTTP GET /api/reviews/? 200 [0.15, 127.0.0.1:59264]
+INFO 2026-01-30 17:16:56,463 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.15, 127.0.0.1:59264]
+HTTP GET /api/orders/? 200 [0.07, 127.0.0.1:59234]
+INFO 2026-01-30 17:16:56,471 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.07, 127.0.0.1:59234]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:16:56,524 log 59672 139645291591360 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.04, 127.0.0.1:59264]
+WARNING 2026-01-30 17:16:56,526 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.04, 127.0.0.1:59264]
+HTTP GET /api/reviews/? 200 [0.09, 127.0.0.1:59248]
+INFO 2026-01-30 17:16:56,555 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.09, 127.0.0.1:59248]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:16:56,636 log 59672 139645291591360 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:59248]
+WARNING 2026-01-30 17:16:56,637 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:59248]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:58182]
+INFO 2026-01-30 17:18:06,748 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:58182]
+HTTP PATCH /api/users/me/ 200 [0.09, 127.0.0.1:44760]
+INFO 2026-01-30 17:18:16,850 runserver 59672 139645686027968 HTTP PATCH /api/users/me/ 200 [0.09, 127.0.0.1:44760]
+HTTP GET /api/users/me/ 200 [0.03, 127.0.0.1:44760]
+INFO 2026-01-30 17:18:20,243 runserver 59672 139645686027968 HTTP GET /api/users/me/ 200 [0.03, 127.0.0.1:44760]
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:44762]
+INFO 2026-01-30 17:18:20,390 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:44762]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:44760]
+INFO 2026-01-30 17:18:20,392 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:44760]
+HTTP GET /api/users/stats/ 200 [0.10, 127.0.0.1:44762]
+INFO 2026-01-30 17:18:20,499 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.10, 127.0.0.1:44762]
+HTTP GET /api/saved-items/ 200 [0.10, 127.0.0.1:44776]
+INFO 2026-01-30 17:18:20,506 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.10, 127.0.0.1:44776]
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:44762]
+INFO 2026-01-30 17:18:32,035 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:44762]
+HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:44776]
+INFO 2026-01-30 17:18:32,036 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:44776]
+HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:44760]
+INFO 2026-01-30 17:18:32,060 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:44760]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:33694]
+INFO 2026-01-30 17:18:32,073 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:33694]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:33694]
+INFO 2026-01-30 17:18:50,471 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:33694]
+HTTP GET /api/saved-items/ 200 [0.05, 127.0.0.1:44760]
+INFO 2026-01-30 17:18:50,478 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.05, 127.0.0.1:44760]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:44776]
+INFO 2026-01-30 17:18:50,506 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:44776]
+HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:33694]
+INFO 2026-01-30 17:18:50,519 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:33694]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:49880]
+INFO 2026-01-30 17:18:59,905 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:49880]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:49880]
+INFO 2026-01-30 17:18:59,916 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:49880]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:49888]
+INFO 2026-01-30 17:18:59,939 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:49888]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:49880]
+INFO 2026-01-30 17:18:59,961 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:49880]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:49888]
+INFO 2026-01-30 17:18:59,964 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:49888]
+HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:33694]
+INFO 2026-01-30 17:18:59,972 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:33694]
+HTTP GET /api/orders/? 200 [0.09, 127.0.0.1:44776]
+INFO 2026-01-30 17:18:59,996 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.09, 127.0.0.1:44776]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:44762]
+INFO 2026-01-30 17:19:00,016 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:44762]
+HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:00,048 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:33694]
+HTTP GET /api/reviews/? 200 [0.14, 127.0.0.1:44760]
+INFO 2026-01-30 17:19:00,050 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.14, 127.0.0.1:44760]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:19:00,107 log 59672 139645291591360 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.04, 127.0.0.1:44760]
+WARNING 2026-01-30 17:19:00,108 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.04, 127.0.0.1:44760]
+HTTP GET /api/reviews/? 200 [0.08, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:00,132 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.08, 127.0.0.1:33694]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:19:00,242 log 59672 139645291591360 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.05, 127.0.0.1:33694]
+WARNING 2026-01-30 17:19:00,247 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.05, 127.0.0.1:33694]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:49888]
+INFO 2026-01-30 17:19:10,049 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:49888]
+HTTP OPTIONS /api/categories/?page_size=100 200 [0.00, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:10,136 runserver 59672 139645686027968 HTTP OPTIONS /api/categories/?page_size=100 200 [0.00, 127.0.0.1:33694]
+HTTP OPTIONS /api/categories/?page_size=100 200 [0.00, 127.0.0.1:44760]
+INFO 2026-01-30 17:19:10,143 runserver 59672 139645686027968 HTTP OPTIONS /api/categories/?page_size=100 200 [0.00, 127.0.0.1:44760]
+HTTP GET /api/categories/?page_size=100 200 [0.02, 127.0.0.1:44760]
+INFO 2026-01-30 17:19:10,200 runserver 59672 139645686027968 HTTP GET /api/categories/?page_size=100 200 [0.02, 127.0.0.1:44760]
+HTTP GET /api/categories/?page_size=100 200 [0.02, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:10,224 runserver 59672 139645686027968 HTTP GET /api/categories/?page_size=100 200 [0.02, 127.0.0.1:33694]
+HTTP GET /api/saved-items/ 200 [0.05, 127.0.0.1:44760]
+INFO 2026-01-30 17:19:16,174 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.05, 127.0.0.1:44760]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:16,179 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:33694]
+HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:44762]
+INFO 2026-01-30 17:19:16,210 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:44762]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:16,226 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:33694]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:49444]
+INFO 2026-01-30 17:19:19,874 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:49444]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:49444]
+INFO 2026-01-30 17:19:19,906 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:49444]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:49450]
+INFO 2026-01-30 17:19:19,920 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:49450]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:49450]
+INFO 2026-01-30 17:19:19,936 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:49450]
+HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:19,946 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:33694]
+HTTP GET /api/orders/? 200 [0.09, 127.0.0.1:44762]
+INFO 2026-01-30 17:19:19,980 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.09, 127.0.0.1:44762]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:44776]
+INFO 2026-01-30 17:19:20,001 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:44776]
+HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:20,042 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:33694]
+HTTP GET /api/reviews/? 200 [0.16, 127.0.0.1:44760]
+INFO 2026-01-30 17:19:20,046 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.16, 127.0.0.1:44760]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:19:20,088 log 59672 139645291591360 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:44760]
+WARNING 2026-01-30 17:19:20,089 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:44760]
+HTTP GET /api/reviews/? 200 [0.10, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:20,147 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.10, 127.0.0.1:33694]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:19:20,172 log 59672 139645291591360 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:33694]
+WARNING 2026-01-30 17:19:20,173 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:33694]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:49450]
+INFO 2026-01-30 17:19:33,286 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:49450]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:33,337 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:33694]
+HTTP GET /api/orders/? 200 [0.08, 127.0.0.1:44760]
+INFO 2026-01-30 17:19:33,372 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.08, 127.0.0.1:44760]
+HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:44762]
+INFO 2026-01-30 17:19:33,414 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:44762]
+HTTP GET /api/orders/? 200 [0.08, 127.0.0.1:33694]
+INFO 2026-01-30 17:19:33,454 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.08, 127.0.0.1:33694]
+HTTP GET /api/products/? 200 [0.19, 127.0.0.1:44776]
+INFO 2026-01-30 17:19:33,484 runserver 59672 139645686027968 HTTP GET /api/products/? 200 [0.19, 127.0.0.1:44776]
+HTTP GET /media/products/profile.png 304 [0.02, 127.0.0.1:44216]
+INFO 2026-01-30 17:19:33,568 runserver 59672 139645686027968 HTTP GET /media/products/profile.png 304 [0.02, 127.0.0.1:44216]
+HTTP GET /api/products/? 200 [0.10, 127.0.0.1:44762]
+INFO 2026-01-30 17:19:33,601 runserver 59672 139645686027968 HTTP GET /api/products/? 200 [0.10, 127.0.0.1:44762]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:15,530 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:44762]
+HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:44776]
+INFO 2026-01-30 17:20:15,559 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:44776]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:33694]
+INFO 2026-01-30 17:20:15,595 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:33694]
+HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:15,614 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:44762]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:36512]
+INFO 2026-01-30 17:20:26,243 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:36512]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:36512]
+INFO 2026-01-30 17:20:26,256 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:36512]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:36512]
+INFO 2026-01-30 17:20:26,267 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:36512]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:36520]
+INFO 2026-01-30 17:20:26,278 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:36520]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:36520]
+INFO 2026-01-30 17:20:26,300 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:36520]
+HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:26,313 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:44762]
+HTTP GET /api/orders/? 200 [0.08, 127.0.0.1:33694]
+INFO 2026-01-30 17:20:26,335 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.08, 127.0.0.1:33694]
+HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:44760]
+INFO 2026-01-30 17:20:26,382 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:44760]
+HTTP GET /api/orders/? 200 [0.07, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:26,408 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.07, 127.0.0.1:44762]
+HTTP GET /api/reviews/? 200 [0.16, 127.0.0.1:44776]
+INFO 2026-01-30 17:20:26,414 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.16, 127.0.0.1:44776]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:20:26,465 log 59672 139645291591360 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.04, 127.0.0.1:44776]
+WARNING 2026-01-30 17:20:26,466 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.04, 127.0.0.1:44776]
+HTTP GET /api/reviews/? 200 [0.08, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:26,495 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.08, 127.0.0.1:44762]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:20:26,540 log 59672 139645291591360 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:44762]
+WARNING 2026-01-30 17:20:26,541 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:44762]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:36520]
+INFO 2026-01-30 17:20:29,452 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:36520]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:29,495 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:44762]
+HTTP GET /api/orders/? 200 [0.07, 127.0.0.1:44776]
+INFO 2026-01-30 17:20:29,539 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.07, 127.0.0.1:44776]
+HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:33694]
+INFO 2026-01-30 17:20:29,572 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:33694]
+HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:29,608 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:44762]
+HTTP GET /api/products/? 200 [0.16, 127.0.0.1:44760]
+INFO 2026-01-30 17:20:29,628 runserver 59672 139645686027968 HTTP GET /api/products/? 200 [0.16, 127.0.0.1:44760]
+HTTP GET /media/products/profile.png 304 [0.02, 127.0.0.1:44216]
+INFO 2026-01-30 17:20:29,696 runserver 59672 139645686027968 HTTP GET /media/products/profile.png 304 [0.02, 127.0.0.1:44216]
+HTTP GET /api/products/? 200 [0.09, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:29,723 runserver 59672 139645686027968 HTTP GET /api/products/? 200 [0.09, 127.0.0.1:44762]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:40,073 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:44762]
+HTTP GET /api/orders/? 200 [0.03, 127.0.0.1:44760]
+INFO 2026-01-30 17:20:40,075 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.03, 127.0.0.1:44760]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:33694]
+INFO 2026-01-30 17:20:40,121 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:33694]
+HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:40,128 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.05, 127.0.0.1:44762]
+HTTP GET /api/categories/?page_size=100 200 [0.02, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:47,020 runserver 59672 139645686027968 HTTP GET /api/categories/?page_size=100 200 [0.02, 127.0.0.1:44762]
+HTTP OPTIONS /api/products/?page_size=20&status=active 200 [0.00, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:47,043 runserver 59672 139645686027968 HTTP OPTIONS /api/products/?page_size=20&status=active 200 [0.00, 127.0.0.1:44762]
+HTTP GET /api/products/?page_size=20&status=active 200 [0.09, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:47,148 runserver 59672 139645686027968 HTTP GET /api/products/?page_size=20&status=active 200 [0.09, 127.0.0.1:44762]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=204
+WARNING 2026-01-30 17:20:47,495 log 59672 139645244397248 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=204
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D204 404 [0.13, 127.0.0.1:47786]
+WARNING 2026-01-30 17:20:47,499 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D204 404 [0.13, 127.0.0.1:47786]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=296
+WARNING 2026-01-30 17:20:47,502 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=296
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D296 404 [0.14, 127.0.0.1:47772]
+WARNING 2026-01-30 17:20:47,505 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D296 404 [0.14, 127.0.0.1:47772]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=560
+WARNING 2026-01-30 17:20:47,507 log 59672 139644880545472 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=560
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=103
+WARNING 2026-01-30 17:20:47,509 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=103
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=971
+WARNING 2026-01-30 17:20:47,510 log 59672 139644872152768 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=971
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=117
+WARNING 2026-01-30 17:20:47,510 log 59672 139644872152768 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=117
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D560 404 [0.14, 127.0.0.1:47802]
+WARNING 2026-01-30 17:20:47,512 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D560 404 [0.14, 127.0.0.1:47802]
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D103 404 [0.15, 127.0.0.1:47800]
+WARNING 2026-01-30 17:20:47,513 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D103 404 [0.15, 127.0.0.1:47800]
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D971 404 [0.15, 127.0.0.1:47810]
+WARNING 2026-01-30 17:20:47,515 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D971 404 [0.15, 127.0.0.1:47810]
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D117 404 [0.16, 127.0.0.1:44216]
+WARNING 2026-01-30 17:20:47,516 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D117 404 [0.16, 127.0.0.1:44216]
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=38
+WARNING 2026-01-30 17:20:47,678 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/tools?random=38
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D38 404 [0.11, 127.0.0.1:47832]
+WARNING 2026-01-30 17:20:47,681 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D38 404 [0.11, 127.0.0.1:47832]
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=473
+WARNING 2026-01-30 17:20:47,682 log 59672 139645244397248 Not Found: /media/https:/loremflickr.com/800/600/tools?random=473
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=104
+WARNING 2026-01-30 17:20:47,684 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/800/600/tools?random=104
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=916
+WARNING 2026-01-30 17:20:47,684 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/800/600/tools?random=916
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D473 404 [0.12, 127.0.0.1:47818]
+WARNING 2026-01-30 17:20:47,686 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D473 404 [0.12, 127.0.0.1:47818]
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D104 404 [0.12, 127.0.0.1:47844]
+WARNING 2026-01-30 17:20:47,689 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D104 404 [0.12, 127.0.0.1:47844]
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D916 404 [0.12, 127.0.0.1:47838]
+WARNING 2026-01-30 17:20:47,691 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D916 404 [0.12, 127.0.0.1:47838]
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=708
+WARNING 2026-01-30 17:20:47,692 log 59672 139645291591360 Not Found: /media/https:/loremflickr.com/800/600/tools?random=708
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=135
+WARNING 2026-01-30 17:20:47,692 log 59672 139645291591360 Not Found: /media/https:/loremflickr.com/800/600/tools?random=135
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D708 404 [0.13, 127.0.0.1:47826]
+WARNING 2026-01-30 17:20:47,695 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D708 404 [0.13, 127.0.0.1:47826]
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D135 404 [0.12, 127.0.0.1:47850]
+WARNING 2026-01-30 17:20:47,695 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D135 404 [0.12, 127.0.0.1:47850]
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=852
+WARNING 2026-01-30 17:20:47,870 log 59672 139644855367360 Not Found: /media/https:/loremflickr.com/800/600/farm?random=852
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=581
+WARNING 2026-01-30 17:20:47,872 log 59672 139644863760064 Not Found: /media/https:/loremflickr.com/800/600/farm?random=581
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=735
+WARNING 2026-01-30 17:20:47,874 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/farm?random=735
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D852 404 [0.10, 127.0.0.1:47890]
+WARNING 2026-01-30 17:20:47,874 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D852 404 [0.10, 127.0.0.1:47890]
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=836
+WARNING 2026-01-30 17:20:47,876 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/800/600/farm?random=836
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D581 404 [0.09, 127.0.0.1:47908]
+WARNING 2026-01-30 17:20:47,880 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D581 404 [0.09, 127.0.0.1:47908]
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D735 404 [0.11, 127.0.0.1:47878]
+WARNING 2026-01-30 17:20:47,882 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D735 404 [0.11, 127.0.0.1:47878]
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D836 404 [0.11, 127.0.0.1:47860]
+WARNING 2026-01-30 17:20:47,884 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D836 404 [0.11, 127.0.0.1:47860]
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=860
+WARNING 2026-01-30 17:20:47,888 log 59672 139644880545472 Not Found: /media/https:/loremflickr.com/800/600/farm?random=860
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D860 404 [0.11, 127.0.0.1:47904]
+WARNING 2026-01-30 17:20:47,890 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D860 404 [0.11, 127.0.0.1:47904]
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=263
+WARNING 2026-01-30 17:20:47,892 log 59672 139644855367360 Not Found: /media/https:/loremflickr.com/800/600/farm?random=263
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D263 404 [0.12, 127.0.0.1:47876]
+WARNING 2026-01-30 17:20:47,893 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D263 404 [0.12, 127.0.0.1:47876]
+HTTP GET /api/categories/?page_size=100 200 [0.02, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:57,027 runserver 59672 139645686027968 HTTP GET /api/categories/?page_size=100 200 [0.02, 127.0.0.1:44762]
+HTTP OPTIONS /api/products/?page_size=20&status=active&category=2 200 [0.00, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:57,053 runserver 59672 139645686027968 HTTP OPTIONS /api/products/?page_size=20&status=active&category=2 200 [0.00, 127.0.0.1:44762]
+HTTP GET /api/products/?page_size=20&status=active&category=2 200 [0.05, 127.0.0.1:44762]
+INFO 2026-01-30 17:20:57,110 runserver 59672 139645686027968 HTTP GET /api/products/?page_size=20&status=active&category=2 200 [0.05, 127.0.0.1:44762]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=204
+WARNING 2026-01-30 17:20:57,192 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=204
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D204 404 [0.02, 127.0.0.1:57502]
+WARNING 2026-01-30 17:20:57,193 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D204 404 [0.02, 127.0.0.1:57502]
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=135
+WARNING 2026-01-30 17:20:57,260 log 59672 139645291591360 Not Found: /media/https:/loremflickr.com/800/600/tools?random=135
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=708
+WARNING 2026-01-30 17:20:57,260 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/800/600/tools?random=708
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D135 404 [0.07, 127.0.0.1:57530]
+WARNING 2026-01-30 17:20:57,265 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D135 404 [0.07, 127.0.0.1:57530]
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D708 404 [0.07, 127.0.0.1:57516]
+WARNING 2026-01-30 17:20:57,265 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D708 404 [0.07, 127.0.0.1:57516]
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=836
+WARNING 2026-01-30 17:20:57,267 log 59672 139644872152768 Not Found: /media/https:/loremflickr.com/800/600/farm?random=836
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D836 404 [0.07, 127.0.0.1:57546]
+WARNING 2026-01-30 17:20:57,268 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D836 404 [0.07, 127.0.0.1:57546]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=971
+WARNING 2026-01-30 17:20:57,270 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=971
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D971 404 [0.08, 127.0.0.1:57506]
+WARNING 2026-01-30 17:20:57,271 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D971 404 [0.08, 127.0.0.1:57506]
+HTTP GET /api/products/?page_size=6&status=active 200 [0.06, 127.0.0.1:44762]
+INFO 2026-01-30 17:21:03,016 runserver 59672 139645686027968 HTTP GET /api/products/?page_size=6&status=active 200 [0.06, 127.0.0.1:44762]
+HTTP GET /api/products/?page_size=6&status=active 200 [0.06, 127.0.0.1:33694]
+INFO 2026-01-30 17:21:03,075 runserver 59672 139645686027968 HTTP GET /api/products/?page_size=6&status=active 200 [0.06, 127.0.0.1:33694]
+HTTP GET /api/blog-posts/?page_size=3 200 [0.04, 127.0.0.1:44762]
+INFO 2026-01-30 17:21:03,101 runserver 59672 139645686027968 HTTP GET /api/blog-posts/?page_size=3 200 [0.04, 127.0.0.1:44762]
+HTTP GET /api/blog-posts/?page_size=3 200 [0.02, 127.0.0.1:44762]
+INFO 2026-01-30 17:21:03,131 runserver 59672 139645686027968 HTTP GET /api/blog-posts/?page_size=3 200 [0.02, 127.0.0.1:44762]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=117
+WARNING 2026-01-30 17:21:03,237 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=117
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=296
+WARNING 2026-01-30 17:21:03,237 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=296
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D117 404 [0.05, 127.0.0.1:57554]
+WARNING 2026-01-30 17:21:03,240 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D117 404 [0.05, 127.0.0.1:57554]
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D296 404 [0.05, 127.0.0.1:57562]
+WARNING 2026-01-30 17:21:03,247 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D296 404 [0.05, 127.0.0.1:57562]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=204
+WARNING 2026-01-30 17:21:03,267 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=204
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D204 404 [0.07, 127.0.0.1:57572]
+WARNING 2026-01-30 17:21:03,269 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D204 404 [0.07, 127.0.0.1:57572]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=103
+WARNING 2026-01-30 17:21:03,275 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=103
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=560
+WARNING 2026-01-30 17:21:03,277 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=560
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D103 404 [0.06, 127.0.0.1:57578]
+WARNING 2026-01-30 17:21:03,278 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D103 404 [0.06, 127.0.0.1:57578]
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D560 404 [0.06, 127.0.0.1:57588]
+WARNING 2026-01-30 17:21:03,280 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D560 404 [0.06, 127.0.0.1:57588]
+HTTP GET /api/categories/?page_size=100 200 [0.01, 127.0.0.1:44762]
+INFO 2026-01-30 17:21:04,402 runserver 59672 139645686027968 HTTP GET /api/categories/?page_size=100 200 [0.01, 127.0.0.1:44762]
+HTTP GET /api/products/?page_size=20&status=active 200 [0.11, 127.0.0.1:44762]
+INFO 2026-01-30 17:21:04,520 runserver 59672 139645686027968 HTTP GET /api/products/?page_size=20&status=active 200 [0.11, 127.0.0.1:44762]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=117
+WARNING 2026-01-30 17:21:04,695 log 59672 139645291591360 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=117
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D117 404 [0.08, 127.0.0.1:46230]
+WARNING 2026-01-30 17:21:04,704 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D117 404 [0.08, 127.0.0.1:46230]
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=296
+WARNING 2026-01-30 17:21:04,740 log 59672 139644863760064 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=296
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=103
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=204
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=971
+Not Found: /media/https:/loremflickr.com/800/600/handmade?random=560
+WARNING 2026-01-30 17:21:04,741 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=103
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D296 404 [0.11, 127.0.0.1:46238]
+WARNING 2026-01-30 17:21:04,742 log 59672 139645291591360 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=204
+WARNING 2026-01-30 17:21:04,744 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D296 404 [0.11, 127.0.0.1:46238]
+WARNING 2026-01-30 17:21:04,743 log 59672 139645244397248 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=971
+WARNING 2026-01-30 17:21:04,743 log 59672 139644863760064 Not Found: /media/https:/loremflickr.com/800/600/handmade?random=560
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D103 404 [0.09, 127.0.0.1:46254]
+WARNING 2026-01-30 17:21:04,747 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D103 404 [0.09, 127.0.0.1:46254]
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D204 404 [0.09, 127.0.0.1:46246]
+WARNING 2026-01-30 17:21:04,750 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D204 404 [0.09, 127.0.0.1:46246]
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D971 404 [0.09, 127.0.0.1:46266]
+WARNING 2026-01-30 17:21:04,752 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D971 404 [0.09, 127.0.0.1:46266]
+HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D560 404 [0.09, 127.0.0.1:46256]
+WARNING 2026-01-30 17:21:04,753 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/handmade%3Frandom%3D560 404 [0.09, 127.0.0.1:46256]
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=473
+WARNING 2026-01-30 17:21:04,800 log 59672 139644855367360 Not Found: /media/https:/loremflickr.com/800/600/tools?random=473
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D473 404 [0.07, 127.0.0.1:46268]
+WARNING 2026-01-30 17:21:04,802 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D473 404 [0.07, 127.0.0.1:46268]
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=708
+WARNING 2026-01-30 17:21:04,887 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/tools?random=708
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=38
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=916
+WARNING 2026-01-30 17:21:04,887 log 59672 139644855367360 Not Found: /media/https:/loremflickr.com/800/600/tools?random=38
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=135
+WARNING 2026-01-30 17:21:04,887 log 59672 139644872152768 Not Found: /media/https:/loremflickr.com/800/600/tools?random=916
+Not Found: /media/https:/loremflickr.com/800/600/tools?random=104
+WARNING 2026-01-30 17:21:04,888 log 59672 139644880545472 Not Found: /media/https:/loremflickr.com/800/600/tools?random=135
+WARNING 2026-01-30 17:21:04,888 log 59672 139644863760064 Not Found: /media/https:/loremflickr.com/800/600/tools?random=104
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D708 404 [0.11, 127.0.0.1:46270]
+WARNING 2026-01-30 17:21:04,894 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D708 404 [0.11, 127.0.0.1:46270]
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D38 404 [0.12, 127.0.0.1:46280]
+WARNING 2026-01-30 17:21:04,903 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D38 404 [0.12, 127.0.0.1:46280]
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D916 404 [0.12, 127.0.0.1:46294]
+WARNING 2026-01-30 17:21:04,905 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D916 404 [0.12, 127.0.0.1:46294]
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D135 404 [0.12, 127.0.0.1:46320]
+WARNING 2026-01-30 17:21:04,906 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D135 404 [0.12, 127.0.0.1:46320]
+HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D104 404 [0.12, 127.0.0.1:46304]
+WARNING 2026-01-30 17:21:04,907 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/tools%3Frandom%3D104 404 [0.12, 127.0.0.1:46304]
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=836
+WARNING 2026-01-30 17:21:04,921 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/800/600/farm?random=836
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D836 404 [0.09, 127.0.0.1:46330]
+WARNING 2026-01-30 17:21:04,922 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D836 404 [0.09, 127.0.0.1:46330]
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=263
+WARNING 2026-01-30 17:21:04,959 log 59672 139644872152768 Not Found: /media/https:/loremflickr.com/800/600/farm?random=263
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D263 404 [0.05, 127.0.0.1:46336]
+WARNING 2026-01-30 17:21:04,961 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D263 404 [0.05, 127.0.0.1:46336]
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=581
+WARNING 2026-01-30 17:21:05,028 log 59672 139645236004544 Not Found: /media/https:/loremflickr.com/800/600/farm?random=581
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D581 404 [0.09, 127.0.0.1:46378]
+WARNING 2026-01-30 17:21:05,030 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D581 404 [0.09, 127.0.0.1:46378]
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=860
+WARNING 2026-01-30 17:21:05,030 log 59672 139644863760064 Not Found: /media/https:/loremflickr.com/800/600/farm?random=860
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=852
+WARNING 2026-01-30 17:21:05,030 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/800/600/farm?random=852
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D860 404 [0.09, 127.0.0.1:46370]
+WARNING 2026-01-30 17:21:05,032 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D860 404 [0.09, 127.0.0.1:46370]
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D852 404 [0.10, 127.0.0.1:46358]
+WARNING 2026-01-30 17:21:05,034 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D852 404 [0.10, 127.0.0.1:46358]
+Not Found: /media/https:/loremflickr.com/800/600/farm?random=735
+WARNING 2026-01-30 17:21:05,036 log 59672 139645244397248 Not Found: /media/https:/loremflickr.com/800/600/farm?random=735
+HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D735 404 [0.10, 127.0.0.1:46352]
+WARNING 2026-01-30 17:21:05,037 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/800/600/farm%3Frandom%3D735 404 [0.10, 127.0.0.1:46352]
+HTTP GET /api/blog-posts/?page_size=10 200 [0.12, 127.0.0.1:44762]
+INFO 2026-01-30 17:21:05,656 runserver 59672 139645686027968 HTTP GET /api/blog-posts/?page_size=10 200 [0.12, 127.0.0.1:44762]
+HTTP GET /api/blog-posts/?page_size=10 200 [0.12, 127.0.0.1:33694]
+INFO 2026-01-30 17:21:05,776 runserver 59672 139645686027968 HTTP GET /api/blog-posts/?page_size=10 200 [0.12, 127.0.0.1:33694]
+Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=348
+WARNING 2026-01-30 17:21:06,048 log 59672 139645244397248 Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=348
+Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=465
+WARNING 2026-01-30 17:21:06,054 log 59672 139644880545472 Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=465
+HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D348 404 [0.10, 127.0.0.1:46430]
+WARNING 2026-01-30 17:21:06,055 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D348 404 [0.10, 127.0.0.1:46430]
+HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D465 404 [0.12, 127.0.0.1:46410]
+WARNING 2026-01-30 17:21:06,057 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D465 404 [0.12, 127.0.0.1:46410]
+Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=597
+WARNING 2026-01-30 17:21:06,060 log 59672 139644855367360 Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=597
+HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D597 404 [0.13, 127.0.0.1:46400]
+WARNING 2026-01-30 17:21:06,061 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D597 404 [0.13, 127.0.0.1:46400]
+Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=381
+WARNING 2026-01-30 17:21:06,070 log 59672 139645291591360 Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=381
+HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D381 404 [0.14, 127.0.0.1:46418]
+WARNING 2026-01-30 17:21:06,074 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D381 404 [0.14, 127.0.0.1:46418]
+Not Found: /media/https:/loremflickr.com/1200/800/ecology,nature?random=629
+WARNING 2026-01-30 17:21:06,078 log 59672 139644872152768 Not Found: /media/https:/loremflickr.com/1200/800/ecology,nature?random=629
+Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=883
+WARNING 2026-01-30 17:21:06,079 log 59672 139644872152768 Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=883
+HTTP GET /media/https%3A/loremflickr.com/1200/800/ecology%2Cnature%3Frandom%3D629 404 [0.16, 127.0.0.1:46386]
+WARNING 2026-01-30 17:21:06,080 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/ecology%2Cnature%3Frandom%3D629 404 [0.16, 127.0.0.1:46386]
+HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D883 404 [0.14, 127.0.0.1:46420]
+WARNING 2026-01-30 17:21:06,081 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D883 404 [0.14, 127.0.0.1:46420]
+Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=30
+WARNING 2026-01-30 17:21:06,114 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=30
+HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D30 404 [0.04, 127.0.0.1:46448]
+WARNING 2026-01-30 17:21:06,115 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D30 404 [0.04, 127.0.0.1:46448]
+Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=278
+WARNING 2026-01-30 17:21:06,118 log 59672 139645291591360 Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=278
+HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D278 404 [0.04, 127.0.0.1:46440]
+WARNING 2026-01-30 17:21:06,118 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D278 404 [0.04, 127.0.0.1:46440]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:59278]
+INFO 2026-01-30 17:23:36,293 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:59278]
+Unauthorized: /api/products/
+WARNING 2026-01-30 17:23:36,450 log 59672 139644863760064 Unauthorized: /api/products/
+Unauthorized: /api/users/stats/
+WARNING 2026-01-30 17:23:36,450 log 59672 139645236004544 Unauthorized: /api/users/stats/
+Unauthorized: /api/orders/
+WARNING 2026-01-30 17:23:36,450 log 59672 139644855367360 Unauthorized: /api/orders/
+HTTP GET /api/products/? 401 [0.03, 127.0.0.1:56510]
+WARNING 2026-01-30 17:23:36,453 runserver 59672 139645686027968 HTTP GET /api/products/? 401 [0.03, 127.0.0.1:56510]
+HTTP GET /api/users/stats/ 401 [0.04, 127.0.0.1:56494]
+WARNING 2026-01-30 17:23:36,455 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 401 [0.04, 127.0.0.1:56494]
+HTTP GET /api/orders/? 401 [0.04, 127.0.0.1:56504]
+WARNING 2026-01-30 17:23:36,457 runserver 59672 139645686027968 HTTP GET /api/orders/? 401 [0.04, 127.0.0.1:56504]
+Unauthorized: /api/orders/
+WARNING 2026-01-30 17:23:36,868 log 59672 139644888938176 Unauthorized: /api/orders/
+Unauthorized: /api/users/stats/
+WARNING 2026-01-30 17:23:36,870 log 59672 139644872152768 Unauthorized: /api/users/stats/
+HTTP GET /api/orders/? 401 [0.23, 127.0.0.1:56516]
+WARNING 2026-01-30 17:23:36,870 runserver 59672 139645686027968 HTTP GET /api/orders/? 401 [0.23, 127.0.0.1:56516]
+Unauthorized: /api/products/
+WARNING 2026-01-30 17:23:36,873 log 59672 139644863760064 Unauthorized: /api/products/
+HTTP GET /api/users/stats/ 401 [0.24, 127.0.0.1:56510]
+WARNING 2026-01-30 17:23:36,873 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 401 [0.24, 127.0.0.1:56510]
+HTTP GET /api/products/? 401 [0.24, 127.0.0.1:56512]
+WARNING 2026-01-30 17:23:36,877 runserver 59672 139645686027968 HTTP GET /api/products/? 401 [0.24, 127.0.0.1:56512]
+HTTP OPTIONS /api/auth/login/ 200 [0.07, 127.0.0.1:56512]
+INFO 2026-01-30 17:24:02,547 runserver 59672 139645686027968 HTTP OPTIONS /api/auth/login/ 200 [0.07, 127.0.0.1:56512]
+HTTP POST /api/auth/login/ 200 [0.89, 127.0.0.1:56512]
+INFO 2026-01-30 17:24:03,476 runserver 59672 139645686027968 HTTP POST /api/auth/login/ 200 [0.89, 127.0.0.1:56512]
+HTTP GET /api/users/me/ 200 [0.07, 127.0.0.1:56512]
+INFO 2026-01-30 17:24:03,680 runserver 59672 139645686027968 HTTP GET /api/users/me/ 200 [0.07, 127.0.0.1:56512]
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:56510]
+INFO 2026-01-30 17:24:06,159 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:56510]
+HTTP GET /api/users/stats/ 200 [0.10, 127.0.0.1:56512]
+INFO 2026-01-30 17:24:06,214 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.10, 127.0.0.1:56512]
+HTTP GET /api/saved-items/ 200 [0.09, 127.0.0.1:56516]
+INFO 2026-01-30 17:24:06,253 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.09, 127.0.0.1:56516]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:56510]
+INFO 2026-01-30 17:24:06,313 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:56510]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:56510]
+INFO 2026-01-30 17:24:33,368 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:56510]
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:56510]
+INFO 2026-01-30 17:24:33,432 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:56510]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:56512]
+INFO 2026-01-30 17:24:33,441 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:56512]
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:56516]
+INFO 2026-01-30 17:24:33,472 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:56516]
+HTTP GET /api/users/stats/ 200 [0.13, 127.0.0.1:56516]
+INFO 2026-01-30 17:24:36,824 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.13, 127.0.0.1:56516]
+HTTP GET /api/orders/? 200 [0.17, 127.0.0.1:56512]
+INFO 2026-01-30 17:24:36,866 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.17, 127.0.0.1:56512]
+HTTP GET /api/users/stats/ 200 [0.13, 127.0.0.1:43772]
+INFO 2026-01-30 17:24:36,969 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.13, 127.0.0.1:43772]
+HTTP GET /api/orders/? 200 [0.15, 127.0.0.1:43780]
+INFO 2026-01-30 17:24:37,021 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.15, 127.0.0.1:43780]
+HTTP GET /api/products/? 200 [0.34, 127.0.0.1:56510]
+INFO 2026-01-30 17:24:37,042 runserver 59672 139645686027968 HTTP GET /api/products/? 200 [0.34, 127.0.0.1:56510]
+HTTP GET /api/products/? 200 [0.61, 127.0.0.1:43780]
+INFO 2026-01-30 17:24:37,655 runserver 59672 139645686027968 HTTP GET /api/products/? 200 [0.61, 127.0.0.1:43780]
+Bad Request: /api/blog-posts/
+WARNING 2026-01-30 17:28:08,297 log 59672 139644855367360 Bad Request: /api/blog-posts/
+HTTP POST /api/blog-posts/ 400 [0.02, 127.0.0.1:60174]
+WARNING 2026-01-30 17:28:08,298 runserver 59672 139645686027968 HTTP POST /api/blog-posts/ 400 [0.02, 127.0.0.1:60174]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:47076]
+INFO 2026-01-30 17:28:28,760 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:47076]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:47076]
+INFO 2026-01-30 17:28:28,788 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:47076]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:47100]
+INFO 2026-01-30 17:28:28,847 runserver 59672 139645686027968 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:47100]
+HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:60174]
+INFO 2026-01-30 17:28:28,865 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:60174]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:47100]
+INFO 2026-01-30 17:28:28,871 runserver 59672 139645686027968 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:47100]
+HTTP GET /api/orders/? 200 [0.11, 127.0.0.1:47084]
+INFO 2026-01-30 17:28:28,883 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.11, 127.0.0.1:47084]
+HTTP GET /api/reviews/? 200 [0.14, 127.0.0.1:47094]
+INFO 2026-01-30 17:28:28,921 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.14, 127.0.0.1:47094]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:47104]
+INFO 2026-01-30 17:28:28,957 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:47104]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:47076]
+INFO 2026-01-30 17:28:29,053 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:47076]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:28:29,134 log 59672 139644872152768 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.06, 127.0.0.1:47104]
+WARNING 2026-01-30 17:28:29,137 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.06, 127.0.0.1:47104]
+HTTP GET /api/orders/? 200 [0.10, 127.0.0.1:47084]
+INFO 2026-01-30 17:28:29,140 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.10, 127.0.0.1:47084]
+HTTP GET /api/reviews/? 200 [0.13, 127.0.0.1:60174]
+INFO 2026-01-30 17:28:29,176 runserver 59672 139645686027968 HTTP GET /api/reviews/? 200 [0.13, 127.0.0.1:60174]
+Not Found: /api/graphql/
+WARNING 2026-01-30 17:28:30,559 log 59672 139644880545472 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.25, 127.0.0.1:60174]
+WARNING 2026-01-30 17:28:30,562 runserver 59672 139645686027968 HTTP POST /api/graphql/ 404 [0.25, 127.0.0.1:60174]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:47100]
+INFO 2026-01-30 17:32:15,657 runserver 59672 139645686027968 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:47100]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:45894]
+INFO 2026-01-30 17:32:15,713 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:45894]
+HTTP GET /api/orders/? 200 [0.03, 127.0.0.1:45904]
+INFO 2026-01-30 17:32:15,767 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.03, 127.0.0.1:45904]
+HTTP GET /api/orders/? 200 [0.03, 127.0.0.1:45894]
+INFO 2026-01-30 17:32:15,807 runserver 59672 139645686027968 HTTP GET /api/orders/? 200 [0.03, 127.0.0.1:45894]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:45910]
+INFO 2026-01-30 17:32:15,836 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:45910]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:45910]
+INFO 2026-01-30 17:32:19,450 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:45910]
+HTTP GET /api/saved-items/ 200 [0.08, 127.0.0.1:45894]
+INFO 2026-01-30 17:32:19,485 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.08, 127.0.0.1:45894]
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:45910]
+INFO 2026-01-30 17:32:19,535 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:45910]
+HTTP GET /api/users/stats/ 200 [0.08, 127.0.0.1:45904]
+INFO 2026-01-30 17:32:19,542 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.08, 127.0.0.1:45904]
+HTTP GET /api/blog-posts/?page_size=10 200 [0.06, 127.0.0.1:59896]
+INFO 2026-01-30 17:35:23,651 runserver 59672 139645686027968 HTTP GET /api/blog-posts/?page_size=10 200 [0.06, 127.0.0.1:59896]
+HTTP GET /api/blog-posts/?page_size=10 200 [0.07, 127.0.0.1:59898]
+INFO 2026-01-30 17:35:23,794 runserver 59672 139645686027968 HTTP GET /api/blog-posts/?page_size=10 200 [0.07, 127.0.0.1:59898]
+Not Found: /media/https:/loremflickr.com/1200/800/ecology,nature?random=629
+WARNING 2026-01-30 17:35:24,856 log 59672 139645291591360 Not Found: /media/https:/loremflickr.com/1200/800/ecology,nature?random=629
+HTTP GET /media/https%3A/loremflickr.com/1200/800/ecology%2Cnature%3Frandom%3D629 404 [0.02, 127.0.0.1:59910]
+WARNING 2026-01-30 17:35:24,859 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/ecology%2Cnature%3Frandom%3D629 404 [0.02, 127.0.0.1:59910]
+Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=597
+WARNING 2026-01-30 17:35:24,880 log 59672 139644880545472 Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=597
+HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D597 404 [0.03, 127.0.0.1:59922]
+WARNING 2026-01-30 17:35:24,881 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D597 404 [0.03, 127.0.0.1:59922]
+Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=465
+WARNING 2026-01-30 17:35:24,970 log 59672 139644880545472 Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=465
+HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D465 404 [0.10, 127.0.0.1:59934]
+WARNING 2026-01-30 17:35:24,974 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D465 404 [0.10, 127.0.0.1:59934]
+Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=381
+WARNING 2026-01-30 17:35:24,976 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=381
+Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=883
+WARNING 2026-01-30 17:35:24,977 log 59672 139645244397248 Not Found: /media/https:/loremflickr.com/1200/800/farm,agriculture?random=883
+HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D381 404 [0.09, 127.0.0.1:59936]
+WARNING 2026-01-30 17:35:24,980 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D381 404 [0.09, 127.0.0.1:59936]
+HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D883 404 [0.09, 127.0.0.1:59946]
+WARNING 2026-01-30 17:35:24,985 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/farm%2Cagriculture%3Frandom%3D883 404 [0.09, 127.0.0.1:59946]
+Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=348
+WARNING 2026-01-30 17:35:25,074 log 59672 139644888938176 Not Found: /media/https:/loremflickr.com/1200/800/handicraft,pottery?random=348
+HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D348 404 [0.13, 127.0.0.1:59948]
+WARNING 2026-01-30 17:35:25,076 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/handicraft%2Cpottery%3Frandom%3D348 404 [0.13, 127.0.0.1:59948]
+Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=30
+WARNING 2026-01-30 17:35:25,086 log 59672 139645244397248 Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=30
+HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D30 404 [0.14, 127.0.0.1:59964]
+WARNING 2026-01-30 17:35:25,104 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D30 404 [0.14, 127.0.0.1:59964]
+Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=278
+WARNING 2026-01-30 17:35:25,123 log 59672 139644872152768 Not Found: /media/https:/loremflickr.com/1200/800/market,vegetables?random=278
+HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D278 404 [0.17, 127.0.0.1:59960]
+WARNING 2026-01-30 17:35:25,124 runserver 59672 139645686027968 HTTP GET /media/https%3A/loremflickr.com/1200/800/market%2Cvegetables%3Frandom%3D278 404 [0.17, 127.0.0.1:59960]
+HTTP GET /api/users/me/ 200 [0.26, 127.0.0.1:53294]
+INFO 2026-01-30 17:37:22,608 runserver 59672 139645686027968 HTTP GET /api/users/me/ 200 [0.26, 127.0.0.1:53294]
+HTTP POST /api/auth/login/ 200 [2.80, 127.0.0.1:53294]
+INFO 2026-01-30 17:37:31,337 runserver 59672 139645686027968 HTTP POST /api/auth/login/ 200 [2.80, 127.0.0.1:53294]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:53294]
+INFO 2026-01-30 17:37:32,637 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:53294]
+HTTP GET /api/saved-items/ 200 [0.06, 127.0.0.1:53242]
+INFO 2026-01-30 17:37:32,894 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.06, 127.0.0.1:53242]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:53254]
+INFO 2026-01-30 17:37:32,895 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:53254]
+HTTP GET /api/users/me/ 200 [0.08, 127.0.0.1:53252]
+INFO 2026-01-30 17:37:32,917 runserver 59672 139645686027968 HTTP GET /api/users/me/ 200 [0.08, 127.0.0.1:53252]
+HTTP GET /api/saved-items/ 200 [0.01, 127.0.0.1:53294]
+INFO 2026-01-30 17:37:32,945 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.01, 127.0.0.1:53294]
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:57138]
+INFO 2026-01-30 17:45:59,851 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:57138]
+HTTP GET /api/users/stats/ 200 [0.10, 127.0.0.1:57128]
+INFO 2026-01-30 17:45:59,854 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.10, 127.0.0.1:57128]
+HTTP GET /api/saved-items/ 200 [0.06, 127.0.0.1:57154]
+INFO 2026-01-30 17:45:59,937 runserver 59672 139645686027968 HTTP GET /api/saved-items/ 200 [0.06, 127.0.0.1:57154]
+HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:57156]
+INFO 2026-01-30 17:45:59,941 runserver 59672 139645686027968 HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:57156]
+HTTP GET /api/users/me/ 200 [0.12, 127.0.0.1:42982]
+INFO 2026-01-30 17:48:26,473 runserver 59672 139645686027968 HTTP GET /api/users/me/ 200 [0.12, 127.0.0.1:42982]
+/home/deeone/Documents/HarvestConnect/backend/api/models.py changed, reloading.
+INFO 2026-01-30 17:49:29,923 autoreload 59672 139645783373632 /home/deeone/Documents/HarvestConnect/backend/api/models.py changed, reloading.
+Performing system checks...
+
+January 30, 2026 - 17:05:24
+Django version 4.2.27, using settings 'harvestconnect.settings'
+Starting ASGI/Daphne version 4.2.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+INFO 2026-01-30 17:49:35,159 autoreload 77516 140006961710912 Watching for file changes with StatReloader
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:225: UserWarning: app_settings.USERNAME_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['username']['required']
+  required=allauth_account_settings.USERNAME_REQUIRED,
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:227: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:285: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+System check identified 3 issues (0 silenced).
+INFO 2026-01-30 17:49:36,365 server 77516 140006864885440 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2026-01-30 17:49:36,367 server 77516 140006864885440 Configuring endpoint tcp:port=8000:interface=0.0.0.0
+INFO 2026-01-30 17:49:36,369 server 77516 140006864885440 Listening on TCP address 0.0.0.0:8000
+/home/deeone/Documents/HarvestConnect/backend/api/serializers.py changed, reloading.
+INFO 2026-01-30 17:49:38,301 autoreload 77516 140006961710912 /home/deeone/Documents/HarvestConnect/backend/api/serializers.py changed, reloading.
+Performing system checks...
+
+January 30, 2026 - 17:49:36
+Django version 4.2.27, using settings 'harvestconnect.settings'
+Starting ASGI/Daphne version 4.2.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+INFO 2026-01-30 17:49:41,451 autoreload 77557 140455002404672 Watching for file changes with StatReloader
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:225: UserWarning: app_settings.USERNAME_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['username']['required']
+  required=allauth_account_settings.USERNAME_REQUIRED,
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:227: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:285: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+System check identified 3 issues (0 silenced).
+INFO 2026-01-30 17:49:42,327 server 77557 140454904633024 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2026-01-30 17:49:42,327 server 77557 140454904633024 Configuring endpoint tcp:port=8000:interface=0.0.0.0
+INFO 2026-01-30 17:49:42,330 server 77557 140454904633024 Listening on TCP address 0.0.0.0:8000
+HTTP GET /api/users/me/ 200 [0.52, 127.0.0.1:33726]
+INFO 2026-01-30 17:52:20,792 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.52, 127.0.0.1:33726]
+HTTP GET /api/users/me/ 200 [0.38, 127.0.0.1:33726]
+INFO 2026-01-30 17:52:29,194 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.38, 127.0.0.1:33726]
+HTTP GET /api/users/me/ 200 [0.22, 127.0.0.1:37688]
+INFO 2026-01-30 17:54:48,047 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.22, 127.0.0.1:37688]
+HTTP GET /api/users/me/ 200 [0.08, 127.0.0.1:38136]
+INFO 2026-01-30 18:03:07,236 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.08, 127.0.0.1:38136]
+HTTP GET /api/users/me/ 200 [0.04, 127.0.0.1:38136]
+INFO 2026-01-30 18:03:19,981 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.04, 127.0.0.1:38136]
+HTTP PATCH /api/users/me/ 200 [0.06, 127.0.0.1:38136]
+INFO 2026-01-30 18:03:35,373 runserver 77557 140454904633024 HTTP PATCH /api/users/me/ 200 [0.06, 127.0.0.1:38136]
+HTTP GET /api/users/me/ 200 [0.10, 127.0.0.1:38136]
+INFO 2026-01-30 18:03:40,690 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.10, 127.0.0.1:38136]
+HTTP OPTIONS /api/users/stats/ 200 [0.02, 127.0.0.1:40258]
+INFO 2026-01-30 18:03:41,327 runserver 77557 140454904633024 HTTP OPTIONS /api/users/stats/ 200 [0.02, 127.0.0.1:40258]
+HTTP OPTIONS /api/users/stats/ 200 [0.12, 127.0.0.1:38136]
+INFO 2026-01-30 18:03:41,328 runserver 77557 140454904633024 HTTP OPTIONS /api/users/stats/ 200 [0.12, 127.0.0.1:38136]
+HTTP OPTIONS /api/saved-items/ 200 [0.09, 127.0.0.1:40252]
+INFO 2026-01-30 18:03:41,334 runserver 77557 140454904633024 HTTP OPTIONS /api/saved-items/ 200 [0.09, 127.0.0.1:40252]
+HTTP OPTIONS /api/saved-items/ 200 [0.03, 127.0.0.1:40264]
+INFO 2026-01-30 18:03:41,337 runserver 77557 140454904633024 HTTP OPTIONS /api/saved-items/ 200 [0.03, 127.0.0.1:40264]
+HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:40264]
+INFO 2026-01-30 18:03:41,465 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:40264]
+HTTP GET /api/saved-items/ 200 [0.07, 127.0.0.1:40252]
+INFO 2026-01-30 18:03:41,493 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.07, 127.0.0.1:40252]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:38136]
+INFO 2026-01-30 18:03:41,561 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:38136]
+HTTP GET /api/saved-items/ 200 [0.01, 127.0.0.1:40258]
+INFO 2026-01-30 18:03:41,609 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.01, 127.0.0.1:40258]
+HTTP OPTIONS /api/orders/? 200 [0.02, 127.0.0.1:40264]
+INFO 2026-01-30 18:03:55,352 runserver 77557 140454904633024 HTTP OPTIONS /api/orders/? 200 [0.02, 127.0.0.1:40264]
+HTTP OPTIONS /api/orders/? 200 [0.02, 127.0.0.1:38136]
+INFO 2026-01-30 18:03:55,355 runserver 77557 140454904633024 HTTP OPTIONS /api/orders/? 200 [0.02, 127.0.0.1:38136]
+HTTP OPTIONS /api/products/? 200 [0.02, 127.0.0.1:57580]
+INFO 2026-01-30 18:03:55,359 runserver 77557 140454904633024 HTTP OPTIONS /api/products/? 200 [0.02, 127.0.0.1:57580]
+HTTP OPTIONS /api/products/? 200 [0.02, 127.0.0.1:40252]
+INFO 2026-01-30 18:03:55,360 runserver 77557 140454904633024 HTTP OPTIONS /api/products/? 200 [0.02, 127.0.0.1:40252]
+HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:40258]
+INFO 2026-01-30 18:03:55,394 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:40258]
+HTTP GET /api/users/stats/ 200 [0.10, 127.0.0.1:40252]
+INFO 2026-01-30 18:03:55,496 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.10, 127.0.0.1:40252]
+HTTP GET /api/orders/? 200 [0.12, 127.0.0.1:38136]
+INFO 2026-01-30 18:03:55,509 runserver 77557 140454904633024 HTTP GET /api/orders/? 200 [0.12, 127.0.0.1:38136]
+HTTP GET /api/orders/? 200 [0.14, 127.0.0.1:57580]
+INFO 2026-01-30 18:03:55,696 runserver 77557 140454904633024 HTTP GET /api/orders/? 200 [0.14, 127.0.0.1:57580]
+HTTP GET /api/products/? 200 [0.36, 127.0.0.1:40258]
+INFO 2026-01-30 18:03:55,775 runserver 77557 140454904633024 HTTP GET /api/products/? 200 [0.36, 127.0.0.1:40258]
+HTTP GET /api/products/? 200 [0.34, 127.0.0.1:57580]
+INFO 2026-01-30 18:03:56,122 runserver 77557 140454904633024 HTTP GET /api/products/? 200 [0.34, 127.0.0.1:57580]
+HTTP GET /media/products/profile.png 304 [0.04, 127.0.0.1:57594]
+INFO 2026-01-30 18:03:56,293 runserver 77557 140454904633024 HTTP GET /media/products/profile.png 304 [0.04, 127.0.0.1:57594]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:55780]
+INFO 2026-01-30 18:04:11,065 runserver 77557 140454904633024 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:55780]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:55780]
+INFO 2026-01-30 18:04:11,080 runserver 77557 140454904633024 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:55780]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:57580]
+INFO 2026-01-30 18:04:11,137 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:57580]
+HTTP OPTIONS /api/reviews/? 200 [0.01, 127.0.0.1:38136]
+INFO 2026-01-30 18:04:11,141 runserver 77557 140454904633024 HTTP OPTIONS /api/reviews/? 200 [0.01, 127.0.0.1:38136]
+HTTP GET /api/orders/? 200 [0.06, 127.0.0.1:40258]
+INFO 2026-01-30 18:04:11,146 runserver 77557 140454904633024 HTTP GET /api/orders/? 200 [0.06, 127.0.0.1:40258]
+HTTP OPTIONS /api/reviews/? 200 [0.01, 127.0.0.1:40252]
+INFO 2026-01-30 18:04:11,159 runserver 77557 140454904633024 HTTP OPTIONS /api/reviews/? 200 [0.01, 127.0.0.1:40252]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:55790]
+INFO 2026-01-30 18:04:11,205 runserver 77557 140454904633024 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:55790]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:55790]
+INFO 2026-01-30 18:04:11,221 runserver 77557 140454904633024 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:55790]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:55780]
+INFO 2026-01-30 18:04:11,255 runserver 77557 140454904633024 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:55780]
+HTTP GET /api/users/stats/ 200 [0.08, 127.0.0.1:57580]
+INFO 2026-01-30 18:04:11,289 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.08, 127.0.0.1:57580]
+HTTP GET /api/orders/? 200 [0.10, 127.0.0.1:40252]
+INFO 2026-01-30 18:04:11,312 runserver 77557 140454904633024 HTTP GET /api/orders/? 200 [0.10, 127.0.0.1:40252]
+HTTP GET /api/reviews/? 200 [0.18, 127.0.0.1:40258]
+INFO 2026-01-30 18:04:11,387 runserver 77557 140454904633024 HTTP GET /api/reviews/? 200 [0.18, 127.0.0.1:40258]
+Not Found: /api/graphql/
+WARNING 2026-01-30 18:04:11,642 log 77557 140454796449472 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.14, 127.0.0.1:40258]
+WARNING 2026-01-30 18:04:11,647 runserver 77557 140454904633024 HTTP POST /api/graphql/ 404 [0.14, 127.0.0.1:40258]
+HTTP GET /api/reviews/? 200 [0.20, 127.0.0.1:40252]
+INFO 2026-01-30 18:04:11,667 runserver 77557 140454904633024 HTTP GET /api/reviews/? 200 [0.20, 127.0.0.1:40252]
+Not Found: /api/graphql/
+WARNING 2026-01-30 18:04:12,110 log 77557 140454796449472 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:40252]
+WARNING 2026-01-30 18:04:12,111 runserver 77557 140454904633024 HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:40252]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:55790]
+INFO 2026-01-30 18:05:56,645 runserver 77557 140454904633024 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:55790]
+HTTP PATCH /api/users/me/ 200 [0.18, 127.0.0.1:40992]
+INFO 2026-01-30 18:06:04,794 runserver 77557 140454904633024 HTTP PATCH /api/users/me/ 200 [0.18, 127.0.0.1:40992]
+HTTP GET /api/users/me/ 200 [0.05, 127.0.0.1:40992]
+INFO 2026-01-30 18:06:08,195 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.05, 127.0.0.1:40992]
+Not Found: /media//media/avatars/boydancer1.jpg
+WARNING 2026-01-30 18:06:08,505 log 77557 140454796449472 Not Found: /media//media/avatars/boydancer1.jpg
+HTTP GET /media//media/avatars/boydancer1.jpg 404 [0.03, 127.0.0.1:41004]
+WARNING 2026-01-30 18:06:08,506 runserver 77557 140454904633024 HTTP GET /media//media/avatars/boydancer1.jpg 404 [0.03, 127.0.0.1:41004]
+HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:41020]
+INFO 2026-01-30 18:06:08,583 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:41020]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:40992]
+INFO 2026-01-30 18:06:08,587 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:40992]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:41036]
+INFO 2026-01-30 18:06:08,643 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:41036]
+HTTP GET /api/saved-items/ 200 [0.05, 127.0.0.1:41034]
+INFO 2026-01-30 18:06:08,652 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.05, 127.0.0.1:41034]
+Not Found: /media//media/avatars/boydancer1.jpg
+WARNING 2026-01-30 18:06:13,174 log 77557 140454796449472 Not Found: /media//media/avatars/boydancer1.jpg
+HTTP GET /media//media/avatars/boydancer1.jpg 404 [0.02, 127.0.0.1:41042]
+WARNING 2026-01-30 18:06:13,175 runserver 77557 140454904633024 HTTP GET /media//media/avatars/boydancer1.jpg 404 [0.02, 127.0.0.1:41042]
+HTTP PATCH /api/users/me/ 200 [0.04, 127.0.0.1:41034]
+INFO 2026-01-30 18:06:21,665 runserver 77557 140454904633024 HTTP PATCH /api/users/me/ 200 [0.04, 127.0.0.1:41034]
+HTTP GET /api/users/me/ 200 [0.06, 127.0.0.1:41034]
+INFO 2026-01-30 18:06:25,341 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.06, 127.0.0.1:41034]
+Not Found: /media//media/avatars/boyt2.png
+WARNING 2026-01-30 18:06:26,250 log 77557 140454796449472 Not Found: /media//media/avatars/boyt2.png
+HTTP GET /media//media/avatars/boyt2.png 404 [0.04, 127.0.0.1:39020]
+WARNING 2026-01-30 18:06:26,251 runserver 77557 140454904633024 HTTP GET /media//media/avatars/boyt2.png 404 [0.04, 127.0.0.1:39020]
+HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:41034]
+INFO 2026-01-30 18:06:26,403 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:41034]
+HTTP GET /api/saved-items/ 200 [0.09, 127.0.0.1:41036]
+INFO 2026-01-30 18:06:26,408 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.09, 127.0.0.1:41036]
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:41020]
+INFO 2026-01-30 18:06:26,547 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:41020]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:40992]
+INFO 2026-01-30 18:06:26,554 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:40992]
+HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:41020]
+INFO 2026-01-30 18:06:52,158 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:41020]
+HTTP GET /api/saved-items/ 200 [0.06, 127.0.0.1:40992]
+INFO 2026-01-30 18:06:52,161 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.06, 127.0.0.1:40992]
+Not Found: /media//media/avatars/boyt2.png
+WARNING 2026-01-30 18:06:52,169 log 77557 140454796449472 Not Found: /media//media/avatars/boyt2.png
+HTTP GET /media//media/avatars/boyt2.png 404 [0.06, 127.0.0.1:41484]
+WARNING 2026-01-30 18:06:52,175 runserver 77557 140454904633024 HTTP GET /media//media/avatars/boyt2.png 404 [0.06, 127.0.0.1:41484]
+HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:41034]
+INFO 2026-01-30 18:06:52,206 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.04, 127.0.0.1:41034]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:41036]
+INFO 2026-01-30 18:06:52,213 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:41036]
+HTTP GET /api/users/me/ 200 [0.24, 127.0.0.1:55682]
+INFO 2026-01-30 18:15:21,076 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.24, 127.0.0.1:55682]
+Not Found: /media//media/avatars/boyt2.png
+WARNING 2026-01-30 18:33:47,042 log 77557 140454796449472 Not Found: /media//media/avatars/boyt2.png
+HTTP GET /media//media/avatars/boyt2.png 404 [0.04, 127.0.0.1:52174]
+WARNING 2026-01-30 18:33:47,044 runserver 77557 140454904633024 HTTP GET /media//media/avatars/boyt2.png 404 [0.04, 127.0.0.1:52174]
+HTTP GET /api/saved-items/ 200 [0.09, 127.0.0.1:52202]
+INFO 2026-01-30 18:33:47,509 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.09, 127.0.0.1:52202]
+HTTP GET /api/users/stats/ 200 [0.10, 127.0.0.1:52190]
+INFO 2026-01-30 18:33:47,518 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.10, 127.0.0.1:52190]
+HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:52208]
+INFO 2026-01-30 18:33:47,540 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:52208]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:52202]
+INFO 2026-01-30 18:33:47,555 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:52202]
+Not Found: /media//media/avatars/boyt2.png
+WARNING 2026-01-30 18:33:53,774 log 77557 140454796449472 Not Found: /media//media/avatars/boyt2.png
+HTTP GET /media//media/avatars/boyt2.png 404 [0.07, 127.0.0.1:45118]
+WARNING 2026-01-30 18:33:53,777 runserver 77557 140454904633024 HTTP GET /media//media/avatars/boyt2.png 404 [0.07, 127.0.0.1:45118]
+HTTP PATCH /api/users/me/ 200 [0.05, 127.0.0.1:52202]
+INFO 2026-01-30 18:34:04,391 runserver 77557 140454904633024 HTTP PATCH /api/users/me/ 200 [0.05, 127.0.0.1:52202]
+HTTP GET /api/users/me/ 200 [0.16, 127.0.0.1:52202]
+INFO 2026-01-30 18:34:10,183 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.16, 127.0.0.1:52202]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:52202]
+INFO 2026-01-30 18:34:11,115 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:52202]
+Not Found: /media//media/avatars/poster.jpg
+WARNING 2026-01-30 18:34:11,205 log 77557 140454796449472 Not Found: /media//media/avatars/poster.jpg
+HTTP GET /media//media/avatars/poster.jpg 404 [0.06, 127.0.0.1:60452]
+WARNING 2026-01-30 18:34:11,207 runserver 77557 140454904633024 HTTP GET /media//media/avatars/poster.jpg 404 [0.06, 127.0.0.1:60452]
+HTTP GET /api/saved-items/ 200 [0.09, 127.0.0.1:52208]
+INFO 2026-01-30 18:34:11,209 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.09, 127.0.0.1:52208]
+HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:52190]
+INFO 2026-01-30 18:34:11,214 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:52190]
+HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:52202]
+INFO 2026-01-30 18:34:11,252 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:52202]
+HTTP OPTIONS /api/users/me/ 200 [0.01, 127.0.0.1:45910]
+INFO 2026-01-30 18:57:01,584 runserver 77557 140454904633024 HTTP OPTIONS /api/users/me/ 200 [0.01, 127.0.0.1:45910]
+Unauthorized: /api/users/me/
+WARNING 2026-01-30 18:57:01,630 log 77557 140454796449472 Unauthorized: /api/users/me/
+HTTP GET /api/users/me/ 401 [0.01, 127.0.0.1:45910]
+WARNING 2026-01-30 18:57:01,631 runserver 77557 140454904633024 HTTP GET /api/users/me/ 401 [0.01, 127.0.0.1:45910]
+HTTP POST /api/auth/login/ 200 [1.41, 127.0.0.1:45910]
+INFO 2026-01-30 18:57:11,212 runserver 77557 140454904633024 HTTP POST /api/auth/login/ 200 [1.41, 127.0.0.1:45910]
+HTTP GET /api/users/me/ 200 [0.06, 127.0.0.1:45910]
+INFO 2026-01-30 18:57:11,354 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.06, 127.0.0.1:45910]
+Not Found: /media//media/avatars/poster.jpg
+WARNING 2026-01-30 18:57:12,495 log 77557 140454796449472 Not Found: /media//media/avatars/poster.jpg
+HTTP GET /media//media/avatars/poster.jpg 404 [0.08, 127.0.0.1:47542]
+WARNING 2026-01-30 18:57:12,498 runserver 77557 140454904633024 HTTP GET /media//media/avatars/poster.jpg 404 [0.08, 127.0.0.1:47542]
+HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:45910]
+INFO 2026-01-30 18:57:13,103 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:45910]
+HTTP GET /api/saved-items/ 200 [0.08, 127.0.0.1:47556]
+INFO 2026-01-30 18:57:13,107 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.08, 127.0.0.1:47556]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:47556]
+INFO 2026-01-30 18:57:13,193 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:47556]
+HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:45910]
+INFO 2026-01-30 18:57:13,195 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:45910]
+Not Found: /media//media/avatars/poster.jpg
+WARNING 2026-01-30 18:57:24,748 log 77557 140454796449472 Not Found: /media//media/avatars/poster.jpg
+HTTP GET /media//media/avatars/poster.jpg 404 [0.02, 127.0.0.1:37678]
+WARNING 2026-01-30 18:57:24,748 runserver 77557 140454904633024 HTTP GET /media//media/avatars/poster.jpg 404 [0.02, 127.0.0.1:37678]
+HTTP PATCH /api/users/me/ 200 [0.03, 127.0.0.1:45910]
+INFO 2026-01-30 18:57:45,445 runserver 77557 140454904633024 HTTP PATCH /api/users/me/ 200 [0.03, 127.0.0.1:45910]
+HTTP GET /api/users/me/ 200 [0.03, 127.0.0.1:45910]
+INFO 2026-01-30 18:57:53,578 runserver 77557 140454904633024 HTTP GET /api/users/me/ 200 [0.03, 127.0.0.1:45910]
+Not Found: /media//media/avatars/boyt2_0BUT0Ji.png
+WARNING 2026-01-30 18:57:53,912 log 77557 140454796449472 Not Found: /media//media/avatars/boyt2_0BUT0Ji.png
+HTTP GET /media//media/avatars/boyt2_0BUT0Ji.png 404 [0.02, 127.0.0.1:33846]
+WARNING 2026-01-30 18:57:53,913 runserver 77557 140454904633024 HTTP GET /media//media/avatars/boyt2_0BUT0Ji.png 404 [0.02, 127.0.0.1:33846]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:45910]
+INFO 2026-01-30 18:57:54,039 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:45910]
+HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:47556]
+INFO 2026-01-30 18:57:54,043 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:47556]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:33856]
+INFO 2026-01-30 18:57:54,072 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:33856]
+HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:47556]
+INFO 2026-01-30 18:57:54,087 runserver 77557 140454904633024 HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:47556]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:39650]
+INFO 2026-01-30 18:58:05,627 runserver 77557 140454904633024 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:39650]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:39650]
+INFO 2026-01-30 18:58:05,639 runserver 77557 140454904633024 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:39650]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:39664]
+INFO 2026-01-30 18:58:05,674 runserver 77557 140454904633024 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:39664]
+HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:47556]
+INFO 2026-01-30 18:58:05,692 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:47556]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:39664]
+INFO 2026-01-30 18:58:05,701 runserver 77557 140454904633024 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:39664]
+HTTP GET /api/orders/? 200 [0.09, 127.0.0.1:33856]
+INFO 2026-01-30 18:58:05,729 runserver 77557 140454904633024 HTTP GET /api/orders/? 200 [0.09, 127.0.0.1:33856]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:39678]
+INFO 2026-01-30 18:58:05,752 runserver 77557 140454904633024 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:39678]
+HTTP GET /api/orders/? 200 [0.07, 127.0.0.1:47556]
+INFO 2026-01-30 18:58:05,809 runserver 77557 140454904633024 HTTP GET /api/orders/? 200 [0.07, 127.0.0.1:47556]
+HTTP GET /api/reviews/? 200 [0.16, 127.0.0.1:45910]
+INFO 2026-01-30 18:58:05,813 runserver 77557 140454904633024 HTTP GET /api/reviews/? 200 [0.16, 127.0.0.1:45910]
+HTTP GET /api/reviews/? 200 [0.06, 127.0.0.1:39678]
+INFO 2026-01-30 18:58:05,881 runserver 77557 140454904633024 HTTP GET /api/reviews/? 200 [0.06, 127.0.0.1:39678]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:39650]
+INFO 2026-01-30 18:58:05,889 runserver 77557 140454904633024 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:39650]
+HTTP OPTIONS /api/graphql/ 200 [0.01, 127.0.0.1:39678]
+INFO 2026-01-30 18:58:05,970 runserver 77557 140454904633024 HTTP OPTIONS /api/graphql/ 200 [0.01, 127.0.0.1:39678]
+HTTP OPTIONS /api/graphql/ 200 [0.01, 127.0.0.1:45910]
+INFO 2026-01-30 18:58:05,971 runserver 77557 140454904633024 HTTP OPTIONS /api/graphql/ 200 [0.01, 127.0.0.1:45910]
+Not Found: /api/graphql/
+WARNING 2026-01-30 18:58:06,010 log 77557 140454796449472 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:39678]
+WARNING 2026-01-30 18:58:06,012 runserver 77557 140454904633024 HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:39678]
+Not Found: /api/graphql/
+WARNING 2026-01-30 18:58:06,042 log 77557 140454796449472 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:45910]
+WARNING 2026-01-30 18:58:06,043 runserver 77557 140454904633024 HTTP POST /api/graphql/ 404 [0.02, 127.0.0.1:45910]
+/home/deeone/Documents/HarvestConnect/backend/api/consumers.py changed, reloading.
+INFO 2026-01-30 19:01:52,266 autoreload 77557 140455002404672 /home/deeone/Documents/HarvestConnect/backend/api/consumers.py changed, reloading.
+Performing system checks...
+
+January 30, 2026 - 17:49:42
+Django version 4.2.27, using settings 'harvestconnect.settings'
+Starting ASGI/Daphne version 4.2.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+INFO 2026-01-30 19:01:54,209 autoreload 102895 139961759512384 Watching for file changes with StatReloader
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:225: UserWarning: app_settings.USERNAME_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['username']['required']
+  required=allauth_account_settings.USERNAME_REQUIRED,
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:227: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:285: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+System check identified 3 issues (0 silenced).
+INFO 2026-01-30 19:01:54,672 server 102895 139961661822656 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2026-01-30 19:01:54,672 server 102895 139961661822656 Configuring endpoint tcp:port=8000:interface=0.0.0.0
+INFO 2026-01-30 19:01:54,678 server 102895 139961661822656 Listening on TCP address 0.0.0.0:8000
+HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:37086]
+INFO 2026-01-30 19:06:35,330 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:37086]
+HTTP GET /api/orders/? 200 [0.14, 127.0.0.1:37100]
+INFO 2026-01-30 19:06:35,400 runserver 102895 139961661822656 HTTP GET /api/orders/? 200 [0.14, 127.0.0.1:37100]
+HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:37110]
+INFO 2026-01-30 19:06:35,412 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:37110]
+HTTP GET /api/orders/? 200 [0.07, 127.0.0.1:37086]
+INFO 2026-01-30 19:06:35,482 runserver 102895 139961661822656 HTTP GET /api/orders/? 200 [0.07, 127.0.0.1:37086]
+HTTP GET /api/products/? 200 [0.23, 127.0.0.1:37108]
+INFO 2026-01-30 19:06:35,504 runserver 102895 139961661822656 HTTP GET /api/products/? 200 [0.23, 127.0.0.1:37108]
+HTTP GET /api/products/? 200 [0.08, 127.0.0.1:37086]
+INFO 2026-01-30 19:06:35,581 runserver 102895 139961661822656 HTTP GET /api/products/? 200 [0.08, 127.0.0.1:37086]
+HTTP GET /media/products/profile.png 304 [0.01, 127.0.0.1:37124]
+INFO 2026-01-30 19:06:35,614 runserver 102895 139961661822656 HTTP GET /media/products/profile.png 304 [0.01, 127.0.0.1:37124]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:36976]
+INFO 2026-01-30 19:06:46,540 runserver 102895 139961661822656 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:36976]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:36976]
+INFO 2026-01-30 19:06:46,571 runserver 102895 139961661822656 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:36976]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:37086]
+INFO 2026-01-30 19:06:46,595 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:37086]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:36978]
+INFO 2026-01-30 19:06:46,677 runserver 102895 139961661822656 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:36978]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:36978]
+INFO 2026-01-30 19:06:46,692 runserver 102895 139961661822656 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:36978]
+HTTP GET /api/orders/? 200 [0.09, 127.0.0.1:37108]
+INFO 2026-01-30 19:06:46,704 runserver 102895 139961661822656 HTTP GET /api/orders/? 200 [0.09, 127.0.0.1:37108]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:36976]
+INFO 2026-01-30 19:06:46,729 runserver 102895 139961661822656 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:36976]
+HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:37086]
+INFO 2026-01-30 19:06:46,751 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.09, 127.0.0.1:37086]
+HTTP GET /api/reviews/? 200 [0.18, 127.0.0.1:37110]
+INFO 2026-01-30 19:06:46,802 runserver 102895 139961661822656 HTTP GET /api/reviews/? 200 [0.18, 127.0.0.1:37110]
+HTTP GET /api/orders/? 200 [0.08, 127.0.0.1:37100]
+INFO 2026-01-30 19:06:46,808 runserver 102895 139961661822656 HTTP GET /api/orders/? 200 [0.08, 127.0.0.1:37100]
+HTTP GET /api/reviews/? 200 [0.09, 127.0.0.1:37086]
+INFO 2026-01-30 19:06:46,891 runserver 102895 139961661822656 HTTP GET /api/reviews/? 200 [0.09, 127.0.0.1:37086]
+Not Found: /api/graphql/
+WARNING 2026-01-30 19:06:46,987 log 102895 139961553639104 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.09, 127.0.0.1:37110]
+WARNING 2026-01-30 19:06:46,989 runserver 102895 139961661822656 HTTP POST /api/graphql/ 404 [0.09, 127.0.0.1:37110]
+Not Found: /api/graphql/
+WARNING 2026-01-30 19:06:47,160 log 102895 139961553639104 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:37110]
+WARNING 2026-01-30 19:06:47,161 runserver 102895 139961661822656 HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:37110]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:36978]
+INFO 2026-01-30 19:08:03,599 runserver 102895 139961661822656 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:36978]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:39264]
+INFO 2026-01-30 19:08:03,627 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:39264]
+HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:39280]
+INFO 2026-01-30 19:08:03,640 runserver 102895 139961661822656 HTTP GET /api/saved-items/ 200 [0.03, 127.0.0.1:39280]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:39288]
+INFO 2026-01-30 19:08:03,673 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:39288]
+Not Found: /media//media/avatars/boyt2_0BUT0Ji.png
+WARNING 2026-01-30 19:08:03,679 log 102895 139961553639104 Not Found: /media//media/avatars/boyt2_0BUT0Ji.png
+HTTP GET /media//media/avatars/boyt2_0BUT0Ji.png 404 [0.05, 127.0.0.1:39302]
+WARNING 2026-01-30 19:08:03,686 runserver 102895 139961661822656 HTTP GET /media//media/avatars/boyt2_0BUT0Ji.png 404 [0.05, 127.0.0.1:39302]
+HTTP GET /api/saved-items/ 200 [0.05, 127.0.0.1:39280]
+INFO 2026-01-30 19:08:03,693 runserver 102895 139961661822656 HTTP GET /api/saved-items/ 200 [0.05, 127.0.0.1:39280]
+HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:39280]
+INFO 2026-01-30 19:08:27,414 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.03, 127.0.0.1:39280]
+HTTP GET /api/orders/? 200 [0.06, 127.0.0.1:39288]
+INFO 2026-01-30 19:08:27,451 runserver 102895 139961661822656 HTTP GET /api/orders/? 200 [0.06, 127.0.0.1:39288]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:39264]
+INFO 2026-01-30 19:08:27,463 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:39264]
+HTTP GET /api/orders/? 200 [0.03, 127.0.0.1:39280]
+INFO 2026-01-30 19:08:27,488 runserver 102895 139961661822656 HTTP GET /api/orders/? 200 [0.03, 127.0.0.1:39280]
+HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:39280]
+INFO 2026-01-30 19:08:43,566 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:39280]
+Not Found: /media//media/avatars/boyt2_0BUT0Ji.png
+WARNING 2026-01-30 19:08:43,566 log 102895 139961553639104 Not Found: /media//media/avatars/boyt2_0BUT0Ji.png
+HTTP GET /media//media/avatars/boyt2_0BUT0Ji.png 404 [0.06, 127.0.0.1:50662]
+WARNING 2026-01-30 19:08:43,578 runserver 102895 139961661822656 HTTP GET /media//media/avatars/boyt2_0BUT0Ji.png 404 [0.06, 127.0.0.1:50662]
+HTTP GET /api/saved-items/ 200 [0.11, 127.0.0.1:39264]
+INFO 2026-01-30 19:08:43,612 runserver 102895 139961661822656 HTTP GET /api/saved-items/ 200 [0.11, 127.0.0.1:39264]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:39288]
+INFO 2026-01-30 19:08:43,616 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:39288]
+HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:39280]
+INFO 2026-01-30 19:08:43,639 runserver 102895 139961661822656 HTTP GET /api/saved-items/ 200 [0.02, 127.0.0.1:39280]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:50672]
+INFO 2026-01-30 19:08:45,800 runserver 102895 139961661822656 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:50672]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:50672]
+INFO 2026-01-30 19:08:45,811 runserver 102895 139961661822656 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:50672]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:50682]
+INFO 2026-01-30 19:08:45,849 runserver 102895 139961661822656 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:50682]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:50672]
+INFO 2026-01-30 19:08:45,908 runserver 102895 139961661822656 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:50672]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:50682]
+INFO 2026-01-30 19:08:45,909 runserver 102895 139961661822656 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:50682]
+HTTP GET /api/users/stats/ 200 [0.25, 127.0.0.1:39280]
+INFO 2026-01-30 19:08:46,058 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.25, 127.0.0.1:39280]
+HTTP GET /api/orders/? 200 [0.29, 127.0.0.1:39288]
+INFO 2026-01-30 19:08:46,109 runserver 102895 139961661822656 HTTP GET /api/orders/? 200 [0.29, 127.0.0.1:39288]
+HTTP GET /api/reviews/? 200 [0.40, 127.0.0.1:39264]
+INFO 2026-01-30 19:08:46,235 runserver 102895 139961661822656 HTTP GET /api/reviews/? 200 [0.40, 127.0.0.1:39264]
+HTTP GET /api/users/stats/ 200 [0.20, 127.0.0.1:50692]
+INFO 2026-01-30 19:08:46,310 runserver 102895 139961661822656 HTTP GET /api/users/stats/ 200 [0.20, 127.0.0.1:50692]
+HTTP GET /api/orders/? 200 [0.20, 127.0.0.1:39280]
+INFO 2026-01-30 19:08:46,347 runserver 102895 139961661822656 HTTP GET /api/orders/? 200 [0.20, 127.0.0.1:39280]
+Not Found: /api/graphql/
+WARNING 2026-01-30 19:08:46,397 log 102895 139961553639104 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.12, 127.0.0.1:39264]
+WARNING 2026-01-30 19:08:46,398 runserver 102895 139961661822656 HTTP POST /api/graphql/ 404 [0.12, 127.0.0.1:39264]
+HTTP GET /api/reviews/? 200 [0.25, 127.0.0.1:39288]
+INFO 2026-01-30 19:08:46,508 runserver 102895 139961661822656 HTTP GET /api/reviews/? 200 [0.25, 127.0.0.1:39288]
+Not Found: /api/graphql/
+WARNING 2026-01-30 19:08:46,760 log 102895 139961553639104 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:39288]
+WARNING 2026-01-30 19:08:46,761 runserver 102895 139961661822656 HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:39288]
+/home/deeone/Documents/HarvestConnect/backend/api/models.py changed, reloading.
+INFO 2026-01-30 19:20:53,834 autoreload 102895 139961759512384 /home/deeone/Documents/HarvestConnect/backend/api/models.py changed, reloading.
+Performing system checks...
+
+January 30, 2026 - 19:01:54
+Django version 4.2.27, using settings 'harvestconnect.settings'
+Starting ASGI/Daphne version 4.2.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+INFO 2026-01-30 19:20:58,923 autoreload 114915 139777229911872 Watching for file changes with StatReloader
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:225: UserWarning: app_settings.USERNAME_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['username']['required']
+  required=allauth_account_settings.USERNAME_REQUIRED,
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:227: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:285: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+System check identified 3 issues (0 silenced).
+INFO 2026-01-30 19:21:00,404 server 114915 139777132369600 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2026-01-30 19:21:00,405 server 114915 139777132369600 Configuring endpoint tcp:port=8000:interface=0.0.0.0
+INFO 2026-01-30 19:21:00,409 server 114915 139777132369600 Listening on TCP address 0.0.0.0:8000
+/home/deeone/Documents/HarvestConnect/backend/api/serializers.py changed, reloading.
+INFO 2026-01-30 19:21:13,280 autoreload 114915 139777229911872 /home/deeone/Documents/HarvestConnect/backend/api/serializers.py changed, reloading.
+Performing system checks...
+
+January 30, 2026 - 19:21:00
+Django version 4.2.27, using settings 'harvestconnect.settings'
+Starting ASGI/Daphne version 4.2.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+INFO 2026-01-30 19:21:16,876 autoreload 115065 140414023739200 Watching for file changes with StatReloader
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:225: UserWarning: app_settings.USERNAME_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['username']['required']
+  required=allauth_account_settings.USERNAME_REQUIRED,
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:227: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:285: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+System check identified 3 issues (0 silenced).
+INFO 2026-01-30 19:21:17,754 server 115065 140413927159488 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2026-01-30 19:21:17,756 server 115065 140413927159488 Configuring endpoint tcp:port=8000:interface=0.0.0.0
+INFO 2026-01-30 19:21:17,761 server 115065 140413927159488 Listening on TCP address 0.0.0.0:8000
+WebSocket HANDSHAKING /ws/chat/KitchenCab/ [127.0.0.1:35712]
+INFO 2026-01-30 19:23:56,615 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/KitchenCab/ [127.0.0.1:35712]
+WebSocket CONNECT /ws/chat/KitchenCab/ [127.0.0.1:35712]
+INFO 2026-01-30 19:23:56,681 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/KitchenCab/ [127.0.0.1:35712]
+WebSocket DISCONNECT /ws/chat/KitchenCab/ [127.0.0.1:35712]
+INFO 2026-01-30 19:25:56,942 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/KitchenCab/ [127.0.0.1:35712]
+WebSocket HANDSHAKING /ws/chat/GardenPergola/ [127.0.0.1:43522]
+INFO 2026-01-30 19:25:56,988 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/GardenPergola/ [127.0.0.1:43522]
+WebSocket CONNECT /ws/chat/GardenPergola/ [127.0.0.1:43522]
+INFO 2026-01-30 19:25:56,995 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/GardenPergola/ [127.0.0.1:43522]
+WebSocket DISCONNECT /ws/chat/GardenPergola/ [127.0.0.1:43522]
+INFO 2026-01-30 19:26:04,916 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/GardenPergola/ [127.0.0.1:43522]
+HTTP GET /api/users/stats/ 200 [0.08, 127.0.0.1:43476]
+INFO 2026-01-30 19:26:05,003 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.08, 127.0.0.1:43476]
+HTTP GET /api/users/stats/ 200 [0.08, 127.0.0.1:43510]
+INFO 2026-01-30 19:26:05,101 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.08, 127.0.0.1:43510]
+HTTP GET /api/orders/? 200 [0.19, 127.0.0.1:43490]
+INFO 2026-01-30 19:26:05,124 runserver 115065 140413927159488 HTTP GET /api/orders/? 200 [0.19, 127.0.0.1:43490]
+HTTP GET /api/products/? 200 [0.29, 127.0.0.1:43500]
+INFO 2026-01-30 19:26:05,226 runserver 115065 140413927159488 HTTP GET /api/products/? 200 [0.29, 127.0.0.1:43500]
+HTTP GET /api/orders/? 200 [0.11, 127.0.0.1:43510]
+INFO 2026-01-30 19:26:05,246 runserver 115065 140413927159488 HTTP GET /api/orders/? 200 [0.11, 127.0.0.1:43510]
+HTTP GET /api/products/? 200 [0.18, 127.0.0.1:43490]
+INFO 2026-01-30 19:26:05,414 runserver 115065 140413927159488 HTTP GET /api/products/? 200 [0.18, 127.0.0.1:43490]
+HTTP GET /media/products/profile.png 304 [0.03, 127.0.0.1:43516]
+INFO 2026-01-30 19:26:05,436 runserver 115065 140413927159488 HTTP GET /media/products/profile.png 304 [0.03, 127.0.0.1:43516]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:43528]
+INFO 2026-01-30 19:26:07,070 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:43528]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:43528]
+INFO 2026-01-30 19:26:07,081 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:43528]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:43490]
+INFO 2026-01-30 19:26:07,133 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:43490]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:43538]
+INFO 2026-01-30 19:26:07,155 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:43538]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:43538]
+INFO 2026-01-30 19:26:07,191 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:43538]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:43528]
+INFO 2026-01-30 19:26:07,241 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:43528]
+HTTP GET /api/orders/? 200 [0.15, 127.0.0.1:43510]
+INFO 2026-01-30 19:26:07,270 runserver 115065 140413927159488 HTTP GET /api/orders/? 200 [0.15, 127.0.0.1:43510]
+HTTP GET /api/users/stats/ 200 [0.14, 127.0.0.1:43490]
+INFO 2026-01-30 19:26:07,297 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.14, 127.0.0.1:43490]
+HTTP GET /api/orders/? 200 [0.10, 127.0.0.1:43476]
+INFO 2026-01-30 19:26:07,383 runserver 115065 140413927159488 HTTP GET /api/orders/? 200 [0.10, 127.0.0.1:43476]
+HTTP GET /api/reviews/? 200 [0.25, 127.0.0.1:43500]
+INFO 2026-01-30 19:26:07,386 runserver 115065 140413927159488 HTTP GET /api/reviews/? 200 [0.25, 127.0.0.1:43500]
+Not Found: /api/graphql/
+WARNING 2026-01-30 19:26:07,537 log 115065 140413805516480 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.12, 127.0.0.1:43500]
+WARNING 2026-01-30 19:26:07,542 runserver 115065 140413927159488 HTTP POST /api/graphql/ 404 [0.12, 127.0.0.1:43500]
+HTTP GET /api/reviews/? 200 [0.16, 127.0.0.1:43476]
+INFO 2026-01-30 19:26:07,549 runserver 115065 140413927159488 HTTP GET /api/reviews/? 200 [0.16, 127.0.0.1:43476]
+Not Found: /api/graphql/
+WARNING 2026-01-30 19:26:07,786 log 115065 140413805516480 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.04, 127.0.0.1:43476]
+WARNING 2026-01-30 19:26:07,787 runserver 115065 140413927159488 HTTP POST /api/graphql/ 404 [0.04, 127.0.0.1:43476]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:43538]
+INFO 2026-01-30 19:26:08,961 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:43538]
+HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:43476]
+INFO 2026-01-30 19:26:09,038 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.06, 127.0.0.1:43476]
+HTTP GET /api/orders/? 200 [0.24, 127.0.0.1:43500]
+INFO 2026-01-30 19:26:09,233 runserver 115065 140413927159488 HTTP GET /api/orders/? 200 [0.24, 127.0.0.1:43500]
+HTTP GET /api/users/stats/ 200 [0.22, 127.0.0.1:43510]
+INFO 2026-01-30 19:26:09,271 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.22, 127.0.0.1:43510]
+HTTP GET /api/orders/? 200 [0.12, 127.0.0.1:43476]
+INFO 2026-01-30 19:26:09,380 runserver 115065 140413927159488 HTTP GET /api/orders/? 200 [0.12, 127.0.0.1:43476]
+HTTP GET /api/products/? 200 [0.41, 127.0.0.1:43490]
+INFO 2026-01-30 19:26:09,415 runserver 115065 140413927159488 HTTP GET /api/products/? 200 [0.41, 127.0.0.1:43490]
+HTTP GET /api/products/? 200 [0.40, 127.0.0.1:43476]
+INFO 2026-01-30 19:26:09,822 runserver 115065 140413927159488 HTTP GET /api/products/? 200 [0.40, 127.0.0.1:43476]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:34706]
+INFO 2026-01-30 19:26:18,838 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:34706]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:34706]
+INFO 2026-01-30 19:26:18,846 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:34706]
+HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:43476]
+INFO 2026-01-30 19:26:18,886 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.04, 127.0.0.1:43476]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:34712]
+INFO 2026-01-30 19:26:18,930 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:34712]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:34706]
+INFO 2026-01-30 19:26:18,981 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:34706]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:34712]
+INFO 2026-01-30 19:26:18,985 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:34712]
+HTTP GET /api/orders/? 200 [0.26, 127.0.0.1:43490]
+INFO 2026-01-30 19:26:19,158 runserver 115065 140413927159488 HTTP GET /api/orders/? 200 [0.26, 127.0.0.1:43490]
+HTTP GET /api/users/stats/ 200 [0.29, 127.0.0.1:43476]
+INFO 2026-01-30 19:26:19,208 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.29, 127.0.0.1:43476]
+HTTP GET /api/reviews/? 200 [0.42, 127.0.0.1:43510]
+INFO 2026-01-30 19:26:19,321 runserver 115065 140413927159488 HTTP GET /api/reviews/? 200 [0.42, 127.0.0.1:43510]
+HTTP GET /api/orders/? 200 [0.17, 127.0.0.1:43500]
+INFO 2026-01-30 19:26:19,336 runserver 115065 140413927159488 HTTP GET /api/orders/? 200 [0.17, 127.0.0.1:43500]
+HTTP GET /api/reviews/? 200 [0.13, 127.0.0.1:43476]
+INFO 2026-01-30 19:26:19,476 runserver 115065 140413927159488 HTTP GET /api/reviews/? 200 [0.13, 127.0.0.1:43476]
+Not Found: /api/graphql/
+WARNING 2026-01-30 19:26:19,542 log 115065 140413805516480 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.09, 127.0.0.1:43500]
+WARNING 2026-01-30 19:26:19,545 runserver 115065 140413927159488 HTTP POST /api/graphql/ 404 [0.09, 127.0.0.1:43500]
+Not Found: /api/graphql/
+WARNING 2026-01-30 19:26:20,504 log 115065 140413805516480 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:43500]
+WARNING 2026-01-30 19:26:20,505 runserver 115065 140413927159488 HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:43500]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:34712]
+INFO 2026-01-30 19:27:38,256 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:34712]
+HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:34052]
+INFO 2026-01-30 19:27:38,352 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.07, 127.0.0.1:34052]
+HTTP GET /api/saved-items/ 200 [0.09, 127.0.0.1:34052]
+INFO 2026-01-30 19:27:38,575 runserver 115065 140413927159488 HTTP GET /api/saved-items/ 200 [0.09, 127.0.0.1:34052]
+HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:34058]
+INFO 2026-01-30 19:27:38,600 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.05, 127.0.0.1:34058]
+HTTP GET /api/saved-items/ 200 [0.06, 127.0.0.1:34068]
+INFO 2026-01-30 19:27:38,676 runserver 115065 140413927159488 HTTP GET /api/saved-items/ 200 [0.06, 127.0.0.1:34068]
+Not Found: /media//media/avatars/boyt2_0BUT0Ji.png
+WARNING 2026-01-30 19:27:38,689 log 115065 140413805516480 Not Found: /media//media/avatars/boyt2_0BUT0Ji.png
+HTTP GET /media//media/avatars/boyt2_0BUT0Ji.png 404 [0.08, 127.0.0.1:34060]
+WARNING 2026-01-30 19:27:38,690 runserver 115065 140413927159488 HTTP GET /media//media/avatars/boyt2_0BUT0Ji.png 404 [0.08, 127.0.0.1:34060]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:44836]
+INFO 2026-01-30 19:27:48,397 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:44836]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:44836]
+INFO 2026-01-30 19:27:48,402 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:44836]
+HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:34068]
+INFO 2026-01-30 19:27:48,425 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.02, 127.0.0.1:34068]
+HTTP GET /api/orders/? 200 [0.04, 127.0.0.1:34058]
+INFO 2026-01-30 19:27:48,475 runserver 115065 140413927159488 HTTP GET /api/orders/? 200 [0.04, 127.0.0.1:34058]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:44846]
+INFO 2026-01-30 19:27:48,534 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:44846]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:44836]
+INFO 2026-01-30 19:27:48,543 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:44836]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:44846]
+INFO 2026-01-30 19:27:48,568 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:44846]
+HTTP GET /api/users/stats/ 200 [0.16, 127.0.0.1:34058]
+INFO 2026-01-30 19:27:48,666 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 200 [0.16, 127.0.0.1:34058]
+HTTP GET /api/orders/? 200 [0.16, 127.0.0.1:34052]
+INFO 2026-01-30 19:27:48,685 runserver 115065 140413927159488 HTTP GET /api/orders/? 200 [0.16, 127.0.0.1:34052]
+HTTP GET /api/reviews/? 200 [0.23, 127.0.0.1:34068]
+INFO 2026-01-30 19:27:48,711 runserver 115065 140413927159488 HTTP GET /api/reviews/? 200 [0.23, 127.0.0.1:34068]
+Not Found: /api/graphql/
+WARNING 2026-01-30 19:27:48,813 log 115065 140413805516480 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.06, 127.0.0.1:34068]
+WARNING 2026-01-30 19:27:48,814 runserver 115065 140413927159488 HTTP POST /api/graphql/ 404 [0.06, 127.0.0.1:34068]
+HTTP GET /api/reviews/? 200 [0.12, 127.0.0.1:34052]
+INFO 2026-01-30 19:27:48,838 runserver 115065 140413927159488 HTTP GET /api/reviews/? 200 [0.12, 127.0.0.1:34052]
+Not Found: /api/graphql/
+WARNING 2026-01-30 19:27:49,035 log 115065 140413805516480 Not Found: /api/graphql/
+HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:34052]
+WARNING 2026-01-30 19:27:49,035 runserver 115065 140413927159488 HTTP POST /api/graphql/ 404 [0.03, 127.0.0.1:34052]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:44846]
+INFO 2026-01-30 19:31:06,949 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:44846]
+WebSocket HANDSHAKING /ws/chat/GardenPergola/ [127.0.0.1:40298]
+INFO 2026-01-30 19:31:06,969 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/GardenPergola/ [127.0.0.1:40298]
+WebSocket CONNECT /ws/chat/GardenPergola/ [127.0.0.1:40298]
+INFO 2026-01-30 19:31:06,978 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/GardenPergola/ [127.0.0.1:40298]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:50270]
+INFO 2026-01-30 19:34:57,531 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:50270]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:50270]
+INFO 2026-01-30 19:34:57,581 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:50270]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:50304]
+INFO 2026-01-30 19:34:57,610 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:50304]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:50304]
+INFO 2026-01-30 19:34:57,628 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:50304]
+Unauthorized: /api/orders/
+WARNING 2026-01-30 19:34:57,643 log 115065 140413805516480 Unauthorized: /api/orders/
+Unauthorized: /api/users/stats/
+WARNING 2026-01-30 19:34:57,646 log 115065 140413805516480 Unauthorized: /api/users/stats/
+Unauthorized: /api/reviews/
+WARNING 2026-01-30 19:34:57,647 log 115065 140413805516480 Unauthorized: /api/reviews/
+HTTP GET /api/orders/? 401 [0.10, 127.0.0.1:50280]
+WARNING 2026-01-30 19:34:57,650 runserver 115065 140413927159488 HTTP GET /api/orders/? 401 [0.10, 127.0.0.1:50280]
+HTTP GET /api/users/stats/ 401 [0.11, 127.0.0.1:50274]
+WARNING 2026-01-30 19:34:57,651 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 401 [0.11, 127.0.0.1:50274]
+HTTP GET /api/reviews/? 401 [0.09, 127.0.0.1:50292]
+WARNING 2026-01-30 19:34:57,654 runserver 115065 140413927159488 HTTP GET /api/reviews/? 401 [0.09, 127.0.0.1:50292]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:50270]
+INFO 2026-01-30 19:34:57,754 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:50270]
+Unauthorized: /api/orders/
+WARNING 2026-01-30 19:34:57,771 log 115065 140413780338368 Unauthorized: /api/orders/
+Unauthorized: /api/users/stats/
+WARNING 2026-01-30 19:34:57,773 log 115065 140413788731072 Unauthorized: /api/users/stats/
+Unauthorized: /api/reviews/
+WARNING 2026-01-30 19:34:57,773 log 115065 140413780338368 Unauthorized: /api/reviews/
+HTTP GET /api/orders/? 401 [0.07, 127.0.0.1:50308]
+WARNING 2026-01-30 19:34:57,775 runserver 115065 140413927159488 HTTP GET /api/orders/? 401 [0.07, 127.0.0.1:50308]
+HTTP GET /api/users/stats/ 401 [0.07, 127.0.0.1:50312]
+WARNING 2026-01-30 19:34:57,776 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 401 [0.07, 127.0.0.1:50312]
+HTTP GET /api/reviews/? 401 [0.07, 127.0.0.1:50316]
+WARNING 2026-01-30 19:34:57,779 runserver 115065 140413927159488 HTTP GET /api/reviews/? 401 [0.07, 127.0.0.1:50316]

@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
-import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
+import Navigation from '@/components/navigation';
 import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
+import React, { useState } from 'react';
 
 type PricingTier = {
   id: string;
@@ -97,12 +97,52 @@ const BILLING_PERIODS = [
 export default function Membership() {
   const [billingPeriod, setBillingPeriod] = useState('monthly');
 
+  const handleJoinPlan = async (tier: PricingTier) => {
+    if (tier.id === 'free') {
+      window.location.href = '/auth/register';
+      return;
+    }
+
+    const stripeProductMap: Record<string, string> = {
+      'community-member': 'prod_Tt2AamXfcMta64',
+      'artisan-partner': 'prod_Tt2A8RObbRncm2',
+      'farmstead-patron': 'prod_Tt2ANMdZhZhJmn',
+    };
+
+    const productId = stripeProductMap[tier.id];
+    if (!productId) return;
+
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'subscription',
+          productId,
+          billingPeriod,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else if (data.error) {
+        alert(data.error);
+      }
+    } catch (error) {
+      console.error('Membership checkout error:', error);
+      alert('Failed to initiate membership checkout. Please try again.');
+    }
+  };
+
   return (
     <>
       <Navigation />
 
       <main className="min-h-screen bg-background">
-        {/* Hero Section */}
+        {/* ... hero section ... */}
         <section className="bg-card py-16 px-4 sm:px-6 lg:px-8 border-b border-border">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl font-bold mb-4">Become a Part of Our Community</h1>
@@ -139,6 +179,7 @@ export default function Membership() {
                   tier={tier}
                   billingPeriod={billingPeriod}
                   isHighlight={tier.highlight}
+                  onJoin={() => handleJoinPlan(tier)}
                 />
               ))}
             </div>
@@ -248,13 +289,22 @@ function PricingCard({
   tier,
   billingPeriod,
   isHighlight,
+  onJoin,
 }: {
   tier: PricingTier;
   billingPeriod: string;
   isHighlight?: boolean;
+  onJoin: () => void;
 }) {
+  const [isLoading, setIsLoading] = useState(false);
   const annualPrice = Math.floor(tier.price * 12 * 0.8);
   const displayPrice = billingPeriod === 'annual' ? annualPrice : tier.price;
+
+  const handleJoin = async () => {
+    setIsLoading(true);
+    await onJoin();
+    setIsLoading(false);
+  };
 
   const highlightClasses = isHighlight
     ? 'bg-primary text-primary-foreground border-primary ring-2 ring-primary/20 transform scale-105'
@@ -294,13 +344,15 @@ function PricingCard({
         )}
 
         <Button
+          onClick={handleJoin}
+          disabled={isLoading}
           className={`w-full mb-6 ${
             isHighlight
               ? 'bg-primary-foreground text-primary hover:bg-primary-foreground/90'
               : 'bg-primary text-primary-foreground hover:bg-primary/90'
           }`}
         >
-          {tier.cta}
+          {isLoading ? 'Processing...' : tier.cta}
         </Button>
 
         <div className="space-y-3">

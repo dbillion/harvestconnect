@@ -3,7 +3,8 @@
 import Footer from '@/components/footer';
 import Navigation from '@/components/navigation';
 import { Button } from '@/components/ui/button';
-import apiClient, { Product, Review } from '@/lib/api-client';
+import apiClient, { Review } from '@/lib/api-client';
+import { useCart } from '@/lib/cart-context';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -12,10 +13,9 @@ export default function ProductDetailPage() {
   const params = useParams();
   const id = params?.id as string;
   
-  const [product, setProduct] = useState<Product | null>(null);
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const { addItem } = useCart();
+  const [quantity, setQuantity] = useState(1);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,40 +56,29 @@ export default function ProductDetailPage() {
     fetchData();
   }, [id]);
 
+  const handleAddToCart = () => {
+    if (!product) return;
+    
+    addItem({
+      id: product.id,
+      title: product.title,
+      price: typeof product.price === 'string' ? parseFloat(product.price) : product.price,
+      quantity: quantity,
+      image: product.image
+    });
+    
+    setAddedToCart(true);
+    setTimeout(() => setAddedToCart(false), 3000);
+  };
+
   if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Navigation />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-gray-600">Loading product details...</p>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
+// ... existing code for loading state ...
   }
 
-  if (error || !product) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Navigation />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-red-600 mb-4">{error || 'Product not found'}</p>
-            <Link href="/marketplace" className="text-green-600 hover:text-green-700 underline">
-              Back to Marketplace
-            </Link>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+// ... existing code for error state ...
 
   const avgRating = reviews.length > 0
-    ? (reviews.reduce((sum, r) => sum + (r.rating || 0), 0) / reviews.length).toFixed(1)
-    : product.rating || 0;
+// ... existing rating calculation ...
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -168,8 +157,34 @@ export default function ProductDetailPage() {
                 </div>
               )}
 
-              <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg mb-4">
-                Add to Cart
+              <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center border rounded-lg">
+                  <button 
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="px-4 py-2 hover:bg-gray-100"
+                  >
+                    -
+                  </button>
+                  <span className="px-4 py-2 font-semibold">{quantity}</span>
+                  <button 
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="px-4 py-2 hover:bg-gray-100"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <Button 
+                onClick={handleAddToCart}
+                disabled={addedToCart}
+                className={`w-full font-medium py-3 rounded-lg mb-4 transition-all ${
+                  addedToCart 
+                    ? 'bg-green-100 text-green-800' 
+                    : 'bg-green-600 hover:bg-green-700 text-white'
+                }`}
+              >
+                {addedToCart ? '√ Added to Cart' : 'Add to Cart'}
               </Button>
 
               <Button variant="outline" className="w-full border-gray-300 text-gray-700 font-medium py-3 rounded-lg">

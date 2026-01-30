@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HarvestConnect Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+      .glassmorphism {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .dark .glassmorphism {
+        background: rgba(22, 33, 17, 0.2);
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#87AE73", // Sage Green
+              "accent-terracotta": "#E2725B",
+              "accent-stone": "#888C8D",
+              "text-charcoal": "#333333",
+              "text-light-gray": "#666666",
+              "background-light": "#f6f8f6",
+              "background-dark": "#162111",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-charcoal dark:text-gray-200">
+<div class="fixed inset-0 z-[-1] bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcnqNzc-s_uV2wKfZpAb1Bh3jV8SxTsizV13gaovneuRlTQvece8kiIXjH6FmcpEu4sV3RUrtN2YroKowh3h4CE8DOerao-WxJFMj8nIP1H5fhl8joURYk4C3vda4nFhvN90XZqE7t2pj4xvVVCh-iJ-YsiDjW_aLoTpv9PbFCW6jaUdGx3646n0ZsoA_6kGfQtEjn_xng3p_OeWTjEDFsI-T_2Q6LpaHRXM1Db_iPFACYux0bbjhQ8OQN_ZqUArwgnIvWNMTbiEaG');">
+<div class="absolute inset-0 bg-black/10 dark:bg-black/40"></div>
+</div>
+<div class="relative flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="flex-shrink-0 w-64 p-4">
+<div class="flex flex-col justify-between h-full p-4 rounded-xl glassmorphism border border-white/20 dark:border-gray-700/50">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-2 text-text-charcoal dark:text-white">
+<span class="material-symbols-outlined text-3xl">grass</span>
+<h2 class="text-xl font-bold">HarvestConnect</h2>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/30 dark:bg-primary/40">
+<span class="material-symbols-outlined text-text-charcoal dark:text-white">dashboard</span>
+<p class="text-sm font-semibold text-text-charcoal dark:text-white">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors duration-200">
+<span class="material-symbols-outlined">group</span>
+<p class="text-sm font-medium">Users</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors duration-200">
+<span class="material-symbols-outlined">article</span>
+<p class="text-sm font-medium">Posts</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors duration-200">
+<span class="material-symbols-outlined">analytics</span>
+<p class="text-sm font-medium">Analytics</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors duration-200">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Admin profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBj4zJPIJT6pmzfPVA9z1ZI_KBkovxJwuV5id85tPVhS6M8VwkcaArj14LWhi_Ww7KIk0XIvKakt12b0CaD47HTX_sIvsKTmryv9IwPouj-FY2ldsL-E0lOzuYjrj6-CE7QEVSxZaw5qIZ0ZexhdpyOI5-qDLIe-6Sc_OIFx3kEByl05lp-EzOVwAFGwllbJdjrfdK2deZtMIGDDLBnWILTmHg-RC_7zK92nAm5pTHgPZQDD0omgb3bzJkPvKHuy8pSbsOSZ2Tw_2LX");'></div>
+<div class="flex flex-col">
+<h1 class="text-base font-medium text-text-charcoal dark:text-white">Admin Name</h1>
+<p class="text-sm font-normal text-text-light-gray dark:text-gray-400">Administrator</p>
+</div>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-accent-terracotta/80 hover:bg-accent-terracotta text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors duration-200">
+<span class="truncate">Logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap px-8 py-4 m-4 rounded-xl glassmorphism border border-white/20 dark:border-gray-700/50">
+<label class="flex flex-col w-full max-w-sm">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-10">
+<div class="text-text-light-gray dark:text-gray-400 flex bg-black/5 dark:bg-white/5 items-center justify-center pl-3 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-text-charcoal dark:text-gray-200 focus:outline-0 focus:ring-0 border-none bg-black/5 dark:bg-white/5 h-full placeholder:text-text-light-gray dark:placeholder:text-gray-400 pl-2 text-base font-normal leading-normal" placeholder="Search users, posts, etc..." value=""/>
+</div>
+</label>
+<div class="flex items-center gap-4">
+<button class="relative flex cursor-pointer items-center justify-center rounded-full h-10 w-10 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+<div class="absolute top-1.5 right-1.5 size-2.5 bg-accent-terracotta rounded-full border-2 border-background-light dark:border-background-dark"></div>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Admin profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAAWopWnaG0A2Z1iWOIugalC2ws7db2j-oLRJaKxuyVbpkZ7PcOrcq9s56k20gDH0eAKs1N-SMeABJmbEIAlkxHTA_wXkRwsSEDEiM8mhbLYGgYObnqIxOOlxKzO0dnqDB4TcuP52FuwBjPxNqUbQnOOukNTuLAf8WmNzjF2z2NpNQUEJYdaGUvf0NEikCeX4Mqjfw_Fgabu3BZU6EsnVGuzXiGxSZ86HwjCD_rlIyXNVB_Ls93QtfZ1DkeaOqYb6L4aOpyHcs1BvyM");'></div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto px-4 pb-4">
+<div class="p-4">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3 mb-6">
+<div class="flex flex-col gap-1">
+<p class="text-3xl font-bold tracking-tight text-text-charcoal dark:text-white">Dashboard</p>
+<p class="text-base font-normal text-text-light-gray dark:text-gray-400">Welcome back, Admin. Here's an overview of the platform's performance.</p>
+</div>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 glassmorphism border border-white/20 dark:border-gray-700/50">
+<p class="text-base font-medium text-text-charcoal dark:text-gray-200">Total Sales</p>
+<p class="tracking-light text-2xl font-bold text-text-charcoal dark:text-white">$12,450</p>
+<p class="text-primary font-medium text-base leading-normal">+5.2%</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 glassmorphism border border-white/20 dark:border-gray-700/50">
+<p class="text-base font-medium text-text-charcoal dark:text-gray-200">New Members</p>
+<p class="tracking-light text-2xl font-bold text-text-charcoal dark:text-white">82</p>
+<p class="text-primary font-medium text-base leading-normal">+12%</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 glassmorphism border border-white/20 dark:border-gray-700/50">
+<p class="text-base font-medium text-text-charcoal dark:text-gray-200">Community Engagement</p>
+<p class="tracking-light text-2xl font-bold text-text-charcoal dark:text-white">315</p>
+<p class="text-accent-terracotta font-medium text-base leading-normal">-1.5%</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 glassmorphism border border-white/20 dark:border-gray-700/50">
+<p class="text-base font-medium text-text-charcoal dark:text-gray-200">Charitable Contributions</p>
+<p class="tracking-light text-2xl font-bold text-text-charcoal dark:text-white">$1,800</p>
+<p class="text-primary font-medium text-base leading-normal">+8%</p>
+</div>
+</div>
+<!-- Charts -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+<div class="lg:col-span-2 flex min-w-72 flex-1 flex-col gap-2 rounded-xl p-6 glassmorphism border border-white/20 dark:border-gray-700/50">
+<p class="text-base font-medium text-text-charcoal dark:text-gray-200">Sales Over Time</p>
+<p class="tracking-light text-[32px] font-bold truncate text-text-charcoal dark:text-white">$12,450</p>
+<div class="flex gap-1">
+<p class="text-base font-normal text-text-light-gray dark:text-gray-400">Last 30 Days</p>
+<p class="text-primary text-base font-medium">+5.2%</p>
+</div>
+<div class="flex min-h-[200px] flex-1 flex-col gap-8 py-4">
+<img class="w-full h-full object-cover rounded-lg" data-alt="Line chart showing sales trends over the last 30 days." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMIMMFa12LEL-YqLtv7xf1cZSvH3Fye1BsEhcUJ-ew58WDqGieX5Ije61S-v2pYR6U12yCVf85NtgPHzjfyt8fD4MYaWXL7VHiPqWDTufqY41N4knUZV0mZsKtwV9eQ3A7AWynz69e5tdYI6huxnBFkiTDfmGyl__Y-729FzJ7yNu3WTnsLkAVwc0JpeQ1QeQD54IJq4-PGcG5F979a6LY8tn-j0YKbtuibW2l7p2HP8-YQwaN9oGpZDQtfGDHzJuq1eH5qGv_Ok3L"/>
+</div>
+</div>
+<div class="flex min-w-72 flex-1 flex-col gap-2 rounded-xl p-6 glassmorphism border border-white/20 dark:border-gray-700/50">
+<p class="text-base font-medium text-text-charcoal dark:text-gray-200">Contribution Breakdown</p>
+<p class="tracking-light text-[32px] font-bold truncate text-text-charcoal dark:text-white">$1,800 Total</p>
+<div class="flex gap-1">
+<p class="text-base font-normal text-text-light-gray dark:text-gray-400">This Month</p>
+</div>
+<div class="flex flex-1 items-center justify-center py-4">
+<img class="w-48 h-48 object-cover rounded-full" data-alt="Donut chart showing breakdown of charitable contributions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOTz4-LTd4w7TBKuntyURkABQAXSTLu4PJj7dgBpicj4avobedyVpDaJvr1_C2PMps_bv7CzMopGSTYJiQXF7Nh4TERJl9teyqYWQIhYekvkPZuntbhF9FEzM6eEwfx0YTnQim7f_7eub_gLj01syK2Vm-uDoNiBwUzBwKwVujPDCeHvak_LplTX5mAFjXC6FcifeJqbGZrEiTaZQ6HhAFk1bH8_xi4DuTIguUe2KVuMr3Qc6VZ1_IbKyBpd8FVyKfTpHk4NIWkW68"/>
+</div>
+<div class="flex flex-col gap-2 text-sm">
+<div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="size-3 rounded-full bg-primary"></div><span>Local Missions</span></div><span>45%</span></div>
+<div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="size-3 rounded-full bg-accent-terracotta"></div><span>Community Aid</span></div><span>30%</span></div>
+<div class="flex items-center justify-between"><div class="flex items-center gap-2"><div class="size-3 rounded-full bg-accent-stone"></div><span>Building Fund</span></div><span>25%</span></div>
+</div>
+</div>
+</div>
+<!-- Recent Activity/Flagged Content Table -->
+<div class="rounded-xl glassmorphism border border-white/20 dark:border-gray-700/50 overflow-hidden">
+<div class="p-6">
+<h3 class="text-lg font-bold text-text-charcoal dark:text-white">Flagged Content</h3>
+<p class="text-sm text-text-light-gray dark:text-gray-400">Content that requires review based on community guidelines.</p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="border-b border-white/20 dark:border-gray-700/50">
+<tr class="text-sm font-semibold text-text-light-gray dark:text-gray-400">
+<th class="p-4">User</th>
+<th class="p-4">Content</th>
+<th class="p-4">Date</th>
+<th class="p-4">Status</th>
+<th class="p-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-white/20 dark:border-gray-700/50">
+<td class="p-4 whitespace-nowrap"><div class="flex items-center gap-3"><div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCwD0Jl2WAeXqitJesjgZQEg27MUWD59TC7TYF_gRCCCenyNYFgMV_pl4B_Q4Ps0wR7N4DcUnOXppyBSY2AQh9l9Re5gcctgPH9R71gObDjGkZtu1XkqAjhpKJbUs01wcocFaBC2ExUUZqDYuSR3QajXeOzW3EkVq114Nmrc9Hnwiz4kPwM_tEWeoEKeNKDQ2w_Ir1v-4fXo3KmhXOPi90HuLRolzElXKoQP0w0vj3lnX6vW00gr0G0f70xU4GdR2_2dADfCVLFnCcZ");'></div><span>John Doe</span></div></td>
+<td class="p-4 max-w-xs truncate">"Inappropriate comment on a recipe..."</td>
+<td class="p-4 whitespace-nowrap text-text-light-gray dark:text-gray-400">Oct 26, 2023</td>
+<td class="p-4 whitespace-nowrap"><span class="px-2 py-1 text-xs font-medium rounded-full bg-accent-terracotta/20 text-accent-terracotta">Flagged</span></td>
+<td class="p-4 text-right space-x-2 whitespace-nowrap">
+<button class="px-3 py-1.5 text-xs font-semibold rounded-md bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 transition-colors">Restrict</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-md bg-accent-terracotta text-white hover:bg-accent-terracotta/80 transition-colors">Remove</button>
+</td>
+</tr>
+<tr class="border-b border-white/20 dark:border-gray-700/50">
+<td class="p-4 whitespace-nowrap"><div class="flex items-center gap-3"><div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJYhTjV4V7DFVDSHNzp4BoAPYfmNU7gfiZAFU3kyHgeipTknmplmrqg_WsI3GHAOgatCGSQWtz-iHDycbE1M3HqPf1hzmUk6_YPTyftlSS-8DWAPa83KirWjrfMoKP1RZXS8ImL_uMZAL6aVTdFzx3a-CUL0g6EfPHQnB242e4qjdQ0FpYddKpxYKScpx81LLjFtuiXbdsPpo6j8AzLhCMDOyVBlfnHQaSfBiceGCBg5Haljjb_kf_xCVPod6pJZacAwRk-6x_kHGC");'></div><span>Jane Smith</span></div></td>
+<td class="p-4 max-w-xs truncate">"Off-topic post in the prayer group..."</td>
+<td class="p-4 whitespace-nowrap text-text-light-gray dark:text-gray-400">Oct 25, 2023</td>
+<td class="p-4 whitespace-nowrap"><span class="px-2 py-1 text-xs font-medium rounded-full bg-accent-terracotta/20 text-accent-terracotta">Flagged</span></td>
+<td class="p-4 text-right space-x-2 whitespace-nowrap">
+<button class="px-3 py-1.5 text-xs font-semibold rounded-md bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 transition-colors">Restrict</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-md bg-accent-terracotta text-white hover:bg-accent-terracotta/80 transition-colors">Remove</button>
+</td>
+</tr>
+<tr>
+<td class="p-4 whitespace-nowrap"><div class="flex items-center gap-3"><div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSwNCFW0pfAAsNHNtZEwK3jXDamoN43X19Dilo0swNm3JhSdY8On8PAoVOBFxNmWnB_2TM1DNLIyT7-UgwXeZxJOm2L8GTKqXcvkbRIYWnBi9DrXstJWbskYoYKAntp3uMlKRBJt_1mxh5T05ZYFxlm0J37httZD8R5lS1yNExW8CT0-V_Cl1G8uP93Cucia0gXDbscrv_j2gDRUPfYVN3vEuF14mDbw_Os-xzf_B9Y85S1rLBPOpqU7SpUCM1CTIV4eOLhA8JpE35");'></div><span>Sam Wilson</span></div></td>
+<td class="p-4 max-w-xs truncate">"Spam link in artisan marketplace..."</td>
+<td class="p-4 whitespace-nowrap text-text-light-gray dark:text-gray-400">Oct 24, 2023</td>
+<td class="p-4 whitespace-nowrap"><span class="px-2 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">Resolved</span></td>
+<td class="p-4 text-right space-x-2 whitespace-nowrap">
+<button class="px-3 py-1.5 text-xs font-semibold rounded-md bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 transition-colors opacity-50" disabled="">Restrict</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-md bg-accent-stone text-white opacity-50" disabled="">Removed</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

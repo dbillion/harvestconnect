@@ -3,14 +3,18 @@ from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from .models import (
-    UserProfile, Category, BlogPost, Product, Review, Order, Artist
+    UserProfile, Category, BlogPost, Product, Review, Order, Artist, SavedItem, Project,
+    ChatRoom, ChatMessage
 )
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['id', 'role', 'bio', 'avatar', 'phone', 'location', 'is_verified', 'faith_based']
+        fields = [
+            'id', 'role', 'bio', 'avatar', 'banner', 'phone', 'location', 'home_church', 
+            'is_verified', 'faith_based', 'latitude', 'longitude'
+        ]
         read_only_fields = ['id', 'is_verified']
 
 
@@ -23,37 +27,37 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
 
-class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(
-        write_only=True,
-        required=True,
-        validators=[validate_password]
-    )
-    password2 = serializers.CharField(write_only=True, required=True)
+from dj_rest_auth.registration.serializers import RegisterSerializer as DefaultRegisterSerializer
+
+class RegisterSerializer(DefaultRegisterSerializer):
+    username = serializers.CharField(required=False, allow_blank=True)
     first_name = serializers.CharField(required=False, allow_blank=True)
     last_name = serializers.CharField(required=False, allow_blank=True)
     role = serializers.CharField(required=False, default='buyer')
     
-    class Meta:
-        model = User
-        fields = ('email', 'first_name', 'last_name', 'password', 'password2', 'role')
-    
     def validate(self, data):
-        if data['password'] != data.pop('password2'):
-            raise serializers.ValidationError({"password": "Passwords must match."})
+        # Generate username from email if not provided
+        if not data.get('username') and data.get('email'):
+            data['username'] = data['email']
+        return super().validate(data)
+
+    def get_cleaned_data(self):
+        data = super().get_cleaned_data()
+        data['first_name'] = self.validated_data.get('first_name', '')
+        data['last_name'] = self.validated_data.get('last_name', '')
+        data['role'] = self.validated_data.get('role', 'buyer')
         return data
-    
-    def create(self, validated_data):
-        role = validated_data.pop('role', 'buyer')
-        user = User.objects.create_user(
-            username=validated_data['email'],
-            email=validated_data['email'],
-            first_name=validated_data.get('first_name', ''),
-            last_name=validated_data.get('last_name', ''),
-            password=validated_data['password']
-        )
-        UserProfile.objects.create(user=user, role=role)
-        return user
+
+    def custom_signup(self, request, user):
+        user.first_name = self.validated_data.get('first_name', '')
+        user.last_name = self.validated_data.get('last_name', '')
+        user.save()
+        
+        # Ensure UserProfile is created/updated with the correct role
+        role = self.validated_data.get('role', 'buyer')
+        profile, created = UserProfile.objects.get_or_create(user=user)
+        profile.role = role
+        profile.save()
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -123,3 +127,63 @@ class ArtistSerializer(serializers.ModelSerializer):
         model = Artist
         fields = ['id', 'user', 'name', 'specialty', 'bio', 'profile_image', 'portfolio_url', 'social_media', 'featured', 'created_at']
         read_only_fields = ['id', 'created_at']
+
+
+class SavedItemSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    product = ProductSerializer(read_only=True)
+    product_id = serializers.PrimaryKeyRelatedField(
+        queryset=Product.objects.all(),
+        source='product',
+        write_only=True
+    )
+
+    class Meta:
+        model = SavedItem
+        fields = ['id', 'user', 'product', 'product_id', 'created_at']
+        read_only_fields = ['id', 'created_at']
+
+
+class ProjectSerializer(serializers.ModelSerializer):
+    tradesman = UserSerializer(read_only=True)
+    client = UserSerializer(read_only=True)
+    client_id = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        source='client',
+        write_only=True,
+        required=False
+    )
+
+    class Meta:
+        model = Project
+        fields = [
+            'id', 'tradesman', 'client', 'client_id', 'title', 'description',
+            'status', 'priority', 'budget', 'start_date', 'end_date', 'images',
+            'created_at', 'updated_at'
+        ]
+        read_only_fields = ['id', 'created_at', 'updated_at']
+
+
+class ChatMessageSerializer(serializers.ModelSerializer):
+    sender = UserSerializer(read_only=True)
+
+    class Meta:
+        model = ChatMessage
+        fields = ['id', 'room', 'sender', 'content', 'timestamp']
+        read_only_fields = ['id', 'timestamp']
+
+
+class ChatRoomSerializer(serializers.ModelSerializer):
+    participants = UserSerializer(many=True, read_only=True)
+    last_message = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ChatRoom
+        fields = ['id', 'name', 'room_type', 'church', 'location', 'participants', 'created_at', 'last_message']
+        read_only_fields = ['id', 'created_at']
+
+    def get_last_message(self, obj):
+        last = obj.messages.order_by('-timestamp').first()
+        if last:
+            return ChatMessageSerializer(last).data
+        return None

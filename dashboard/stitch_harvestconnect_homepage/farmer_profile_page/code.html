@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Farmer Profile - HarvestConnect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="font-display bg-gradient-to-br from-[#A3B18A] to-[#FDF5E6]">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="w-full flex flex-1 justify-center py-5 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-40">
+<div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap px-6 py-3 glass-panel rounded-xl shadow-sm">
+<div class="flex items-center gap-4 text-[#344E41]">
+<div class="size-6">
+<svg class="text-[#344E41]" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+<path d="M12 10.5c-1.93 0-3.5 1.57-3.5 3.5h7c0-1.93-1.57-3.5-3.5-3.5zm0-4C9.24 6.5 7 8.74 7 11.5c0 1.06.35 2.03.94 2.83.05.08.1.17.15.25L12 19l3.91-4.42c.05-.08.1-.17.15-.25.59-.8.94-1.77.94-2.83 0-2.76-2.24-5-5-5z"></path>
+</svg>
+</div>
+<h2 class="text-[#344E41] text-lg font-bold leading-tight tracking-[-0.015em]">HarvestConnect</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-center gap-9">
+<a class="text-[#344E41] text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-[#344E41] text-sm font-medium leading-normal" href="#">Marketplace</a>
+<a class="text-[#344E41] text-sm font-medium leading-normal" href="#">Community</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 w-10 bg-[#e07a5f]/20 text-[#344E41] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5 hover:bg-[#e07a5f]/40 transition-colors">
+<span class="material-symbols-outlined text-[#344E41]">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCukJYyKW3831ETQFi_5jKriMf-ff5V8E24kewx1tt3yQxCij73pXp2J0owHBUdINHIe8xDdDO6X3uGIwrknSzhLNrnB7YA3649u8ds2jdvYtjNVsl7ZdKuQgxXkFi0tBYI72-X06rqC_z6JHzSUeI8Edr_N0zIvIjDh6eaDrVaGa8yOldz9PPNXjquNUzzQX2K969zyKf0imHv0ADUzoyBy-kOEDTo9MA08x9crKHsxrPFzElVnogmpq0YPffhCn0fhNaTcMl74DuI");'></div>
+</div>
+</header>
+<main class="mt-8 flex flex-col gap-8">
+<!-- Profile Banner Card -->
+<div class="relative w-full rounded-xl overflow-hidden glass-panel shadow-md">
+<div class="bg-cover bg-center flex flex-col justify-end min-h-[220px]" data-alt="A lush green farm field under a sunny sky" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBfIgn2Xyb6ZcA5iDmWJ9sYNcaCRzk6aQvgqTzgMOgitPxOxhPz7OWYQEq6z-qkYMCQQp6BZaystlf5SxfVCl9TC_QE8mJBS88Nh5wqFSfdKi9a9UOiqquEgC9pVxC9N3n8jT3bSg2KSTsl5kmwFC9SJFt0b853f2VF24NtSXSSjXXQeGw5PO48FTuC9viJVkEZLe3vRvOag931Q_EYv54dEWiEjQ5fBxHaC_7qdEYX9MO8F1Vwa30rfcd5ya1Wr3gTykNfbQ-YiZmh");'>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-4 @container">
+<div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-end">
+<div class="flex gap-4 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24 md:min-h-32 md:w-32 border-4 border-white/50" data-alt="Stardew Valley Farms logo, a cartoon chicken" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDyYEXy1QWQ-5KABMGCjbUM5UV922a6ED-Ul45bzKiE1aeRjqNdWJhbSmfjhewV8kqKECgGqfPnlfFNafDsg1kEZsqiRV5FkjMr1u6mqEY_tka9XBitE9se4G5Cs4GyxVeFdxhgnKAFWTmoUk9B7mIZY02r2PSI8-ybrIR7TUWO9X9IHzghRCzKRPi6amUgQitZ0kqcA2yMDCUwDcavFmvta2N9uNuPwy8LybQClqRK8hYcMieZliltV4MqW6ZPkijeVLIe9cfBEiWN");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-[22px] md:text-3xl font-bold leading-tight tracking-[-0.015em]">Stardew Valley Farms</p>
+<p class="text-gray-200 text-sm md:text-base font-normal leading-normal">Pelican Town, Stardew</p>
+</div>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#E07A5F] text-white text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto hover:bg-[#d8684a] transition-colors">
+<span class="truncate">View Public Profile</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Tab Navigation -->
+<div class="w-full glass-panel rounded-xl shadow-sm">
+<div class="flex border-b border-white/30 px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-[#E07A5F] text-[#344E41] pb-[13px] pt-4" href="#">
+<p class="text-[#344E41] text-sm font-bold leading-normal tracking-[0.015em]">My Products</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#344e41]/70 pb-[13px] pt-4 hover:border-b-[#e07a5f]/50 hover:text-[#344E41] transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Farm Details</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#344e41]/70 pb-[13px] pt-4 hover:border-b-[#e07a5f]/50 hover:text-[#344E41] transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Orders</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#344e41]/70 pb-[13px] pt-4 hover:border-b-[#e07a5f]/50 hover:text-[#344E41] transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Profile Settings</p>
+</a>
+</div>
+<!-- "My Products" Content -->
+<div class="p-6">
+<div class="flex justify-between items-center pb-5">
+<h2 class="text-[#344E41] text-[22px] font-bold leading-tight tracking-[-0.015em]">My Products</h2>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#E07A5F] text-white text-sm font-bold leading-normal tracking-[0.015em] gap-2 hover:bg-[#d8684a] transition-colors">
+<span class="material-symbols-outlined text-base">add_circle</span>
+<span class="truncate">Add New Product</span>
+</button>
+</div>
+<!-- Product Listing Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Product Card 1 -->
+<div class="flex flex-col rounded-xl overflow-hidden glass-panel shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-[4/3] bg-cover" data-alt="A carton of fresh, brown organic eggs" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJFqFiH7xHokb7r3i4ZsBjkdLPeu5mkPpMY_f6YDp3WPmSDS15A2DjOQNE6FnvxtkZqGE-fonSv6p8C5iTRDM9cnx33tvxQ1ezecqKlcDdXM4-dORq2BQy6SsPuwvNdtld_OoiRt_3Hqpqp9dpSbjsfhTQoSHQopUkADA1y65-Cm32HJ7qOZwjGA9qAJYkTflaqcqaK76vFWMU6OevuIW_9NGWUU0ZpktHzRIfNtHlV0zKz_sIr-tnMQMnD0saBGKIiZvqm4_L6Wn4");'></div>
+<div class="absolute top-2 right-2 bg-green-200 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full">In Stock</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h3 class="text-[#344E41] font-bold text-lg">Organic Free-Range Eggs</h3>
+<p class="text-[#344E41] font-bold text-xl mt-1">$6.00 <span class="text-sm font-normal text-gray-700">/ dozen</span></p>
+<div class="mt-4 pt-4 border-t border-white/30 flex gap-2">
+<button class="flex-1 flex min-w-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-white/50 text-[#344E41] text-sm font-bold hover:bg-white/80 transition-colors">Edit</button>
+<button class="flex-1 flex min-w-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-gray-500/20 text-gray-700 text-sm font-bold hover:bg-gray-500/40 transition-colors">Deactivate</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="flex flex-col rounded-xl overflow-hidden glass-panel shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-[4/3] bg-cover" data-alt="A jar of golden honey with a wooden dipper" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvfW53gbfvb7e0lbMOtZzcM1d7B-4Vkt_Syv_x_YENZ2F_mTdLt3iG9qtnaa1XpnOJiFxvJnQLsw3sUASOW1xsju8txrqSO00Z4p3-TlR2_0f-nWPDBnsKQ8JlDL8BHgZSr5KNTREu6HlKYR9yaG6JaQlqc9LUbQJBFLXUDnMvmxp_4sJWbctFG910yB-_UYVXtJ3UPpRG4LfHkTfcW_u48cRKbjC5Y2GXgqQgPAoFOSx9tkSm-pqA9o6BefwdW0ar1O9yO6VRJITg");'></div>
+<div class="absolute top-2 right-2 bg-green-200 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full">In Stock</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h3 class="text-[#344E41] font-bold text-lg">Raw Wildflower Honey</h3>
+<p class="text-[#344E41] font-bold text-xl mt-1">$12.00 <span class="text-sm font-normal text-gray-700">/ 8oz jar</span></p>
+<div class="mt-4 pt-4 border-t border-white/30 flex gap-2">
+<button class="flex-1 flex min-w-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-white/50 text-[#344E41] text-sm font-bold hover:bg-white/80 transition-colors">Edit</button>
+<button class="flex-1 flex min-w-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-gray-500/20 text-gray-700 text-sm font-bold hover:bg-gray-500/40 transition-colors">Deactivate</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="flex flex-col rounded-xl overflow-hidden glass-panel shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-[4/3] bg-cover" data-alt="A loaf of freshly baked sourdough bread on a wooden board" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBh-gGE4s3m9FM1HiP8PhZeGkDpD5u13FwsLt6tKZzexQqR0Xzvc7M3sScFOMvbU2lgjleEhKX0cVUrwBCUVAer50Zf5C2vW6TGkLk_ibnlYrRoeUZe3tn4_lkzQV-MrMdUTZKtHxshkd3t0d7DF_DVOSZCCKn_Qqy0BLIE0HT8W9I_9LheGjuic6jErCo3ukJlUUTz8dN7NqldicH8gigiT2NvmUPWL8tMlNj1lFNclAfP4MSewzoykGR_lQWmHqQrAL5W-W0Iz08V");'></div>
+<div class="absolute top-2 right-2 bg-red-200 text-red-800 text-xs font-semibold px-2.5 py-1 rounded-full">Sold Out</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h3 class="text-[#344E41] font-bold text-lg">Artisan Sourdough Bread</h3>
+<p class="text-[#344E41] font-bold text-xl mt-1">$8.00 <span class="text-sm font-normal text-gray-700">/ loaf</span></p>
+<div class="mt-4 pt-4 border-t border-white/30 flex gap-2">
+<button class="flex-1 flex min-w-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-white/50 text-[#344E41] text-sm font-bold hover:bg-white/80 transition-colors">Edit</button>
+<button class="flex-1 flex min-w-0 cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-3 bg-gray-500/20 text-gray-700 text-sm font-bold hover:bg-gray-500/40 transition-colors">Deactivate</button>
+</div>
+</div>
+</div>
+<!-- Empty State Card (Example) -->
+<div class="col-span-1 sm:col-span-2 lg:col-span-3 xl:col-span-4 flex flex-col items-center justify-center p-10 border-2 border-dashed border-gray-500/40 rounded-xl text-center">
+<span class="material-symbols-outlined text-5xl text-[#344e41]/60 mb-4">storefront</span>
+<h3 class="text-[#344E41] font-bold text-xl">Your farm stand is empty!</h3>
+<p class="text-[#344e41]/80 mt-1 mb-4 max-w-sm">Let's add your first product to the marketplace and share your harvest with the community.</p>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#E07A5F] text-white text-sm font-bold leading-normal tracking-[0.015em] gap-2 hover:bg-[#d8684a] transition-colors">
+<span class="material-symbols-outlined text-base">add_circle</span>
+<span class="truncate">Add Your First Product</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

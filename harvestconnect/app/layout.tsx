@@ -1,15 +1,30 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import ClientLayout from '@/components/client-layout';
+import type { Metadata } from 'next';
+import { DM_Serif_Display, Manrope } from 'next/font/google';
+import './globals.css';
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const manrope = Manrope({ 
+  subsets: ["latin"],
+  variable: '--font-manrope',
+  weight: ['400', '500', '700', '800']
+});
+
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  variable: '--font-display',
+  weight: '400'
+});
 
 export const metadata: Metadata = {
-  title: 'HarvestConnect - Community Marketplace',
-  description: 'Connecting faith-driven farmers, artisans, and tradesmen with an engaged community',
-  generator: 'v0.app',
+  title: 'HarvestConnect - Faith-Driven Community Marketplace',
+  description: 'Connect with local, faith-driven farmers, artisans, and skilled tradesmen. A community marketplace for natural products, handcrafted goods, and professional services.',
+  keywords: ['marketplace', 'community', 'faith', 'local farmers', 'artisans', 'tradesmen', 'organic', 'handcrafted'],
+  authors: [{ name: 'HarvestConnect' }],
+  openGraph: {
+    title: 'HarvestConnect - Faith-Driven Community Marketplace',
+    description: 'Connect with local, faith-driven farmers, artisans, and skilled tradesmen.',
+    type: 'website',
+  },
   icons: {
     icon: [
       {
@@ -35,10 +50,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
-        {children}
-        <Analytics />
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link 
+          rel="stylesheet" 
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
+        />
+      </head>
+      <body className={`${manrope.variable} ${dmSerif.variable} font-sans antialiased`}>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   )

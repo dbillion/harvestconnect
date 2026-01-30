@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HarvestConnect - User Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5bda1b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#162111",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f6f8f6;
+        }
+        .dark body {
+            background-color: #162111;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.5);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(30, 41, 27, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .form-input {
+            background-color: #ffffff;
+            border-color: #dfe5dc;
+        }
+        .dark .form-input {
+            background-color: rgba(30, 41, 27, 0.8);
+            border-color: #4b5548;
+            color: #e5e7eb;
+        }
+        .dark .form-input::placeholder {
+            color: #9ca3af;
+        }
+        .soft-gradient-background {
+            background-image: radial-gradient(circle at top left, #d4e8c5, transparent 40%), radial-gradient(circle at bottom right, #e0d8c2, transparent 50%);
+        }
+        .dark .soft-gradient-background {
+            background-image: radial-gradient(circle at top left, #2a3b25, transparent 50%), radial-gradient(circle at bottom right, #3b352b, transparent 60%);
+        }
+    </style>
+</head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden soft-gradient-background">
+<div class="flex-grow p-4 sm:p-6 lg:p-8">
+<div class="mx-auto max-w-7xl">
+<div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
+<!-- Left Sidebar -->
+<aside class="w-full lg:w-64 xl:w-72 flex-shrink-0">
+<div class="sticky top-8 glass-panel p-4 rounded-xl shadow-lg">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="User avatar of Olivia Chen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0oGxD-OZWelSVZiGDaRn5n4kaLScsVOVzFkYRTTt0J4rtm5joV3hcQYH2tUDKTs8IwPEeE4NIil4cZWBl-Wzi-yLLSSu_6wVpz4knW5jvXm6BECEwXyZDCmCj67BZfd2Se6O_kr7IVr83lzV7EFMiaI9uj3rZYcvNTt8KO840kYAQLhrMhx9OwKZls72prznLGLVIWRfGedbhRPVhw0TyiKhi7GFG-tBo3CV2irZx46O_-ThMLS1-UD6wjC19rjv4gqRcdWxCOlQH");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-800 dark:text-gray-100 text-base font-bold leading-normal">Olivia Chen</h1>
+<p class="text-slate-500 dark:text-gray-400 text-sm font-normal leading-normal">Joined June 2023</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/20 dark:bg-primary/30 text-slate-900 dark:text-white" href="#">
+<span class="material-symbols-outlined text-slate-800 dark:text-white" style="font-variation-settings: 'FILL' 1;">person</span>
+<p class="text-sm font-medium leading-normal">Profile Details</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 group" href="#">
+<span class="material-symbols-outlined text-slate-700 dark:text-gray-300 group-hover:text-slate-900 dark:group-hover:text-white">receipt_long</span>
+<p class="text-slate-700 dark:text-gray-300 group-hover:text-slate-900 dark:group-hover:text-white text-sm font-medium leading-normal">Order History</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 group" href="#">
+<span class="material-symbols-outlined text-slate-700 dark:text-gray-300 group-hover:text-slate-900 dark:group-hover:text-white">favorite</span>
+<p class="text-slate-700 dark:text-gray-300 group-hover:text-slate-900 dark:group-hover:text-white text-sm font-medium leading-normal">Saved Items</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 group" href="#">
+<span class="material-symbols-outlined text-slate-700 dark:text-gray-300 group-hover:text-slate-900 dark:group-hover:text-white">grade</span>
+<p class="text-slate-700 dark:text-gray-300 group-hover:text-slate-900 dark:group-hover:text-white text-sm font-medium leading-normal">My Reviews</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 group" href="#">
+<span class="material-symbols-outlined text-slate-700 dark:text-gray-300 group-hover:text-slate-900 dark:group-hover:text-white">settings</span>
+<p class="text-slate-700 dark:text-gray-300 group-hover:text-slate-900 dark:group-hover:text-white text-sm font-medium leading-normal">Settings</p>
+</a>
+</div>
+<hr class="border-t border-slate-200 dark:border-gray-600"/>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 group" href="#">
+<span class="material-symbols-outlined text-slate-700 dark:text-gray-300 group-hover:text-slate-900 dark:group-hover:text-white">logout</span>
+<p class="text-slate-700 dark:text-gray-300 group-hover:text-slate-900 dark:group-hover:text-white text-sm font-medium leading-normal">Logout</p>
+</a>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1">
+<div class="flex flex-col gap-6 lg:gap-8">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between gap-3">
+<div class="flex flex-col gap-2">
+<p class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Profile Details</p>
+<p class="text-slate-600 dark:text-gray-400 text-base font-normal leading-normal">View and manage your personal information.</p>
+</div>
+</div>
+<!-- Profile Details Card -->
+<div class="glass-panel p-6 sm:p-8 rounded-xl shadow-lg">
+<div class="flex flex-col gap-8">
+<!-- Profile Header -->
+<div class="flex flex-col gap-6 @container md:flex-row md:items-center md:justify-between">
+<div class="flex items-center gap-6">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full flex-shrink-0 size-24 md:size-32" data-alt="User avatar of Olivia Chen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBl_131bZTa4PuNnOvIUfzR1O-98CU_oB9Gn3AFZR7K6q2SnsIaH_hdowJ_dxBdXQ4qgyWBHZVlEvzowpzKQkO1p1HsQtFhdzG22kfQnEMMo5RNFHH5RZIEGjx7NSdi0kMx3ZGYBDo-SmSy7I7SmMuRK2qfIvwf4yzi9fOshWzqP_mFZEMBXT5pxmur3GPcKKCsJSwXzvAicInVtWT3_jwpiqUhcetsTcnbLNRrkFGFVsF5ZjK_c96a2F_B8sfqDtDFDqijMtMr_N6r");'></div>
+<div class="flex flex-col justify-center gap-1">
+<p class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Olivia Chen</p>
+<p class="text-slate-600 dark:text-gray-400 text-base font-normal leading-normal">olivia.chen@email.com</p>
+<p class="text-slate-600 dark:text-gray-400 text-base font-normal leading-normal">Harvest Community Church</p>
+</div>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-slate-800 text-white dark:bg-slate-200 dark:text-slate-900 text-sm font-bold leading-normal tracking-[0.015em] w-full md:w-auto hover:bg-slate-700 dark:hover:bg-slate-300 transition-colors">
+<span class="truncate">Upload new picture</span>
+</button>
+</div>
+<hr class="border-t border-slate-200 dark:border-gray-600"/>
+<!-- Form -->
+<form class="flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col">
+<p class="text-slate-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Full Name</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 focus:ring-2 focus:ring-primary/50 h-12 p-[15px] text-base font-normal leading-normal" value="Olivia Chen"/>
+</label>
+<label class="flex flex-col">
+<p class="text-slate-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Phone Number</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 focus:ring-2 focus:ring-primary/50 h-12 p-[15px] text-base font-normal leading-normal" value="(555) 123-4567"/>
+</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col">
+<p class="text-slate-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Email Address</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 focus:ring-2 focus:ring-primary/50 h-12 p-[15px] text-base font-normal leading-normal" value="olivia.chen@email.com"/>
+</label>
+<label class="flex flex-col">
+<p class="text-slate-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Home Church</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-0 focus:ring-2 focus:ring-primary/50 h-12 p-[15px] text-base font-normal leading-normal" value="Harvest Community Church"/>
+</label>
+</div>
+<label class="flex flex-col">
+<p class="text-slate-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Bio / Introduction</p>
+<textarea class="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg focus:outline-0 focus:ring-2 focus:ring-primary/50 min-h-36 p-[15px] text-base font-normal leading-normal">Passionate about supporting local artisans and enjoying God's creation through wholesome, natural products. Always happy to connect with fellow community members!</textarea>
+</label>
+<div class="flex justify-end gap-4 pt-4">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-200 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors" type="button">
+<span class="truncate">Cancel</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-5 bg-primary text-slate-900 text-sm font-bold leading-normal tracking-[0.015em] hover:brightness-110 transition-all" type="submit">
+<span class="truncate">Save Changes</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

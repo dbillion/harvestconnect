@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HarvestConnect Tradesman Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glassmorphism {
+            background: rgba(22, 33, 17, 0.4); /* background-dark with opacity */
+            border: 1px solid rgba(246, 248, 246, 0.1); /* background-light with opacity */
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#E2725B",
+              "background-light": "#F5F5DC",
+              "background-dark": "#223322", /* Adjusted from plan for better harmony */
+              "text-light": "#36454F",
+              "text-dark": "#F5F5DC",
+              "accent-green": "#228B22"
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-gradient-to-br from-background-light to-[#B2D3C2] dark:from-background-dark dark:to-[#1a4d2e] text-text-light dark:text-text-dark">
+<div class="relative min-h-screen w-full group/design-root overflow-x-hidden">
+<div class="p-4 md:p-8 lg:p-12">
+<div class="container mx-auto">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Left Sidebar -->
+<aside class="w-full lg:w-1/3 lg:max-w-sm flex-shrink-0">
+<div class="sticky top-8 flex flex-col gap-6">
+<!-- Contact Card -->
+<div class="glassmorphism rounded-xl p-6 flex flex-col items-center text-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-28 mb-4 border-2 border-white/50" data-alt="Portrait of John Doe, a carpenter." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGyzNcXZseZ7KTX6bFnFvM3ewVC4wAK0xCkhwT-SG75yLR0xnifo8mVmVVFbrHgaHVPWhB16pglwIkxkIClEQ_DjAH5kC0Ieih9z4n0SdGM8JWGlaEbuTk2VToflRD_o8Y_qY7roOQIcu3yUPj7CMLUWNtPbCrqZjxUJzyLB04Mxo8R8gfcvNLO9fWX2L9k9dNIsIqEQVZUhz285AQDRCOB0-k3QAe_dxuqnOYRUCizU7rkZ8wH9kqofXLKkIfsLUwTOZy1dWqc257");'></div>
+<h1 class="text-2xl font-bold">John Doe</h1>
+<p class="text-base text-text-light/80 dark:text-text-dark/80">Master Carpenter</p>
+<p class="text-sm mt-1 text-text-light/70 dark:text-text-dark/70">Nashville, TN</p>
+<div class="flex w-full gap-3 mt-6">
+<button class="flex flex-1 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-white/50 dark:bg-black/20 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-white/80 dark:hover:bg-black/40 transition-colors">
+<span class="truncate">Message</span>
+</button>
+<button class="flex flex-1 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity">
+<span class="truncate">Request Quote</span>
+</button>
+</div>
+</div>
+<!-- Verifications & Navigation -->
+<div class="glassmorphism rounded-xl p-6">
+<h2 class="text-lg font-bold mb-4">Verifications</h2>
+<div class="flex items-center gap-4 mb-6">
+<div class="flex flex-col items-center text-center gap-1">
+<div class="flex size-12 items-center justify-center rounded-full bg-accent-green/20 text-accent-green">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<p class="text-xs font-medium">Background<br/>Checked</p>
+</div>
+<div class="flex flex-col items-center text-center gap-1">
+<div class="flex size-12 items-center justify-center rounded-full bg-accent-green/20 text-accent-green">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<p class="text-xs font-medium">Certified<br/>Pro</p>
+</div>
+<div class="flex flex-col items-center text-center gap-1">
+<div class="flex size-12 items-center justify-center rounded-full bg-accent-green/20 text-accent-green">
+<span class="material-symbols-outlined">diversity_3</span>
+</div>
+<p class="text-xs font-medium">Community<br/>Endorsed</p>
+</div>
+</div>
+<h2 class="text-lg font-bold mb-4 border-t border-white/50 dark:border-white/10 pt-6">Navigation</h2>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/20 text-primary dark:bg-primary/30 dark:text-white" href="#portfolio">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+<p class="text-sm font-bold leading-normal">Portfolio</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors" href="#services">
+<span class="material-symbols-outlined text-xl">construction</span>
+<p class="text-sm font-medium leading-normal">Services</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors" href="#reviews">
+<span class="material-symbols-outlined text-xl">star</span>
+<p class="text-sm font-medium leading-normal">Reviews</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors" href="#about">
+<span class="material-symbols-outlined text-xl">person</span>
+<p class="text-sm font-medium leading-normal">About</p>
+</a>
+</div>
+</div>
+<!-- Availability -->
+<div class="glassmorphism rounded-xl p-4">
+<h2 class="text-lg font-bold mb-2 text-center">Availability</h2>
+<div class="flex flex-wrap items-center justify-center">
+<div class="flex w-full flex-1 flex-col gap-0.5">
+<div class="flex items-center p-1 justify-between">
+<button>
+<div class="flex size-10 items-center justify-center">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</div>
+</button>
+<p class="text-base font-bold leading-tight flex-1 text-center">October 2024</p>
+<button>
+<div class="flex size-10 items-center justify-center">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</div>
+</button>
+</div>
+<div class="grid grid-cols-7 text-xs">
+<p class="font-bold flex h-10 w-full items-center justify-center">S</p>
+<p class="font-bold flex h-10 w-full items-center justify-center">M</p>
+<p class="font-bold flex h-10 w-full items-center justify-center">T</p>
+<p class="font-bold flex h-10 w-full items-center justify-center">W</p>
+<p class="font-bold flex h-10 w-full items-center justify-center">T</p>
+<p class="font-bold flex h-10 w-full items-center justify-center">F</p>
+<p class="font-bold flex h-10 w-full items-center justify-center">S</p>
+<div class="h-10 w-full col-start-4"></div>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">1</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">2</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">3</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">4</div></button>
+<button class="h-10 w-full rounded-l-full bg-primary/20 dark:bg-primary/30"><div class="flex size-full items-center justify-center rounded-full bg-primary text-white">5</div></button>
+<button class="h-10 w-full bg-primary/20 dark:bg-primary/30 text-white"><div class="flex size-full items-center justify-center">6</div></button>
+<button class="h-10 w-full bg-primary/20 dark:bg-primary/30 text-white"><div class="flex size-full items-center justify-center">7</div></button>
+<button class="h-10 w-full bg-primary/20 dark:bg-primary/30 text-white"><div class="flex size-full items-center justify-center">8</div></button>
+<button class="h-10 w-full bg-primary/20 dark:bg-primary/30 text-white"><div class="flex size-full items-center justify-center">9</div></button>
+<button class="h-10 w-full rounded-r-full bg-primary/20 dark:bg-primary/30"><div class="flex size-full items-center justify-center rounded-full bg-primary text-white">10</div></button>
+<button class="h-10 w-full font-medium text-text-light/50 dark:text-text-dark/40" disabled=""><div class="flex size-full items-center justify-center rounded-full">11</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">12</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">13</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">14</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">15</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">16</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">17</div></button>
+<button class="h-10 w-full font-medium text-text-light/50 dark:text-text-dark/40" disabled=""><div class="flex size-full items-center justify-center rounded-full">18</div></button>
+<button class="h-10 w-full font-medium text-text-light/50 dark:text-text-dark/40" disabled=""><div class="flex size-full items-center justify-center rounded-full">19</div></button>
+<button class="h-10 w-full font-medium text-text-light/50 dark:text-text-dark/40" disabled=""><div class="flex size-full items-center justify-center rounded-full">20</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">21</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">22</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">23</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">24</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">25</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">26</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">27</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">28</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">29</div></button>
+<button class="h-10 w-full font-medium"><div class="flex size-full items-center justify-center rounded-full">30</div></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="w-full lg:w-2/3 flex-grow">
+<div class="flex flex-col gap-8">
+<!-- Profile Header -->
+<div class="glassmorphism rounded-xl p-6 @container">
+<div class="flex w-full flex-col gap-4">
+<div>
+<p class="text-3xl font-bold leading-tight tracking-tight">John Doe</p>
+<p class="text-lg text-text-light/80 dark:text-text-dark/80">Master Carpenter</p>
+<p class="text-lg font-semibold text-accent-green mt-2">"Quality Craftsmanship Guided by Faith."</p>
+</div>
+</div>
+</div>
+<!-- Tabbed Content -->
+<div class="glassmorphism rounded-xl p-6">
+<div class="border-b border-white/50 dark:border-white/10 mb-6">
+<nav aria-label="Tabs" class="flex space-x-6 -mb-px">
+<a class="whitespace-nowrap py-3 px-1 border-b-2 font-bold text-sm text-primary border-primary" href="#portfolio">Portfolio</a>
+<a class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm text-text-light/70 dark:text-text-dark/70 border-transparent hover:border-primary/50 hover:text-text-light dark:hover:text-text-dark" href="#services">Services</a>
+<a class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm text-text-light/70 dark:text-text-dark/70 border-transparent hover:border-primary/50 hover:text-text-light dark:hover:text-text-dark" href="#reviews">Reviews</a>
+<a class="whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm text-text-light/70 dark:text-text-dark/70 border-transparent hover:border-primary/50 hover:text-text-light dark:hover:text-text-dark" href="#about">About</a>
+</nav>
+</div>
+<!-- Portfolio Section -->
+<section id="portfolio">
+<div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square group cursor-pointer" data-alt="Custom built-in bookshelves in a living room." style='background-image: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCA443NYY1cWVpAOkl3y4LaP2DcwyFCsTZywFmgqtzIxn0TeH1dSG67-7oOIyflFudxlQdzArPenjgECY50et9ock9qH7WhRpeBdNU73C1cRdsH26SaOOtbE8LbIsqA2eVbbZzhoTqwYh4xFtbGd0p1PzRn72YYBRhdS-hv0agjfR-2RyV2bARlevQ5FWwZM0deHSzcS1B2GtmyZxZB-Q36wUrqdeDbxlEL2eJp8Cqow377Jwg5N-SXOf4RzptiTZJc9s4ghoxkdsaH");'>
+<p class="text-white text-base font-bold leading-tight w-full line-clamp-2 translate-y-4 group-hover:translate-y-0 transition-transform">Custom Living Room Bookshelves</p>
+</div>
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square group cursor-pointer" data-alt="A rustic farmhouse dining table." style='background-image: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3OgtRdywZaO1nLOEpy28ETeHUnqeipoTS-wFIkMcmMGaggFN-5bEGfDTGdTlGW7HEV4CFHqn6NFOOrzq60kSl9cgbtbGgxkgBcnQDYBrwvnaNewja_XfOgrN84CqMd-NYYc-6ReRbAYjFeQrCOGRU4wR__ydfh_QWrdCyuoE8PJz7yShS4dY-NR9StRne48G9j6Nix70RsfKnZkiq5L9E1kuCfhLC70zWr9z9En52EFwUAHn4StO5CORVrujHS63k8RZ8Zh-a3BkM");'>
+<p class="text-white text-base font-bold leading-tight w-full line-clamp-2 translate-y-4 group-hover:translate-y-0 transition-transform">Farmhouse Dining Table</p>
+</div>
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square group cursor-pointer" data-alt="Elegant kitchen cabinetry with crown molding." style='background-image: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuC-TQRsIq8_r8LzVVUBEfOmJ_dQlyo-gk5_cFxk6j44mb4g39NB8mrCW90Ofptne4vA8YW3-qlRCeJuZg7iDiEWVTNjmnI3nAb2uVUTxuGirMpGvo7r78zOGkm_tZX5R4rBUI7ek6aN2Qx8EIghgNvsVQ1k89wMODV0YEItmlHHIDMKp9qIZmTthnRqJhJ8q7uYYP47t7c9w55nbzILw8wqpcvxndZG6_6Iw0KY7sINYbET4Wil5MAlkFqtpYifHQQDQIpseCoTWjcq");'>
+<p class="text-white text-base font-bold leading-tight w-full line-clamp-2 translate-y-4 group-hover:translate-y-0 transition-transform">Kitchen Cabinet Refinishing</p>
+</div>
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square group cursor-pointer" data-alt="A wooden deck with built-in seating." style='background-image: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6RZbSBX3aKUD6CDdfiBdYOU3qV63pHYorsydvgPV8MI6BBQcr2dHsd-iHuy3Hf-NRAz24Avhl7lgukaZgiDri6bAqx8Sx9BPYncIonTyYwEzV24ibR31ROSW5auWUWlnjeDUbaoL4BOO2JwaejT1P3AqPC35lqPvWm_lu63H-ysmBZtwkRrbkwbr7UjJwNe4a6swR_S-X32C3d_YaGXAVUNFH7ZNJjI7JKzB6DCG1lOaMe3tU2edSpcpzYOVtG7iHSic_QWzVGs7L");'>
+<p class="text-white text-base font-bold leading-tight w-full line-clamp-2 translate-y-4 group-hover:translate-y-0 transition-transform">Backyard Deck &amp; Pergola</p>
+</div>
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square group cursor-pointer" data-alt="Handcrafted wooden rocking chair." style='background-image: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCcX8DqmEYI0L1cns0yYZTq6HHsPmiQEV79Hmgf0obmcQ_6S3aY6n3rU2AaM6XtneS1cI5lrIoAOg-PAxiMwRXoMrdKRSq_LbDdS2r76TGG4Exg7V5SwEbNDoBBGcXzjJs7lKYe-hrK9nO5APe-sFnHq1dSsHIlfx6NIgnRAO48TJJVIY0tcAt3oDrIjZ-Y94OphWAh2eA8n2LFMteXCZS0x2WRr1wnK8YG38rql-jaqyAX1Agh8kLHGyGuoJrPUNdLLZeXk2yRR45r");'>
+<p class="text-white text-base font-bold leading-tight w-full line-clamp-2 translate-y-4 group-hover:translate-y-0 transition-transform">Heirloom Rocking Chair</p>
+</div>
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square group cursor-pointer" data-alt="Ornate wooden door installation." style='background-image: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3nYOfmerpkgT2jxE-ZLoXrLCPsLuO0hOPm4rVsHgD_0SotIVqsz2sQMSDIl_FG7fjGGQUmDdyb3pkBavBOUx6UNyZmEk1b1M0IuukKbNwcBjvFceGcB3SVw2jFST0H40qFmjSptuVh48j47wd1hcH1d1taflsYVB-4SW-0NKsHTpWU3ZWoTARVrzd_bm4TuH9KpkhyO_ArTlhBzUZW4RT5HnIddlHakjPA0YxXXNuQFziEoYTpaOTC0EnYp_LB7doLG_kGgodRoAB");'>
+<p class="text-white text-base font-bold leading-tight w-full line-clamp-2 translate-y-4 group-hover:translate-y-0 transition-transform">Custom Door Installation</p>
+</div>
+</div>
+</section>
+</div>
+<!-- About Section -->
+<div class="glassmorphism rounded-xl p-6" id="about">
+<h2 class="text-2xl font-bold mb-4">About Me</h2>
+<div class="space-y-4 text-base leading-relaxed text-text-light/90 dark:text-text-dark/90">
+<p>Serving our community with honesty and integrity for over 15 years. My work is more than just a trade; it's a ministry of service. I specialize in custom cabinetry and fine woodworking, bringing timeless quality and beauty into your home.</p>
+<p>My faith is the foundation of my craftsmanship. I believe in treating every project as if I were doing it for the Lord, ensuring meticulous attention to detail, transparent communication, and a final product that brings joy and function to your family's life.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

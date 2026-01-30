@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HarvestConnect Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8A9A5B", // Sage Green
+                        "terracotta": "#E2725B",
+                        "sand": "#D8C3A5",
+                        "slate-blue": "#6B8EAD",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#162111",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
+                    },
+                    backdropBlur: {
+                        'xl': '20px',
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+        .dark .glass-card {
+            background-color: rgba(22, 33, 17, 0.4); /* Dark background with transparency */
+            border: 1px solid rgba(246, 248, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-[#131811] dark:text-gray-100">
+<div class="relative min-h-screen w-full">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRSuT95rmKOOiU18nzCVBJB0KGUeiqegDjMsWUae2yPqaKlwSRp2vBUIo2uV693PtCjhwLQUwoV8MxflE50rwwXXbDbfv-tzY0c83bktNRuRiPwZNJoTVQr_2hto7ThfSlUoPTcOgpViXWe3s68nAdHAM2wxby5sz-G1m8tuKdUaLBTBUTjdl8vSV1_EnWECSEodwWMRu66f7wYohXa_EscqWS-yPVtMaTgOFpM4GNBC0EH3kCTHDZeSPAijFTwhcoCUnDsQJlEO8J');">
+<div class="absolute inset-0 bg-background-light/50 dark:bg-background-dark/70"></div>
+</div>
+<div class="relative z-10 flex h-full grow flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap p-4 md:px-10 lg:px-20 glass-card">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-[#131811] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.64,4.36a2,2,0,0,0-2-2.36H16V2a1,1,0,0,0-2,0V2.36a4,4,0,0,0-4,0V2a1,1,0,0,0-2,0V2H4.36a2,2,0,0,0-2,2L2,12.55,4.72,14a3,3,0,0,1,1.56,2.62L6,20.36a2,2,0,0,0,2,1.64H16a2,2,0,0,0,2-1.64l.28-3.73A3,3,0,0,1,19.28,14L22,12.55ZM18,20H6V19.1a4.83,4.83,0,0,0-.24-1.55l-.3-1.6a1,1,0,0,1-.52-.87L4.36,4H8V5a1,1,0,0,0,2,0V4h4V5a1,1,0,0,0,2,0V4h3.64l-.58,11.08a1,1,0,0,1-.52.87l-.3,1.6a4.83,4.83,0,0,0-.24,1.55ZM12,12.5A3.5,3.5,0,1,0,8.5,9,3.5,3.5,0,0,0,12,12.5Zm0-5A1.5,1.5,0,1,1,10.5,9,1.5,1.5,0,0,1,12,7.5Z"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-[-0.015em]">HarvestConnect</h2>
+</div>
+<nav class="hidden items-center gap-9 lg:flex">
+<a class="text-sm font-medium leading-normal text-[#131811] dark:text-gray-200 hover:text-primary dark:hover:text-primary" href="#">Marketplace</a>
+<a class="text-sm font-medium leading-normal text-[#131811] dark:text-gray-200 hover:text-primary dark:hover:text-primary" href="#">Services</a>
+<a class="text-sm font-medium leading-normal text-[#131811] dark:text-gray-200 hover:text-primary dark:hover:text-primary" href="#">Community</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-3 md:gap-4">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full">
+<div class="text-[#6f8863] dark:text-gray-300 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-[#131811] dark:text-gray-200 focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-[#6f8863] dark:placeholder:text-gray-400 px-2 text-base font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-transparent text-[#131811] dark:text-gray-200 hover:bg-black/5 dark:hover:bg-white/10">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC4B91RB_i_nzstjzAqwXKHjaNZIQvooXlqT4Stkm0XMrhXUfD57snz9U9tBx8hqVsGabFXJNMFf1H7wH-ZEyQF1ibHqCY9jt3R2trV6kIAALYWVPiIlxIx5ELfagLh1GNt1jxTfHCpMHjACxMs8e-5pjfW1LOPXWiWvJkKL6AMc0_QiLpd30SSVMiWclpAaZj-kVPNpNNIj6r2Ablxp6h6Gwid4c0P-zUXRbybdpx1upiLOlrgbhb9F_88Nzj9Dt9KFeDdQ1Y6JI8a");'></div>
+</div>
+</header>
+<main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Content Column -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-6">
+<!-- PageHeading -->
+<div class="glass-card rounded-xl p-6">
+<p class="text-4xl font-black leading-tight tracking-[-0.033em] text-[#131811] dark:text-white">Welcome back, Sarah!</p>
+<p class="text-base font-normal leading-normal text-[#6f8863] dark:text-gray-300 mt-2">Here's an overview of your community activity and marketplace interactions.</p>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="glass-card flex flex-col gap-2 rounded-xl p-6">
+<p class="text-base font-medium leading-normal text-[#131811] dark:text-gray-200">Items Purchased</p>
+<p class="tracking-light text-3xl font-bold leading-tight text-[#131811] dark:text-white">8</p>
+<p class="text-base font-medium leading-normal text-terracotta">+2 this month</p>
+</div>
+<div class="glass-card flex flex-col gap-2 rounded-xl p-6">
+<p class="text-base font-medium leading-normal text-[#131811] dark:text-gray-200">New Connections</p>
+<p class="tracking-light text-3xl font-bold leading-tight text-[#131811] dark:text-white">12</p>
+<p class="text-base font-medium leading-normal text-slate-blue">+5 this month</p>
+</div>
+<div class="glass-card flex flex-col gap-2 rounded-xl p-6">
+<p class="text-base font-medium leading-normal text-[#131811] dark:text-gray-200">Total Contributions</p>
+<p class="tracking-light text-3xl font-bold leading-tight text-[#131811] dark:text-white">$150.00</p>
+<p class="text-base font-medium leading-normal text-primary">+10% this month</p>
+</div>
+</div>
+<!-- Charts -->
+<div class="glass-card flex flex-col gap-2 rounded-xl p-6">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-lg font-bold leading-normal text-[#131811] dark:text-white">Marketplace Spending</p>
+<div class="flex gap-2 items-baseline">
+<p class="tracking-light text-4xl font-bold leading-tight truncate text-[#131811] dark:text-white">$245.60</p>
+<p class="text-base font-normal leading-normal text-[#6f8863] dark:text-gray-300">This Month</p>
+</div>
+</div>
+<div class="flex gap-1 items-center">
+<p class="text-base font-medium leading-normal text-primary">+15.2%</p>
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+</div>
+<div class="grid min-h-[180px] grid-flow-col gap-6 grid-rows-[1fr_auto] items-end justify-items-center pt-6 px-3">
+<div class="w-full flex flex-col items-center justify-end h-full">
+<div class="w-4/5 rounded-t-lg bg-sand" style="height: 45%;"></div>
+</div>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#6f8863] dark:text-gray-300">Produce</p>
+<div class="w-full flex flex-col items-center justify-end h-full">
+<div class="w-4/5 rounded-t-lg bg-terracotta" style="height: 20%;"></div>
+</div>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#6f8863] dark:text-gray-300">Crafts</p>
+<div class="w-full flex flex-col items-center justify-end h-full">
+<div class="w-4/5 rounded-t-lg bg-slate-blue" style="height: 75%;"></div>
+</div>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#6f8863] dark:text-gray-300">Services</p>
+<div class="w-full flex flex-col items-center justify-end h-full">
+<div class="w-4/5 rounded-t-lg bg-primary" style="height: 30%;"></div>
+</div>
+<p class="text-[13px] font-bold leading-normal tracking-[0.015em] text-[#6f8863] dark:text-gray-300">Bakery</p>
+</div>
+</div>
+<!-- My Saved Items -->
+<div>
+<h2 class="text-2xl font-bold tracking-[-0.015em] px-4 pb-3 pt-5 text-white">My Saved Items</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="glass-card rounded-xl overflow-hidden group">
+<img class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Fresh strawberries in a basket" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3BswQ3o97b3tQ7PYcZzM5pKwz9Ft_A-Rq2yqqf2UsAVfE55jJXTWisIPHsCvhsPgso4DOAnZ5xAU1KDnuJm4dXj7pTOvD8lM8Vy1QVLSUUtOxC0WheIdtnWQueWilOT_MNa1Kg5a_La2RV42sIgusLMQpdTMmNHU-o4fy_yb-GrXUWK0AmJFjABDBV8VKP2D0nI5m5n5scgcZQq-4ym16uGriFoGdsIaBQG7HqX3Wdd3CO-WEfOJVSmu50jiP2lAmX3bzTnh0APF6"/>
+<div class="p-4">
+<p class="font-bold text-[#131811] dark:text-white">Organic Strawberries</p>
+<p class="text-sm text-[#6f8863] dark:text-gray-300">by Green Acre Farms</p>
+<p class="mt-2 font-bold text-[#131811] dark:text-white">$6.99 / lb</p>
+</div>
+</div>
+<div class="glass-card rounded-xl overflow-hidden group">
+<img class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Handmade ceramic mugs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWm-yxAFxcBGqY9FhuWEvI0fnKjznwxEIcrSVFBENVLbsQGBw6g0rbOBEn5pItFMVFCwhWeC9VUi206gO2dtH3msSiXz5sxQcLYZ8XKZQG_xAKL9ywp6K352mFLxuVCe_DxKTedJj1FlEIf4pMYvftthnG3OqdeaLcKeq2bTbNs4BLp9kH2feawBJWkjJxnMmfUYUQ-tokxrU6PK3_hrgrmQmmnhg8Ivj-KRuCOdXIrAQWDxx0RQ__TJTO8VvWRYPHMUeqX55Y4bn7"/>
+<div class="p-4">
+<p class="font-bold text-[#131811] dark:text-white">Artisan Ceramic Mug</p>
+<p class="text-sm text-[#6f8863] dark:text-gray-300">by Potter's Hand</p>
+<p class="mt-2 font-bold text-[#131811] dark:text-white">$25.00</p>
+</div>
+</div>
+<div class="glass-card rounded-xl overflow-hidden group">
+<img class="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A loaf of freshly baked sourdough bread" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEChXWsA0l-3iRdT_ajsySaOlxnM-Y7shzIiZbEJmiJfr67Oz_L0VBfeNL_lr6c-NIO4Op-BZneitor38aJfoCvyjpp00oI-c0hBrZPn9wly7KALJWO4o9m3ONEEot9xmr5YX7AOSWHVax8wmp6hu9TqxCvKm61Kf-Tir5PQSgU76YSdOt9NzOWh8VBxzXDHsemV-uggiQSJe3__h8bdhcPFtBp7hZUJ9qzFekE0NADA51ZoM02bykA4v7W-zr_60C9_yRxNkoLkcZ"/>
+<div class="p-4">
+<p class="font-bold text-[#131811] dark:text-white">Sourdough Loaf</p>
+<p class="text-sm text-[#6f8863] dark:text-gray-300">by Daily Bread Bakery</p>
+<p class="mt-2 font-bold text-[#131811] dark:text-white">$8.00</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Column -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<!-- Featured Artisan Card -->
+<div class="glass-card rounded-xl p-6 flex flex-col items-center text-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-24 border-2 border-white/50" data-alt="Portrait of a smiling woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCIsiPXMkvMjj48Ovvxt6HXTzN50nmb8sE6z6QsHS6KKnAhfwF6L4kgyKwKFe7Ja8qV2DfTKtd_pLJWzIgOolGIhSpwUY18RdduLgRc6R3UTVwPW65QmInwzVpJp9lva1NzkPOtOBfoyE2U8xu8ngNzNIbI6uCA8Xny6F2LNQxQ-6UwSLifpZsNvxhSB1SJG-wcJ7qjsMewFrO_lt60__psHIJNuujdgyrhsPLoL2FhvY74i3T4hysHBGUDJB6HzZkgP9xUBrQ-HVe2");'></div>
+<p class="text-lg font-bold mt-4 text-[#131811] dark:text-white">Featured Artisan: Maria</p>
+<p class="text-sm text-[#6f8863] dark:text-gray-300">Potter's Hand Ceramics</p>
+<p class="text-sm mt-2 text-[#131811] dark:text-gray-200">"Creating beautiful, functional pottery is my passion. Each piece is made with love and prayer."</p>
+<button class="mt-4 flex w-full max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-primary/80 dark:bg-primary/90 text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4 hover:bg-primary">View Profile</button>
+</div>
+<!-- Recent Activity -->
+<div class="glass-card rounded-xl p-6">
+<h3 class="text-lg font-bold text-[#131811] dark:text-white mb-4">Recent Activity</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-sand/50 text-sand-dark">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<div>
+<p class="text-sm font-medium text-[#131811] dark:text-gray-200">Purchased <span class="font-bold">Organic Apples</span></p>
+<p class="text-xs text-[#6f8863] dark:text-gray-400">2 hours ago</p>
+</div>
+</li>
+<li class="flex items-center gap-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-blue/50 text-slate-blue-dark">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div>
+<p class="text-sm font-medium text-[#131811] dark:text-gray-200">Sent a message to <span class="font-bold">John the Carpenter</span></p>
+<p class="text-xs text-[#6f8863] dark:text-gray-400">1 day ago</p>
+</div>
+</li>
+<li class="flex items-center gap-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-terracotta/50 text-terracotta-dark">
+<span class="material-symbols-outlined">grade</span>
+</div>
+<div>
+<p class="text-sm font-medium text-[#131811] dark:text-gray-200">Left a 5-star review for <span class="font-bold">Daily Bread Bakery</span></p>
+<p class="text-xs text-[#6f8863] dark:text-gray-400">3 days ago</p>
+</div>
+</li>
+<li class="flex items-center gap-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/50 text-primary-dark">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<div>
+<p class="text-sm font-medium text-[#131811] dark:text-gray-200">Saved item <span class="font-bold">Hand-Knit Scarf</span></p>
+<p class="text-xs text-[#6f8863] dark:text-gray-400">4 days ago</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

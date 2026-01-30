@@ -6,66 +6,74 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 const API_TIMEOUT = parseInt(process.env.NEXT_PUBLIC_API_TIMEOUT || '30000');
 
+interface RequestOptions extends RequestInit {
+  headers?: Record<string, string>;
+  body?: any;
+}
+
+interface AuthResponse {
+  access: string;
+  refresh: string;
+  user: any;
+}
+
 class APIClient {
+  private baseURL: string;
+  private timeout: number;
+  private token: string | null;
+
   constructor(baseURL = API_BASE_URL) {
     this.baseURL = baseURL;
     this.timeout = API_TIMEOUT;
     this.token = null;
   }
 
-  /**
-   * Set authentication token
-   */
-  setToken(token) {
+  setToken(token: string | null) {
     this.token = token;
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && token) {
       localStorage.setItem('access_token', token);
+    } else if (typeof window !== 'undefined') {
+      localStorage.removeItem('access_token');
     }
   }
 
-  /**
-   * Get stored authentication token
-   */
-  getToken() {
+  getToken(): string | null {
     if (typeof window !== 'undefined' && !this.token) {
       this.token = localStorage.getItem('access_token');
     }
     return this.token;
   }
 
-  /**
-   * Make HTTP request
-   */
-  async request(endpoint, options = {}) {
+  async request(endpoint: string, options: RequestOptions = {}) {
     const url = `${this.baseURL}${endpoint}`;
-    const headers = {
+    const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      ...options.headers,
+      ...(options.headers || {}),
     };
 
-    // Add auth token if available
     const token = this.getToken();
     if (token) {
-      headers.Authorization = `Bearer ${token}`;
+      headers['Authorization'] = `Bearer ${token}`;
     }
 
-    const config = {
+    const config: RequestInit = {
       method: options.method || 'GET',
       headers,
       signal: AbortSignal.timeout(this.timeout),
-      ...options,
     };
 
-    if (options.body) {
+    if (options.body && !(options.body instanceof FormData)) {
       config.body = JSON.stringify(options.body);
+    } else if (options.body instanceof FormData) {
+      config.body = options.body;
+      delete headers['Content-Type'];
     }
 
     try {
       const response = await fetch(url, config);
 
       if (!response.ok) {
-        if (response.status === 401) {
-          // Token expired, clear it
+        if (response.status === 401 && typeof window !== 'undefined') {
           this.setToken(null);
           window.location.href = '/login';
         }
@@ -79,22 +87,24 @@ class APIClient {
     }
   }
 
+  async get<T = any>(endpoint: string, options = {}): Promise<T> {
+    return this.request(endpoint, { ...options, method: 'GET' });
+  }
+
+  async post<T = any>(endpoint: string, body: any, options = {}): Promise<T> {
+    return this.request(endpoint, { ...options, method: 'POST', body });
+  }
+
   // ============ AUTHENTICATION ============
 
-  /**
-   * Register new user
-   */
-  async register(data) {
+  async register(data: any) {
     return this.request('/auth/registration/', {
       method: 'POST',
       body: data,
     });
   }
 
-  /**
-   * Login user
-   */
-  async login(email, password) {
+  async login(email: string, password: string): Promise<AuthResponse> {
     const response = await this.request('/auth/login/', {
       method: 'POST',
       body: { email, password },
@@ -105,18 +115,12 @@ class APIClient {
     return response;
   }
 
-  /**
-   * Logout user
-   */
   async logout() {
     await this.request('/auth/logout/', { method: 'POST' });
     this.setToken(null);
   }
 
-  /**
-   * Refresh access token
-   */
-  async refreshToken(refresh) {
+  async refreshToken(refresh: string): Promise<AuthResponse> {
     const response = await this.request('/auth/refresh/', {
       method: 'POST',
       body: { refresh },
@@ -127,63 +131,49 @@ class APIClient {
     return response;
   }
 
-  /**
-   * Get current user profile
-   */
   async getCurrentUser() {
     return this.request('/users/me/');
   }
 
+  async updateProfile(formData: FormData) {
+    return this.request('/users/me/', {
+      method: 'PATCH',
+      body: formData,
+    });
+  }
+
   // ============ BLOG POSTS ============
 
-  /**
-   * Get all blog posts
-   */
-  async getBlogPosts(params = {}) {
+  async getBlogPosts(params: any = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/blog-posts/?${queryString}`);
   }
 
-  /**
-   * Get single blog post
-   */
-  async getBlogPost(slug) {
+  async getBlogPost(slug: string) {
     return this.request(`/blog-posts/${slug}/`);
   }
 
-  /**
-   * Create blog post (authenticated)
-   */
-  async createBlogPost(data) {
+  async createBlogPost(data: any) {
     return this.request('/blog-posts/', {
       method: 'POST',
       body: data,
     });
   }
 
-  /**
-   * Update blog post (owner only)
-   */
-  async updateBlogPost(slug, data) {
+  async updateBlogPost(slug: string, data: any) {
     return this.request(`/blog-posts/${slug}/`, {
       method: 'PATCH',
       body: data,
     });
   }
 
-  /**
-   * Delete blog post (owner only)
-   */
-  async deleteBlogPost(slug) {
+  async deleteBlogPost(slug: string) {
     return this.request(`/blog-posts/${slug}/`, {
       method: 'DELETE',
     });
   }
 
-  /**
-   * Increment blog post views
-   */
-  async incrementBlogPostViews(slug) {
+  async incrementBlogPostViews(slug: string) {
     return this.request(`/blog-posts/${slug}/increment_views/`, {
       method: 'POST',
     });
@@ -191,92 +181,62 @@ class APIClient {
 
   // ============ PRODUCTS ============
 
-  /**
-   * Get all products
-   */
-  async getProducts(params = {}) {
+  async getProducts(params: any = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/products/?${queryString}`);
   }
 
-  /**
-   * Get single product
-   */
-  async getProduct(slug) {
+  async getProduct(slug: string) {
     return this.request(`/products/${slug}/`);
   }
 
-  /**
-   * Create product (sellers only)
-   */
-  async createProduct(data) {
+  async createProduct(data: any) {
     return this.request('/products/', {
       method: 'POST',
       body: data,
     });
   }
 
-  /**
-   * Update product (seller only)
-   */
-  async updateProduct(slug, data) {
+  async updateProduct(slug: string, data: any) {
     return this.request(`/products/${slug}/`, {
       method: 'PATCH',
       body: data,
     });
   }
 
-  /**
-   * Delete product (seller only)
-   */
-  async deleteProduct(slug) {
+  async deleteProduct(slug: string) {
     return this.request(`/products/${slug}/`, {
       method: 'DELETE',
     });
   }
 
-  /**
-   * Get product reviews
-   */
-  async getProductReviews(slug, params = {}) {
+  async getProductReviews(slug: string, params: any = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/products/${slug}/reviews/?${queryString}`);
   }
 
   // ============ REVIEWS ============
 
-  /**
-   * Get all reviews
-   */
-  async getReviews(params = {}) {
+  async getReviews(params: any = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/reviews/?${queryString}`);
   }
 
-  /**
-   * Create review (authenticated)
-   */
-  async createReview(data) {
+  async createReview(data: any) {
     return this.request('/reviews/', {
       method: 'POST',
       body: data,
     });
   }
 
-  /**
-   * Update review
-   */
-  async updateReview(id, data) {
+  async updateReview(id: string | number, data: any) {
     return this.request(`/reviews/${id}/`, {
       method: 'PATCH',
       body: data,
     });
   }
 
-  /**
-   * Delete review
-   */
-  async deleteReview(id) {
+  async deleteReview(id: string | number) {
     return this.request(`/reviews/${id}/`, {
       method: 'DELETE',
     });
@@ -284,35 +244,23 @@ class APIClient {
 
   // ============ ORDERS ============
 
-  /**
-   * Get user's orders
-   */
-  async getOrders(params = {}) {
+  async getOrders(params: any = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/orders/?${queryString}`);
   }
 
-  /**
-   * Get single order
-   */
-  async getOrder(id) {
+  async getOrder(id: string | number) {
     return this.request(`/orders/${id}/`);
   }
 
-  /**
-   * Create order (authenticated)
-   */
-  async createOrder(data) {
+  async createOrder(data: any) {
     return this.request('/orders/', {
       method: 'POST',
       body: data,
     });
   }
 
-  /**
-   * Update order
-   */
-  async updateOrder(id, data) {
+  async updateOrder(id: string | number, data: any) {
     return this.request(`/orders/${id}/`, {
       method: 'PATCH',
       body: data,
@@ -321,36 +269,34 @@ class APIClient {
 
   // ============ CATEGORIES ============
 
-  /**
-   * Get all categories
-   */
-  async getCategories(params = {}) {
+  async getCategories(params: any = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/categories/?${queryString}`);
   }
 
-  /**
-   * Get single category
-   */
-  async getCategory(slug) {
+  async getCategory(slug: string) {
     return this.request(`/categories/${slug}/`);
   }
 
   // ============ ARTISTS ============
 
-  /**
-   * Get featured artists
-   */
-  async getArtists(params = {}) {
+  async getArtists(params: any = {}) {
     const queryString = new URLSearchParams(params).toString();
     return this.request(`/artists/?${queryString}`);
   }
 
-  /**
-   * Get single artist
-   */
-  async getArtist(id) {
+  async getArtist(id: string | number) {
     return this.request(`/artists/${id}/`);
+  }
+
+  /**
+   * Resolve media URLs (handle both absolute and relative paths)
+   */
+  getMediaUrl(path: string | null | undefined): string {
+    if (!path) return '';
+    if (path.startsWith('http')) return path;
+    const baseUrl = this.baseURL.replace('/api', '');
+    return `${baseUrl}${path.startsWith('/') ? '' : '/'}${path}`;
   }
 }
 

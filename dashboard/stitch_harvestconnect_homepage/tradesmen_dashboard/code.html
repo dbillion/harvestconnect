@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HarvestConnect Tradesman Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#E57A44", // Terracotta Orange
+                        "secondary": "#6B7A53", // Olive Green
+                        "accent": "#D4AF37", // Warm Gold
+                        "background-light": "#F8F9FA",
+                        "background-dark": "#1a1d21",
+                        "text-light": "#4A5568", // Deep Slate Blue
+                        "text-dark": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.4);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glassmorphism {
+            background: rgba(42, 50, 61, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative min-h-screen w-full flex">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 bg-cover bg-center opacity-30 dark:opacity-20" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRSuT95rmKOOiU18nzCVBJB0KGUeiqegDjMsWUae2yPqaKlwSRp2vBUIo2uV693PtCjhwLQUwoV8MxflE50rwwXXbDbfv-tzY0c83bktNRuRiPwZNJoTVQr_2hto7ThfSlUoPTcOgpViXWe3s68nAdHAM2wxby5sz-G1m8tuKdUaLBTBUTjdl8vSV1_EnWECSEodwWMRu66f7wYohXa_EscqWS-yPVtMaTgOFpM4GNBC0EH3kCTHDZeSPAijFTwhcoCUnDsQJlEO8J');"></div>
+<!-- SideNavBar -->
+<aside class="relative z-10 flex h-screen w-64 flex-col justify-between border-r border-white/20 p-4 glassmorphism">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="HarvestConnect Logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDN1nCQ3b0tw0GkGHbe37NFS3AuWtxOxrwhIvmsRUGQ-UbBTIQHny0-M9ECldaGMJ9rx5t71IwrtXk77DAEn3Wgch1LvIUAQfcUjSZyabArpnIVdqNpUn44EEK7KZc8xpxVAs1j1wIao064uY0glA4-hyt7wng6ueSkOqGkDvY0Y6JHgYeGLUaRKC_6xV18xKnfGgFefEajFtsAKk0rrjAEnZC7Y2dKy5v63NraZSMYJm96wTDcRpnUGKLvO8LpBBDc_dxkH46YbVZU");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-light dark:text-text-dark text-base font-bold leading-normal">HarvestConnect</h1>
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal">Tradesman Portal</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined text-primary">dashboard</span>
+<p class="text-sm font-bold leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-light hover:bg-black/5 dark:text-text-dark dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<p class="text-sm font-medium leading-normal">Projects</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-light hover:bg-black/5 dark:text-text-dark dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">mail</span>
+<p class="text-sm font-medium leading-normal">Messages</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-light hover:bg-black/5 dark:text-text-dark dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">payments</span>
+<p class="text-sm font-medium leading-normal">Earnings</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-light hover:bg-black/5 dark:text-text-dark dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<p class="text-sm font-medium leading-normal">Profile</p>
+</a>
+</nav>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-secondary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Add New Service</span>
+</button>
+</aside>
+<!-- Main Content -->
+<main class="relative z-10 flex-1 overflow-y-auto">
+<!-- ToolBar -->
+<header class="sticky top-0 z-20 flex justify-between gap-2 p-4 glassmorphism">
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full text-text-light hover:bg-black/5 dark:text-text-dark dark:hover:bg-white/5">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full text-text-light hover:bg-black/5 dark:text-text-dark dark:hover:bg-white/5">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<p class="font-semibold text-sm text-text-light dark:text-text-dark">Daniel Smith</p>
+<p class="text-xs text-text-light/70 dark:text-text-dark/70">Master Carpenter</p>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-XsNIWAmR5lJwpre80DxCtqgG7KvG5TbnRhlb1JK--h_PkNKhkoN3G_073-pS0LkoqWXgzqO4C13IyxxfuVm6Fkg-pByDh1e2_2RnSBoGyCHVTTIg1NaNvBvKMeSb_sOZKpgT6Ui4kjPM9iUH1vQUCC8COXDmtPLz0COfigK7fX1m_v3vSstDQgimA4_TuSvqEFWOWEpo8C3dt1glGTK8vVoMPu9c4ddQ9TNZN8RMpWeDKfooSL-5er6EYmnfJTBbjhN7bsf6ovXh");'></div>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3">
+<div class="flex min-w-72 flex-col gap-1">
+<p class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight">Welcome back, Daniel!</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-base font-normal leading-normal">Here's a summary of your activity on HarvestConnect.</p>
+</div>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Total Earnings (MTD)</p>
+<p class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">$4,850</p>
+<p class="text-secondary text-base font-medium leading-normal">+15.2%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">New Project Inquiries</p>
+<p class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">8</p>
+<p class="text-secondary text-base font-medium leading-normal">+3 this week</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Active Projects</p>
+<p class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">5</p>
+<p class="text-red-600 dark:text-red-500 text-base font-medium leading-normal">-1 from last month</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism">
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Average Rating</p>
+<div class="flex items-center gap-2">
+<p class="text-text-light dark:text-text-dark tracking-light text-3xl font-bold leading-tight">4.9</p>
+<span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-secondary text-base font-medium leading-normal">Top Rated</p>
+</div>
+</div>
+<!-- Charts & Recent Feedback -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 flex flex-col gap-4 rounded-xl p-6 glassmorphism">
+<div class="flex flex-wrap justify-between items-center gap-2">
+<div>
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Earnings This Year</p>
+<p class="text-text-light dark:text-text-dark tracking-light text-[32px] font-bold leading-tight truncate">$28,450</p>
+</div>
+<div class="flex items-center gap-1">
+<p class="text-text-light/70 dark:text-text-dark/70 text-sm font-normal leading-normal">Jan - Dec 2024</p>
+<p class="text-secondary text-sm font-medium leading-normal">+21%</p>
+</div>
+</div>
+<div class="flex min-h-[180px] flex-1 flex-col gap-4 py-4">
+<svg fill="none" height="100%" preserveaspectratio="none" viewbox="0 0 475 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H0V109Z" fill="url(#paint0_linear_chart)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#6B7A53" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_chart" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#6B7A53" stop-opacity="0.4"></stop>
+<stop offset="1" stop-color="#6B7A53" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex justify-around">
+<p class="text-text-light/70 dark:text-text-dark/70 text-xs font-bold tracking-wide">Jan</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-xs font-bold tracking-wide">Feb</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-xs font-bold tracking-wide">Mar</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-xs font-bold tracking-wide">Apr</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-xs font-bold tracking-wide">May</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-xs font-bold tracking-wide">Jun</p>
+<p class="text-text-light/70 dark:text-text-dark/70 text-xs font-bold tracking-wide">Jul</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl p-6 glassmorphism">
+<h3 class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Recent Client Feedback</h3>
+<div class="space-y-4 overflow-y-auto">
+<div class="flex flex-col gap-2 border-b border-black/10 dark:border-white/10 pb-4">
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold text-text-light dark:text-text-dark">Sarah L.</p>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-sm text-text-light/80 dark:text-text-dark/80">"Incredible craftsmanship on our custom bookshelf. Truly a pleasure to work with!"</p>
+</div>
+<div class="flex flex-col gap-2 border-b border-black/10 dark:border-white/10 pb-4">
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold text-text-light dark:text-text-dark">Michael B.</p>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-sm text-text-light/80 dark:text-text-dark/80">"Punctual, professional, and the deck repair was flawless. Highly recommend."</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold text-text-light dark:text-text-dark">Emily R.</p>
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm text-gray-400">star</span>
+</div>
+</div>
+<p class="text-sm text-text-light/80 dark:text-text-dark/80">"Good work, but communication could have been slightly better on the timeline."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Pipeline -->
+<div class="rounded-xl p-6 glassmorphism">
+<h3 class="text-text-light dark:text-text-dark text-lg font-bold leading-normal mb-4">Your Project Pipeline</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- New Inquiries -->
+<div>
+<h4 class="font-semibold text-text-light dark:text-text-dark mb-4">New Inquiries (3)</h4>
+<div class="space-y-4">
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-lg border border-black/10 dark:border-white/10">
+<p class="font-semibold text-text-light dark:text-text-dark">Kitchen Cabinet Refinishing</p>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">For: John P.</p>
+<p class="text-xs text-text-light/70 dark:text-text-dark/70 mt-1">Received: 2 days ago</p>
+</div>
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-lg border border-black/10 dark:border-white/10">
+<p class="font-semibold text-text-light dark:text-text-dark">Custom Garden Pergola</p>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">For: Maria G.</p>
+<p class="text-xs text-text-light/70 dark:text-text-dark/70 mt-1">Received: 1 day ago</p>
+</div>
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-lg border border-black/10 dark:border-white/10">
+<p class="font-semibold text-text-light dark:text-text-dark">Hardwood Floor Installation</p>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">For: David C.</p>
+<p class="text-xs text-text-light/70 dark:text-text-dark/70 mt-1">Received: 5 hours ago</p>
+</div>
+</div>
+</div>
+<!-- In Progress -->
+<div>
+<h4 class="font-semibold text-text-light dark:text-text-dark mb-4">In Progress (2)</h4>
+<div class="space-y-4">
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-lg border border-primary/50">
+<p class="font-semibold text-text-light dark:text-text-dark">Built-in Wardrobe</p>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">For: Anne K.</p>
+<p class="text-xs text-primary mt-1 font-semibold">Due: In 3 days</p>
+</div>
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-lg border border-primary/50">
+<p class="font-semibold text-text-light dark:text-text-dark">Staircase Railing Replacement</p>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">For: Robert T.</p>
+<p class="text-xs text-primary mt-1 font-semibold">Due: Next week</p>
+</div>
+</div>
+</div>
+<!-- Completed -->
+<div>
+<h4 class="font-semibold text-text-light dark:text-text-dark mb-4">Completed (5 this month)</h4>
+<div class="space-y-4">
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-lg border border-secondary/50 opacity-70">
+<p class="font-semibold text-text-light dark:text-text-dark">Custom Bookshelf</p>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">For: Sarah L.</p>
+<p class="text-xs text-secondary mt-1 font-semibold">Completed: 1 week ago</p>
+</div>
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-lg border border-secondary/50 opacity-70">
+<p class="font-semibold text-text-light dark:text-text-dark">Deck Repair</p>
+<p class="text-sm text-text-light/70 dark:text-text-dark/70">For: Michael B.</p>
+<p class="text-xs text-secondary mt-1 font-semibold">Completed: 3 days ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

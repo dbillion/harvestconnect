@@ -5,7 +5,7 @@
 
 interface RequestOptions {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
-  body?: Record<string, unknown>;
+  body?: Record<string, unknown> | FormData;
   headers?: Record<string, string>;
 }
 
@@ -28,11 +28,14 @@ export interface User {
 export interface UserProfile {
   id: number;
   user_id: number;
-  role: 'buyer' | 'seller' | 'artisan' | 'farmer' | 'tradesman';
+  role: 'buyer' | 'seller' | 'artisan' | 'farmer' | 'tradesman' | 'admin';
   bio: string;
   location: string;
-  verified: boolean;
+  home_church: string;
+  is_verified: boolean;
+  faith_based: boolean;
   avatar: string;
+  phone: string;
 }
 
 export interface Category {
@@ -65,7 +68,7 @@ export interface BlogPost {
   title: string;
   slug: string;
   excerpt: string;
-  content: string;
+ content: string;
   category: string;
   author: User;
   author_id: number;
@@ -104,10 +107,44 @@ export interface Artist {
   created_at: string;
 }
 
+export interface SavedItem {
+  id: number;
+  user: User;
+  product: Product;
+  created_at: string;
+}
+
+export interface Project {
+  id: number;
+  tradesman: User;
+  client: User;
+  title: string;
+  description: string;
+  status: 'inquiry' | 'in_progress' | 'completed' | 'cancelled';
+  budget: string;
+  start_date: string;
+  end_date: string;
+  images: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DashboardStats {
+  role: string;
+  stats: Record<string, any>;
+}
+
 export interface AuthResponse {
   access: string;
   refresh: string;
 }
+
+export const isMockEnabled = (): boolean => {
+  if (typeof window !== 'undefined') {
+    return localStorage.getItem('harvestconnect_use_mock') === 'true';
+  }
+  return false;
+};
 
 class APIClient {
   private baseURL: string;
@@ -144,6 +181,12 @@ class APIClient {
     }
   }
 
+  public getMediaUrl(path: string): string {
+    if (!path) return '';
+    if (path.startsWith('http')) return path;
+    return `${this.baseURL.replace('/api', '')}/media/${path}`;
+  }
+
   private async request<T>(
     endpoint: string,
     options: RequestOptions = {}
@@ -151,10 +194,15 @@ class APIClient {
     const url = `${this.baseURL}${endpoint}`;
     const { method = 'GET', body, headers = {} } = options;
 
+    const isFormData = body instanceof FormData;
+
     const requestHeaders: Record<string, string> = {
-      'Content-Type': 'application/json',
       ...headers,
     };
+
+    if (!isFormData) {
+      requestHeaders['Content-Type'] = 'application/json';
+    }
 
     if (this.token) {
       requestHeaders['Authorization'] = `Bearer ${this.token}`;
@@ -166,11 +214,22 @@ class APIClient {
     };
 
     if (body) {
-      requestOptions.body = JSON.stringify(body);
+      if (isFormData) {
+        requestOptions.body = body;
+      } else {
+        requestOptions.body = JSON.stringify(body);
+      }
     }
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+    const timeoutId = setTimeout(() => {
+      try {
+        controller.abort('timeout');
+      } catch (e) {
+        // Fallback for environments where abort() doesn't accept a reason
+        controller.abort();
+      }
+    }, this.timeout);
 
     try {
       const response = await fetch(url, {
@@ -188,13 +247,29 @@ class APIClient {
       }
 
       if (!response.ok) {
-        throw new Error(`API Error: ${response.status} ${response.statusText}`);
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch (e) {
+          errorData = { message: response.statusText };
+        }
+        const error = new Error(errorData.message || `API Error: ${response.status}`);
+        (error as any).data = errorData;
+        (error as any).status = response.status;
+        throw error;
       }
 
       return await response.json();
-    } catch (error) {
+    } catch (error: any) {
       clearTimeout(timeoutId);
-      console.error('API request failed:', error);
+      
+      // Handle timeout specifically
+      if (error.name === 'AbortError' || controller.signal.aborted) {
+        const timeoutError = new Error('Request timed out. Please check your connection or try again later.');
+        (timeoutError as any).name = 'TimeoutError';
+        throw timeoutError;
+      }
+      
       throw error;
     }
   }
@@ -202,11 +277,12 @@ class APIClient {
   // ==================== Authentication ====================
 
   async register(email: string, password: string, firstName: string, lastName: string, role: string): Promise<User> {
-    return this.request('/auth/register/', {
+    return this.request('/auth/registration/', {
       method: 'POST',
       body: {
         email,
-        password,
+        password1: password,
+        password2: password,
         first_name: firstName,
         last_name: lastName,
         role,
@@ -229,6 +305,28 @@ class APIClient {
     this.clearToken();
   }
 
+  async googleLogin(code: string): Promise<AuthResponse> {
+    const response = await this.request<AuthResponse>('/auth/google/', {
+      method: 'POST',
+      body: { code },
+    });
+    if (response.access) {
+      this.setToken(response.access);
+    }
+    return response;
+  }
+
+  async githubLogin(code: string): Promise<AuthResponse> {
+    const response = await this.request<AuthResponse>('/auth/github/', {
+      method: 'POST',
+      body: { code },
+    });
+    if (response.access) {
+      this.setToken(response.access);
+    }
+    return response;
+  }
+
   async refreshToken(refreshToken: string): Promise<AuthResponse> {
     return this.request('/auth/token/refresh/', {
       method: 'POST',
@@ -243,25 +341,39 @@ class APIClient {
   // ==================== Blog Posts ====================
 
   async getBlogPosts(params?: Record<string, unknown>): Promise<PaginatedResponse<BlogPost>> {
+    if (isMockEnabled()) {
+      const { mockBlogPosts } = await import('./mock-data');
+      return {
+        count: mockBlogPosts.length,
+        next: null,
+        previous: null,
+        results: mockBlogPosts
+      };
+    }
     const query = new URLSearchParams(params as Record<string, string>).toString();
     return this.request(`/blog-posts/?${query}`);
   }
 
   async getBlogPost(id: number): Promise<BlogPost> {
+    if (isMockEnabled()) {
+      const { mockBlogPosts } = await import('./mock-data');
+      const post = mockBlogPosts.find(p => p.id === id) || mockBlogPosts[0];
+      return post;
+    }
     return this.request(`/blog-posts/${id}/`);
   }
 
-  async createBlogPost(data: Partial<BlogPost>): Promise<BlogPost> {
-    return this.request('/blog-posts/', {
+  async createBlogPost(postData: Partial<BlogPost> | FormData): Promise<BlogPost> {
+    return this.request<BlogPost>('/blog-posts/', {
       method: 'POST',
-      body: data,
+      body: postData as any,
     });
   }
 
-  async updateBlogPost(id: number, data: Partial<BlogPost>): Promise<BlogPost> {
+  async updateBlogPost(id: number, data: Partial<BlogPost> | FormData): Promise<BlogPost> {
     return this.request(`/blog-posts/${id}/`, {
       method: 'PATCH',
-      body: data,
+      body: data as any,
     });
   }
 
@@ -280,25 +392,39 @@ class APIClient {
   // ==================== Products ====================
 
   async getProducts(params?: Record<string, unknown>): Promise<PaginatedResponse<Product>> {
+    if (isMockEnabled()) {
+      const { mockProducts } = await import('./mock-data');
+      return {
+        count: mockProducts.length,
+        next: null,
+        previous: null,
+        results: mockProducts
+      };
+    }
     const query = new URLSearchParams(params as Record<string, string>).toString();
     return this.request(`/products/?${query}`);
   }
 
   async getProduct(id: number): Promise<Product> {
+    if (isMockEnabled()) {
+      const { mockProducts } = await import('./mock-data');
+      const product = mockProducts.find(p => p.id === id) || mockProducts[0];
+      return product;
+    }
     return this.request(`/products/${id}/`);
   }
 
-  async createProduct(data: Partial<Product>): Promise<Product> {
+  async createProduct(data: Partial<Product> | FormData): Promise<Product> {
     return this.request('/products/', {
       method: 'POST',
-      body: data,
+      body: data as any,
     });
   }
 
-  async updateProduct(id: number, data: Partial<Product>): Promise<Product> {
+  async updateProduct(id: number, data: Partial<Product> | FormData): Promise<Product> {
     return this.request(`/products/${id}/`, {
       method: 'PATCH',
-      body: data,
+      body: data as any,
     });
   }
 
@@ -366,7 +492,16 @@ class APIClient {
 
   // ==================== Categories ====================
 
-  async getCategories(params?: Record<string, unknown>): Promise<PaginatedResponse<Category>> {
+ async getCategories(params?: Record<string, unknown>): Promise<PaginatedResponse<Category>> {
+    if (isMockEnabled()) {
+      const { mockData } = await import('./mock-data');
+      return {
+        count: mockData.categories.length,
+        next: null,
+        previous: null,
+        results: mockData.categories
+      };
+    }
     const query = new URLSearchParams(params as Record<string, string>).toString();
     return this.request(`/categories/?${query}`);
   }
@@ -378,12 +513,71 @@ class APIClient {
   // ==================== Artists ====================
 
   async getArtists(params?: Record<string, unknown>): Promise<PaginatedResponse<Artist>> {
+    if (isMockEnabled()) {
+      const { mockArtists } = await import('./mock-data');
+      return {
+        count: mockArtists.length,
+        next: null,
+        previous: null,
+        results: mockArtists
+      };
+    }
     const query = new URLSearchParams(params as Record<string, string>).toString();
     return this.request(`/artists/?${query}`);
   }
 
   async getArtist(id: number): Promise<Artist> {
     return this.request(`/artists/${id}/`);
+  }
+
+  // ==================== User Profile & Dashboard ====================
+
+  async updateProfile(data: Partial<UserProfile & { first_name?: string; last_name?: string }> | FormData): Promise<UserProfile> {
+    return this.request('/users/me/', {
+      method: 'PATCH',
+      body: data as any,
+    });
+  }
+
+  async getDashboardStats(): Promise<DashboardStats> {
+    return this.request('/users/stats/');
+  }
+
+  // ==================== Saved Items ====================
+
+  async getSavedItems(): Promise<PaginatedResponse<SavedItem>> {
+    return this.request('/saved-items/');
+  }
+
+  async toggleSavedItem(productId: number): Promise<void> {
+    // Check if already saved (this is a simplified implementation)
+    const saved = await this.getSavedItems();
+    const existing = saved.results.find(item => item.product.id === productId);
+    
+    if (existing) {
+      await this.request(`/saved-items/${existing.id}/`, { method: 'DELETE' });
+    } else {
+      await this.request('/saved-items/', {
+        method: 'POST',
+        body: { product_id: productId }
+      });
+    }
+  }
+
+  // ==================== Projects ====================
+
+  async createProject(data: Partial<Project>): Promise<Project> {
+    return this.request('/projects/', {
+      method: 'POST',
+      body: data,
+    });
+  }
+
+  async updateProject(id: number, data: Partial<Project>): Promise<Project> {
+    return this.request(`/projects/${id}/`, {
+      method: 'PATCH',
+      body: data,
+    });
   }
 }
 

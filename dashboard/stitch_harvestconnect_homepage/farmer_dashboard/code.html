@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HarvestConnect Farmer Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5bda1b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#162111",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1444930694458-01babf71870c?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .glassmorphism-bg {
+            background: rgba(22, 33, 17, 0.7);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(75, 102, 60, 0.5);
+        }
+
+        .glassmorphism-bg-light {
+            background: rgba(246, 248, 246, 0.7);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(220, 220, 220, 0.5);
+        }
+    </style>
+</head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark/80 group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- TopNavBar Component -->
+<header class="sticky top-0 z-50 w-full px-4 sm:px-8 md:px-12 lg:px-20 py-3 glassmorphism-bg">
+<div class="mx-auto flex max-w-7xl items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+<path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">HarvestConnect</h2>
+</div>
+</div>
+<div class="hidden lg:flex flex-1 items-center justify-center gap-8">
+<a class="text-white text-sm font-medium leading-normal ring-2 ring-primary/50 bg-primary/20 rounded-lg px-3 py-1.5" href="#">Dashboard</a>
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Products</a>
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Orders</a>
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Community</a>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-white/60 flex border-none bg-black/20 items-center justify-center pl-3 pr-2 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-1 focus:ring-primary border-none bg-black/20 focus:border-none h-full placeholder:text-white/60 px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search..." value=""/>
+</div>
+</label>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg size-10 bg-black/20 text-white/80 hover:text-white transition-colors">
+<span class="material-symbols-outlined" style="font-size: 22px;">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/50" data-alt="Farmer's profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbz_xH2KELm2tUFqnOS7PV3zmqOJrEF4o4YL-4fn4AeDQHY0aBvoyY-lcAAwBAgmF5u-V5oEYrBVLVQM_w5f6SgWe9bZZGF6cKH_yg7t1pmUgMMsRV8yZfzdQ0gGTNpfmvtKjVZS9BZvJLm9rjzEFYRWewqgbHvi3Kz-w7NIPHZYB27O_F1beqkg2Vk9Jy4ZuzRC7eLr5kKm1kPIUFacD8BZSY2yvu2dCxzyusNqLXjCiC3UZqVui534_FHDhbdip2i2xjZiqg_dkh");'></div>
+</div>
+</div>
+</header>
+<main class="px-4 sm:px-8 md:px-12 lg:px-20 py-8 flex flex-1 justify-center">
+<div class="layout-content-container flex flex-col w-full max-w-7xl flex-1 gap-6">
+<!-- PageHeading Component -->
+<div class="flex flex-wrap justify-between items-center gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-white text-3xl lg:text-4xl font-black leading-tight tracking-[-0.033em]">Good Morning, David</p>
+<p class="text-white/70 text-base font-normal leading-normal">Here's a look at your farm's performance.</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-black/20 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-black/30 transition-colors">
+<span class="truncate">Last 30 Days</span>
+<span class="material-symbols-outlined ml-2">expand_more</span>
+</button>
+</div>
+<!-- Stats Component -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism-bg">
+<p class="text-white/80 text-base font-medium leading-normal">Total Revenue</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight">$12,450</p>
+<p class="text-green-400 text-sm font-medium leading-normal flex items-center"><span class="material-symbols-outlined text-base mr-1">arrow_upward</span>+5.2%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism-bg">
+<p class="text-white/80 text-base font-medium leading-normal">Total Orders</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight">312</p>
+<p class="text-green-400 text-sm font-medium leading-normal flex items-center"><span class="material-symbols-outlined text-base mr-1">arrow_upward</span>+8.1%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism-bg">
+<p class="text-white/80 text-base font-medium leading-normal">New Customers</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight">45</p>
+<p class="text-green-400 text-sm font-medium leading-normal flex items-center"><span class="material-symbols-outlined text-base mr-1">arrow_upward</span>+12%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 glassmorphism-bg">
+<p class="text-white/80 text-base font-medium leading-normal">Community Engagement</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight">8.2/10</p>
+<p class="text-red-400 text-sm font-medium leading-normal flex items-center"><span class="material-symbols-outlined text-base mr-1">arrow_downward</span>-0.5%</p>
+</div>
+</div>
+<!-- Charts Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Sales Performance Chart -->
+<div class="lg:col-span-2 flex flex-col gap-4 rounded-xl p-6 glassmorphism-bg">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-white text-lg font-bold leading-normal">Sales Performance</p>
+<p class="text-white/60 text-sm font-normal leading-normal">Last 30 Days</p>
+</div>
+<p class="text-primary text-sm font-medium leading-normal flex items-center"><span class="material-symbols-outlined text-base mr-1">arrow_upward</span>+5.2%</p>
+</div>
+<p class="text-white tracking-light text-4xl font-bold leading-tight truncate">$12,450</p>
+<div class="flex min-h-[250px] flex-1 flex-col gap-8 py-4">
+<svg fill="none" height="100%" preserveaspectratio="none" viewbox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H326.769H0V109Z" fill="url(#paint0_linear_1131_5935)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#5bda1b" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_1131_5935" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#5bda1b" stop-opacity="0.3"></stop>
+<stop offset="1" stop-color="#5bda1b" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex justify-around">
+<p class="text-white/60 text-xs font-bold leading-normal tracking-[0.015em]">Week 1</p>
+<p class="text-white/60 text-xs font-bold leading-normal tracking-[0.015em]">Week 2</p>
+<p class="text-white/60 text-xs font-bold leading-normal tracking-[0.015em]">Week 3</p>
+<p class="text-white/60 text-xs font-bold leading-normal tracking-[0.015em]">Week 4</p>
+</div>
+</div>
+</div>
+<!-- Inventory Status List -->
+<div class="flex flex-col gap-4 rounded-xl p-6 glassmorphism-bg">
+<div class="flex justify-between items-center">
+<p class="text-white text-lg font-bold leading-normal">Low Stock Alerts</p>
+<span class="material-symbols-outlined text-yellow-400">warning</span>
+</div>
+<div class="flex flex-col gap-3 overflow-y-auto">
+<div class="flex items-center justify-between gap-4 p-3 rounded-lg bg-black/20">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-md bg-cover bg-center" data-alt="Raw honey in a jar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkktiX44W623cfGP7rXBDQnwGCAj0JeSXoxxsknUVEIFS97KHZFdzhr_dJABzAZoMIwgxUKg4QupKHBjii2pvQ8Qn4hKEoHXzFMBP9jFmkYJ7UCBhCSolClTbRSq2hgfdtXu3KzKGQZdYw16OplV62pm2zBEg7LwGQfwohAS7C4QoPscn6g4YMU0tPt2H3JZkuvwfFkfaSHurB6fojl64i0gwDw5sJU5_JEe03JgHaZuqn3_LVj55hY_ukcUNSJOEX5pPyelWtn83V')"></div>
+<div>
+<p class="text-white font-medium text-sm">Raw Honey</p>
+<p class="text-red-400 text-xs">3 units left</p>
+</div>
+</div>
+<button class="text-primary/80 hover:text-primary text-sm font-bold">Restock</button>
+</div>
+<div class="flex items-center justify-between gap-4 p-3 rounded-lg bg-black/20">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-md bg-cover bg-center" data-alt="Fresh farm eggs" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD0SLYhxMOZV7jGAOJCF_3Pn_h82t-qIUoX20h2YwZSgC50EvUhlNOwT5-d_qjIx91yiOEY31sdajvYpZyyPbHarOg3Uojf_4jULXYLnwByfme-sqcCrWlNoSX79SuJee5fMaL8snD8S5-9MVeP5Qc4X2BU9tlQxVW5EpCEjxRkNu7gRTyhEKF5Mq39xrqAUo4IIupwqflizAoV2cJ_fL_5RuT1ZmWIH-7IZjx0ACtbiM7gwfP9TgGm2cv8TE12yCV9hXz6gxzktTYR')"></div>
+<div>
+<p class="text-white font-medium text-sm">Farm Eggs (Dozen)</p>
+<p class="text-red-400 text-xs">5 units left</p>
+</div>
+</div>
+<button class="text-primary/80 hover:text-primary text-sm font-bold">Restock</button>
+</div>
+<div class="flex items-center justify-between gap-4 p-3 rounded-lg bg-black/20">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-md bg-cover bg-center" data-alt="Artisanal sourdough bread" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKJ_qYPaGtKhZbs_-7f8xRSSIDZjMPiYWjyvcwcakinThuVi50xuzR0efIKoHsWPkway4wUMvsGHNntxhtOVkBmdFXgMEUTuqpUwexm-ukDeBjlMP-Y9CGXnbw_ta1mL93jjZIYv8ItkJGOgJXp7pj1CJl_3W6ddO1ukZF8659HN9U-ftiyV4YZaU30ToYNR86gfai02NMVlRCDJc7Nfx3P-v3pnrB9-ga0Fa25Iiy1HKWYoHgWJkifMbJ40F1xut0LWYwDrztK9dH')"></div>
+<div>
+<p class="text-white font-medium text-sm">Sourdough Loaf</p>
+<p class="text-yellow-400 text-xs">8 units left</p>
+</div>
+</div>
+<button class="text-primary/80 hover:text-primary text-sm font-bold">Restock</button>
+</div>
+<div class="flex items-center justify-between gap-4 p-3 rounded-lg bg-black/20">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-md bg-cover bg-center" data-alt="Handmade goat milk soap" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBuLfyeQ19cU1gccuGQe5oW91PP0DBkzYL8zjhH29hz8qxGQpN1Jv3z6fFgHIYPdVvO1_OI6y8ZWL500MxL9JscNVcBVVBrNt7W0WD7eKO2yD0RBe7Ku3qwOiq_2ED70x85ykcpPOsK_DJ3QTUTOS3bUMAYFvN6hC2n0paRy5lmR02OiiKrqnX4yfNYj84bsYR-9525ylzbW_Xh6ciSnqecX812eQ1Jf2JJH-6WgRmQo6ipaYei5AQR_A9k8FPiBUsIKPi_Cq5WMcL4')"></div>
+<div>
+<p class="text-white font-medium text-sm">Goat Milk Soap</p>
+<p class="text-yellow-400 text-xs">10 units left</p>
+</div>
+</div>
+<button class="text-primary/80 hover:text-primary text-sm font-bold">Restock</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Donut Charts & Recent Orders -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Donut Charts Container -->
+<div class="lg:col-span-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+<!-- Top Selling Products -->
+<div class="flex flex-col gap-4 rounded-xl p-6 glassmorphism-bg">
+<p class="text-white text-lg font-bold">Top Selling Products</p>
+<div class="flex items-center justify-center py-4">
+<div class="relative size-40">
+<svg class="size-full" viewbox="0 0 36 36">
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#5bda1b" stroke-dasharray="40, 60" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#a3e635" stroke-dasharray="30, 70" stroke-dashoffset="-40" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#facc15" stroke-dasharray="20, 80" stroke-dashoffset="-70" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#fb923c" stroke-dasharray="10, 90" stroke-dashoffset="-90" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-white font-bold text-3xl">5</span>
+<span class="text-white/60 text-sm">Items</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 text-sm">
+<div class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="size-2 rounded-full bg-[#5bda1b]"></span><span class="text-white/80">Farm Eggs</span></span><span class="font-bold text-white">40%</span></div>
+<div class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="size-2 rounded-full bg-[#a3e635]"></span><span class="text-white/80">Sourdough</span></span><span class="font-bold text-white">30%</span></div>
+<div class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="size-2 rounded-full bg-[#facc15]"></span><span class="text-white/80">Raw Honey</span></span><span class="font-bold text-white">20%</span></div>
+<div class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="size-2 rounded-full bg-[#fb923c]"></span><span class="text-white/80">Other</span></span><span class="font-bold text-white">10%</span></div>
+</div>
+</div>
+<!-- Customer Demographics -->
+<div class="flex flex-col gap-4 rounded-xl p-6 glassmorphism-bg">
+<p class="text-white text-lg font-bold">Customer Demographics</p>
+<div class="flex items-center justify-center py-4">
+<div class="relative size-40">
+<svg class="size-full" viewbox="0 0 36 36">
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#5bda1b" stroke-dasharray="35, 65" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#a3e635" stroke-dasharray="25, 75" stroke-dashoffset="-35" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#facc15" stroke-dasharray="20, 80" stroke-dashoffset="-60" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#fb923c" stroke-dasharray="20, 80" stroke-dashoffset="-80" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-white font-bold text-3xl">4</span>
+<span class="text-white/60 text-sm">Groups</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 text-sm">
+<div class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="size-2 rounded-full bg-[#5bda1b]"></span><span class="text-white/80">St. Paul's</span></span><span class="font-bold text-white">35%</span></div>
+<div class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="size-2 rounded-full bg-[#a3e635]"></span><span class="text-white/80">Redeemer</span></span><span class="font-bold text-white">25%</span></div>
+<div class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="size-2 rounded-full bg-[#facc15]"></span><span class="text-white/80">Grace Fellowship</span></span><span class="font-bold text-white">20%</span></div>
+<div class="flex items-center justify-between"><span class="flex items-center gap-2"><span class="size-2 rounded-full bg-[#fb923c]"></span><span class="text-white/80">City Church</span></span><span class="font-bold text-white">20%</span></div>
+</div>
+</div>
+</div>
+<!-- Recent Orders Table -->
+<div class="lg:col-span-2 flex flex-col gap-4 rounded-xl p-6 glassmorphism-bg">
+<p class="text-white text-lg font-bold">Recent Orders</p>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="border-b border-white/20">
+<tr>
+<th class="py-3 pr-4 font-semibold text-white/80">Customer</th>
+<th class="py-3 px-4 font-semibold text-white/80">Order ID</th>
+<th class="py-3 px-4 font-semibold text-white/80">Amount</th>
+<th class="py-3 pl-4 font-semibold text-white/80 text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/10">
+<tr>
+<td class="py-4 pr-4 text-white">Sarah Jennings</td>
+<td class="py-4 px-4 text-white/70">#HC5823</td>
+<td class="py-4 px-4 text-white font-medium">$45.50</td>
+<td class="py-4 pl-4 text-right"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-500/20 text-green-400">Fulfilled</span></td>
+</tr>
+<tr>
+<td class="py-4 pr-4 text-white">Michael Reed</td>
+<td class="py-4 px-4 text-white/70">#HC5822</td>
+<td class="py-4 px-4 text-white font-medium">$22.00</td>
+<td class="py-4 pl-4 text-right"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-500/20 text-green-400">Fulfilled</span></td>
+</tr>
+<tr>
+<td class="py-4 pr-4 text-white">Emily Carter</td>
+<td class="py-4 px-4 text-white/70">#HC5821</td>
+<td class="py-4 px-4 text-white font-medium">$78.90</td>
+<td class="py-4 pl-4 text-right"><span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-500/20 text-yellow-400">Pending</span></td>
+</tr>
+<tr>
+<td class="py-4 pr-4 text-white">James Peterson</td>
+<td class="py-4 px-4 text-white/70">#HC5820</td>
+<td class="py-4 px-4 text-white font-medium">$15.00</td>
+<td class="py-4 pl-4 text-right"><span class="px-2 py-1 text-xs font-medium rounded-full bg-red-500/20 text-red-400">Canceled</span></td>
+</tr>
+<tr>
+<td class="py-4 pr-4 text-white">Laura Williams</td>
+<td class="py-4 px-4 text-white/70">#HC5819</td>
+<td class="py-4 px-4 text-white font-medium">$31.25</td>
+<td class="py-4 pl-4 text-right"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-500/20 text-green-400">Fulfilled</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

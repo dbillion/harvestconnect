@@ -20,9 +20,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from graphene_django.views import GraphQLView
+from django.views.decorators.csrf import csrf_exempt
 from api.views import (
     CategoryViewSet, BlogPostViewSet, ProductViewSet,
-    ReviewViewSet, OrderViewSet, ArtistViewSet, UserProfileViewSet
+    ReviewViewSet, OrderViewSet, ArtistViewSet, UserProfileViewSet,
+    SavedItemViewSet, ProjectViewSet, ChatRoomViewSet, ChatMessageViewSet,
+    GoogleLogin, GitHubLogin
 )
 
 router = DefaultRouter()
@@ -33,12 +37,19 @@ router.register(r'reviews', ReviewViewSet, basename='review')
 router.register(r'orders', OrderViewSet, basename='order')
 router.register(r'artists', ArtistViewSet, basename='artist')
 router.register(r'users', UserProfileViewSet, basename='user-profile')
+router.register(r'saved-items', SavedItemViewSet, basename='saved-item')
+router.register(r'projects', ProjectViewSet, basename='project')
+router.register(r'chat-rooms', ChatRoomViewSet, basename='chat-room')
+router.register(r'messages', ChatMessageViewSet, basename='chat-message')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('hc-secure-access-portal/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/auth/', include('dj_rest_auth.urls')),
     path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('api/auth/google/', GoogleLogin.as_view(), name='google_login'),
+    path('api/auth/github/', GitHubLogin.as_view(), name='github_login'),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

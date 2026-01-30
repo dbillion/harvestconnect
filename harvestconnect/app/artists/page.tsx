@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
-import { Button } from '@/components/ui/button';
+import Navigation from '@/components/navigation';
 import { Input } from '@/components/ui/input';
-import { Star, ExternalLink } from 'lucide-react';
+import apiClient from '@/lib/api-client';
+import { ExternalLink, Star } from 'lucide-react';
+import Link from 'next/link';
+import { useEffect, useMemo, useState } from 'react';
 
 type Artist = {
   id: string;
@@ -20,81 +21,6 @@ type Artist = {
   availableForCommission: boolean;
 };
 
-const ARTISTS: Artist[] = [
-  {
-    id: '1',
-    name: 'Maria Rodriguez',
-    specialty: 'Handcrafted Pottery',
-    bio: 'From humble beginnings to masterpiece. Maria shares her passion for pottery and the faith that guides her hands in her craft.',
-    image: '/placeholder.svg?key=mxrix',
-    portfolioItems: 45,
-    rating: 5,
-    reviews: 34,
-    specialization: 'pottery',
-    availableForCommission: true,
-  },
-  {
-    id: '2',
-    name: 'Elena Vasquez',
-    specialty: 'Textile Weaving',
-    bio: 'Preserving traditional weaving techniques while creating contemporary designs that tell stories of our community.',
-    image: '/placeholder.svg?key=un7zm',
-    portfolioItems: 28,
-    rating: 4.9,
-    reviews: 22,
-    specialization: 'textiles',
-    availableForCommission: true,
-  },
-  {
-    id: '3',
-    name: 'Thomas Wright',
-    specialty: 'Wood Carving',
-    bio: 'Transforming reclaimed wood into functional art that celebrates the beauty of nature and craftsmanship.',
-    image: '/placeholder.svg?key=h8xmt',
-    portfolioItems: 52,
-    rating: 4.8,
-    reviews: 41,
-    specialization: 'woodcraft',
-    availableForCommission: true,
-  },
-  {
-    id: '4',
-    name: 'Sophie Martineau',
-    specialty: 'Watercolor Painting',
-    bio: 'Capturing the essence of our community through vibrant watercolor landscapes and portraits inspired by faith.',
-    image: '/placeholder.svg?key=cjgkt',
-    portfolioItems: 38,
-    rating: 4.7,
-    reviews: 18,
-    specialization: 'painting',
-    availableForCommission: false,
-  },
-  {
-    id: '5',
-    name: 'James Liu',
-    specialty: 'Jewelry Design',
-    bio: 'Creating bespoke jewelry that combines traditional techniques with modern design sensibilities.',
-    image: '/placeholder.svg?key=4uhl9',
-    portfolioItems: 61,
-    rating: 4.9,
-    reviews: 53,
-    specialization: 'jewelry',
-    availableForCommission: true,
-  },
-  {
-    id: '6',
-    name: 'Rebecca Green',
-    specialty: 'Mixed Media Art',
-    bio: 'Exploring the intersection of sustainability and creativity through mixed media installations and sculptures.',
-    image: '/placeholder.svg?key=fiqpb',
-    portfolioItems: 35,
-    rating: 4.8,
-    reviews: 29,
-    specialization: 'other',
-    availableForCommission: true,
-  },
-];
-
 const SPECIALIZATIONS = [
   { id: 'pottery', label: 'Pottery' },
   { id: 'textiles', label: 'Textiles' },
@@ -104,21 +30,45 @@ const SPECIALIZATIONS = [
   { id: 'other', label: 'Other' },
 ];
 
+
 export default function ArtistGallery() {
+  const [artists, setArtists] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpec, setSelectedSpec] = useState<string | null>(null);
   const [commissionOnly, setCommissionOnly] = useState(false);
 
+  useEffect(() => {
+    const fetchArtists = async () => {
+      try {
+        const data = await apiClient.getArtists({ page_size: 100 });
+        setArtists(data.results || []);
+      } catch (error) {
+        console.error('Failed to fetch artists:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchArtists();
+  }, []);
+
   const filtered = useMemo(() => {
-    return ARTISTS.filter(artist => {
-      const matchesSearch = artist.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           artist.specialty.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           artist.bio.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesSpec = !selectedSpec || artist.specialization === selectedSpec;
+    return artists.filter(artist => {
+      const name = artist.name || `${artist.user?.first_name || ''} ${artist.user?.last_name || ''}`.trim() || artist.user?.email || 'Anonymous';
+      const bio = artist.bio || '';
+      const specialty = artist.specialty || '';
+      
+      const matchesSearch = name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           specialty.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           bio.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const artistSpec = artist.specialization || (artist.user?.profile?.role === 'artisan' ? 'other' : null);
+      const matchesSpec = !selectedSpec || artistSpec === selectedSpec;
       const matchesCommission = !commissionOnly || artist.availableForCommission;
+      
       return matchesSearch && matchesSpec && matchesCommission;
     });
-  }, [searchTerm, selectedSpec, commissionOnly]);
+  }, [artists, searchTerm, selectedSpec, commissionOnly]);
 
   return (
     <>
@@ -220,62 +170,72 @@ export default function ArtistGallery() {
   );
 }
 
-function ArtistCard({ artist }: { artist: Artist }) {
+function ArtistCard({ artist }: { artist: any }) {
+  const name = artist.name || `${artist.user?.first_name || ''} ${artist.user?.last_name || ''}`.trim() || artist.user?.email || 'Anonymous';
+  const bio = artist.bio || (artist.user?.profile?.bio) || 'Dedicated artisan serving the community.';
+  const specialty = artist.specialty || (artist.user?.profile?.role === 'artisan' ? 'Handcrafted Goods' : 'Local Producer');
+  const image = artist.image || artist.featured_image || artist.user?.profile?.avatar || `https://ui-avatars.com/api/?name=${name}&background=random&size=400`;
+  const rating = artist.rating || 5.0;
+  const reviews = artist.reviews || 0;
+  const portfolioItems = artist.portfolioItems || 12;
+
   return (
-    <div className="bg-card rounded-lg border border-border overflow-hidden hover:border-primary transition group">
-      {/* Image */}
-      <div className="h-48 bg-muted overflow-hidden">
-        <img
-          src={artist.image || "/placeholder.svg"}
-          alt={artist.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition"
-        />
-      </div>
-
-      {/* Content */}
-      <div className="p-6">
-        {/* Header */}
-        <div className="mb-3">
-          <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition">{artist.name}</h3>
-          <p className="text-sm text-primary font-medium">{artist.specialty}</p>
+    <div className="bg-card rounded-lg border border-border overflow-hidden hover:border-primary transition-all group hover:shadow-xl">
+      <Link href={`/tradesmen/${artist.id}`}>
+        {/* Image */}
+        <div className="h-48 bg-muted overflow-hidden">
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          />
         </div>
 
-        {/* Bio */}
-        <p className="text-sm text-muted-foreground mb-4 line-clamp-3">{artist.bio}</p>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-border">
-          <div>
-            <p className="text-xs text-muted-foreground">Portfolio</p>
-            <p className="font-bold text-foreground">{artist.portfolioItems} pieces</p>
+        {/* Content */}
+        <div className="p-6">
+          {/* Header */}
+          <div className="mb-3">
+            <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition">{name}</h3>
+            <p className="text-sm text-primary font-black uppercase tracking-widest text-[10px]">{specialty}</p>
           </div>
-          <div>
-            <div className="flex items-center gap-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  size={14}
-                  className={i < Math.floor(artist.rating) ? 'fill-amber-400 text-amber-400' : 'text-muted'}
-                />
-              ))}
+
+          {/* Bio */}
+          <p className="text-sm text-muted-foreground mb-4 line-clamp-2 font-medium">{bio}</p>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-border">
+            <div>
+              <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest">Portfolio</p>
+              <p className="font-bold text-foreground text-sm">{portfolioItems} pieces</p>
             </div>
-            <p className="text-xs text-muted-foreground">{artist.rating} ({artist.reviews})</p>
+            <div>
+              <div className="flex items-center gap-1 mb-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    size={10}
+                    className={i < Math.floor(rating) ? 'fill-amber-400 text-amber-400' : 'text-muted'}
+                  />
+                ))}
+              </div>
+              <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest">{rating} ({reviews})</p>
+            </div>
           </div>
+
+          {/* Commission Badge */}
+          {artist.availableForCommission && (
+            <div className="bg-primary/10 text-primary px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest text-center mb-4 border border-primary/20">
+              Available for Commissions
+            </div>
+          )}
+
+          {/* Actions */}
+          <button className="w-full btn-secondary h-11 text-xs group-hover:bg-primary group-hover:text-primary-foreground transition-all flex items-center justify-center gap-2">
+            <ExternalLink size={14} />
+            View Profile
+          </button>
         </div>
-
-        {/* Commission Badge */}
-        {artist.availableForCommission && (
-          <div className="bg-primary/10 text-primary px-3 py-2 rounded text-sm font-medium text-center mb-4">
-            Available for Commissions
-          </div>
-        )}
-
-        {/* Actions */}
-        <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center gap-2">
-          <ExternalLink size={16} />
-          View Portfolio
-        </Button>
-      </div>
+      </Link>
     </div>
   );
 }
