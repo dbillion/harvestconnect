@@ -31,4 +31,4 @@ ENV PYTHONUNBUFFERED=1 \
 RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
-CMD daphne -b 0.0.0.0 -p ${PORT:-8000} harvestconnect.asgi:application
+CMD daphne -b 0.0.0.0 -p ${PORT:-8000} harvestconnect.asgi:application# cache bust Sat Jan 31 08:41:09 AM EST 2026
