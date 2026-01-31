@@ -1,48 +1,36 @@
-# Django Backend Multi-stage Dockerfile
-FROM python:3.12-slim as builder
+# --- Build Stage ---
+FROM ghcr.io/astral-sh/uv:latest as builder
 
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+# Enable bytecode compilation for faster starts
+ENV UV_COMPILE_BYTECODE=1
+ENV UV_LINK_MODE=copy
 
-# Copy requirements and install Python dependencies
+# Install dependencies first (better caching)
 COPY requirements.txt .
-RUN pip install --user --no-cache-dir -r requirements.txt
+RUN uv pip install --system --no-cache -r requirements.txt
 
-# Production stage
+# --- Production Stage ---
 FROM python:3.12-slim
 
 WORKDIR /app
 
-# Install runtime dependencies only
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq5 \
-    && rm -rf /var/lib/apt/lists/*
+# Copy installed packages from builder
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
 
-# Copy Python dependencies from builder
-COPY --from=builder /root/.local /root/.local
-
-# Copy project files
+# Copy the rest of the backend code
 COPY . .
 
-# Set environment variables
-ENV PATH=/root/.local/bin:$PATH \
-    PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
+# Environment setup
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PATH="/usr/local/bin:$PATH"
 
-# Collect static files
+# Collect static files for the admin panel
 RUN python manage.py collectstatic --noinput
 
-# Expose port
+# Run with Daphne (essential for Chat/WebSockets)
 EXPOSE 8000
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8000/api/', timeout=2)"
-
-# Run daphne for ASGI/WebSocket support
 CMD daphne -b 0.0.0.0 -p ${PORT:-8000} harvestconnect.asgi:application
