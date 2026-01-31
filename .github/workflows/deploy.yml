@@ -64,10 +64,15 @@ jobs:
 
       - name: Deploy to Koyeb
         run: |
-          # Note: This assumes you have already created the app and service on Koyeb
-          # or are using the 'koyeb deploy' command for the first time.
-          # We use --git harvestconnect-api to update a specific service.
-          koyeb service update harvestconnect-backend/api --git-branch main
+          koyeb service update harvestconnect-backend/api \
+            --git-branch main \
+            --env DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }} \
+            --env DATABASE_URL=${{ secrets.DATABASE_URL }} \
+            --env ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }} \
+            --env CSRF_TRUSTED_ORIGINS=${{ secrets.CSRF_TRUSTED_ORIGINS }} \
+            --env ADMIN_URL_PATH=${{ secrets.ADMIN_URL_PATH }} \
+            --env STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }} \
+            --env DEBUG=False
         env:
           KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
 
