@@ -2,13 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import apiClient from "@/lib/api-client";
@@ -37,7 +37,7 @@ export function EditProjectDialog({
     title: "",
     description: "",
     budget: "",
-    status: "",
+    status: "" as "inquiry" | "quote_sent" | "in_progress" | "completed" | "cancelled" | "",
     priority: "medium" as "low" | "medium" | "high",
     end_date: ""
   });
@@ -59,7 +59,7 @@ export function EditProjectDialog({
     e.preventDefault();
     setLoading(true);
     try {
-      await apiClient.updateProject(project.id, formData);
+      await apiClient.updateProject(project.id, formData as any);
       setOpen(false);
       if (onUpdated) onUpdated();
     } catch (error) {
