@@ -1,40 +1,35 @@
-# --- Build Stage ---
-FROM python:3.12-slim AS builder
+FROM python:3.12-alpine
 
-WORKDIR /app
-
-# Install uv (requires shell access)
-RUN pip install --no-cache-dir uv
-
-# Enable bytecode compilation
-ENV UV_COMPILE_BYTECODE=1
-ENV UV_LINK_MODE=copy
-
-# Copy requirements from repo root
-COPY backend/requirements.txt .
-RUN uv pip install --system --no-cache -r requirements.txt
-
-# --- Production Stage ---
-FROM python:3.12-slim
-
-# Build argument for cache busting (change this value to force rebuild)
+# Build argument for cache busting
 ARG CACHEBUST=1
 
 WORKDIR /app
 
-COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
-COPY --from=builder /usr/local/bin /usr/local/bin
+# Install system dependencies required for Python packages
+RUN apk add --no-cache \
+    postgresql-dev \
+    gcc \
+    musl-dev \
+    linux-headers \
+    libffi-dev \
+    && echo "Build timestamp: $CACHEBUST"
 
-# Use CACHEBUST to invalidate cache when needed
-RUN echo "Build timestamp: $CACHEBUST"
+# Copy requirements and install Python dependencies
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy application code
 COPY backend/ .
 
+# Set environment variables
 ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PATH="/usr/local/bin:$PATH"
+    PYTHONDONTWRITEBYTECODE=1
 
+# Collect static files
 RUN python manage.py collectstatic --noinput
 
+# Expose port
 EXPOSE 8000
-CMD daphne -b 0.0.0.0 -p ${PORT:-8000} harvestconnect.asgi:application# cache bust Sat Jan 31 08:41:09 AM EST 2026
+
+# Run application
+CMD ["daphne", "-b", "0.0.0.0", "-p", "8000", "harvestconnect.asgi:application"]
