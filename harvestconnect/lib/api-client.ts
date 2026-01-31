@@ -284,6 +284,27 @@ class APIClient {
     }
   }
 
+  // Generic methods
+  public async get<T>(endpoint: string, options: Omit<RequestOptions, 'method'> = {}): Promise<T> {
+    return this.request<T>(endpoint, { ...options, method: 'GET' });
+  }
+
+  public async post<T>(endpoint: string, body: any, options: Omit<RequestOptions, 'method' | 'body'> = {}): Promise<T> {
+    return this.request<T>(endpoint, { ...options, method: 'POST', body });
+  }
+
+  public async put<T>(endpoint: string, body: any, options: Omit<RequestOptions, 'method' | 'body'> = {}): Promise<T> {
+    return this.request<T>(endpoint, { ...options, method: 'PUT', body });
+  }
+
+  public async patch<T>(endpoint: string, body: any, options: Omit<RequestOptions, 'method' | 'body'> = {}): Promise<T> {
+    return this.request<T>(endpoint, { ...options, method: 'PATCH', body });
+  }
+
+  public async delete<T>(endpoint: string, options: Omit<RequestOptions, 'method'> = {}): Promise<T> {
+    return this.request<T>(endpoint, { ...options, method: 'DELETE' });
+  }
+
   // ==================== Authentication ====================
 
   async register(email: string, password: string, firstName: string, lastName: string, role: string): Promise<User> {
