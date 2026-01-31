@@ -5,18 +5,23 @@ ARG CACHEBUST=1
 
 WORKDIR /app
 
-# Install system dependencies required for Python packages
+# Install system dependencies and uv (Astral's ultra-fast package installer)
 RUN apk add --no-cache \
     postgresql-dev \
     gcc \
     musl-dev \
     linux-headers \
     libffi-dev \
+    curl \
+    && curl -LsSf https://astral.sh/uv/install.sh | sh \
     && echo "Build timestamp: $CACHEBUST"
 
-# Copy requirements and install Python dependencies
+# Add uv to PATH
+ENV PATH="/root/.cargo/bin:$PATH"
+
+# Copy requirements and install Python dependencies with uv (10-100x faster than pip)
 COPY backend/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN uv pip install --system --no-cache -r requirements.txt
 
 # Copy application code
 COPY backend/ .
