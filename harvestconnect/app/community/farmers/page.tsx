@@ -22,7 +22,7 @@ export default function FarmersExplore() {
       try {
         // In this system, farmers are Users with role 'farmer'
         // We'll fetch users and filter, or use a dedicated endpoint if available
-        const res = await apiClient.get('users/');
+        const res = await apiClient.get<any>('users/');
         // Expecting { results: [...] } or direct array
         const allUsers = Array.isArray(res) ? res : (res.results || []);
         setFarmers(allUsers.filter((u: any) => u.profile?.role === 'farmer'));
