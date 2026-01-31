@@ -31,9 +31,6 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,0.0.0.0', c
 
 # Automatic domain trust for production environments
 if not DEBUG:
-    # Add common deployment wildcards
-    ALLOWED_HOSTS.extend(['.koyeb.app', '.netlify.app'])
-    
     # Production Security Headers
     SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=True, cast=bool)
     SESSION_COOKIE_SECURE = True
@@ -45,7 +42,7 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     
-    # CSRF Trusted Origins
+    # CSRF Trusted Origins - Abstracted to ENV
     CSRF_TRUSTED_ORIGINS = config(
         'CSRF_TRUSTED_ORIGINS', 
         default='https://*.koyeb.app,https://*.netlify.app', 

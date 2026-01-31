@@ -26,7 +26,10 @@ To enable the CI/CD pipeline, go to **Settings > Secrets and variables > Actions
 - `KOYEB_TOKEN`: Your Koyeb personal access token (Settings > API Keys).
 - `DJANGO_SECRET_KEY`: A secure random string for Django.
 - `DATABASE_URL`: Connection string from Neon (or Koyeb internal Database).
-- `ALLOWED_HOSTS`: Comma-separated list of domains (e.g., `harvestconnect.netlify.app,harvestconnect.fly.dev`).
+- `ALLOWED_HOSTS`: Comma-separated list of domains (e.g., `localhost,127.0.0.1,dramatic-kayla...koyeb.app,.koyeb.app`).
+- `CSRF_TRUSTED_ORIGINS`: Origins for CSRF protection (e.g., `https://*.koyeb.app,https://*.netlify.app`).
+- `ADMIN_URL_PATH`: Unique path for the admin portal (default: `hc-secure-access-portal/`).
+- `DEBUG`: Set to `False` for production.
 
 ### Storage (Cloudflare R2 - S3 Compatible)
 - `USE_S3`: `True`
