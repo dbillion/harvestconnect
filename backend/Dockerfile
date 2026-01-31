@@ -19,10 +19,10 @@ RUN apk add --no-cache \
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
     && export PATH="/root/.local/bin:$PATH" \
     && uv pip install --system --no-cache -r requirements.txt \
-    && echo \"Build timestamp: $CACHEBUST\"
+    && echo "Build timestamp: $CACHEBUST"
 
 # Add uv to PATH
-ENV PATH=\"/root/.local/bin:$PATH\"
+ENV PATH="/root/.local/bin:$PATH"
 
 # Copy application code
 COPY . .
