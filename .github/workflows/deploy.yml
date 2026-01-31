@@ -63,38 +63,25 @@ jobs:
           sudo mv koyeb /usr/local/bin/koyeb
 
       - name: Deploy to Koyeb
-        env:
-          KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
-          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
-          CSRF_TRUSTED_ORIGINS: ${{ secrets.CSRF_TRUSTED_ORIGINS }}
-          ADMIN_URL_PATH: ${{ secrets.ADMIN_URL_PATH }}
-          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
-          GOOGLE_GEMINI_API_KEY: ${{ secrets.GOOGLE_GEMINI_API_KEY }}
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          GOOGLE_OAUTH2_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH2_CLIENT_ID }}
-          GOOGLE_OAUTH2_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH2_CLIENT_SECRET }}
-          GITHUB_OAUTH2_CLIENT_ID: ${{ secrets.BBGITHUB_OAUTH2_CLIENT_ID }}
-          GITHUB_OAUTH2_CLIENT_SECRET: ${{ secrets.BBGITHUB_OAUTH2_CLIENT_SECRET }}
         run: |
-          CACHEBUST=$(date +%s)
           koyeb service update harvestconnect-backend/api \
             --git-branch main \
-            --docker-args "--build-arg CACHEBUST=${CACHEBUST}" \
-            --env DJANGO_SECRET_KEY="${DJANGO_SECRET_KEY}" \
-            --env DATABASE_URL="${DATABASE_URL}" \
-            --env ALLOWED_HOSTS="${ALLOWED_HOSTS}" \
-            --env CSRF_TRUSTED_ORIGINS="${CSRF_TRUSTED_ORIGINS}" \
-            --env ADMIN_URL_PATH="${ADMIN_URL_PATH}" \
-            --env STRIPE_SECRET_KEY="${STRIPE_SECRET_KEY}" \
-            --env GOOGLE_GEMINI_API_KEY="${GOOGLE_GEMINI_API_KEY}" \
-            --env GOOGLE_API_KEY="${GOOGLE_API_KEY}" \
-            --env GOOGLE_OAUTH2_CLIENT_ID="${GOOGLE_OAUTH2_CLIENT_ID}" \
-            --env GOOGLE_OAUTH2_CLIENT_SECRET="${GOOGLE_OAUTH2_CLIENT_SECRET}" \
-            --env GITHUB_OAUTH2_CLIENT_ID="${GITHUB_OAUTH2_CLIENT_ID}" \
-            --env GITHUB_OAUTH2_CLIENT_SECRET="${GITHUB_OAUTH2_CLIENT_SECRET}" \
+            --docker-args "--build-arg CACHEBUST=$(date +%s)" \
+            --env DJANGO_SECRET_KEY="${{ secrets.DJANGO_SECRET_KEY }}" \
+            --env DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+            --env ALLOWED_HOSTS="${{ secrets.ALLOWED_HOSTS }}" \
+            --env CSRF_TRUSTED_ORIGINS="${{ secrets.CSRF_TRUSTED_ORIGINS }}" \
+            --env ADMIN_URL_PATH="${{ secrets.ADMIN_URL_PATH }}" \
+            --env STRIPE_SECRET_KEY="${{ secrets.STRIPE_SECRET_KEY }}" \
+            --env GOOGLE_GEMINI_API_KEY="${{ secrets.GOOGLE_GEMINI_API_KEY }}" \
+            --env GOOGLE_API_KEY="${{ secrets.GOOGLE_API_KEY }}" \
+            --env GOOGLE_OAUTH2_CLIENT_ID="${{ secrets.GOOGLE_OAUTH2_CLIENT_ID }}" \
+            --env GOOGLE_OAUTH2_CLIENT_SECRET="${{ secrets.GOOGLE_OAUTH2_CLIENT_SECRET }}" \
+            --env GITHUB_OAUTH2_CLIENT_ID="${{ secrets.BBGITHUB_OAUTH2_CLIENT_ID }}" \
+            --env GITHUB_OAUTH2_CLIENT_SECRET="${{ secrets.BBGITHUB_OAUTH2_CLIENT_SECRET }}" \
             --env DEBUG=False
+        env:
+          KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
 
   dast-scan:
     name: DAST Security Scan (OWASP ZAP)
