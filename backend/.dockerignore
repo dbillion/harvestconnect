@@ -1,8 +1,6 @@
 .git
 .gitignore
 *.md
-*.txt
-!requirements.txt
 .env
 .venv
 venv/
