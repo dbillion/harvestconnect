@@ -35,7 +35,10 @@ export interface UserProfile {
   is_verified: boolean;
   faith_based: boolean;
   avatar: string;
+  banner: string;
   phone: string;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface Category {

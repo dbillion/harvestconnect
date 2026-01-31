@@ -42,6 +42,10 @@ To enable the CI/CD pipeline, go to **Settings > Secrets and variables > Actions
 - `STRIPE_SECRET_KEY`: Your Stripe secret key (`sk_test_...` for dev, `sk_live_...` for prod).
 - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`: Your Stripe publishable key.
 
+### AI Integration (Google Gemini)
+- `GOOGLE_GEMINI_API_KEY`: Your Google AI Studio API key.
+- `GOOGLE_API_KEY`: Alternate key if needed for other Google APIs.
+
 ### Security Tools (Optional)
 - `SNYK_TOKEN`: If you want deep dependency scanning.
 - `CODECOV_TOKEN`: For test coverage reports.

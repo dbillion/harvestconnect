@@ -72,6 +72,8 @@ jobs:
             --env CSRF_TRUSTED_ORIGINS=${{ secrets.CSRF_TRUSTED_ORIGINS }} \
             --env ADMIN_URL_PATH=${{ secrets.ADMIN_URL_PATH }} \
             --env STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }} \
+            --env GOOGLE_GEMINI_API_KEY=${{ secrets.GOOGLE_GEMINI_API_KEY }} \
+            --env GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }} \
             --env DEBUG=False
         env:
           KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
