@@ -123,7 +123,7 @@ export interface Project {
   client: User;
   title: string;
   description: string;
-  status: 'inquiry' | 'in_progress' | 'completed' | 'cancelled';
+  status: 'inquiry' | 'in_progress' | 'completed' | 'cancelled' | 'quote_sent';
   budget: string;
   start_date: string;
   end_date: string;
