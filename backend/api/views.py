@@ -289,6 +289,42 @@ class ChatRoomViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.request.user.chat_rooms.all()
 
+    def perform_create(self, serializer):
+        room = serializer.save()
+        room.participants.add(self.request.user)
+
+    @action(detail=False, methods=['post'])
+    def get_or_create_personal(self, request):
+        """Get or create a direct chat room between two users"""
+        participant_id = request.data.get('participant_id')
+        if not participant_id:
+            return Response({'error': 'participant_id required'}, status=status.HTTP_400_BAD_REQUEST)
+            
+        user = request.user
+        from django.shortcuts import get_object_or_404
+        from django.contrib.auth.models import User
+        other_user = get_object_or_404(User, id=participant_id)
+        
+        # Look for existing personal chat that contains both users
+        room = ChatRoom.objects.filter(
+            room_type='personal',
+            participants=user
+        ).filter(
+            participants=other_user
+        ).first()
+        
+        if not room:
+            # Create unique deterministic name for personal chat
+            room_name = f"direct-{min(user.id, other_user.id)}-{max(user.id, other_user.id)}"
+            # Handle potential collision or race condition
+            room, created = ChatRoom.objects.get_or_create(
+                name=room_name,
+                defaults={'room_type': 'personal'}
+            )
+            room.participants.add(user, other_user)
+            
+        return Response(ChatRoomSerializer(room).data)
+
     @action(detail=False, methods=['get'])
     def discovery(self, request):
         """Find rooms based on church or location"""
@@ -320,6 +356,9 @@ class ChatMessageViewSet(viewsets.ModelViewSet):
         if room_id:
             return ChatMessage.objects.filter(room_id=room_id, room__participants=self.request.user)
         return ChatMessage.objects.none()
+
+    def perform_create(self, serializer):
+        serializer.save(sender=self.request.user)
 
 
 class GoogleLogin(SocialLoginView):

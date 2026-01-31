@@ -4,9 +4,11 @@ import Footer from '@/components/footer';
 import Navigation from '@/components/navigation';
 import { Button } from '@/components/ui/button';
 import apiClient, { Review } from '@/lib/api-client';
+import { useAuth } from '@/lib/auth-context';
 import { useCart } from '@/lib/cart-context';
+import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function ProductDetailPage() {
@@ -14,8 +16,15 @@ export default function ProductDetailPage() {
   const id = params?.id as string;
   
   const { addItem } = useCart();
+  const { user } = useAuth();
+  const router = useRouter();
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [contacting, setContacting] = useState(false);
+  const [product, setProduct] = useState<any>(null);
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +65,24 @@ export default function ProductDetailPage() {
     fetchData();
   }, [id]);
 
+  const handleContactSeller = async () => {
+    if (!product?.seller?.id || !user) {
+        if (!user) router.push('/auth/login');
+        return;
+    }
+    
+    setContacting(true);
+    try {
+        const room = await apiClient.getOrCreatePersonalChat(product.seller.id);
+        router.push(`/community/discovery?room=${room.id}`);
+    } catch (err) {
+        console.error('Failed to initiate contact:', err);
+        alert('Failed to connect with seller. Please try again.');
+    } finally {
+        setContacting(false);
+    }
+  };
+
   const handleAddToCart = () => {
     if (!product) return;
     
@@ -72,13 +99,43 @@ export default function ProductDetailPage() {
   };
 
   if (loading) {
-// ... existing code for loading state ...
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navigation />
+        <main className="flex-1 flex items-center justify-center">
+          <div className="flex flex-col items-center gap-4">
+            <Loader2 className="animate-spin text-primary size-12" />
+            <p className="text-muted-foreground font-medium">Loading product details...</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
   }
 
-// ... existing code for error state ...
+  if (error || !product) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navigation />
+        <main className="flex-1 flex items-center justify-center p-4">
+          <div className="text-center max-w-md glass-card p-12">
+            <div className="size-20 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span className="text-4xl text-red-600">⚠️</span>
+            </div>
+            <h2 className="text-2xl font-bold mb-4">{error || 'Product not found'}</h2>
+            <Link href="/marketplace">
+                <Button className="bg-primary">Back to Marketplace</Button>
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   const avgRating = reviews.length > 0
-// ... existing rating calculation ...
+    ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1)
+    : '4.8';
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -187,8 +244,13 @@ export default function ProductDetailPage() {
                 {addedToCart ? '√ Added to Cart' : 'Add to Cart'}
               </Button>
 
-              <Button variant="outline" className="w-full border-gray-300 text-gray-700 font-medium py-3 rounded-lg">
-                Contact Seller
+              <Button 
+                variant="outline" 
+                onClick={handleContactSeller}
+                disabled={contacting}
+                className="w-full border-gray-300 text-gray-700 font-medium py-3 rounded-lg flex items-center justify-center gap-2"
+              >
+                {contacting ? <Loader2 className="animate-spin size-4" /> : 'Contact Seller'}
               </Button>
             </div>
           </div>

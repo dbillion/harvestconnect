@@ -1,36 +1,39 @@
 'use client';
 
 import {
-    closestCorners,
-    DndContext,
-    DragEndEvent,
-    DragOverEvent,
-    DragOverlay,
-    DragStartEvent,
-    KeyboardSensor,
-    PointerSensor,
-    useSensor,
-    useSensors
+  closestCorners,
+  DndContext,
+  DragEndEvent,
+  DragOverEvent,
+  DragOverlay,
+  DragStartEvent,
+  KeyboardSensor,
+  PointerSensor,
+  useDroppable,
+  useSensor,
+  useSensors
 } from '@dnd-kit/core';
 import {
-    arrayMove,
-    SortableContext,
-    sortableKeyboardCoordinates,
-    useSortable,
-    verticalListSortingStrategy,
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Clock, MoreVertical, Plus, User } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { Clock, GripVertical, Plus, Trash2, User } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { CreateProjectDialog } from './create-project-dialog';
+import { EditProjectDialog } from './edit-project-dialog';
 
 interface Project {
   id: number;
   title: string;
-  client_name: string;
+  client?: any;
   status: 'inquiry' | 'quote_sent' | 'in_progress' | 'completed' | 'cancelled';
-  budget: number;
+  budget: number | string;
   priority: 'low' | 'medium' | 'high';
-  due_date?: string;
+  end_date?: string;
 }
 
 const COLUMNS = [
@@ -40,12 +43,31 @@ const COLUMNS = [
   { id: 'completed', label: 'Completed', color: 'bg-green-500' },
 ];
 
-export default function ProjectKanban({ initialProjects = [] }: { initialProjects?: Project[] }) {
+export default function ProjectKanban({ 
+  initialProjects = [], 
+  onUpdate,
+  onDelete,
+  onRefresh
+}: { 
+  initialProjects?: Project[],
+  onUpdate?: (id: number, data: any) => Promise<void>,
+  onDelete?: (id: number) => Promise<void>,
+  onRefresh?: () => void
+}) {
   const [projects, setProjects] = useState<Project[]>(initialProjects);
   const [activeId, setActiveId] = useState<number | null>(null);
+  const dragStartStatus = useRef<string | null>(null);
+
+  useEffect(() => {
+    setProjects(initialProjects);
+  }, [initialProjects]);
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
@@ -61,7 +83,9 @@ export default function ProjectKanban({ initialProjects = [] }: { initialProject
   const activeProject = activeId ? projectMap[activeId] : null;
 
   const handleDragStart = (event: DragStartEvent) => {
-    setActiveId(event.active.id as number);
+    const activeId = event.active.id as number;
+    setActiveId(activeId);
+    dragStartStatus.current = projects.find(p => p.id === activeId)?.status || null;
   };
 
   const handleDragOver = (event: DragOverEvent) => {
@@ -96,10 +120,19 @@ export default function ProjectKanban({ initialProjects = [] }: { initialProject
     if (activeId !== overId) {
       const oldIndex = projects.findIndex(p => p.id === activeId);
       const newIndex = projects.findIndex(p => p.id === overId);
+      
       if (newIndex !== -1) {
         setProjects(prev => arrayMove(prev, oldIndex, newIndex));
       }
     }
+
+    // Capture the state *after* the drag to see if status changed
+    const finalProject = projects.find(p => p.id === activeId);
+    
+    if (onUpdate && finalProject && dragStartStatus.current && finalProject.status !== dragStartStatus.current) {
+       onUpdate(activeId, { status: finalProject.status });
+    }
+    dragStartStatus.current = null;
   };
 
   return (
@@ -117,6 +150,9 @@ export default function ProjectKanban({ initialProjects = [] }: { initialProject
             id={column.id} 
             column={column} 
             projects={projects.filter(p => p.status === column.id)} 
+            onDelete={onDelete}
+            onUpdate={onUpdate}
+            onRefresh={onRefresh}
           />
         ))}
       </div>
@@ -130,7 +166,23 @@ export default function ProjectKanban({ initialProjects = [] }: { initialProject
   );
 }
 
-function KanbanColumn({ id, column, projects }: { id: string, column: any, projects: Project[] }) {
+function KanbanColumn({ 
+  id, 
+  column, 
+  projects, 
+  onDelete,
+  onUpdate,
+  onRefresh
+}: { 
+  id: string, 
+  column: any, 
+  projects: Project[], 
+  onDelete?: (id: number) => Promise<void>,
+  onUpdate?: (id: number, data: any) => Promise<void>,
+  onRefresh?: () => void
+}) {
+  const { setNodeRef } = useDroppable({ id });
+
   return (
     <div className="flex flex-col gap-4 min-w-[280px]">
       <div className="flex items-center justify-between px-2 py-1">
@@ -141,15 +193,24 @@ function KanbanColumn({ id, column, projects }: { id: string, column: any, proje
             {projects.length}
           </span>
         </div>
-        <button className="text-muted-foreground hover:text-foreground transition-colors">
-          <Plus size={14} />
-        </button>
+        <CreateProjectDialog 
+          defaultStatus={id as any} 
+          onCreated={onRefresh}
+          trigger={
+            <button className="text-muted-foreground hover:text-foreground transition-colors">
+              <Plus size={14} />
+            </button>
+          }
+        />
       </div>
 
       <SortableContext id={id} items={projects.map(p => p.id)} strategy={verticalListSortingStrategy}>
-        <div className="flex-1 space-y-4 p-3 rounded-[2rem] bg-[#F8F9FA]/50 border border-border/10 min-h-[150px]">
+        <div 
+          ref={setNodeRef}
+          className="flex-1 space-y-4 p-3 rounded-[2rem] bg-[#F8F9FA]/50 border border-border/10 min-h-[150px] transition-colors hover:bg-[#F8F9FA]/80"
+        >
           {projects.map(project => (
-            <SortableProjectCard key={project.id} project={project} />
+            <SortableProjectCard key={project.id} project={project} onDelete={onDelete} onUpdated={onRefresh} />
           ))}
           {projects.length === 0 && (
             <div className="h-24 flex items-center justify-center text-center opacity-20 border-2 border-dashed border-border/20 rounded-2xl">
@@ -162,7 +223,7 @@ function KanbanColumn({ id, column, projects }: { id: string, column: any, proje
   );
 }
 
-function SortableProjectCard({ project }: { project: Project }) {
+function SortableProjectCard({ project, onDelete, onUpdated }: { project: Project, onDelete?: (id: number) => Promise<void>, onUpdated?: () => void }) {
   const {
     attributes,
     listeners,
@@ -180,12 +241,14 @@ function SortableProjectCard({ project }: { project: Project }) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <ProjectCard project={project} />
+      <ProjectCard project={project} onDelete={onDelete} onUpdated={onUpdated} />
     </div>
   );
 }
 
-function ProjectCard({ project, isOverlay }: { project: Project, isOverlay?: boolean }) {
+function ProjectCard({ project, isOverlay, onDelete, onUpdated }: { project: Project, isOverlay?: boolean, onDelete?: (id: number) => Promise<void>, onUpdated?: () => void }) {
+  const [editOpen, setEditOpen] = useState(false);
+  
   const priorityColors = {
     high: 'text-red-600 bg-red-50',
     medium: 'text-orange-600 bg-orange-50',
@@ -193,13 +256,32 @@ function ProjectCard({ project, isOverlay }: { project: Project, isOverlay?: boo
   };
 
   return (
-    <div className={`bg-white rounded-2xl p-5 shadow-sm border border-border/5 group transition-all duration-300 cursor-grab active:cursor-grabbing ${isOverlay ? 'shadow-2xl ring-2 ring-primary/20 scale-105' : 'hover:shadow-lg hover:-translate-y-1'}`}>
+    <div 
+      onDoubleClick={() => setEditOpen(true)}
+      className={`bg-white rounded-2xl p-5 shadow-sm border border-border/5 group transition-all duration-300 cursor-grab active:cursor-grabbing relative ${isOverlay ? 'shadow-2xl ring-2 ring-primary/20 scale-105' : 'hover:shadow-lg hover:-translate-y-1'}`}
+    >
+      <div className="absolute left-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-20 transition-opacity">
+        <GripVertical size={16} />
+      </div>
+      <div className="pl-2">
+      <EditProjectDialog 
+        project={project} 
+        open={editOpen} 
+        onOpenChange={setEditOpen} 
+        onUpdated={onUpdated} 
+      />
       <div className="flex justify-between items-start mb-3">
         <span className={`text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full ${priorityColors[project.priority]}`}>
           {project.priority} Priority
         </span>
-        <button className="text-muted-foreground opacity-20 group-hover:opacity-100 transition-opacity">
-          <MoreVertical size={14} />
+        <button 
+          onClick={(e) => {
+            e.stopPropagation();
+            if (onDelete) onDelete(project.id);
+          }}
+          className="text-muted-foreground opacity-20 group-hover:opacity-100 transition-opacity p-1 hover:text-red-500"
+        >
+          <Trash2 size={14} />
         </button>
       </div>
 
@@ -211,17 +293,22 @@ function ProjectCard({ project, isOverlay }: { project: Project, isOverlay?: boo
         <div className="size-5 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
           <User size={10} />
         </div>
-        <span className="text-[10px] font-bold text-muted-foreground truncate">{project.client_name}</span>
+        <span className="text-[10px] font-bold text-muted-foreground truncate">
+            {project.client?.first_name ? `${project.client.first_name} ${project.client.last_name || ''}` : project.client?.username || 'New Inquiry'}
+        </span>
       </div>
 
       <div className="pt-3 border-t border-border/10 flex items-center justify-between">
         <div className="flex items-center gap-1 text-muted-foreground">
           <Clock size={10} />
           <span className="text-[8px] font-black uppercase tracking-tighter">
-            {project.due_date ? new Date(project.due_date).toLocaleDateString() : 'TBD'}
+            {project.end_date ? new Date(project.end_date).toLocaleDateString() : 'TBD'}
           </span>
         </div>
-        <span className="text-[10px] font-black text-[#1A1A1A]">${project.budget.toLocaleString()}</span>
+        <span className="text-[10px] font-black text-[#1A1A1A]">
+            ${typeof project.budget === 'string' ? parseFloat(project.budget).toLocaleString() : project.budget?.toLocaleString() || '0'}
+        </span>
+      </div>
       </div>
     </div>
   );

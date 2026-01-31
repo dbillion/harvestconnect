@@ -1,7 +1,7 @@
 'use client';
 
 import { useAuth } from '@/lib/auth-context';
-import { Send } from 'lucide-react';
+import { MessageSquare, Send, Sparkles } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 interface Message {
@@ -58,7 +58,7 @@ export default function ChatWindow({ roomName }: { roomName: string }) {
           <div>
             <h3 className="font-black text-sm tracking-tight capitalize">{roomName}</h3>
             <p className="text-[9px] uppercase font-black tracking-[0.2em] text-green-600 flex items-center gap-1.5">
-               <div className="size-1.5 rounded-full bg-green-600 animate-pulse" /> Live Discussion
+               <span className="size-1.5 rounded-full bg-green-600 animate-pulse" /> Live Discussion
             </p>
           </div>
         </div>

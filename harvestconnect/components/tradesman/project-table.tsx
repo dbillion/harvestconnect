@@ -1,30 +1,29 @@
 'use client';
 
-import { 
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
 } from '@/components/ui/dialog';
-import { 
-  AlertCircle,
-  ArrowUpRight,
-  CheckCircle2,
-  Clock
+import {
+    AlertCircle,
+    ArrowUpRight,
+    CheckCircle2,
+    Clock
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Project {
   id: number;
   title: string;
-  client_name: string;
-  tradesman_name: string;
+  client?: any;
   status: 'inquiry' | 'quote_sent' | 'in_progress' | 'completed' | 'cancelled';
   priority: 'low' | 'medium' | 'high';
-  budget: number;
-  progress: number;
-  due_date?: string;
+  budget: number | string;
+  end_date?: string;
+  progress?: number;
 }
 
 const statusConfig = {
@@ -41,11 +40,26 @@ const priorityConfig = {
   low: 'text-green-600'
 };
 
-export default function ProjectTable({ projects: initialProjects = [] }: { projects?: Project[] }) {
+export default function ProjectTable({ 
+  projects: initialProjects = [], 
+  onUpdate,
+  onDelete
+}: { 
+  projects?: Project[],
+  onUpdate?: (id: number, data: any) => Promise<void>,
+  onDelete?: (id: number) => Promise<void>
+}) {
   const [projects, setProjects] = useState<Project[]>(initialProjects);
 
-  const updateStatus = (id: number, newStatus: any) => {
+  useEffect(() => {
+    setProjects(initialProjects);
+  }, [initialProjects]);
+
+  const updateStatus = async (id: number, newStatus: any) => {
     setProjects(prev => prev.map(p => p.id === id ? { ...p, status: newStatus } : p));
+    if (onUpdate) {
+      await onUpdate(id, { status: newStatus });
+    }
   };
 
   return (
@@ -68,7 +82,7 @@ export default function ProjectTable({ projects: initialProjects = [] }: { proje
                   <div className="flex flex-col gap-1">
                     <span className="font-black text-[#1A1A1A] group-hover:text-primary transition-colors">{project.title}</span>
                     <span className="text-[10px] font-bold text-muted-foreground flex items-center gap-2">
-                       {project.client_name} • Ref: #HC-{project.id}
+                       {project.client?.first_name ? `${project.client.first_name} ${project.client.last_name || ''}` : project.client?.username || 'New Inquiry'} • Ref: #HC-{project.id}
                     </span>
                   </div>
                 </td>
@@ -86,19 +100,14 @@ export default function ProjectTable({ projects: initialProjects = [] }: { proje
                      </span>
                   </div>
                 </td>
-                <td className="px-6 py-6">
-                  <div className="flex flex-col">
-                    <span className="text-sm font-black text-[#1A1A1A]">${project.budget.toLocaleString()}</span>
-                    <div className="w-24 h-1 bg-muted rounded-full mt-2 overflow-hidden">
-                       <div className="h-full bg-primary" style={{ width: `${project.progress}%` }} />
-                    </div>
-                  </div>
+                <td className="px-6 py-6 text-sm font-black text-[#1A1A1A]">
+                    ${typeof project.budget === 'string' ? parseFloat(project.budget).toLocaleString() : project.budget?.toLocaleString() || '0'}
                 </td>
                 <td className="px-6 py-6 text-right pr-12">
                    <Dialog>
                      <DialogTrigger asChild>
                        <button className="bg-[#1A1A1A] text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all">
-                          Manage Phase
+                          Phase
                        </button>
                      </DialogTrigger>
                      <DialogContent className="max-w-md rounded-[2.5rem] p-10 bg-white">
@@ -125,6 +134,12 @@ export default function ProjectTable({ projects: initialProjects = [] }: { proje
                         </div>
                      </DialogContent>
                    </Dialog>
+                   <button 
+                    onClick={() => onDelete && onDelete(project.id)}
+                    className="ml-2 p-2 text-muted-foreground hover:text-red-500 transition-colors"
+                   >
+                     <AlertCircle size={16} />
+                   </button>
                 </td>
               </tr>
             ))}

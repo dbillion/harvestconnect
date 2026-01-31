@@ -1,0 +1,301 @@
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:225: UserWarning: app_settings.USERNAME_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['username']['required']
+  required=allauth_account_settings.USERNAME_REQUIRED,
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:227: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/dj_rest_auth/registration/serializers.py:285: UserWarning: app_settings.EMAIL_REQUIRED is deprecated, use: app_settings.SIGNUP_FIELDS['email']['required']
+  email = serializers.EmailField(required=allauth_account_settings.EMAIL_REQUIRED)
+Creating test database for alias 'default'...
+Found 33 test(s).
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+System check identified 3 issues (0 silenced).
+/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/handlers/base.py:61: UserWarning: No directory at: /home/deeone/Documents/HarvestConnect/backend/staticfiles/
+  mw_instance = middleware(adapted_handler)
+WARNING 2026-01-30 22:57:19,148 log 36370 140241515321152 Forbidden: /api/products/1/
+.WARNING 2026-01-30 22:57:20,161 log 36370 140241515321152 Forbidden: /api/products/1/
+.WARNING 2026-01-30 22:57:21,182 log 36370 140241515321152 Not Found: /api/artists/1/
+FFWARNING 2026-01-30 22:57:23,270 log 36370 140241515321152 Not Found: /api/artists/1/
+F.WARNING 2026-01-30 22:57:25,196 log 36370 140241515321152 Bad Request: /api/auth/login/
+F.WARNING 2026-01-30 22:57:26,181 log 36370 140241515321152 Bad Request: /api/auth/registration/
+WARNING 2026-01-30 22:57:26,183 log 36370 140241515321152 Bad Request: /api/auth/registration/
+.WARNING 2026-01-30 22:57:26,186 log 36370 140241515321152 Bad Request: /api/auth/registration/
+.WARNING 2026-01-30 22:57:26,191 log 36370 140241515321152 Bad Request: /api/auth/registration/
+FWARNING 2026-01-30 22:57:26,194 log 36370 140241515321152 Not Found: /api/artists/9999/
+.WARNING 2026-01-30 22:57:26,197 log 36370 140241515321152 Not Found: /api/products/9999/
+.WARNING 2026-01-30 22:57:26,618 log 36370 140241515321152 Bad Request: /api/products/
+.WARNING 2026-01-30 22:57:27,163 log 36370 140241515321152 Method Not Allowed: /api/artists/
+.WARNING 2026-01-30 22:57:28,292 log 36370 140241515321152 Bad Request: /api/orders/
+FWARNING 2026-01-30 22:57:29,806 log 36370 140241515321152 Unauthorized: /api/orders/
+.....WARNING 2026-01-30 22:57:33,161 log 36370 140241515321152 Unauthorized: /api/products/
+.......ERROR 2026-01-30 22:57:36,968 log 36370 140241515321152 Internal Server Error: /api/reviews/
+Traceback (most recent call last):
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: api_review.product_id, api_review.reviewer_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/deeone/Documents/HarvestConnect/backend/api/views.py", line 89, in perform_create
+    serializer.save(reviewer=self.request.user)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 660, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: api_review.product_id, api_review.reviewer_id
+EWARNING 2026-01-30 22:57:37,993 log 36370 140241515321152 Unauthorized: /api/reviews/
+...WARNING 2026-01-30 22:57:40,711 log 36370 140241515321152 Bad Request: /api/reviews/
+.
+======================================================================
+ERROR: test_create_review_authenticated (tests.test_api.ReviewEndpointTestCase.test_create_review_authenticated)
+Test creating review as authenticated user
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: api_review.product_id, api_review.reviewer_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/deeone/Documents/HarvestConnect/backend/tests/test_api.py", line 416, in test_create_review_authenticated
+    response = self.client.post(
+               ^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/test.py", line 299, in post
+    response = super().post(
+               ^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/test.py", line 213, in post
+    return self.generic('POST', path, data, content_type, **extra)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/test.py", line 237, in generic
+    return super().generic(
+           ^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/test/client.py", line 609, in generic
+    return self.request(**r)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/test.py", line 289, in request
+    return super().request(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/test.py", line 241, in request
+    request = super().request(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/test/client.py", line 891, in request
+    self.check_exception(response)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/test/client.py", line 738, in check_exception
+    raise exc_value
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/deeone/Documents/HarvestConnect/backend/api/views.py", line 89, in perform_create
+    serializer.save(reviewer=self.request.user)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/rest_framework/serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 660, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/deeone/Documents/HarvestConnect/backend/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: api_review.product_id, api_review.reviewer_id
+
+======================================================================
+FAIL: test_artist_has_user_profile (tests.test_api.ArtistEndpointTestCase.test_artist_has_user_profile)
+Test artist response includes user profile
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/deeone/Documents/HarvestConnect/backend/tests/test_api.py", line 344, in test_artist_has_user_profile
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+AssertionError: 404 != 200
+
+======================================================================
+FAIL: test_list_artists (tests.test_api.ArtistEndpointTestCase.test_list_artists)
+Test listing all artists
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/deeone/Documents/HarvestConnect/backend/tests/test_api.py", line 328, in test_list_artists
+    self.assertGreaterEqual(len(response.data['results']), 2)
+AssertionError: 0 not greater than or equal to 2
+
+======================================================================
+FAIL: test_retrieve_artist_detail (tests.test_api.ArtistEndpointTestCase.test_retrieve_artist_detail)
+Test retrieving single artist detail
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/deeone/Documents/HarvestConnect/backend/tests/test_api.py", line 335, in test_retrieve_artist_detail
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+AssertionError: 404 != 200
+
+======================================================================
+FAIL: test_user_login_invalid_credentials (tests.test_api.AuthenticationTestCase.test_user_login_invalid_credentials)
+Test login fails with invalid credentials
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/deeone/Documents/HarvestConnect/backend/tests/test_api.py", line 121, in test_user_login_invalid_credentials
+    self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+AssertionError: 400 != 401
+
+======================================================================
+FAIL: test_user_registration_success (tests.test_api.AuthenticationTestCase.test_user_registration_success)
+Test successful user registration
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/deeone/Documents/HarvestConnect/backend/tests/test_api.py", line 50, in test_user_registration_success
+    self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+AssertionError: 400 != 201
+
+======================================================================
+FAIL: test_create_order_authenticated (tests.test_api.OrderEndpointTestCase.test_create_order_authenticated)
+Test creating order as authenticated buyer
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/deeone/Documents/HarvestConnect/backend/tests/test_api.py", line 519, in test_create_order_authenticated
+    self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+AssertionError: 400 != 201
+
+----------------------------------------------------------------------
+Ran 33 tests in 22.490s
+
+FAILED (failures=6, errors=1)
+Destroying test database for alias 'default'...
+\nREGISTRATION FAILURE: {'password1': [ErrorDetail(string='This field is required.', code='required')], 'password2': [ErrorDetail(string='This field is required.', code='required')]}
+\nORDER FAILURE: {'total_amount': [ErrorDetail(string='This field is required.', code='required')]}

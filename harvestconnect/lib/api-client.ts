@@ -184,7 +184,16 @@ class APIClient {
   public getMediaUrl(path: string): string {
     if (!path) return '';
     if (path.startsWith('http')) return path;
-    return `${this.baseURL.replace('/api', '')}/media/${path}`;
+    
+    // Remove leading slash from path to avoid double slashes in the final URL
+    const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+    
+    // If the path already includes 'media/', don't prepend it again
+    if (cleanPath.startsWith('media/')) {
+        return `${this.baseURL.replace('/api', '')}/${cleanPath}`;
+    }
+    
+    return `${this.baseURL.replace('/api', '')}/media/${cleanPath}`;
   }
 
   private async request<T>(
@@ -259,7 +268,8 @@ class APIClient {
         throw error;
       }
 
-      return await response.json();
+      const text = await response.text();
+      return text ? JSON.parse(text) : ({} as any);
     } catch (error: any) {
       clearTimeout(timeoutId);
       
@@ -564,7 +574,10 @@ class APIClient {
     }
   }
 
-  // ==================== Projects ====================
+  async getProjects(params?: Record<string, unknown>): Promise<PaginatedResponse<Project>> {
+    const query = new URLSearchParams(params as Record<string, string>).toString();
+    return this.request(`/projects/?${query}`);
+  }
 
   async createProject(data: Partial<Project>): Promise<Project> {
     return this.request('/projects/', {
@@ -573,10 +586,47 @@ class APIClient {
     });
   }
 
-  async updateProject(id: number, data: Partial<Project>): Promise<Project> {
+  async updateProject(id: number | string, data: Partial<Project>): Promise<Project> {
     return this.request(`/projects/${id}/`, {
       method: 'PATCH',
       body: data,
+    });
+  }
+
+  async deleteProject(id: number | string): Promise<void> {
+    await this.request(`/projects/${id}/`, {
+      method: 'DELETE',
+    });
+  }
+
+  // ==================== Chat ====================
+
+  async getChatRooms(): Promise<PaginatedResponse<any>> {
+    return this.request('/chat-rooms/');
+  }
+
+  async createChatRoom(data: any): Promise<any> {
+    return this.request('/chat-rooms/', {
+      method: 'POST',
+      body: data,
+    });
+  }
+
+  async getChatMessages(roomId: number | string): Promise<PaginatedResponse<any>> {
+    return this.request(`/messages/?room=${roomId}`);
+  }
+
+  async sendChatMessage(roomId: number | string, content: string): Promise<any> {
+    return this.request('/messages/', {
+      method: 'POST',
+      body: { room: roomId, content },
+    });
+  }
+
+  async getOrCreatePersonalChat(participantId: number): Promise<any> {
+    return this.request('/chat-rooms/get_or_create_personal/', {
+      method: 'POST',
+      body: { participant_id: participantId }
     });
   }
 }

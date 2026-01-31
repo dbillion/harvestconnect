@@ -1,9 +1,19 @@
 'use client';
 
 import CommunityHub from '@/components/community/community-hub';
+import { CreateHubDialog } from '@/components/community/create-hub-dialog';
 import { Sparkles } from 'lucide-react';
+import { Suspense, useRef } from 'react';
 
 export default function CommunityDiscovery() {
+  const refreshRoomsRef = useRef<(() => void) | null>(null);
+
+  const handleHubCreated = () => {
+    if (refreshRoomsRef.current) {
+        refreshRoomsRef.current();
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#FDFCFB] p-6 lg:p-12">
       <div className="max-w-[1600px] mx-auto space-y-12">
@@ -19,14 +29,14 @@ export default function CommunityDiscovery() {
               <p className="text-lg md:text-xl font-medium text-muted-foreground mt-2 max-w-xl">Where community connects, shares, and grows through shared purposes and local trade.</p>
            </div>
            <div className="flex items-center gap-4 bg-white p-2 rounded-[2.5rem] shadow-sm border border-border/10">
-              <button className="px-10 py-5 rounded-[2rem] bg-[#1A1A1A] text-white font-black uppercase text-[10px] tracking-widest shadow-2xl transition-all hover:bg-primary active:scale-95">
-                 Initialize New Hub
-              </button>
+              <CreateHubDialog onCreated={handleHubCreated} />
            </div>
         </header>
 
         <section className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
-           <CommunityHub />
+           <Suspense fallback={<div>Loading Community...</div>}>
+              <CommunityHub onRefresh={(ref) => refreshRoomsRef.current = ref} />
+           </Suspense>
         </section>
       </div>
     </div>

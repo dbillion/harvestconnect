@@ -16,6 +16,7 @@ import {
     Sparkles,
     User
 } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 interface ChatMessage {
@@ -32,10 +33,13 @@ interface UserPresence {
   status: 'online' | 'offline';
 }
 
-export default function CommunityHub() {
+export default function CommunityHub({ onRefresh }: { onRefresh?: (refreshFn: () => void) => void }) {
   const { user } = useAuth();
-  const [activeHub, setActiveHub] = useState('St. Jude\'s Cooperative');
-  const [activeRoom, setActiveRoom] = useState('General');
+  const searchParams = useSearchParams();
+  const queryRoomId = searchParams.get('room');
+  
+  const [rooms, setRooms] = useState<any[]>([]);
+  const [activeRoomId, setActiveRoomId] = useState<number | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [typingUsers, setTypingUsers] = useState<Set<string>>(new Set());
@@ -45,8 +49,49 @@ export default function CommunityHub() {
   const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    if (queryRoomId && rooms.length > 0) {
+        const id = parseInt(queryRoomId, 10);
+        if (rooms.some(r => r.id === id)) {
+            setActiveRoomId(id);
+        }
+    }
+  }, [queryRoomId, rooms]);
+
+  const fetchData = async () => {
+    try {
+      const roomsData = await apiClient.getChatRooms();
+      setRooms(roomsData.results || []);
+      if (roomsData.results?.length > 0 && !activeRoomId) {
+        setActiveRoomId(roomsData.results[0].id);
+      }
+    } catch (error) {
+      console.error('Failed to fetch rooms:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+    if (onRefresh) onRefresh(fetchData);
+  }, []);
+
+  const activeRoom = rooms.find(r => r.id === activeRoomId);
+
+  useEffect(() => {
+    if (!activeRoomId) return;
+    
+    // Fetch historical messages
+    apiClient.getChatMessages(activeRoomId).then(data => {
+      setMessages((data.results || []).map((m: any) => ({
+        id: m.id,
+        message: m.content,
+        user_id: m.sender.id,
+        username: `${m.sender.first_name || m.sender.email}`,
+        timestamp: m.timestamp
+      })));
+    });
+
     // WebSocket Setup
-    const wsUrl = `${process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8000'}/ws/chat/${activeRoom}/`;
+    const wsUrl = `${process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8000'}/ws/chat/${activeRoomId}/`;
     socketRef.current = new WebSocket(wsUrl);
 
     socketRef.current.onmessage = (event) => {
@@ -77,7 +122,7 @@ export default function CommunityHub() {
     };
 
     return () => socketRef.current?.close();
-  }, [activeRoom]);
+  }, [activeRoomId]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -85,18 +130,26 @@ export default function CommunityHub() {
     }
   }, [messages, typingUsers]);
 
-  const handleSendMessage = () => {
-    if (!input.trim() || !user) return;
+  const handleSendMessage = async () => {
+    if (!input.trim() || !user || !activeRoomId) return;
     
-    socketRef.current?.send(JSON.stringify({
-      type: 'message',
-      message: input,
-      user_id: user.id,
-      username: `${user.first_name} ${user.last_name}`
-    }));
-    
-    setInput('');
-    handleTyping(false);
+    try {
+      // Send via WebSocket for instant update
+      socketRef.current?.send(JSON.stringify({
+        type: 'message',
+        message: input,
+        user_id: user.id,
+        username: `${user.first_name} ${user.last_name}`
+      }));
+      
+      // Also persist to DB via API
+      await apiClient.sendChatMessage(activeRoomId, input);
+      
+      setInput('');
+      handleTyping(false);
+    } catch (error) {
+      console.error('Failed to send message:', error);
+    }
   };
 
   const handleTyping = (isTyping: boolean) => {
@@ -107,6 +160,17 @@ export default function CommunityHub() {
       username: user.first_name,
       user_id: user.id
     }));
+  };
+
+  const handleDeleteRoom = async (id: number) => {
+    if (!confirm('Are you sure you want to leave/delete this hub?')) return;
+    try {
+      await apiClient.request(`/chat-rooms/${id}/`, { method: 'DELETE' });
+      fetchData();
+      if (activeRoomId === id) setActiveRoomId(null);
+    } catch (error) {
+      console.error('Failed to delete room:', error);
+    }
   };
 
   const onInputChange = (val: string) => {
@@ -130,14 +194,15 @@ export default function CommunityHub() {
           <Sparkles size={24} />
         </div>
         <div className="w-8 h-px bg-border/50" />
-        {['S', 'F', 'P', 'Y'].map((hub, i) => (
+        {rooms.map((room, i) => (
           <div 
-            key={i} 
+            key={room.id} 
+            onClick={() => setActiveRoomId(room.id)}
             className={`size-12 rounded-2xl flex items-center justify-center font-black transition-all cursor-pointer ${
-              i === 0 ? 'bg-white shadow-md text-primary translate-x-1' : 'bg-muted/50 text-muted-foreground hover:bg-white hover:text-primary'
+              activeRoomId === room.id ? 'bg-white shadow-md text-primary translate-x-1' : 'bg-muted/50 text-muted-foreground hover:bg-white hover:text-primary'
             }`}
           >
-            {hub}
+            {room.name.charAt(0).toUpperCase()}
           </div>
         ))}
         <button className="mt-auto size-12 rounded-2xl bg-muted/30 border-2 border-dashed border-border flex items-center justify-center text-muted-foreground hover:bg-white hover:border-primary transition-all">
@@ -156,16 +221,16 @@ export default function CommunityHub() {
           <section>
             <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-4 ml-2">Text Channels</h3>
             <div className="space-y-1">
-              {['general', 'farmers-market', 'trade-services', 'prayer-requests'].map((ch) => (
+              {rooms.map((ch) => (
                 <button 
-                  key={ch}
-                  onClick={() => setActiveRoom(ch)}
+                  key={ch.id}
+                  onClick={() => setActiveRoomId(ch.id)}
                   className={`w-full text-left px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 transition-all ${
-                    activeRoom === ch ? 'bg-white shadow-sm text-primary' : 'text-muted-foreground hover:bg-white/50 hover:text-foreground'
+                    activeRoomId === ch.id ? 'bg-white shadow-sm text-primary' : 'text-muted-foreground hover:bg-white/50 hover:text-foreground'
                   }`}
                 >
-                  <Hash size={16} className={activeRoom === ch ? 'text-primary' : 'opacity-40'} />
-                  {ch.split('-').join(' ')}
+                  <Hash size={16} className={activeRoomId === ch.id ? 'text-primary' : 'opacity-40'} />
+                  {ch.name}
                 </button>
               ))}
             </div>
@@ -197,7 +262,11 @@ export default function CommunityHub() {
              <p className="text-xs font-black truncate">{user?.first_name} {user?.last_name}</p>
              <p className="text-[8px] uppercase font-black text-muted-foreground tracking-widest">Active Member</p>
           </div>
-          <Settings size={18} className="text-muted-foreground cursor-pointer hover:text-primary transition-colors" />
+          <Settings 
+            size={18} 
+            className="text-muted-foreground cursor-pointer hover:text-primary transition-colors" 
+            onClick={() => activeRoomId && handleDeleteRoom(activeRoomId)}
+          />
         </div>
       </aside>
 
@@ -210,9 +279,9 @@ export default function CommunityHub() {
                  <Hash size={20} />
               </div>
               <div>
-                 <h2 className="font-black text-lg tracking-tight capitalize">{activeRoom.split('-').join(' ')}</h2>
+                 <h2 className="font-black text-lg tracking-tight capitalize">{activeRoom?.name || 'Select Hub'}</h2>
                  <p className="text-[10px] font-black text-green-600 uppercase tracking-widest flex items-center gap-1.5">
-                   <div className="size-1.5 rounded-full bg-green-600 animate-pulse" /> Live Discussion
+                   <span className="size-1.5 rounded-full bg-green-600 animate-pulse" /> Live Discussion
                  </p>
               </div>
            </div>
@@ -279,7 +348,7 @@ export default function CommunityHub() {
                 value={input}
                 onChange={(e) => onInputChange(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                placeholder={`Message #${activeRoom}`}
+                placeholder={`Message #${activeRoom?.name || ''}`}
                 className="w-full bg-[#F8F9FA] border-none rounded-2xl px-16 py-6 font-bold text-lg focus:ring-2 focus:ring-primary/10 transition-all placeholder:text-muted-foreground/40 shadow-inner"
               />
               <div className="absolute left-6 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary transition-colors cursor-pointer">
@@ -308,7 +377,7 @@ export default function CommunityHub() {
                <div className="absolute bottom-1 right-1 size-6 bg-green-500 rounded-full border-4 border-white" />
             </div>
             
-            <h4 className="text-xl font-black tracking-tight">{activeHub}</h4>
+            <h4 className="text-xl font-black tracking-tight">{activeRoom?.name || 'Local Hub'}</h4>
             <p className="text-xs font-bold text-primary uppercase tracking-widest mt-1">Vibrant Cooperative</p>
          </div>
 
@@ -327,12 +396,12 @@ export default function CommunityHub() {
                  Active Members <span>{onlineUsers.size || 0}</span>
                </h3>
                <div className="space-y-4">
-                  {['Marcus T.', 'Brother John', 'Sister Sarah'].map((m) => (
-                    <div key={m} className="flex items-center gap-3">
+                  {(activeRoom?.participants || []).map((m: any) => (
+                    <div key={m.id} className="flex items-center gap-3">
                        <div className="size-8 rounded-lg bg-white shadow-sm flex items-center justify-center text-primary border border-border/5">
                           <User size={16} />
                        </div>
-                       <span className="text-sm font-bold">{m}</span>
+                       <span className="text-sm font-bold">{m.first_name || m.email}</span>
                        <div className="size-1.5 rounded-full bg-green-500 ml-auto" />
                     </div>
                   ))}

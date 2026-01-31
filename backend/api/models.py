@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
@@ -75,7 +76,7 @@ class BlogPost(models.Model):
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
     featured = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='blog/')
+    image = models.ImageField(upload_to='blog/', blank=True, null=True)
     views = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -109,7 +110,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.IntegerField(default=1)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='active')
-    image = models.ImageField(upload_to='products/')
+    image = models.ImageField(upload_to='products/', blank=True, null=True)
     images = models.JSONField(default=list, blank=True)  # Additional images
     rating = models.FloatField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
     reviews_count = models.IntegerField(default=0)
@@ -175,7 +176,7 @@ class Order(models.Model):
         ('cancelled', 'Cancelled'),
     ]
     
-    order_id = models.CharField(max_length=50, unique=True)
+    order_id = models.CharField(max_length=50, unique=True, default=uuid.uuid4, editable=False)
     buyer = models.ForeignKey(User, on_delete=models.PROTECT, related_name='orders')
     products = models.JSONField()  # Store product details at time of order
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -255,7 +256,7 @@ class ChatRoom(models.Model):
         ('channel', 'Public Channel'),
     ]
     
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)
     room_type = models.CharField(max_length=20, choices=ROOM_TYPES, default='personal')
     church = models.CharField(max_length=255, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)

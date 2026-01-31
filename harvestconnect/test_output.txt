@@ -1,0 +1,72 @@
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90m/home/deeone/Documents/HarvestConnect/harvestconnect[39m
+
+[90mstderr[2m | components/chat/chat-window.test.tsx[2m > [22m[2mChatWindow[2m > [22m[2mrenders chat window with room name
+[22m[39m[vitest] The vi.fn() mock did not use 'function' or 'class' in its implementation, see https://vitest.dev/api/vi#vi-spyon for examples.
+
+[90mstderr[2m | components/chat/chat-window.test.tsx[2m > [22m[2mChatWindow[2m > [22m[2mrenders input and send button
+[22m[39m[vitest] The vi.fn() mock did not use 'function' or 'class' in its implementation, see https://vitest.dev/api/vi#vi-spyon for examples.
+
+[90mstderr[2m | components/chat/chat-window.test.tsx[2m > [22m[2mChatWindow[2m > [22m[2msends a message when clicking send button
+[22m[39m[vitest] The vi.fn() mock did not use 'function' or 'class' in its implementation, see https://vitest.dev/api/vi#vi-spyon for examples.
+
+ [31m❯[39m components/chat/chat-window.test.tsx [2m([22m[2m3 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[32m 246[2mms[22m[39m
+[31m     [31m×[31m renders chat window with room name[39m[32m 192[2mms[22m[39m
+[31m     [31m×[31m renders input and send button[39m[32m 23[2mms[22m[39m
+[31m     [31m×[31m sends a message when clicking send button[39m[32m 21[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m components/chat/chat-window.test.tsx[2m > [22mChatWindow[2m > [22mrenders chat window with room name
+[41m[1m FAIL [22m[49m components/chat/chat-window.test.tsx[2m > [22mChatWindow[2m > [22mrenders input and send button
+[31m[1mTypeError[22m: () => ({
+      send: __vite_ssr_import_0__.vi.fn(),
+      close: __vite_ssr_import_0__.vi.fn(),
+      addEventL...<omitted>...}) is not a constructor[39m
+[36m [2m❯[22m components/chat/chat-window.tsx:[2m22:25[22m[39m
+    [90m 20| [39m  [34museEffect[39m(() [33m=>[39m {
+    [90m 21| [39m    const wsUrl = `${process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost…
+    [90m 22| [39m    socketRef[33m.[39mcurrent [33m=[39m [35mnew[39m [33mWebSocket[39m(wsUrl)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m 23| [39m
+    [90m 24| [39m    socketRef[33m.[39mcurrent[33m.[39monmessage [33m=[39m (event) [33m=>[39m {
+[90m [2m❯[22m Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:[2m25989:20[22m[39m
+[90m [2m❯[22m runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:[2m874:13[22m[39m
+[90m [2m❯[22m commitHookEffectListMount node_modules/react-dom/cjs/react-dom-client.development.js:[2m13249:29[22m[39m
+[90m [2m❯[22m commitHookPassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:[2m13336:11[22m[39m
+[90m [2m❯[22m commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:[2m15484:13[22m[39m
+[90m [2m❯[22m recursivelyTraversePassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:[2m15439:11[22m[39m
+[90m [2m❯[22m commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:[2m15519:11[22m[39m
+[90m [2m❯[22m flushPassiveEffects node_modules/react-dom/cjs/react-dom-client.development.js:[2m18432:9[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m components/chat/chat-window.test.tsx[2m > [22mChatWindow[2m > [22msends a message when clicking send button
+[31m[1mTypeError[22m: () => ({
+      send: mockSend,
+      close: __vite_ssr_import_0__.vi.fn(),
+      addEventListener: __vite_ssr_i...<omitted>...}) is not a constructor[39m
+[36m [2m❯[22m components/chat/chat-window.tsx:[2m22:25[22m[39m
+    [90m 20| [39m  [34museEffect[39m(() [33m=>[39m {
+    [90m 21| [39m    const wsUrl = `${process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost…
+    [90m 22| [39m    socketRef[33m.[39mcurrent [33m=[39m [35mnew[39m [33mWebSocket[39m(wsUrl)[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m 23| [39m
+    [90m 24| [39m    socketRef[33m.[39mcurrent[33m.[39monmessage [33m=[39m (event) [33m=>[39m {
+[90m [2m❯[22m Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:[2m25989:20[22m[39m
+[90m [2m❯[22m runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:[2m874:13[22m[39m
+[90m [2m❯[22m commitHookEffectListMount node_modules/react-dom/cjs/react-dom-client.development.js:[2m13249:29[22m[39m
+[90m [2m❯[22m commitHookPassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:[2m13336:11[22m[39m
+[90m [2m❯[22m commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:[2m15484:13[22m[39m
+[90m [2m❯[22m recursivelyTraversePassiveMountEffects node_modules/react-dom/cjs/react-dom-client.development.js:[2m15439:11[22m[39m
+[90m [2m❯[22m commitPassiveMountOnFiber node_modules/react-dom/cjs/react-dom-client.development.js:[2m15519:11[22m[39m
+[90m [2m❯[22m flushPassiveEffects node_modules/react-dom/cjs/react-dom-client.development.js:[2m18432:9[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[90m (3)[39m
+[2m   Start at [22m 18:12:58
+[2m   Duration [22m 3.20s[2m (transform 282ms, setup 190ms, import 968ms, tests 246ms, environment 1.40s)[22m
+

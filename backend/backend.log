@@ -1654,3 +1654,73 @@ HTTP GET /api/users/stats/ 401 [0.07, 127.0.0.1:50312]
 WARNING 2026-01-30 19:34:57,776 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 401 [0.07, 127.0.0.1:50312]
 HTTP GET /api/reviews/? 401 [0.07, 127.0.0.1:50316]
 WARNING 2026-01-30 19:34:57,779 runserver 115065 140413927159488 HTTP GET /api/reviews/? 401 [0.07, 127.0.0.1:50316]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:50304]
+INFO 2026-01-30 20:12:33,990 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:50304]
+HTTP OPTIONS /api/users/stats/ 200 [0.00, 127.0.0.1:33524]
+INFO 2026-01-30 20:12:34,000 runserver 115065 140413927159488 HTTP OPTIONS /api/users/stats/ 200 [0.00, 127.0.0.1:33524]
+HTTP OPTIONS /api/orders/? 200 [0.00, 127.0.0.1:33524]
+INFO 2026-01-30 20:12:34,007 runserver 115065 140413927159488 HTTP OPTIONS /api/orders/? 200 [0.00, 127.0.0.1:33524]
+Unauthorized: /api/users/stats/
+WARNING 2026-01-30 20:12:34,025 log 115065 140413788731072 Unauthorized: /api/users/stats/
+HTTP GET /api/users/stats/ 401 [0.01, 127.0.0.1:33524]
+WARNING 2026-01-30 20:12:34,027 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 401 [0.01, 127.0.0.1:33524]
+HTTP OPTIONS /api/products/? 200 [0.01, 127.0.0.1:33546]
+INFO 2026-01-30 20:12:34,036 runserver 115065 140413927159488 HTTP OPTIONS /api/products/? 200 [0.01, 127.0.0.1:33546]
+Unauthorized: /api/orders/
+WARNING 2026-01-30 20:12:34,041 log 115065 140413805516480 Unauthorized: /api/orders/
+HTTP GET /api/orders/? 401 [0.02, 127.0.0.1:33530]
+WARNING 2026-01-30 20:12:34,042 runserver 115065 140413927159488 HTTP GET /api/orders/? 401 [0.02, 127.0.0.1:33530]
+Unauthorized: /api/users/stats/
+WARNING 2026-01-30 20:12:34,050 log 115065 140413780338368 Unauthorized: /api/users/stats/
+HTTP GET /api/users/stats/ 401 [0.01, 127.0.0.1:33524]
+WARNING 2026-01-30 20:12:34,051 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 401 [0.01, 127.0.0.1:33524]
+HTTP OPTIONS /api/products/? 200 [0.02, 127.0.0.1:33554]
+INFO 2026-01-30 20:12:34,083 runserver 115065 140413927159488 HTTP OPTIONS /api/products/? 200 [0.02, 127.0.0.1:33554]
+Unauthorized: /api/orders/
+WARNING 2026-01-30 20:12:34,119 log 115065 140413805516480 Unauthorized: /api/orders/
+HTTP GET /api/orders/? 401 [0.07, 127.0.0.1:33546]
+WARNING 2026-01-30 20:12:34,120 runserver 115065 140413927159488 HTTP GET /api/orders/? 401 [0.07, 127.0.0.1:33546]
+HTTP GET /api/products/? 200 [0.15, 127.0.0.1:33524]
+INFO 2026-01-30 20:12:34,245 runserver 115065 140413927159488 HTTP GET /api/products/? 200 [0.15, 127.0.0.1:33524]
+HTTP GET /api/products/? 200 [0.22, 127.0.0.1:33546]
+INFO 2026-01-30 20:12:34,471 runserver 115065 140413927159488 HTTP GET /api/products/? 200 [0.22, 127.0.0.1:33546]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:33570]
+INFO 2026-01-30 20:12:38,219 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:33570]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:33570]
+INFO 2026-01-30 20:12:38,225 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:33570]
+Unauthorized: /api/users/stats/
+WARNING 2026-01-30 20:12:38,240 log 115065 140413788731072 Unauthorized: /api/users/stats/
+Unauthorized: /api/orders/
+WARNING 2026-01-30 20:12:38,241 log 115065 140413788731072 Unauthorized: /api/orders/
+HTTP GET /api/users/stats/ 401 [0.01, 127.0.0.1:33546]
+WARNING 2026-01-30 20:12:38,241 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 401 [0.01, 127.0.0.1:33546]
+HTTP GET /api/orders/? 401 [0.01, 127.0.0.1:33524]
+WARNING 2026-01-30 20:12:38,245 runserver 115065 140413927159488 HTTP GET /api/orders/? 401 [0.01, 127.0.0.1:33524]
+HTTP OPTIONS /api/reviews/? 200 [0.01, 127.0.0.1:33554]
+INFO 2026-01-30 20:12:38,254 runserver 115065 140413927159488 HTTP OPTIONS /api/reviews/? 200 [0.01, 127.0.0.1:33554]
+WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:33574]
+INFO 2026-01-30 20:12:38,264 runserver 115065 140413927159488 WebSocket HANDSHAKING /ws/chat/General/ [127.0.0.1:33574]
+WebSocket CONNECT /ws/chat/General/ [127.0.0.1:33574]
+INFO 2026-01-30 20:12:38,274 runserver 115065 140413927159488 WebSocket CONNECT /ws/chat/General/ [127.0.0.1:33574]
+Unauthorized: /api/users/stats/
+WARNING 2026-01-30 20:12:38,297 log 115065 140413805516480 Unauthorized: /api/users/stats/
+Unauthorized: /api/orders/
+WARNING 2026-01-30 20:12:38,298 log 115065 140413805516480 Unauthorized: /api/orders/
+HTTP GET /api/users/stats/ 401 [0.03, 127.0.0.1:33554]
+WARNING 2026-01-30 20:12:38,300 runserver 115065 140413927159488 HTTP GET /api/users/stats/ 401 [0.03, 127.0.0.1:33554]
+HTTP GET /api/orders/? 401 [0.02, 127.0.0.1:33546]
+WARNING 2026-01-30 20:12:38,303 runserver 115065 140413927159488 HTTP GET /api/orders/? 401 [0.02, 127.0.0.1:33546]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:33570]
+INFO 2026-01-30 20:12:38,307 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:33570]
+HTTP GET /api/reviews/? 200 [0.09, 127.0.0.1:33524]
+INFO 2026-01-30 20:12:38,375 runserver 115065 140413927159488 HTTP GET /api/reviews/? 200 [0.09, 127.0.0.1:33524]
+HTTP GET /api/reviews/? 200 [0.09, 127.0.0.1:33546]
+INFO 2026-01-30 20:12:38,468 runserver 115065 140413927159488 HTTP GET /api/reviews/? 200 [0.09, 127.0.0.1:33546]
+WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:33574]
+INFO 2026-01-30 20:12:56,920 runserver 115065 140413927159488 WebSocket DISCONNECT /ws/chat/General/ [127.0.0.1:33574]
+Performing system checks...
+
+January 30, 2026 - 19:21:17
+Django version 4.2.27, using settings 'harvestconnect.settings'
+Starting ASGI/Daphne version 4.2.1 development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.

@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 
 class ChatConsumer(JsonWebsocketConsumer):
     def connect(self):
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = f'chat_{self.room_name}'
+        self.room_id = self.scope['url_route']['kwargs']['room_id']
+        self.room_group_name = f'chat_{self.room_id}'
         self.user = self.scope['user']
 
         # Join room group
@@ -41,7 +41,7 @@ class ChatConsumer(JsonWebsocketConsumer):
             message = content.get('message')
             try:
                 user = User.objects.get(id=user_id)
-                room, _ = ChatRoom.objects.get_or_create(name=self.room_name)
+                room = ChatRoom.objects.get(id=self.room_id)
                 
                 ChatMessage.objects.create(
                     room=room,

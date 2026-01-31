@@ -26,7 +26,7 @@ export default function NewArticle() {
   const [formData, setFormData] = useState({
     title: '',
     content: '',
-    category: 'Produce',
+    category: 'farming',
     imageFile: null as File | null,
     summary: '',
     featured: false
@@ -55,9 +55,9 @@ export default function NewArticle() {
 
       await apiClient.createBlogPost(data);
       router.push('/community-hub');
-    } catch (error) {
-      console.error(error);
-      alert('Failed to create article. Please try again.');
+    } catch (error: any) {
+      console.error('Failed to create article:', error);
+      alert(`Failed to create article: ${error.message || 'Server error'}`);
     } finally {
       setSubmitting(false);
     }
@@ -105,12 +105,11 @@ export default function NewArticle() {
                     value={formData.category}
                     onChange={e => setFormData({...formData, category: e.target.value})}
                   >
-                    <option>Produce</option>
-                    <option>Craftsmanship</option>
-                    <option>Community</option>
-                    <option>Recipes</option>
-                    <option>Health</option>
-                    <option>Farming</option>
+                    <option value="farming">Farming</option>
+                    <option value="artisanship">Artisanship</option>
+                    <option value="faith">Faith</option>
+                    <option value="sustainability">Sustainability</option>
+                    <option value="market-updates">Market Updates</option>
                   </select>
                 </div>
                 <div className="space-y-4">

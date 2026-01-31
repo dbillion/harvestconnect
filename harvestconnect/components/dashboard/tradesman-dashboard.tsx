@@ -3,18 +3,18 @@
 import apiClient from '@/lib/api-client';
 import { useAuth } from '@/lib/auth-context';
 import {
-  Calendar as CalendarIcon,
-  FolderOpen,
-  LayoutDashboard,
-  LayoutList,
-  MessageSquare,
-  Plus,
-  Trello,
-  TrendingUp
+    Calendar as CalendarIcon,
+    FolderOpen,
+    LayoutDashboard,
+    LayoutList,
+    MessageSquare,
+    Trello,
+    TrendingUp
 } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import ChatWindow from '../chat/chat-window';
+import { CreateProjectDialog } from '../tradesman/create-project-dialog';
 import ProjectCalendar from '../tradesman/project-calendar';
 import ProjectKanban from '../tradesman/project-kanban';
 import ProjectTable from '../tradesman/project-table';
@@ -28,35 +28,54 @@ export default function TradesmanDashboard() {
     inquiries: 8
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [projects, setProjects] = useState<any[]>([]);
+
   const [activeTab, setActiveTab] = useState<'overview' | 'projects' | 'calendar'>('overview');
   const [viewMode, setViewMode] = useState<'board' | 'table'>('board');
 
-  const mockProjects: any[] = [
-    { id: 1, title: 'Mahogany Bookshelf', client_name: 'Anne K.', tradesman_name: 'Marcus T.', status: 'in_progress', priority: 'high', budget: 1200, progress: 65, due_date: '2024-03-15' },
-    { id: 2, title: 'Oak Dining Table', client_name: 'Robert T.', tradesman_name: 'Marcus T.', status: 'inquiry', priority: 'medium', budget: 4500, progress: 10, due_date: '2024-04-01' },
-    { id: 3, title: 'Kitchen Cabinets', client_name: 'Sister Sarah', tradesman_name: 'Marcus T.', status: 'quote_sent', priority: 'high', budget: 5500, progress: 0, due_date: '2024-03-20' },
-    { id: 4, title: 'Garden Fence', client_name: 'David W.', tradesman_name: 'Marcus T.', status: 'completed', priority: 'low', budget: 850, progress: 100, due_date: '2024-01-10' }
-  ];
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const statsData = await apiClient.getDashboardStats();
+      const s = statsData.stats;
+      setStats({
+        activeProjects: (s.pipeline?.in_progress || 0) + (s.pipeline?.quote_sent || 0),
+        earnings: s.earnings || 3840,
+        rating: s.rating_avg || 4.9,
+        inquiries: s.pipeline?.inquiry || 2
+      });
+
+      const projectsData = await apiClient.getProjects();
+      setProjects(projectsData.results || []);
+    } catch (error) {
+      console.error('Failed to fetch dashboard data:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const statsData = await apiClient.getDashboardStats();
-        const s = statsData.stats;
-        setStats({
-          activeProjects: (s.pipeline?.in_progress || 0) + (s.pipeline?.quote_sent || 0),
-          earnings: s.earnings || 3840,
-          rating: s.rating_avg || 4.9,
-          inquiries: s.pipeline?.inquiry || 2
-        });
-      } catch (error) {
-        console.error('Failed to fetch dashboard data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
     fetchData();
   }, []);
+
+  const handleUpdateProject = async (id: number, data: any) => {
+    try {
+      await apiClient.updateProject(id, data);
+      fetchData();
+    } catch (error) {
+      console.error('Failed to update project:', error);
+    }
+  };
+
+  const handleDeleteProject = async (id: number) => {
+    if (!confirm('Are you sure you want to delete this project?')) return;
+    try {
+      await apiClient.deleteProject(id);
+      fetchData();
+    } catch (error) {
+      console.error('Failed to delete project:', error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#FDFCFB] flex">
@@ -96,11 +115,7 @@ export default function TradesmanDashboard() {
         </nav>
 
         <div className="mt-auto space-y-6">
-          <Link href="/products/new">
-            <button className="w-full bg-primary text-white py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-3 hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 active:scale-95">
-              <Plus size={20} /> Create Project
-            </button>
-          </Link>
+          <CreateProjectDialog onCreated={fetchData} />
         </div>
       </aside>
 
@@ -115,7 +130,7 @@ export default function TradesmanDashboard() {
                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">Systems Online</span>
               </div>
               <h1 className="text-6xl font-black tracking-tighter text-[#1A1A1A]">Artisan Hub.</h1>
-              <p className="text-xl font-medium text-muted-foreground">Portfolio of {mockProjects.length} active and historic commitments.</p>
+              <p className="text-xl font-medium text-muted-foreground">Portfolio of {projects.length} active and historic commitments.</p>
             </div>
             
             <div className="flex items-center gap-4">
@@ -163,7 +178,7 @@ export default function TradesmanDashboard() {
                       <div className="flex items-center justify-between mb-10">
                          <h3 className="text-2xl font-black tracking-tighter text-[#1A1A1A]">Recent Commitments</h3>
                       </div>
-                      <ProjectTable projects={mockProjects.slice(0, 3)} />
+                      <ProjectTable projects={projects.slice(0, 3)} onUpdate={handleUpdateProject} onDelete={handleDeleteProject} />
                    </div>
                 </div>
 
@@ -186,9 +201,9 @@ export default function TradesmanDashboard() {
                   <h2 className="text-5xl font-black tracking-tighter text-[#1A1A1A]">Project Pipeline.</h2>
                </div>
                {viewMode === 'board' ? (
-                 <ProjectKanban initialProjects={mockProjects} />
+                 <ProjectKanban initialProjects={projects} onUpdate={handleUpdateProject} onDelete={handleDeleteProject} onRefresh={fetchData} />
                ) : (
-                 <ProjectTable projects={mockProjects} />
+                 <ProjectTable projects={projects} onUpdate={handleUpdateProject} onDelete={handleDeleteProject} />
                )}
             </div>
           )}

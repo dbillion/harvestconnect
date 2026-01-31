@@ -142,6 +142,10 @@ class APIClient {
     });
   }
 
+  async getDashboardStats() {
+    return this.request('/users/stats/');
+  }
+
   // ============ BLOG POSTS ============
 
   async getBlogPosts(params: any = {}) {
@@ -264,6 +268,57 @@ class APIClient {
     return this.request(`/orders/${id}/`, {
       method: 'PATCH',
       body: data,
+    });
+  }
+
+  // ============ PROJECTS ============
+
+  async getProjects(params: any = {}) {
+    const queryString = new URLSearchParams(params).toString();
+    return this.request(`/projects/?${queryString}`);
+  }
+
+  async createProject(data: any) {
+    return this.request('/projects/', {
+      method: 'POST',
+      body: data,
+    });
+  }
+
+  async updateProject(id: number | string, data: any) {
+    return this.request(`/projects/${id}/`, {
+      method: 'PATCH',
+      body: data,
+    });
+  }
+
+  async deleteProject(id: number | string) {
+    return this.request(`/projects/${id}/`, {
+      method: 'DELETE',
+    });
+  }
+
+  // ============ CHAT ============
+
+  async getChatRooms() {
+    return this.request('/chat-rooms/');
+  }
+
+  async createChatRoom(data: any) {
+    return this.request('/chat-rooms/', {
+      method: 'POST',
+      body: data,
+    });
+  }
+
+  async getChatMessages(roomId: number | string) {
+    return this.request(`/messages/?room=${roomId}`);
+  }
+
+  async sendChatMessage(roomId: number | string, content: string) {
+    return this.request('/messages/', {
+      method: 'POST',
+      body: { room: roomId, content },
     });
   }
 
