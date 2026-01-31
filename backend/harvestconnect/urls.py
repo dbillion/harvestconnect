@@ -45,7 +45,7 @@ router.register(r'chat-rooms', ChatRoomViewSet, basename='chat-room')
 router.register(r'messages', ChatMessageViewSet, basename='chat-message')
 
 urlpatterns = [
-    path(os.environ.get('ADMIN_URL_PATH', 'hc-secure-access-portal/'), admin.site.urls),
+    path(config('ADMIN_URL_PATH', default='hc-secure-access-portal/'), admin.site.urls),
     path('api/', include(router.urls)),
     path('api/auth/', include('dj_rest_auth.urls')),
     path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
