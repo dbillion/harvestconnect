@@ -7,7 +7,7 @@ WORKDIR /app
 ENV UV_COMPILE_BYTECODE=1
 ENV UV_LINK_MODE=copy
 
-# Install dependencies first (better caching)
+# Copy only requirements to leverage cache
 COPY requirements.txt .
 RUN uv pip install --system --no-cache -r requirements.txt
 
