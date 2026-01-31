@@ -1,5 +1,5 @@
 # --- Build Stage ---
-FROM ghcr.io/astral-sh/uv:latest as builder
+FROM ghcr.io/astral-sh/uv:latest AS builder
 
 WORKDIR /app
 
@@ -7,8 +7,8 @@ WORKDIR /app
 ENV UV_COMPILE_BYTECODE=1
 ENV UV_LINK_MODE=copy
 
-# Copy only requirements to leverage cache
-COPY requirements.txt .
+# Copy requirements from repo root context
+COPY backend/requirements.txt .
 RUN uv pip install --system --no-cache -r requirements.txt
 
 # --- Production Stage ---
@@ -20,8 +20,8 @@ WORKDIR /app
 COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-# Copy the rest of the backend code
-COPY . .
+# Copy all backend code from repo root context
+COPY backend/ .
 
 # Environment setup
 ENV PYTHONUNBUFFERED=1 \
