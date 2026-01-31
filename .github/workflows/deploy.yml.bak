@@ -46,7 +46,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
   deploy-backend:
-    name: Deploy Backend (Koyeb)
+    name: Deploy Backend (Fly.io)
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
     defaults:
@@ -56,20 +56,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Koyeb CLI
-        run: |
-          curl -L https://github.com/koyeb/koyeb-cli/releases/latest/download/koyeb-linux-amd64 -o koyeb
-          chmod +x koyeb
-          sudo mv koyeb /usr/local/bin/koyeb
+      - name: Setup Flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
 
-      - name: Deploy to Koyeb
-        run: |
-          # Note: This assumes you have already created the app and service on Koyeb
-          # or are using the 'koyeb deploy' command for the first time.
-          # We use --git harvestconnect-api to update a specific service.
-          koyeb service update harvestconnect-backend/api --git-branch main
+      - name: Deploy to Fly.io
+        run: flyctl deploy --remote-only
         env:
-          KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
   dast-scan:
     name: DAST Security Scan (OWASP ZAP)

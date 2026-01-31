@@ -3,12 +3,13 @@
 This plan outlines the creation of a professional-grade, zero-cost CI/CD pipeline for the HarvestConnect project using GitHub Actions.
 
 ## Objective
-Implement a secure, automated pipeline that handles testing, security scanning (SAST/DAST), and multi-platform deployment (Frontend to Netlify, Backend to Railway/Fly.io) while leveraging free tiers and GitHub Secrets.
+Implement a secure, automated pipeline that handles testing, security scanning (SAST/DAST), and multi-platform deployment (Frontend to Netlify, Backend to Koyeb) while leveraging free tiers and GitHub Secrets.
 
 ## Proposed Stack
 - **Frontend**: Next.js -> **Netlify** (Free Tier).
-- **Backend**: Django -> **Fly.io** (3 Free micro-VMs).
-- **Database**: **Neon** (Serverless Postgres Free Tier).
+- **Backend**: Django -> **Koyeb** (Hobby Micro-VM).
+- **Database**: **Neon** (Serverless Postgres Free Tier) or Koyeb Postgres.
+- **Redis (Chat)**: **Koyeb Redis**.
 - **Blobs/Storage**: **Cloudflare R2** (10GB Free, No Egress fees).
 - **Security Scanners**: Bandit (Backend), ESLint (Frontend), CodeQL (Unified).
 
@@ -37,8 +38,8 @@ Implement a secure, automated pipeline that handles testing, security scanning (
   - Use `netlify-cli` to deploy to Netlify.
   - Use GitHub Secrets for `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID`.
 - **Backend Deployment**:
-  - Use `flyctl`. (Integrated with GitHub Actions).
-  - Use GitHub Secrets for `FLY_API_TOKEN`.
+  - Use `koyeb-cli`. (Integrated with GitHub Actions).
+  - Use GitHub Secrets for `KOYEB_TOKEN`.
 - **Environment Management**:
   - Secrets injected from GitHub to platforms.
 
