@@ -66,6 +66,7 @@ jobs:
         run: |
           koyeb service update harvestconnect-backend/api \
             --git-branch main \
+            --docker-args "--build-arg CACHEBUST=$(date +%s)" \
             --env DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }} \
             --env DATABASE_URL=${{ secrets.DATABASE_URL }} \
             --env ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }} \

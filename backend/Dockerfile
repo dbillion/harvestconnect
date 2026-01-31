@@ -17,10 +17,16 @@ RUN uv pip install --system --no-cache -r requirements.txt
 # --- Production Stage ---
 FROM python:3.12-slim
 
+# Build argument for cache busting (change this value to force rebuild)
+ARG CACHEBUST=1
+
 WORKDIR /app
 
 COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
+
+# Use CACHEBUST to invalidate cache when needed
+RUN echo "Build timestamp: $CACHEBUST"
 
 COPY backend/ .
 
