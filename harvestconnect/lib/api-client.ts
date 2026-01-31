@@ -636,6 +636,12 @@ class APIClient {
     });
   }
 
+  async deleteChatRoom(id: number | string): Promise<void> {
+    await this.request(`/chat-rooms/${id}/`, {
+      method: 'DELETE',
+    });
+  }
+
   async getChatMessages(roomId: number | string): Promise<PaginatedResponse<any>> {
     return this.request(`/messages/?room=${roomId}`);
   }

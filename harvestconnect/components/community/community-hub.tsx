@@ -165,7 +165,7 @@ export default function CommunityHub({ onRefresh }: { onRefresh?: (refreshFn: ()
   const handleDeleteRoom = async (id: number) => {
     if (!confirm('Are you sure you want to leave/delete this hub?')) return;
     try {
-      await apiClient.request(`/chat-rooms/${id}/`, { method: 'DELETE' });
+      await apiClient.deleteChatRoom(id);
       fetchData();
       if (activeRoomId === id) setActiveRoomId(null);
     } catch (error) {
