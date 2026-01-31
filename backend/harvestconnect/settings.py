@@ -42,12 +42,8 @@ if not DEBUG:
     SECURE_HSTS_PRELOAD = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     
-    # CSRF Trusted Origins - Abstracted to ENV
-    CSRF_TRUSTED_ORIGINS = config(
-        'CSRF_TRUSTED_ORIGINS', 
-        default='https://*.koyeb.app,https://*.netlify.app', 
-        cast=Csv()
-    )
+    # CSRF Trusted Origins - Strictly environment-controlled
+    CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', cast=Csv())
 
 
 # Application definition
