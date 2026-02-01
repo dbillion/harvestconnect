@@ -3,11 +3,7 @@ services:
   - name: harvestconnect-backend
     type: web
     docker:
-      build:
-        context: .
-        dockerfile: backend/Dockerfile
-      args:
-        - CACHEBUST={{timestamp}}
+      image: dbillion/harvestconnect-backend:latest
     env:
       - name: DEBUG
         value: "false"
