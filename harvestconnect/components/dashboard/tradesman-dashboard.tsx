@@ -211,10 +211,7 @@ export default function TradesmanDashboard() {
           {activeTab === 'calendar' && (
             <div className="space-y-12">
                <h2 className="text-5xl font-black tracking-tighter text-[#1A1A1A]">Operation Schedule.</h2>
-               <ProjectCalendar events={[
-                  { id: 1, title: 'Mahogany Desk Start', date: '2024-01-30', type: 'project', client: 'Anne K.' },
-                  { id: 2, title: 'Kitchen Quote Deadline', date: '2024-02-05', type: 'deadline', client: 'Robert T.' }
-               ]} />
+               <ProjectCalendar projects={projects} />
             </div>
           )}
         </div>

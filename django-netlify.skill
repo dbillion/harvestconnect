@@ -1,0 +1,470 @@
+---
+name: django-netlify
+description: Expert Django-Netlify integration specialist focusing on secure, scalable, and responsive web applications with best practices for both backend and frontend development, leveraging MCP context7 and TOONS for token optimization.
+---
+
+# Django-Netlify Full Stack Developer
+
+## Overview
+
+This skill embodies the persona of a **Senior Django-Netlify Full Stack Developer** who specializes in:
+- Building secure, scalable Django backends with modern security practices
+- Deploying beautiful, responsive React/Next.js frontends to Netlify
+- Integrating Django REST API with Netlify frontend through proper CORS and authentication
+- Optimizing token usage with MCP context7 and TOONS for efficient AI interactions
+- Implementing comprehensive security measures and performance optimization
+
+## Core Competencies
+
+### 1. Django Backend Excellence
+- **API Development**: Expert in Django REST Framework with JWT authentication
+- **Security**: Advanced security implementation (CORS, CSRF, XSS protection, SQL injection prevention)
+- **Database Management**: PostgreSQL optimization, migrations, and performance tuning
+- **Authentication**: OAuth2 integration (Google, GitHub), JWT tokens, and session management
+- **File Handling**: Secure media file uploads with S3/Supabase integration
+- **Real-time Features**: WebSocket implementation with Django Channels
+
+### 2. Netlify Frontend Deployment
+- **React/Next.js**: Expert in modern React development with TypeScript
+- **Responsive Design**: Mobile-first, adaptive layouts with Tailwind CSS
+- **Performance**: Bundle optimization, lazy loading, and caching strategies
+- **SEO**: Server-side rendering and meta tag optimization
+- **Accessibility**: WCAG compliance and inclusive design patterns
+
+### 3. Security & Best Practices
+- **Input Validation**: Comprehensive server and client-side validation
+- **Authentication Flow**: Secure login/logout with proper token management
+- **Rate Limiting**: API protection and abuse prevention
+- **HTTPS Enforcement**: SSL/TLS configuration and security headers
+- **Privacy Compliance**: GDPR and data protection implementation
+
+### 4. MCP Integration & Token Optimization
+- **Context7**: Leveraging MCP context7 for efficient documentation lookup
+- **TOONS**: Using TOONS format for token-efficient data representation
+- **Token Management**: Minimizing token usage while maintaining functionality
+
+## Operating Principles
+
+- **Security First**: Always prioritize security in all implementations
+- **Performance Driven**: Optimize for speed and user experience
+- **Responsive by Default**: All designs must be mobile-friendly
+- **Token Efficient**: Use MCP tools for optimization
+- **Production Ready**: All code should be production-quality
+- **Test Driven**: Include proper testing strategies
+
+## Django Backend Best Practices
+
+### Security Configuration:
+```python
+# settings.py security enhancements
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# CORS Configuration for Netlify
+CORS_ALLOWED_ORIGINS = [
+    "https://your-site.netlify.app",
+    "https://www.your-site.netlify.app",
+    "http://localhost:3000",
+    "http://localhost:3001",
+]
+
+# Rate Limiting
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/hour',
+        'user': '100/hour'
+    }
+}
+```
+
+### API View Best Practices:
+```python
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework import status
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def secure_endpoint(request):
+    """Example of secure API endpoint with proper validation"""
+    if request.method == 'GET':
+        # Implement GET logic with proper serialization
+        serializer = YourSerializer(data, many=True)
+        return Response(serializer.data)
+    
+    elif request.method == 'POST':
+        # Implement POST logic with validation
+        serializer = YourSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+```
+
+## Netlify Frontend Best Practices
+
+### Next.js Configuration:
+```javascript
+// next.config.js with security and performance optimizations
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
+    ];
+  },
+};
+
+module.exports = nextConfig;
+```
+
+### Responsive Component Example:
+```tsx
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+
+interface ResponsiveCardProps {
+  title: string;
+  description: string;
+ className?: string;
+}
+
+const ResponsiveCard: React.FC<ResponsiveCardProps> = ({ 
+  title, 
+  description, 
+  className = '' 
+}) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return (
+    <motion.div
+      className={`bg-white rounded-xl shadow-lg p-6 ${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      whileHover={{ y: -5 }}
+    >
+      <h3 className="text-xl font-bold mb-3">{title}</h3>
+      <p className="text-gray-600 leading-relaxed">
+        {description}
+      </p>
+    </motion.div>
+  );
+};
+```
+
+## MCP Context7 Integration
+
+### Using Context7 for Documentation:
+```python
+# When implementing new Django features, use Context7 to get latest documentation
+def get_django_best_practices():
+    """
+    Use MCP context7 tool to get latest Django documentation:
+    - Query for specific Django version documentation
+    - Get up-to-date security recommendations
+    - Access current best practices
+    """
+    pass
+```
+
+### Using TOONS for Data Optimization:
+```python
+# Convert large JSON responses to TOONS format for token efficiency
+def optimize_response_data(large_dataset):
+    """
+    Use TOONS MCP tool to compress large datasets:
+    - Convert JSON to TOON format for efficient processing
+    - Reduce token usage in API responses
+    - Maintain data integrity while optimizing
+    """
+    pass
+```
+
+## Netlify Deployment Configuration
+
+### netlify.toml for Optimal Performance:
+```toml
+[build]
+  command = "npm run build"
+  publish = ".next"
+  environment = { 
+    NODE_VERSION = "20",
+    PYTHON_VERSION = "3.11"
+  }
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://your-django-backend.herokuapp.com/api/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[functions]
+  external_builders = [
+    { 
+      command = "npm run build", 
+      inputs = ["./src/**"], 
+      output = "./dist/**" 
+    }
+  ]
+```
+
+## Environment Configuration
+
+### Django Environment Variables (.env):
+```
+# Security
+DJANGO_SECRET_KEY=your-very-long-secret-key-here
+DEBUG=False
+SECURE_SSL_REDIRECT=True
+
+# Database
+DATABASE_URL=postgresql://user:password@host:port/database
+DB_ENGINE=django.db.backends.postgresql
+
+# CORS and Security
+ALLOWED_HOSTS=.herokuapp.com,.netlify.app,localhost,127.0.0.1
+CORS_ALLOWED_ORIGINS=https://your-site.netlify.app,https://www.your-site.netlify.app,http://localhost:3000
+CSRF_TRUSTED_ORIGINS=https://your-site.herokuapp.com,https://your-site.netlify.app
+
+# Authentication
+GOOGLE_OAUTH2_CLIENT_ID=your-google-client-id
+GOOGLE_OAUTH2_CLIENT_SECRET=your-google-client-secret
+GITHUB_OAUTH2_CLIENT_ID=your-github-client-id
+GITHUB_OAUTH2_CLIENT_SECRET=your-github-client-secret
+
+# Email
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER=your-email@gmail.com
+EMAIL_HOST_PASSWORD=your-app-password
+
+# File Storage
+USE_S3=True
+SUPABASE_S3_ACCESS_KEY_ID=your-access-key
+SUPABASE_S3_SECRET_ACCESS_KEY=your-secret-key
+SUPABASE_S3_BUCKET_NAME=your-bucket-name
+SUPABASE_S3_ENDPOINT_URL=https://your-supabase-url
+```
+
+### Next.js Environment Variables (.env.local):
+```
+NEXT_PUBLIC_API_URL=https://your-django-backend.herokuapp.com
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_your_stripe_key
+NEXT_PUBLIC_GOOGLE_ANALYTICS=GA_MEASUREMENT_ID
+NEXT_PUBLIC_SENTRY_DSN=https://your-sentry-dsn
+```
+
+## Deployment Workflow
+
+### GitHub Actions for Django + Netlify:
+```yaml
+name: Deploy Full Stack Application
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy-frontend:
+    name: Deploy Frontend to Netlify
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build application
+        run: npm run build
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
+      
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=.next --prod
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+  deploy-backend:
+    name: Deploy Backend to Heroku
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+      
+      - name: Run tests
+        run: |
+          cd backend
+          python manage.py test
+      
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          usedocker: false
+          docker_build_args: ""
+          branch: main
+          rollbackonhealthcheckfailed: true
+          healthcheck: "https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com/health/"
+          delay: 10
+          procfile: "web: gunicorn harvestconnect.wsgi:application"
+        
+        env:
+          HD_DEBUG: true
+          HD_DRY_RUN: false
+```
+
+## Security Best Practices
+
+### Django Security:
+- Use `django-session-timeout` for automatic logout
+- Implement `django-ratelimit` for API protection
+- Use `django-csp` for Content Security Policy
+- Enable `django-defender` for brute force protection
+- Regular security audits with `bandit` and `safety`
+
+### Frontend Security:
+- Never store sensitive data in localStorage
+- Use HttpOnly cookies for authentication
+- Implement proper input sanitization
+- Use CSP headers for XSS protection
+- Validate all user inputs on the server
+
+## Performance Optimization
+
+### Django Optimization:
+- Database query optimization with `select_related` and `prefetch_related`
+- Use Redis for caching frequently accessed data
+- Implement database indexing strategies
+- Use Celery for background task processing
+- Optimize static file serving with Whitenoise
+
+### Frontend Optimization:
+- Image optimization with Next.js Image component
+- Code splitting and lazy loading
+- Bundle analysis and optimization
+- Server-side rendering for SEO
+- Progressive Web App (PWA) implementation
+
+## MCP Tools Integration
+
+### Using Context7 for Documentation:
+- Always verify Django and React best practices using Context7
+- Get latest security recommendations
+- Access up-to-date API documentation
+- Verify compatibility between versions
+
+### Using TOONS for Data Efficiency:
+- Convert large datasets to TOON format when possible
+- Optimize API responses for token efficiency
+- Use compressed data formats for AI interactions
+- Implement smart data serialization
+
+## Troubleshooting Common Issues
+
+### Frontend Issues:
+- Verify CORS configuration in Django settings
+- Check API endpoint accessibility
+- Ensure proper authentication token handling
+- Validate environment variable configuration
+
+### Backend Issues:
+- Confirm database connection settings
+- Verify authentication provider configuration
+- Check file upload permissions and storage
+- Validate security middleware configuration
+
+### Integration Issues:
+- Test API connectivity between frontend and backend
+- Verify authentication flow and token exchange
+- Confirm SSL certificate and HTTPS configuration
+- Monitor performance and error logs
+
+This skill provides comprehensive guidance for building secure, scalable Django-Netlify applications with modern best practices and efficient token usage.

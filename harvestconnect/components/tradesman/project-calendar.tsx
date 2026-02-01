@@ -11,7 +11,7 @@ interface Event {
   client: string;
 }
 
-export default function ProjectCalendar({ events = [] }: { events?: Event[] }) {
+export default function ProjectCalendar({ projects = [] }: { projects?: any[] }) {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const daysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
@@ -22,7 +22,7 @@ export default function ProjectCalendar({ events = [] }: { events?: Event[] }) {
 
   const days = [];
   const totalDays = daysInMonth(year, month);
-  const startOffset = firstDayOfMonth(year, month);
+ const startOffset = firstDayOfMonth(year, month);
 
   // Fill empty days
   for (let i = 0; i < startOffset; i++) {
@@ -36,7 +36,30 @@ export default function ProjectCalendar({ events = [] }: { events?: Event[] }) {
 
   const getEventsForDay = (day: number) => {
     const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-    return events.filter(e => e.date === dateStr);
+    
+    return projects
+      .filter(project => {
+        // Parse and normalize dates to handle different formats
+        const startDate = project.start_date ? new Date(project.start_date).toISOString().split('T')[0] : null;
+        const endDate = project.end_date ? new Date(project.end_date).toISOString().split('T')[0] : null;
+        const currentDateStr = dateStr;
+        
+        // Check if project starts or ends on this day, or spans this day
+        return (
+          startDate === currentDateStr || 
+          endDate === currentDateStr ||
+          (startDate && endDate && 
+           new Date(startDate) <= new Date(currentDateStr) && 
+           new Date(endDate) >= new Date(currentDateStr))
+        );
+      })
+      .map(project => ({
+        id: project.id,
+        title: project.title,
+        date: dateStr,
+        type: 'project',
+        client: project.client?.first_name || project.client?.email || 'Client'
+      }));
   };
 
   return (
