@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   backend:
-    image: dbillion/harvestconnect-backend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.corrected
     container_name: harvestconnect-backend
     ports:
       - "8000:8000"
@@ -20,7 +22,9 @@ services:
     restart: unless-stopped
 
   frontend:
-    image: dbillion/harvestconnect-frontend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
     container_name: harvestconnect-frontend
     ports:
       - "3000:3000"

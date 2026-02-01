@@ -1,0 +1,78 @@
+# Next.js Frontend Multi-stage Dockerfile (Optimized)
+ARG NEXT_PUBLIC_API_URL=http://localhost:8000/api
+ARG NEXT_PUBLIC_API_TIMEOUT=30000
+
+# Define a base build stage
+FROM node:20-alpine AS deps-base
+WORKDIR /app
+COPY package*.json ./
+
+# Install only production dependencies first (to leverage layer caching)
+RUN npm ci --only=production && npm cache clean --force
+
+# Define build dependencies stage
+FROM node:20-alpine AS build-deps
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci && npm cache clean --force
+
+# Build stage - copy only necessary files
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+# Copy production dependencies first
+COPY --from=deps-base /app/node_modules ./node_modules
+
+# Copy package files
+COPY package*.json ./
+
+# Copy only source code needed for build
+COPY next.config.js tsconfig.json ./
+COPY public ./public
+COPY src ./src
+COPY styles ./styles 2>/dev/null || echo "No styles directory"
+COPY components ./components 2>/dev/null || echo "No components directory"
+COPY pages ./pages 2>/dev/null || echo "No pages directory"
+COPY app ./app 2>/dev/null || echo "No app directory"
+
+# Set build-time environment variables
+ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_API_TIMEOUT
+ENV NODE_ENV=production
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_TIMEOUT=$NEXT_PUBLIC_API_TIMEOUT
+
+# Build Next.js application
+RUN npm run build
+
+# Production stage - minimal runtime
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+# Set production environment
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0
+ENV PORT=3000
+
+# Copy package files and production dependencies
+COPY package*.json ./
+COPY --from=deps-base /app/node_modules ./node_modules
+
+# Copy built application
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+USER nextjs
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+    CMD node -e "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+
+# Start Next.js application
+CMD ["npm", "start"]

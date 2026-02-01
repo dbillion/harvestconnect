@@ -80,7 +80,7 @@ jobs:
       - name: Deploy to Koyeb
         env:
           KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
-        run: koyeb services apply -f koyeb.yaml --app harvestconnect-app
+        run: koyeb service update harvestconnect-backend --definition koyeb.yaml
 
   dast-scan:
     name: DAST Security Scan (OWASP ZAP)

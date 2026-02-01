@@ -1,1 +1,38 @@
-FROM python:3.12-alpine\n\n# Build argument for cache busting\nARG CACHEBUST=1\n\nWORKDIR /app\n\n# Copy backend requirements first\nCOPY backend/requirements.txt .\n\n# Install system dependencies and uv (Astral's ultra-fast package installer)\nRUN apk add --no-cache postgresql-dev gcc musl-dev linux-headers libffi-dev curl && \\\n    curl -LsSf https://astral.sh/uv/install.sh | sh && \\\n    export PATH=\"/root/.local/bin:$PATH\" && \\\n    uv pip install --system --no-cache -r requirements.txt && \\\n    echo \"Build timestamp: $CACHEBUST\"\n\n# Add uv to PATH\nENV PATH=\"/root/.local/bin:$PATH\"\n\n# Copy only the backend application code\nCOPY backend/. .\n\n# Set environment variables\nENV PYTHONUNBUFFERED=1\nENV PYTHONDONTWRITEBYTECODE=1\n\n# Create staticfiles directory\nRUN mkdir -p staticfiles\n\n# Collect static files (optional, can do at runtime too)\nRUN python manage.py collectstatic --noinput --settings=harvestconnect.settings || echo \"Continuing without collecting static files\"\n\n# Expose port\nEXPOSE 8000\n\n# Run application\nCMD [\"daphne\", \"-b\", \"0.0.0.0\", \"-p\", \"8000\", \"harvestconnect.asgi:application\"]\n
+FROM python:3.12-alpine
+
+# Build argument for cache busting
+ARG CACHEBUST=1
+
+WORKDIR /app
+
+# Copy backend requirements first (from the backend subdirectory)
+COPY backend/requirements.txt .
+
+# Install system dependencies and uv (Astral's ultra-fast package installer)
+RUN apk add --no-cache postgresql-dev gcc musl-dev linux-headers libffi-dev curl && \\
+    curl -LsSf https://astral.sh/uv/install.sh | sh && \\
+    export PATH=\"/root/.local/bin:$PATH\" && \\
+    uv pip install --system --no-cache -r requirements.txt && \\
+    echo \"Build timestamp: $CACHEBUST\"
+
+# Add uv to PATH
+ENV PATH=\"/root/.local/bin:$PATH\"
+
+# Copy only the backend application code
+COPY backend/. .
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Create staticfiles directory
+RUN mkdir -p staticfiles
+
+# Collect static files (optional, can do at runtime too)
+RUN python manage.py collectstatic --noinput --settings=harvestconnect.settings || echo \"Continuing without collecting static files\"
+
+# Expose port
+EXPOSE 8000
+
+# Run application
+CMD [\"daphne\", \"-b\", \"0.0.0.0\", \"-p\", \"8000\", \"harvestconnect.asgi:application\"]
