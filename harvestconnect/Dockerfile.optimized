@@ -17,10 +17,9 @@ RUN npm ci --silent && npm cache clean --force
 # Copy only necessary source files for build (respecting .dockerignore)
 COPY next.config.js tsconfig.json ./
 COPY public ./public
-COPY src ./src
-COPY components ./components
-COPY pages ./pages
 COPY app ./app
+COPY components ./components
+COPY lib ./lib
 
 # Set build-time environment variables
 ARG NEXT_PUBLIC_API_URL

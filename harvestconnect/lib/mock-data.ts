@@ -9,14 +9,20 @@ const mockUser: User = {
   email: 'artisan@example.com',
   first_name: 'Gabriel',
   last_name: 'Solomon',
-  profile: {
+    profile: {
     id: 1,
     user_id: 1,
     role: 'artisan',
     bio: 'Crafting excellence with tradition and heart.',
     location: 'Shenandoah Valley',
-    verified: true,
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100'
+    home_church: 'Grace Community Church',
+    is_verified: true,
+    faith_based: true,
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100',
+    banner: 'https://images.unsplash.com/photo-1579546929662-711aa81148cf?auto=format&fit=crop&q=80&w=800',
+    phone: '+1-555-0123',
+    latitude: 38.89511,
+    longitude: -77.03637
   }
 };
 

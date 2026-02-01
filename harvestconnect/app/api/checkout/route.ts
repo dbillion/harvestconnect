@@ -3,6 +3,14 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
+    // Check if stripe is properly initialized
+    if (!stripe) {
+      return NextResponse.json(
+        { error: 'Payment processing is not configured' },
+        { status: 500 }
+      );
+    }
+
     const { items, type = 'payment', billingPeriod = 'monthly', productId } = await req.json();
 
     let sessionParams: any = {

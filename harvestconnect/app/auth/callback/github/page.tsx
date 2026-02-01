@@ -1,9 +1,12 @@
 'use client';
 
-import apiClient from '@/lib/api-client';
 import { Loader2 } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import apiClient from '@/lib/api-client';
+
+// Opt out of static generation to avoid useSearchParams issues
+export const dynamic = 'force-dynamic';
 
 export default function GithubCallback() {
   const router = useRouter();
@@ -24,7 +27,7 @@ export default function GithubCallback() {
     } else {
       setError('No authorization code found.');
     }
-  }, [searchParams, router]);
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
