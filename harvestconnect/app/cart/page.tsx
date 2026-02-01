@@ -183,6 +183,13 @@ export default function CartPage() {
                      )}
                   </button>
                   
+                  <Link href="/marketplace" className="mt-4">
+                    <button className="btn-outline w-full h-14 flex items-center justify-center gap-3">
+                      <span>Continue Shopping</span>
+                      <ShoppingBag size={20} />
+                    </button>
+                  </Link>
+                  
                   <div className="mt-8 flex items-center justify-center gap-2 text-muted-foreground text-xs font-bold uppercase tracking-widest">
                      <span className="material-symbols-outlined text-sm">enhanced_encryption</span>
                      Secure Checkout with Stripe

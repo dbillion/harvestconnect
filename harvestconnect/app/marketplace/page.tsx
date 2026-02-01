@@ -4,6 +4,7 @@ import Footer from '@/components/footer';
 import Navigation from '@/components/navigation';
 import apiClient, { Category, Product } from '@/lib/api-client';
 import { useCart } from '@/lib/cart-context';
+import { useToast } from '@/components/ui/toast';
 import { Search, SlidersHorizontal, Star } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';

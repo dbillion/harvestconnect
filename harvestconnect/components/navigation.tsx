@@ -61,13 +61,14 @@ export default function Navigation() {
 
           {/* Right Side - Auth & Mobile Menu */}
           <div className="flex items-center gap-3">
-            <Link href="/cart" className="relative p-2 group">
-              <span className="material-symbols-outlined text-foreground hover:text-primary transition-colors">shopping_bag</span>
+            <Link href="/cart" className="relative p-2 group hover:bg-accent rounded-full transition-colors">
+              <span className="material-symbols-outlined text-foreground hover:text-primary transition-colors text-xl">shopping_bag</span>
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-black size-5 rounded-full flex items-center justify-center shadow-lg animate-in zoom-in duration-300">
                   {totalItems}
                 </span>
               )}
+              <span className="sr-only">Cart ({totalItems} items)</span>
             </Link>
 
             {isAuthenticated ? (

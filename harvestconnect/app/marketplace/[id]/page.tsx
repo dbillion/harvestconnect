@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import apiClient, { Review } from '@/lib/api-client';
 import { useAuth } from '@/lib/auth-context';
 import { useCart } from '@/lib/cart-context';
+import { useToast } from '@/components/ui/toast';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';

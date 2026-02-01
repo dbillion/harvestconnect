@@ -3,6 +3,7 @@
 import { AuthProvider } from '@/lib/auth-context';
 import { CartProvider } from '@/lib/cart-context';
 import { Analytics } from '@vercel/analytics/react';
+import { ToastProvider } from '@/components/ui/toast';
 
 export default function ClientLayout({
   children,
@@ -12,8 +13,10 @@ export default function ClientLayout({
   return (
     <AuthProvider>
       <CartProvider>
-        {children}
-        <Analytics />
+        <ToastProvider>
+          {children}
+          <Analytics />
+        </ToastProvider>
       </CartProvider>
     </AuthProvider>
   )

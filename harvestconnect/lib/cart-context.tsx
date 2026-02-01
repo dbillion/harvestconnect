@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useToast } from "@/components/ui/toast";
 
 export interface CartItem {
   id: number;
@@ -24,6 +25,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>([]);
+  const { showToast } = useToast();
 
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -45,17 +47,29 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const addItem = (newItem: CartItem) => {
     setItems((currentItems) => {
       const existingItem = currentItems.find((item) => item.id === newItem.id);
+      let newItems;
       if (existingItem) {
-        return currentItems.map((item) =>
+        newItems = currentItems.map((item) =>
           item.id === newItem.id ? { ...item, quantity: item.quantity + newItem.quantity } : item
         );
+        showToast(`Updated ${newItem.title} quantity in cart`, 'success');
+      } else {
+        newItems = [...currentItems, newItem];
+        showToast(`${newItem.title} added to cart`, 'success');
       }
-      return [...currentItems, newItem];
+      return newItems;
     });
   };
 
   const removeItem = (id: number) => {
-    setItems((currentItems) => currentItems.filter((item) => item.id !== id));
+    setItems((currentItems) => {
+      const removedItem = currentItems.find(item => item.id === id);
+      const newItems = currentItems.filter((item) => item.id !== id);
+      if (removedItem) {
+        showToast(`${removedItem.title} removed from cart`, 'info');
+      }
+      return newItems;
+    });
   };
 
   const updateQuantity = (id: number, quantity: number) => {
@@ -63,13 +77,21 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       removeItem(id);
       return;
     }
-    setItems((currentItems) =>
-      currentItems.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
+    setItems((currentItems) => {
+      const updatedItem = currentItems.find(item => item.id === id);
+      const newItems = currentItems.map((item) => 
+        item.id === id ? { ...item, quantity } : item
+      );
+      if (updatedItem) {
+        showToast(`${updatedItem.title} quantity updated to ${quantity}`, 'success');
+      }
+      return newItems;
+    });
   };
 
   const clearCart = () => {
     setItems([]);
+    showToast('Cart cleared', 'info');
   };
 
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
