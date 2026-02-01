@@ -1,0 +1,50 @@
+Deploy Backend (Koyeb)	Log in to Docker Hub	﻿2026-02-01T08:05:33.4656451Z ##[group]Run docker/login-action@v3
+Deploy Backend (Koyeb)	Log in to Docker Hub	2026-02-01T08:05:33.4657160Z with:
+Deploy Backend (Koyeb)	Log in to Docker Hub	2026-02-01T08:05:33.4657354Z   logout: true
+Deploy Backend (Koyeb)	Log in to Docker Hub	2026-02-01T08:05:33.4657536Z ##[endgroup]
+Deploy Backend (Koyeb)	Log in to Docker Hub	2026-02-01T08:05:33.7715480Z ##[error]Username and password required
+Deploy Frontend (Netlify)	Build Next.js	﻿2026-02-01T08:06:07.6981910Z ##[group]Run npm run build
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:07.6982218Z [36;1mnpm run build[0m
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:07.7013464Z shell: /usr/bin/bash -e {0}
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:07.7013705Z env:
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:07.7014241Z   NEXT_PUBLIC_API_URL: ***
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:07.7014933Z   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ***
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:07.7015210Z ##[endgroup]
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:07.8086181Z 
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:07.8086860Z > my-v0-project@0.1.0 build
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:07.8087361Z > next build
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:07.8087576Z 
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.0181152Z [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.3647926Z ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.3775189Z Attention: Next.js now collects completely anonymous telemetry regarding usage.
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.3776497Z This information is used to shape Next.js' roadmap and prioritize features.
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.3778246Z You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.3779412Z https://nextjs.org/telemetry
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.3779713Z 
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.3908918Z    ▲ Next.js 16.0.3 (Turbopack)
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.3909579Z    - Experiments (use with caution):
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.3910244Z      · optimizePackageImports
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.3911165Z 
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.4586238Z    Creating an optimized production build ...
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.5699810Z [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7560560Z  ⨯ ERROR: This build is using Turbopack, with a `webpack` config and no `turbopack` config.
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7561368Z    This may be a mistake.
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7561600Z 
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7561879Z    As of Next.js 16 Turbopack is enabled by default and
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7562628Z    custom webpack configurations may need to be migrated to Turbopack.
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7563065Z 
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7563448Z    NOTE: your `webpack` config may have been added by a configuration plugin.
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7564154Z 
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7564734Z    To configure Turbopack, see https://nextjs.org/docs/app/api-reference/next-config-js/turbopack
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7565231Z 
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7565487Z    TIP: Many applications work fine under Turbopack with no configuration,
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7566031Z    if that is the case for you, you can silence this error by passing the
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7566523Z    `--turbopack` or `--webpack` flag explicitly or simply setting an 
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.7567316Z    empty turbopack config in your Next config file (e.g. `turbopack: {}`).
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.8549447Z 
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.8550482Z > Build error occurred
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.8592161Z Error: Call retries were exceeded
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.8592741Z     at ignore-listed frames {
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.8593166Z   type: 'WorkerError'
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.8593515Z }
+Deploy Frontend (Netlify)	Build Next.js	2026-02-01T08:06:08.8789986Z ##[error]Process completed with exit code 1.

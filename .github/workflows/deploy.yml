@@ -36,6 +36,7 @@ jobs:
         env:
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
           NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
+          NODE_OPTIONS: "--max_old_space_size=4096"
 
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
@@ -64,7 +65,7 @@ jobs:
       - name: Build and push Backend Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./backend
           file: ./backend/Dockerfile
           push: true
           tags: dbillion/harvestconnect-backend:latest
