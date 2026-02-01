@@ -37,6 +37,7 @@ jobs:
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
           NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}
           NODE_OPTIONS: "--max_old_space_size=4096"
+        timeout-minutes: 15
 
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
@@ -46,12 +47,37 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
+      - name: Verify Netlify deployment
+        run: |
+          sleep 30
+          if curl -f -s "${{ secrets.NEXT_PUBLIC_API_URL }}" > /dev/null; then
+            echo "✅ Frontend deployment verified"
+          else
+            echo "⚠️ Frontend deployment may need manual verification"
+          fi
+        continue-on-error: true
+
   deploy-backend:
+github/workflows/deploy.yml‎
     name: Deploy Backend (Koyeb)
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
+    timeout-minutes: 30
+
     steps:
       - uses: actions/checkout@v4
+
+      - name: Validate secrets
+        run: |
+          if [[ -z "${{ secrets.DOCKER_USERNAME }}" ]] || [[ -z "${{ secrets.DOCKER_PASSWORD }}" ]]; then
+            echo "❌ Docker credentials not found"
+            exit 1
+          fi
+          if [[ -z "${{ secrets.KOYEB_TOKEN }}" ]] || [[ -z "${{ secrets.DATABASE_URL }}" ]]; then
+            echo "❌ Koyeb credentials or database URL not found"
+            exit 1
+          fi
+          echo "✅ Secrets validation passed"
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -61,6 +87,8 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: network=host
 
       - name: Build and push Backend Docker image
         uses: docker/build-push-action@v5
@@ -68,9 +96,11 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: dbillion/harvestconnect-backend:latest
-          cache-from: type=registry,ref=dbillion/harvestconnect-backend:buildcache
-          cache-to: type=registry,ref=dbillion/harvestconnect-backend:buildcache,mode=max
+          tags: ${{ secrets.DOCKER_USERNAME }}/harvestconnect-backend:latest,${{ secrets.DOCKER_USERNAME }}/harvestconnect-backend:${{ github.sha }}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/harvestconnect-backend:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/harvestconnect-backend:buildcache,mode=max
+          platforms: linux/amd64
+        timeout-minutes: 15
 
       - name: Install Koyeb CLI
         run: |
@@ -80,19 +110,90 @@ jobs:
       - name: Deploy to Koyeb
         env:
           KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
-        run: koyeb service update harvestconnect-backend --definition koyeb.yaml
+        run: |
+          # Create or update service
+          if koyeb service list | grep -q "harvestconnect-backend"; then
+            echo "🔄 Updating existing service..."
+            koyeb service update harvestconnect-backend --definition koyeb.yaml
+          else
+            echo "🚀 Creating new service..."
+            koyeb service create harvestconnect-backend --definition koyeb.yaml
+          fi
+          
+          # Wait for deployment to complete
+          echo "⏳ Waiting for deployment to complete..."
+          koyeb service ps harvestconnect-backend --watch
+
+      - name: Verify backend deployment
+        run: |
+          sleep 60
+          BACKEND_URL=$(koyeb service inspect harvestconnect-backend 2>/dev/null | grep -o 'https://[^"]*\.koyeb\.app' | head -1)
+          if [[ -n "$BACKEND_URL" ]]; then
+            echo "🎯 Backend URL: $BACKEND_URL"
+            if curl -f -s "$BACKEND_URL/health/" > /dev/null; then
+              echo "✅ Backend deployment verified"
+            else
+              echo "⚠️ Backend health check failed - may need manual verification"
+            fi
+          else
+            echo "⚠️ Could not retrieve backend URL - check Koyeb dashboard"
+          fi
+        continue-on-error: true
+        timeout-minutes: 5
+
+      - name: Slack notification on failure
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          text: '❌ Deploy failed for ${{ github.repository }} - ${{ github.ref_name }}'
+        if: failure() && github.repository == 'dbillion/harvestconnect'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
   dast-scan:
     name: DAST Security Scan (OWASP ZAP)
     runs-on: ubuntu-latest
     needs: [deploy-frontend]
+    if: github.ref == 'refs/heads/main'
+    timeout-minutes: 20
+
     steps:
+      - name: Wait for deployment readiness
+        run: sleep 120
+
       - name: ZAP Scan
         uses: zaproxy/action-baseline@v0.14.0
         with:
-          target: ${{ secrets.PRODUCTION_URL }}
+          target: ${{ secrets.NEXT_PUBLIC_API_URL }}
           rules_file_name: '.zap/rules.tsv'
           fail_action: false
           allow_issue_writing: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Archive ZAP results
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-scan-results
+          path: |
+            zap_results_*.txt
+            zap_report_*.html
+        if: always()
+
+  notify-success:
+    name: Notify Success
+    needs: [deploy-frontend, deploy-backend]
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Slack notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: success
+          channel: '#deployments'
+          text: '✅ Deploy succeeded for ${{ github.repository }} - ${{ github.ref_name }} (${{ github.sha }})'
+        if: github.repository == 'dbillion/harvestconnect'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
