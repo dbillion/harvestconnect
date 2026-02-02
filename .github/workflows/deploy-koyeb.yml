@@ -24,7 +24,7 @@ jobs:
           
       - name: Deploy to Koyeb using koyeb.yaml
         run: |
-          koyeb services apply --file koyeb.yaml --app harvestconnect-app
+          koyeb services apply koyeb.yaml --app harvestconnect-app
         env:
           KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
           
