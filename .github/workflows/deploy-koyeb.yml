@@ -2,32 +2,84 @@ name: Deploy to Koyeb
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:  # Allows manual trigger
+    branches: [ main, master ]
+  workflow_dispatch:
 
-permissions:
-  contents: read
+env:
+  KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
 jobs:
   deploy:
-    name: Deploy to Koyeb
     runs-on: ubuntu-latest
+    environment: production
     
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Koyeb CLI
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/koyeb/koyeb-cli/master/install.sh | sh
+        echo "$HOME/.koyeb/bin" >> $GITHUB_PATH
+
+    - name: Configure Koyeb
+      run: |
+        echo "Setting up Koyeb CLI..."
+        koyeb version
+        koyeb login --token $KOYEB_TOKEN
+
+    - name: Create Koyeb App
+      run: |
+        koyeb app init harvestconnect || echo "App already exists"
+
+    - name: Deploy Backend Service
+      run: |
+        koyeb service init harvestconnect-backend --app harvestconnect --type web
+        koyeb service deploy harvestconnect-backend \
+          --app harvestconnect \
+          --git https://github.com/dbillion/harvestconnect.git \
+          --git-branch ${{ github.ref_name }} \
+          --git-builder docker \
+          --git-docker-dockerfile backend/Dockerfile \
+          --ports "8000:http" \
+          --env DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }} \
+          --env DATABASE_URL=${{ secrets.POSTGRES_URL }} \
+          --env GOOGLE_OAUTH2_CLIENT_ID=${{ secrets.GOOGLE_OAUTH2_CLIENT_ID }} \
+          --env GOOGLE_OAUTH2_CLIENT_SECRET=${{ secrets.GOOGLE_OAUTH2_CLIENT_SECRET }} \
+          --env BBGITHUB_OAUTH2_CLIENT_SECRET=${{ secrets.BBGITHUB_OAUTH2_CLIENT_SECRET }} \
+          --env BBGITHUB_TOKEN=${{ secrets.BBGITHUB_TOKEN }} \
+          --env REDIS_URL=${{ secrets.REDIS_URL }} \
+          --env DEBUG=False \
+          --instance-type free \
+          --scale-min 1 \
+          --scale-max 1
+
+    - name: Deploy Frontend Service
+      run: |
+        koyeb service init harvestconnect-frontend --app harvestconnect --type web
+        koyeb service deploy harvestconnect-frontend \
+          --app harvestconnect \
+          --git https://github.com/dbillion/harvestconnect.git \
+          --git-branch ${{ github.ref_name }} \
+          --git-builder docker \
+          --git-docker-dockerfile harvestconnect/Dockerfile \
+          --ports "3000:http" \
+          --env NEXT_PUBLIC_API_URL=https://harvestconnect-koyeb.app/api \
+          --env NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${{ secrets.STRIPE_PUBLISHABLE_KEY }} \
+          --env NODE_ENV=production \
+          --instance-type free \
+          --scale-min 1 \
+          --scale-max 1
+
+    - name: Verify Deployment
+      run: |
+        echo "Checking deployment status..."
+        koyeb app list
+        koyeb service list --app harvestconnect
         
-      - name: Install Koyeb CLI
-        run: |
-          curl -sSfL https://raw.githubusercontent.com/koyeb/koyeb-cli/master/install.sh | sh
-          echo "$HOME/.koyeb/bin" >> $GITHUB_PATH
-          
-      - name: Deploy to Koyeb using koyeb.yaml
-        run: |
-          koyeb services apply koyeb.yaml --app harvestconnect-app
-        env:
-          KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
-          
-      - name: Expose deployment URL
-        run: |
-          echo "Application is deployed at: https://desperate-swan-oludayoadeoye-56108851.koyeb.app"
+        echo "Deployment URLs:"
+        echo "Backend: https://harvestconnect-backend-koyeb.app"
+        echo "Frontend: https://harvestconnect-frontend-koyeb.app"
+        echo "Combined: https://harvestconnect-koyeb.app"

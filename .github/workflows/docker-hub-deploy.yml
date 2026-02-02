@@ -1,0 +1,163 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '20'
+  FRONTEND_IMAGE_NAME: harvestconnect/frontend
+  BACKEND_IMAGE_NAME: harvestconnect/backend
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - service: frontend
+            image_name: ${{ env.FRONTEND_IMAGE_NAME }}
+            context: ./frontend
+          - service: backend
+            image_name: ${{ env.BACKEND_IMAGE_NAME }}
+            context: ./backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          version: latest
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ matrix.image_name }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=tag
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ matrix.context }}
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            NODE_VERSION=${{ env.NODE_VERSION }}
+
+  deploy-koyeb:
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    if: github.ref == 'refs/heads/main'
+    
+    env:
+      NODE_VERSION: '20'
+      KOYEB_APP_NAME: harvestconnect-app
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Koyeb CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/koyeb/koyeb-cli/master/install.sh | sh
+          echo "$HOME/.koyeb/bin" >> $GITHUB_PATH
+
+      - name: Deploy to Koyeb
+        env:
+          KOYEB_TOKEN: ${{ secrets.KOYEB_TOKEN }}
+        run: |
+          # Create app if doesn't exist
+          koyeb app create ${{ env.KOYEB_APP_NAME }} || true
+          
+          # Deploy frontend service
+          if koyeb service get ${{ env.KOYEB_APP_NAME }}/frontend 2>/dev/null; then
+            echo "Updating existing frontend service..."
+            koyeb service update ${{ env.KOYEB_APP_NAME }}/frontend \
+              --image ${{ secrets.DOCKERHUB_USERNAME }}/harvestconnect-frontend:latest \
+              --port 3000:http \
+              --route /:3000 \
+              --env NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} \
+              --env NODE_ENV=production \
+              --instance-type free || true
+          else
+            echo "Creating new frontend service..."
+            koyeb service create frontend \
+              --app ${{ env.KOYEB_APP_NAME }} \
+              --image ${{ secrets.DOCKERHUB_USERNAME }}/harvestconnect-frontend:latest \
+              --port 3000:http \
+              --route /:3000 \
+              --env NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} \
+              --env NODE_ENV=production \
+              --instance-type free || true
+          fi
+
+          # Deploy backend service
+          if koyeb service get ${{ env.KOYEB_APP_NAME }}/backend 2>/dev/null; then
+            echo "Updating existing backend service..."
+            koyeb service update ${{ env.KOYEB_APP_NAME }}/backend \
+              --image ${{ secrets.DOCKERHUB_USERNAME }}/harvestconnect-backend:latest \
+              --port 8000:http \
+              --env DATABASE_URL=${{ secrets.DATABASE_URL }} \
+              --env SECRET_KEY=${{ secrets.SECRET_KEY }} \
+              --env DEBUG=False \
+              --env ALLOWED_HOSTS='*' \
+              --env SOCIAL_AUTH_GOOGLE_OAUTH2_KEY=${{ secrets.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY }} \
+              --env SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET=${{ secrets.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET }} \
+              --env SOCIAL_AUTH_FACEBOOK_KEY=${{ secrets.SOCIAL_AUTH_FACEBOOK_KEY }} \
+              --env SOCIAL_AUTH_FACEBOOK_SECRET=${{ secrets.SOCIAL_AUTH_FACEBOOK_SECRET }} \
+              --env EMAIL_HOST=${{ secrets.EMAIL_HOST }} \
+              --env EMAIL_PORT=587 \
+              --env EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }} \
+              --env EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }} \
+              --env AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+              --env AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+              --env AWS_STORAGE_BUCKET_NAME=${{ secrets.AWS_STORAGE_BUCKET_NAME }} \
+              --env REDIS_URL=${{ secrets.REDIS_URL }} \
+              --instance-type free || true
+          else
+            echo "Creating new backend service..."
+            koyeb service create backend \
+              --app ${{ env.KOYEB_APP_NAME }} \
+              --image ${{ secrets.DOCKERHUB_USERNAME }}/harvestconnect-backend:latest \
+              --port 8000:http \
+              --env DATABASE_URL=${{ secrets.DATABASE_URL }} \
+              --env SECRET_KEY=${{ secrets.SECRET_KEY }} \
+              --env DEBUG=False \
+              --env ALLOWED_HOSTS='*' \
+              --env SOCIAL_AUTH_GOOGLE_OAUTH2_KEY=${{ secrets.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY }} \
+              --env SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET=${{ secrets.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET }} \
+              --env SOCIAL_AUTH_FACEBOOK_KEY=${{ secrets.SOCIAL_AUTH_FACEBOOK_KEY }} \
+              --env SOCIAL_AUTH_FACEBOOK_SECRET=${{ secrets.SOCIAL_AUTH_FACEBOOK_SECRET }} \
+              --env EMAIL_HOST=${{ secrets.EMAIL_HOST }} \
+              --env EMAIL_PORT=587 \
+              --env EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }} \
+              --env EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }} \
+              --env AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+              --env AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+              --env AWS_STORAGE_BUCKET_NAME=${{ secrets.AWS_STORAGE_BUCKET_NAME }} \
+              --env REDIS_URL=${{ secrets.REDIS_URL }} \
+              --instance-type free || true
+          fi
+
+      - name: Verify deployment
+        run: |
+          echo "Frontend deployed to: https://${{ env.KOYEB_APP_NAME }}-${{ github.repository_owner }}.koyeb.app"
+          echo "Backend deployed to: https://${{ env.KOYEB_APP_NAME }}-${{ github.repository_owner }}.koyeb.app/api/"

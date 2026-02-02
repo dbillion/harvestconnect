@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Django Configuration
+      - ADMIN_URL_PATH=${ADMIN_URL_PATH:-/admin}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost,127.0.0.1}
+      - CSRF_TRUSTED_ORIGINS=${CSRF_TRUSTED_ORIGINS:-http://localhost:8000}
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-django-secret-key-change-in-production}
+      - DEBUG=${DEBUG:-True}
+      
+      # Database Configuration - PostgreSQL with Neon as primary, SQLite as fallback
+      - DATABASE_URL=${POSTGRES_URL:-${DATABASE_URL:-sqlite:///db.sqlite3}}
+      
+      # GitHub Integration
+      - BBGITHUB_OAUTH2_CLIENT_SECRET=${BBGITHUB_OAUTH2_CLIENT_SECRET}
+      - BBGITHUB_TOKEN=${BBGITHUB_TOKEN}
+      
+      # Security & Testing
+      - CODECOV_TOKEN=${CODECOV_TOKEN}
+      - SNYK_TOKEN=${SNYK_TOKEN}
+      
+      # Cloud Services
+      - GOOGLE_GEMINI_API_KEY=${GOOGLE_GEMINI_API_KEY}
+      - GOOGLE_OAUTH2_CLIENT_ID=${GOOGLE_OAUTH2_CLIENT_ID}
+      - GOOGLE_OAUTH2_CLIENT_SECRET=${GOOGLE_OAUTH2_CLIENT_SECRET}
+      - KOYEB_TOKEN=${KOYEB_TOKEN}
+      - NETLIFY_AUTH_TOKEN=${NETLIFY_AUTH_TOKEN}
+      - NETLIFY_SITE_ID=${NETLIFY_SITE_ID}
+      - SUPABASE_S3_ACCESS_KEY_ID=${SUPABASE_S3_ACCESS_KEY_ID}
+      - SUPABASE_S3_ENDPOINT_URL=${SUPABASE_S3_ENDPOINT_URL}
+      - SUPABASE_S3_SECRET_ACCESS_KEY=${SUPABASE_S3_SECRET_ACCESS_KEY}
+      
+      # Redis Configuration (Upstash)
+      - REDIS_URL=${REDIS_URL}
+    volumes:
+      - ./backend:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    env_file:
+      - ./.env
+    command: >
+      bash -c "
+        python manage.py collectstatic --noinput &&
+        python manage.py migrate &&
+        python manage.py runserver 0.0.0.0:8000
+      "
+    networks:
+      - app-network
+
+  redis:
+    image: redis:6-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+volumes:
+  static_volume:
+  media_volume:
+
+networks:
+  app-network:
+    driver: bridge

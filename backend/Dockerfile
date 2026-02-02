@@ -1,41 +1,46 @@
-FROM python:3.12-alpine
+# Multi-stage build for optimized Django backend
+FROM python:3.11-slim AS base
 
-# Build argument for cache busting
-ARG CACHEBUST=1
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app \
+    DJANGO_SETTINGS_MODULE=harvestconnect.settings
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    gettext \
+    libpq-dev \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Copy requirements first
+# Install Python dependencies with better caching
 COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Install system dependencies and uv (Astral's ultra-fast package installer)
-RUN apk add --no-cache \
-    postgresql-dev \
-    gcc \
-    musl-dev \
-    linux-headers \
-    libffi-dev \
-    curl \
-    && curl -LsSf https://astral.sh/uv/install.sh | sh \
-    && export PATH="/root/.local/bin:$PATH" \
-    && uv pip install --system --no-cache -r requirements.txt \
-    && echo "Build timestamp: $CACHEBUST"
-
-# Add uv to PATH
-ENV PATH="/root/.local/bin:$PATH"
+FROM base AS production
+WORKDIR /app
 
 # Copy application code
 COPY . .
 
-# Set environment variables
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
+# Create non-root user for security
+RUN useradd --system --uid 1001 django && \
+    chown -R django:django /app
 
-# Collect static files - skip during build, do at runtime
-# RUN python manage.py collectstatic --noinput
+# Switch to non-root user
+USER django
 
-# Expose port
+# Collect static files
+RUN python manage.py collectstatic --noinput
+
 EXPOSE 8000
 
-# Run application
-CMD ["daphne", "-b", "0.0.0.0", "-p", "8000", "harvestconnect.asgi:application"]
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python manage.py check --deploy || exit 1
+
+CMD ["gunicorn", "--bind", "0.0.0:8000", "harvestconnect.wsgi:application"]
