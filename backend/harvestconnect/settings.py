@@ -115,10 +115,33 @@ TEMPLATES = [
 WSGI_APPLICATION = 'harvestconnect.wsgi.application'
 ASGI_APPLICATION = 'harvestconnect.asgi.application'
 
-# Channels
+# Redis Configuration for Upstash
+REDIS_URL = config('REDIS_URL', default='redis://localhost:6379')
+UPSTASH_REDIS_URL = config('UPSTASH_REDIS_URL', default='https://intimate-cicada-9814.upstash.io')
+UPSTASH_REDIS_TOKEN = config('UPSTASH_REDIS_TOKEN', default='ASZWAAImcDI1MjE5NzczZGU2N2Y0Zjc0OGVmM2EzYmFkZWQwNDUwY3AyOTgxNA')
+
+# Redis for caching and sessions
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': REDIS_URL,
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+# Session configuration to use Redis
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
+
+# Channels configuration with Redis
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [REDIS_URL],
+        },
     },
 }
 

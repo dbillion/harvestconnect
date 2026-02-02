@@ -1,0 +1,62 @@
+FROM python:3.12-alpine
+
+# Build argument for cache busting
+ARG CACHEBUST=1
+ARG UV_VERSION=0.2.25
+
+WORKDIR /app
+
+# Install system dependencies and uv (Astral's ultra-fast package installer)
+RUN apk add --no-cache \
+    postgresql-dev \
+    gcc \
+    musl-dev \
+    linux-headers \
+    libffi-dev \
+    curl \
+    bash \
+    && curl -LsSf https://github.com/astral-sh/uv/releases/download/${UV_VERSION}/uv-${UV_VERSION}-linux-x86_64-musl.tar.gz | tar -xz -C /usr/local/bin --strip-components=1 \
+    && chmod +x /usr/local/bin/uv \
+    && echo "Build timestamp: $CACHEBUST"
+
+# Copy requirements first
+COPY requirements.txt .
+
+# Install Python dependencies using uv (much faster than pip)
+RUN uv pip install --system --no-cache -r requirements.txt
+
+# Install upstash-redis
+RUN uv pip install upstash-redis
+
+# Copy application code
+COPY . .
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PORT=8000 \
+    DEBUG=False
+
+# Create non-root user for security
+RUN addgroup -g 1001 -S appuser && \
+    adduser -u 1001 -S appuser -G appuser
+
+# Change ownership to non-root user
+RUN chown -R appuser:appuser /app
+USER appuser
+
+# Collect static files
+RUN python manage.py collectstatic --noinput --clear
+
+# Expose port
+EXPOSE 8000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python manage.py check --deploy || exit 1
+
+# Make startup script executable
+RUN chmod +x /app/startup.sh
+
+# Run startup script
+CMD ["/app/startup.sh"]

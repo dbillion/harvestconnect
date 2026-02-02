@@ -3,7 +3,8 @@ services:
   - name: harvestconnect-backend
     type: web
     docker:
-      image: ${{ secrets.DOCKER_USERNAME }}/harvestconnect-backend:latest
+      context: ./backend
+      dockerfile: Dockerfile.optimized
     env:
       - name: DEBUG
         value: "false"
@@ -11,12 +12,18 @@ services:
         secret: DJANGO_SECRET_KEY
       - name: DATABASE_URL
         secret: DATABASE_URL
+      - name: REDIS_URL
+        secret: REDIS_URL
+      - name: UPSTASH_REDIS_URL
+        secret: UPSTASH_REDIS_URL
+      - name: UPSTASH_REDIS_TOKEN
+        secret: UPSTASH_REDIS_TOKEN
       - name: ALLOWED_HOSTS
         value: "localhost,127.0.0.1,0.0.0.0,*.koyeb.app"
       - name: CORS_ALLOWED_ORIGINS
-        value: "${{ secrets.NEXT_PUBLIC_API_URL }},https://*.netlify.app,http://localhost:3000,http://localhost:3001,http://127.0.0.1:3000"
+        value: "https://harvestingconnect.netlify.app,https://www.harvestingconnect.netlify.app,https://*.netlify.app,http://localhost:3000,http://localhost:3001,http://127.0.0.1:3000"
       - name: CSRF_TRUSTED_ORIGINS
-        value: "http://localhost:8000,http://localhost:3000,https://*.koyeb.app,https://*.netlify.app"
+        value: "http://localhost:8000,http://localhost:3000,https://*.koyeb.app,https://harvestingconnect.netlify.app,https://www.harvestingconnect.netlify.app"
       - name: EMAIL_BACKEND
         value: "django.core.mail.backends.smtp.EmailBackend"
       - name: EMAIL_HOST
@@ -43,6 +50,10 @@ services:
         secret: STRIPE_SECRET_KEY
       - name: STRIPE_WEBHOOK_SECRET
         secret: STRIPE_WEBHOOK_SECRET
+      - name: USE_S3
+        value: "False"
+      - name: AWS_S3_REGION_NAME
+        value: "us-east-1"
     routes:
       - path: /
         port: 8000
